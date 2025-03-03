@@ -75,22 +75,12 @@ public class WaveMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Waypoints obj = GameObject.FindGameObjectWithTag("waypoint").GetComponent<Waypoints>();
-        switch (waypointNum)
-        {
-            case 0:
-                waypoints.AddRange(obj.wp0); break;
-            case 1:
-                waypoints.AddRange(obj.wp1); break;
-            case 2:
-                waypoints.AddRange(obj.wp2); break;
-            case 3:
-                waypoints.AddRange(obj.wp3); break;
-        }
+        Waypoints obj = FindFirstObjectByType<Waypoints>();
+        waypoints.AddRange(obj.waypoints[waypointNum].points);
         
         //temporary
-        ranMod = Random.Range(0.4f, -0.4f);
-        //ranMod = 0f;
+        //ranMod = Random.Range(0.4f, -0.4f);
+        ranMod = 0f;
 
         Vector2 tempStartPos = waypoints[waypointIndex];
         tempStartPos.y = waypoints[waypointIndex].y + ranMod;
