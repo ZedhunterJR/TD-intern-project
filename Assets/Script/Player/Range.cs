@@ -5,58 +5,59 @@ using DG.Tweening;
 
 public class Range : MonoBehaviour
 {
-    //private SpriteRenderer sprite;
-    public List<GameObject> enemiesInRange;
+    //when init, point this to another list like
+    // AllEnemies = GameManager.AllEnemies
+    // this will serve as reference point
+    [HideInInspector] public List<GameObject> AllEnemies = new();
 
-    //public GameObject strongTarget;
-    //public GameObject lastTarget;
+    public List<GameObject> EnemiesInRange = new();
 
+    public float detectionRange = 3f;
+    //private float enemyUpdateTimer;
     // Start is called before the first frame update
     void Start()
     {
-        enemiesInRange = new List<GameObject>();
-        //sprite = transform.parent.GetComponentInChildren<SpriteRenderer>();
+        EnemiesInRange = new List<GameObject>();
+        //temp all enemies
+        AllEnemies = FindFirstObjectByType<Waypoints>().AllEnemies;
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < enemiesInRange.Count; i++)
-        {
-            if (enemiesInRange[i].gameObject == null)
-            {
-                enemiesInRange.RemoveAt(i);
-            }
-        }
-        
-        /*if (firstTarget != null)
-        {
-            if (firstTarget.transform.position.x - transform.position.x > 0)
-                sprite.flipX = false;
-            else 
-                sprite.flipX = true;
-        }*/
+        UpdateEnemiesInRange();
     }
     public List<GameObject> FirstTargets()
     {
-        var result = new List<GameObject>();
-        result.AddRange(enemiesInRange);
+        var result = new List<GameObject>(EnemiesInRange); // Directly initialize with EnemiesInRange
         result.Sort(
             delegate (GameObject e1, GameObject e2)
             {
-                return e1.GetComponent<WaveMove>().DistanceToGoal().CompareTo
-                    (e2.GetComponent<WaveMove>().DistanceToGoal());
+                // Null checks to push null values to the back
+                if (e1 == null && e2 == null) return 0;  // Both null, equal ranking
+                if (e1 == null) return 1;  // e1 is null, push to back
+                if (e2 == null) return -1; // e2 is null, push to back
+
+                // Compare based on DistanceToGoal
+                return e1.GetComponent<WaveMove>().DistanceToGoal()
+                    .CompareTo(e2.GetComponent<WaveMove>().DistanceToGoal());
             }
         );
         return result;
     }
+
     public List<GameObject> StrongTargets()
     {
         var result = new List<GameObject>();
-        result.AddRange(enemiesInRange);
+        result.AddRange(EnemiesInRange);
         result.Sort(
             delegate (GameObject e1, GameObject e2)
             {
+                // Null checks to push null values to the back
+                if (e1 == null && e2 == null) return 0;  // Both null, equal ranking
+                if (e1 == null) return 1;  // e1 is null, push to back
+                if (e2 == null) return -1; // e2 is null, push to back
+
                 return e1.GetComponent<EnemyStat>().currentHp.CompareTo
                     (e2.GetComponent<EnemyStat>().currentHp);
             }
@@ -70,27 +71,30 @@ public class Range : MonoBehaviour
         return result;
     }
 
-    void OnTriggerEnter2D (Collider2D other)
+    void UpdateEnemiesInRange()
     {
-        Transform parent = other.gameObject.transform;
-        if (parent != null)
-        if (parent.tag == "enemy")
+        // Using a HashSet for quick lookup
+        HashSet<GameObject> currentEnemies = new HashSet<GameObject>(EnemiesInRange);
+
+        foreach (GameObject enemy in AllEnemies)
         {
-            enemiesInRange.Add(parent.gameObject);
+            if (enemy == null) continue; // Avoid null reference errors
+
+            float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;
+            if (sqrDistance < detectionRange * detectionRange)
+            {
+                if (!currentEnemies.Contains(enemy))
+                {
+                    EnemiesInRange.Add(enemy); // Add only if not already in the list
+                }
+            }
+            else
+            {
+                if (currentEnemies.Contains(enemy))
+                {
+                    EnemiesInRange.Remove(enemy); // Remove enemies that moved out of range
+                }
+            }
         }
-        
     }
-    void OnTriggerExit2D (Collider2D other)
-    {
-        Transform parent = other.gameObject.transform;
-        if (parent != null)
-        if (parent.tag == "enemy")
-        {
-            enemiesInRange.Remove(parent.gameObject);
-        }
-
-    }
-
-
-    
 }
