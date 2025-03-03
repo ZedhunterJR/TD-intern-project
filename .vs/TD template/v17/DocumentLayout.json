@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Unity project\\TD template\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|D:\\Unity project\\TD template\\assets\\script\\general\\sceneresources.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\general\\sceneresources.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|D:\\Unity project\\TD template\\assets\\script\\general\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\general\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|d:\\unity project\\td template\\assets\\script\\general\\buttonui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\general\\buttonui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|D:\\Unity project\\TD template\\assets\\script\\general\\ddol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\general\\ddol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|d:\\unity project\\td template\\assets\\script\\general\\setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\general\\setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|D:\\Unity project\\TD template\\assets\\script\\general\\ddolchangescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\general\\ddolchangescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|D:\\Unity project\\TD template\\assets\\script\\general\\uianimation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5471A3BE-EB50-79C9-C2F3-60D886D9BFEB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\general\\uianimation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ButtonUI.cs",
+              "DocumentMoniker": "D:\\Unity project\\TD template\\Assets\\Script\\General\\ButtonUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\General\\ButtonUI.cs",
+              "ToolTip": "D:\\Unity project\\TD template\\Assets\\Script\\General\\ButtonUI.cs",
+              "RelativeToolTip": "Assets\\Script\\General\\ButtonUI.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwCUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T08:07:25.206Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UIAnimation.cs",
+              "DocumentMoniker": "D:\\Unity project\\TD template\\Assets\\Script\\General\\UIAnimation.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\General\\UIAnimation.cs",
+              "ToolTip": "D:\\Unity project\\TD template\\Assets\\Script\\General\\UIAnimation.cs",
+              "RelativeToolTip": "Assets\\Script\\General\\UIAnimation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T07:26:19.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SceneResources.cs",
+              "DocumentMoniker": "D:\\Unity project\\TD template\\Assets\\Script\\General\\SceneResources.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\General\\SceneResources.cs",
+              "ToolTip": "D:\\Unity project\\TD template\\Assets\\Script\\General\\SceneResources.cs",
+              "RelativeToolTip": "Assets\\Script\\General\\SceneResources.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAcwA8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T07:17:22.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DDOLChangeScene.cs",
+              "DocumentMoniker": "D:\\Unity project\\TD template\\Assets\\Script\\General\\DDOLChangeScene.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\General\\DDOLChangeScene.cs",
+              "ToolTip": "D:\\Unity project\\TD template\\Assets\\Script\\General\\DDOLChangeScene.cs",
+              "RelativeToolTip": "Assets\\Script\\General\\DDOLChangeScene.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T06:53:18.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DDOL.cs",
+              "DocumentMoniker": "D:\\Unity project\\TD template\\Assets\\Script\\General\\DDOL.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\General\\DDOL.cs",
+              "ToolTip": "D:\\Unity project\\TD template\\Assets\\Script\\General\\DDOL.cs",
+              "RelativeToolTip": "Assets\\Script\\General\\DDOL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T06:41:38.166Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AudioManager.cs",
+              "DocumentMoniker": "D:\\Unity project\\TD template\\Assets\\Script\\General\\AudioManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\General\\AudioManager.cs",
+              "ToolTip": "D:\\Unity project\\TD template\\Assets\\Script\\General\\AudioManager.cs",
+              "RelativeToolTip": "Assets\\Script\\General\\AudioManager.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAEcAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-01T15:52:25.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Setting.cs",
+              "DocumentMoniker": "D:\\Unity project\\TD template\\Assets\\Script\\General\\Setting.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\General\\Setting.cs",
+              "ToolTip": "D:\\Unity project\\TD template\\Assets\\Script\\General\\Setting.cs",
+              "RelativeToolTip": "Assets\\Script\\General\\Setting.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAkwEUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-01T15:15:08.081Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
