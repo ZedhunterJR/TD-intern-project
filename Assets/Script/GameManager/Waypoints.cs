@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Waypoints : MonoBehaviour
 {
-    //temp
-    public List<GameObject> AllEnemies = new();
-
     public List<WaypointPath> waypoints = new();
 
     public int num;
@@ -30,13 +27,6 @@ public class Waypoints : MonoBehaviour
         }
     }
 
-    [ContextMenu("Test Spawn")]
-    private void TestSpawn()
-    {
-        var e = Resources.Load<GameObject>("Prefab/enemy_template");
-        var ins = Instantiate(e);
-        AllEnemies.Add(ins);
-    }
 }
 
 [System.Serializable]

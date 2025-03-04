@@ -59,13 +59,13 @@ public class ProjectileAdvanced : MonoBehaviour
 
         foreach (var enemy in AllEnemies)
         {
-            if (enemy == null || targetsHit.Contains(enemy)) continue; // Skip null or already hit enemies
+            if (enemy == null || targetsHit.Contains(enemy)) continue; // Skip null or already hit enemies, might not stay
 
             float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;
             if (sqrDistance <= hitRadiusSqr) // Enemy within hit radius
             {
                 targetsHit.Add(enemy);
-                HitEvent?.Invoke(enemy.GetHighestParent());
+                HitEvent?.Invoke(enemy);
 
                 pierce--;
                 if (pierce == 0)

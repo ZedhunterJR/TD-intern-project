@@ -10,7 +10,7 @@ public class Range : MonoBehaviour
     // this will serve as reference point
     [HideInInspector] public List<GameObject> AllEnemies = new();
 
-    public List<GameObject> EnemiesInRange = new();
+    [SerializeField] private List<GameObject> EnemiesInRange = new();
 
     public float detectionRange = 3f;
     //private float enemyUpdateTimer;
@@ -19,7 +19,7 @@ public class Range : MonoBehaviour
     {
         EnemiesInRange = new List<GameObject>();
         //temp all enemies
-        AllEnemies = FindFirstObjectByType<Waypoints>().AllEnemies;
+        AllEnemies = TestEnemyAndTowerSpawn.Instance.AllEnemies;
     }
 
     // Update is called once per frame
@@ -69,6 +69,21 @@ public class Range : MonoBehaviour
         var result = FirstTargets();
         result.Reverse();
         return result;
+    }
+
+    public GameObject FirstTarget()
+    {
+        var targets = FirstTargets();
+        if (targets.Count > 0)
+            return targets[0];
+        return null;
+    }
+    public GameObject LastTarget()
+    {
+        var targets = LastTargets();
+        if (targets.Count > 0)
+            return targets[0];
+        return null;
     }
 
     void UpdateEnemiesInRange()

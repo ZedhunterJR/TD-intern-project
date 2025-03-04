@@ -237,7 +237,4 @@ public static class Extensions
         return points;
     }
 
-    //king spin the wheel only
-   
-
 }

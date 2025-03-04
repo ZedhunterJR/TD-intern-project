@@ -16,7 +16,6 @@ public class ExplosionAdvanced : MonoBehaviour
     // Properties
     public float lifeSpan = 0.5f;
     public int pierce = 99;
-    public string enemyTag = "enemy";
     public float delayFirstDmgInstance = 0.2f;
     public float dmgInterval = 0.5f;
     public float explosionRadius = 3f; // Explosion detection radius
