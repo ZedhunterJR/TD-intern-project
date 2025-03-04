@@ -16,5 +16,5 @@ MonoBehaviour:
   towerName: test
   baseDamage: 1
   baseAtkSpd: 1
-  range: 4
+  range: 0
   attackScriptName: TestEarth

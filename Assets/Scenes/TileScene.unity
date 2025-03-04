@@ -497,6 +497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 287235813}
   - component: {fileID: 287235814}
+  - component: {fileID: 287235815}
   m_Layer: 0
   m_Name: TileManager
   m_TagString: Untagged
@@ -547,7 +548,22 @@ MonoBehaviour:
   - {fileID: 1452766576}
   - {fileID: 1629336232}
   - {fileID: 2139307661}
-  tower: {fileID: 0}
+--- !u!114 &287235815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287235812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2daa0b04e6cfa3d44a7e397cf0c2fd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: f0778fa63ed10e24ea053676cbaa5bd2, type: 2}
+  enemyData: {fileID: 0}
+  spawnTowerSpot: {fileID: 0}
+  AllEnemies: []
 --- !u!1 &290636455
 GameObject:
   m_ObjectHideFlags: 0

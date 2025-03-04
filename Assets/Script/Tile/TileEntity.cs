@@ -27,10 +27,10 @@ public class TileEntity : MonoBehaviour
             switch (status)
             {
                 case TILE_BUILDING_STATUS.None:
-                    spriteRenderer.color = Color.white;
+                    //spriteRenderer.color = Color.white;
                     break;
                 case TILE_BUILDING_STATUS.HasTower:
-                    spriteRenderer.color = Color.black;
+                    //spriteRenderer.color = Color.black;
                     break;
                 default:
                     break;

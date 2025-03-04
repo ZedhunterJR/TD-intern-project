@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TileManager : MonoBehaviour
+public class TileManager : Singleton<TileManager>
 {
     [SerializeField]
     List<TileEntity> tiles = new List<TileEntity>();
-
-    [SerializeField] GameObject tower;
 
     private void Start()
     {
@@ -35,8 +33,9 @@ public class TileManager : MonoBehaviour
 
         if (tilesNoneTower.Count > 0)
         {
-            TileEntity tile = tilesNoneTower[Random.Range(0, tilesNoneTower.Count)];
+            TileEntity tile = tilesNoneTower.GetRandom();
             tile.ChangeStatus(TILE_BUILDING_STATUS.HasTower);
+            TestEnemyAndTowerSpawn.Instance.SpawnTower(tile.transform.position);
 
             Debug.Log($"Tháp đã được đặt là {tile.name}");
         }

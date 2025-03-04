@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestEnemyAndTowerSpawn : MonoBehaviour
+public class TestEnemyAndTowerSpawn : Singleton<TestEnemyAndTowerSpawn>
 {
-    public static TestEnemyAndTowerSpawn Instance { get; private set; }
     private void Awake()
     {
-        Instance = this;
         towerPrefab = Resources.Load<GameObject>("Prefab/tower_prefab");
         enemyPrefab = Resources.Load<GameObject>("Prefab/enemy_template");
     }
@@ -22,9 +20,9 @@ public class TestEnemyAndTowerSpawn : MonoBehaviour
     public List<GameObject> AllEnemies = new();
 
     [ContextMenu("Spawn tower")]
-    public void SpawnTower()
+    public void SpawnTower(Vector2 Position)
     {
-        GameObject instance = Instantiate(towerPrefab, spawnTowerSpot.position, Quaternion.identity);
+        GameObject instance = Instantiate(towerPrefab, Position, Quaternion.identity);
         instance.GetComponent<TowerStat>().Init(towerData);
     }
     [ContextMenu("Spawn enemy")]
