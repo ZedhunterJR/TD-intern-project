@@ -4,6 +4,7 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] TileManager tileManager;
     [SerializeField] EnemyManager enemyManager;
+    [SerializeField] PoolManager poolManager;
 
     // Win/Lose Condition 
     [Header("Win / Lose Condition")]
@@ -25,6 +26,8 @@ public class GameManager : Singleton<GameManager>
             tileManager.OnStart();
         if (enemyManager != null)
             enemyManager.OnStart();
+        if (poolManager != null)
+            poolManager.OnStart();
     }
 
     private void Update()
@@ -33,6 +36,8 @@ public class GameManager : Singleton<GameManager>
             tileManager.OnUpdate();
         if (enemyManager != null)
             enemyManager.OnUpdate();
+        if (poolManager != null)
+            poolManager.OnUpdate();
     }
 
     #region Condition Win Lose and Change Game Status
