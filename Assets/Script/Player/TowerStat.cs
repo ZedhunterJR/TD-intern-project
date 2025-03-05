@@ -16,10 +16,12 @@ public class TowerStat : MonoBehaviour
 
     //references
     private Range range;
+    private SpineAnimationController spineAnimationController;
 
     private void Awake()
     {
         range = GetComponent<Range>();
+        spineAnimationController = transform.Find("spine_animation").GetComponent<SpineAnimationController>();
     }
 
     //Call this when instantiate the object
@@ -30,10 +32,16 @@ public class TowerStat : MonoBehaviour
         range.detectionRange = data.range;
         range.AllEnemies = EnemyManager.Instance.AllEnemies;
 
+        //init attack script
+        if (gameObject.HasComponent<TowerAttack>())
+        {
+            Destroy(GetComponent<TowerAttack>());
+        }
         gameObject.AddComponentByString(data.attackScriptName);
 
         //graphic
-        transform.Find("spine_animation").GetComponent<SpineAnimationController>().Init(data);
+        spineAnimationController.Init(data);
+        spineAnimationController.PlayAnimationOnce("Build", "Idle");
         //initialize the range display
         //if there is runtime range modification, move this to a method instead
         transform.Find("range_display").localScale = Vector3.one * data.range;
@@ -48,5 +56,10 @@ public class TowerStat : MonoBehaviour
             Init(data);
         }
 
+    }
+
+    public void AttackAnimation()
+    {
+        spineAnimationController.PlayAnimationOnce("Attack", "Idle");
     }
 }

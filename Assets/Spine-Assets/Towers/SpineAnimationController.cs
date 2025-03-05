@@ -17,14 +17,17 @@ public class SpineAnimationController : MonoBehaviour
         skeletonAnimation.skeletonDataAsset = data.towerType;
         skeletonAnimation.initialSkinName = data.towerInitialSkin;
     }
+    public void Init(EnemyData data)
+    {
+        skeletonAnimation.skeletonDataAsset = data.enemyType;
+        skeletonAnimation.initialSkinName = data.enemyInitialSkin;
+    }
 
-    [ContextMenu("Build")]
-    public void SpawnAnimtion()
+    public void SpawnAnimation()
     {
         PlayAnimationOnce("Build", "Idle");
     }
 
-    [ContextMenu("attack")]
     public void AttackAnimation()
     {
         PlayAnimationOnce("Attack", "Idle");

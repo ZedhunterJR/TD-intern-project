@@ -19,10 +19,17 @@ public class EnemyStat : MonoBehaviour
 
     //ref
     private GameObject hpBarCover;
+    private WaveMove moveScript;
+    private Transform spineAnimation;
+
+    private float initialScale;
+    private bool flipX;
 
     void Awake()
     {
         hpBarCover = transform.Find("health/cover").gameObject;
+        moveScript = GetComponent<WaveMove>();
+        spineAnimation = transform.Find("spine_animation");
     }
 
     public void Init(EnemyData data)
@@ -31,8 +38,20 @@ public class EnemyStat : MonoBehaviour
         maxHealth = data.maxHp;
         currentHp = maxHealth;
         moveSpeed = data.baseMoveSpeed;
+        UpdateHp(0); //to reset hp bar
 
-        //sprite and other bs
+        //spine init
+        spineAnimation.GetComponent<SpineAnimationController>().Init(data);
+        initialScale = spineAnimation.transform.localScale.y;
+
+        //init wave move script
+        List<Vector2> wps = new(FindFirstObjectByType<Waypoints>().waypoints[0].points);
+        Action onexit = () =>
+        {
+            GameManager.Instance.TakeDame();
+            PoolManager.Instance.RespawnObject(OBJ_TYPE.enemyTest, gameObject);
+        };
+        moveScript.Init(wps, onexit);
     }
 
     // Update is called once per frame
@@ -57,6 +76,16 @@ public class EnemyStat : MonoBehaviour
 
             isStunned = stun;
             moveSpeed = data.baseMoveSpeed * (1 - slowPer);
+
+            //Manage movement and rotation
+            moveScript.moveSpeed = moveSpeed;
+            moveScript.isStunned = isStunned;
+            if (flipX != moveScript.FlipX)
+            {
+                flipX = moveScript.FlipX;
+                spineAnimation.localScale = new Vector3(initialScale * (flipX ? -1 : 1), initialScale, initialScale);
+            }
+            
         }
     }
     public void UpdateHp(float value)
@@ -67,8 +96,7 @@ public class EnemyStat : MonoBehaviour
         {
             PreDestruction?.Invoke(transform.position);
 
-            PoolManager.Instance.SpawnObject(OBJ_TYPE.enemyTest, gameObject);
-            //EnemyManager.Instance.RemoveEnemy(gameObject);
+            PoolManager.Instance.RespawnObject(OBJ_TYPE.enemyTest, gameObject);
             //Destroy(gameObject);
             //EventManager.Instance.ModiGold(enemyEquivalent * 10f);
         }
@@ -82,4 +110,28 @@ public class EnemyStat : MonoBehaviour
         UpdateHp(dmg);
     }
     
+}
+
+//move here for easier managing
+public class MovementDebuff
+{
+    public float slowPercentage;
+    public float slowTimer;
+
+    public float stunTimer;
+
+    public MovementDebuff(float slowPercentage, float slowTimer, float stunTimer)
+    {
+        this.slowPercentage = slowPercentage;
+        this.slowTimer = slowTimer;
+        this.stunTimer = stunTimer;
+    }
+
+    public bool Timer()
+    {
+        slowTimer -= Time.deltaTime;
+        stunTimer -= Time.deltaTime;
+
+        return slowTimer < 0 && stunTimer < 0;
+    }
 }

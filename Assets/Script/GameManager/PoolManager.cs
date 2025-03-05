@@ -40,7 +40,7 @@ public class PoolManager : Singleton<PoolManager>
         GameObject objInstance = null;
         objInstance = Instantiate(PrefabsEnemyTest, ContainerEnemyTest);
         objInstance.gameObject.SetActive(false);
-        objInstance.GetComponent<EnemyStat>().Init(enemyData);
+        //objInstance.GetComponent<EnemyStat>().Init(enemyData); don't init enemydata on empty pool objects
         poolEnemyTest.Add(objInstance);
         return objInstance;
     }
@@ -67,7 +67,7 @@ public class PoolManager : Singleton<PoolManager>
     #endregion
 
     #region Respawn OBJ
-    public void SpawnObject(OBJ_TYPE type, GameObject objSpawn)
+    public void RespawnObject(OBJ_TYPE type, GameObject objSpawn)
     {
         if (type == OBJ_TYPE.enemyTest)
         {
