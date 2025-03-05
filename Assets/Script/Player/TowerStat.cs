@@ -28,6 +28,8 @@ public class TowerStat : MonoBehaviour
         this.data = data;
         //initialize all the needed stats
         range.detectionRange = data.range;
+        range.AllEnemies = EnemyManager.Instance.AllEnemies;
+
         gameObject.AddComponentByString(data.attackScriptName);
 
         //graphic
@@ -35,6 +37,7 @@ public class TowerStat : MonoBehaviour
         //initialize the range display
         //if there is runtime range modification, move this to a method instead
         transform.Find("range_display").localScale = Vector3.one * data.range;
+
 
         hasInit = true;
     }

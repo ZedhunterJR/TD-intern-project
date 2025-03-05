@@ -18,8 +18,8 @@ public class Range : MonoBehaviour
     void Start()
     {
         EnemiesInRange = new List<GameObject>();
-        //temp all enemies
-        AllEnemies = EnemyManager.Instance.AllEnemies;
+        //MOVED TO TowerStat.cs
+        //AllEnemies = EnemyManager.Instance.AllEnemies;
     }
 
     // Update is called once per frame
@@ -90,6 +90,7 @@ public class Range : MonoBehaviour
     {
         // Using a HashSet for quick lookup
         HashSet<GameObject> currentEnemies = new HashSet<GameObject>(EnemiesInRange);
+        HashSet<GameObject> allEnemiesSet = new HashSet<GameObject>(AllEnemies); // For quick lookup
 
         foreach (GameObject enemy in AllEnemies)
         {
@@ -111,5 +112,9 @@ public class Range : MonoBehaviour
                 }
             }
         }
+
+        // Remove enemies that are in EnemiesInRange but NOT in AllEnemies
+        EnemiesInRange.RemoveAll(enemy => !allEnemiesSet.Contains(enemy));
     }
+
 }
