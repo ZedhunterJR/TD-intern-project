@@ -1,0 +1,587 @@
+
+Sentry.png
+size: 2004,752
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+earth-sentry/Layer 300
+  rotate: false
+  xy: 1218, 67
+  size: 68, 73
+  orig: 68, 73
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 300 copy 10
+  rotate: false
+  xy: 925, 250
+  size: 99, 55
+  orig: 99, 55
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 300 copy 9
+  rotate: true
+  xy: 1759, 160
+  size: 98, 54
+  orig: 98, 54
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 310
+  rotate: false
+  xy: 326, 579
+  size: 334, 170
+  orig: 334, 170
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 319
+  rotate: false
+  xy: 1413, 236
+  size: 190, 163
+  orig: 190, 163
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 319 copy
+  rotate: false
+  xy: 1503, 82
+  size: 72, 78
+  orig: 72, 78
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 319 copy 2
+  rotate: false
+  xy: 1289, 158
+  size: 81, 79
+  orig: 81, 79
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 320
+  rotate: true
+  xy: 1914, 101
+  size: 72, 87
+  orig: 72, 87
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 320 copy
+  rotate: false
+  xy: 1139, 112
+  size: 76, 94
+  orig: 76, 94
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 320 copy 2
+  rotate: false
+  xy: 1289, 68
+  size: 71, 87
+  orig: 71, 87
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 339
+  rotate: false
+  xy: 3, 92
+  size: 186, 334
+  orig: 186, 334
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 339 copy
+  rotate: true
+  xy: 1816, 46
+  size: 59, 81
+  orig: 59, 81
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 339 copy 2
+  rotate: false
+  xy: 542, 3
+  size: 69, 74
+  orig: 69, 74
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 339 copy 3
+  rotate: true
+  xy: 997, 3
+  size: 97, 57
+  orig: 97, 57
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 339 copy 4
+  rotate: true
+  xy: 1363, 71
+  size: 84, 54
+  orig: 84, 54
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 339 copy 5
+  rotate: false
+  xy: 587, 254
+  size: 65, 147
+  orig: 65, 147
+  offset: 0, 0
+  index: -1
+earth-sentry/Layer 339 copy 6
+  rotate: true
+  xy: 391, 10
+  size: 67, 148
+  orig: 67, 148
+  offset: 0, 0
+  index: -1
+elec-sentry/Layer 300
+  rotate: false
+  xy: 1139, 51
+  size: 76, 58
+  orig: 76, 58
+  offset: 0, 0
+  index: -1
+elec-sentry/Layer 300 copy 5
+  rotate: true
+  xy: 192, 217
+  size: 209, 127
+  orig: 209, 127
+  offset: 0, 0
+  index: -1
+elec-sentry/Layer 300 copy 6
+  rotate: false
+  xy: 1793, 265
+  size: 196, 251
+  orig: 196, 251
+  offset: 0, 0
+  index: -1
+elec-sentry/Layer 300 copy 7
+  rotate: false
+  xy: 1420, 21
+  size: 77, 58
+  orig: 77, 58
+  offset: 0, 0
+  index: -1
+elec-sentry/Layer 300 copy 8
+  rotate: true
+  xy: 1922, 176
+  size: 86, 79
+  orig: 86, 79
+  offset: 0, 0
+  index: -1
+elec-sentry/Layer 301
+  rotate: true
+  xy: 3, 3
+  size: 86, 206
+  orig: 86, 206
+  offset: 0, 0
+  index: -1
+elec-sentry/Layer 301.1_00
+  rotate: true
+  xy: 1509, 577
+  size: 172, 281
+  orig: 172, 281
+  offset: 0, 0
+  index: -1
+elec-sentry/Layer 301_00
+  rotate: true
+  xy: 326, 404
+  size: 172, 281
+  orig: 172, 281
+  offset: 0, 0
+  index: -1
+elec-sentry/Layer 310
+  rotate: false
+  xy: 663, 432
+  size: 264, 148
+  orig: 264, 148
+  offset: 0, 0
+  index: -1
+elec-sentry/Layer 311 copy 2
+  rotate: true
+  xy: 212, 26
+  size: 67, 176
+  orig: 67, 176
+  offset: 0, 0
+  index: -1
+elec-sentry/attack_02
+  rotate: true
+  xy: 1509, 402
+  size: 172, 281
+  orig: 172, 281
+  offset: 0, 0
+  index: -1
+elec-sentry/eff_tower_00
+  rotate: false
+  xy: 788, 308
+  size: 103, 121
+  orig: 103, 121
+  offset: 0, 0
+  index: -1
+elec-sentry/eff_tower_02
+  rotate: false
+  xy: 661, 158
+  size: 103, 121
+  orig: 103, 121
+  offset: 0, 0
+  index: -1
+elec-sentry/eff_tower_03
+  rotate: true
+  xy: 767, 154
+  size: 103, 121
+  orig: 103, 121
+  offset: 0, 0
+  index: -1
+elec-sentry/eff_tower_05
+  rotate: true
+  xy: 1027, 209
+  size: 103, 121
+  orig: 103, 121
+  offset: 0, 0
+  index: -1
+elec-sentry/eff_tower_06
+  rotate: true
+  xy: 891, 144
+  size: 103, 121
+  orig: 103, 121
+  offset: 0, 0
+  index: -1
+elec-sentry/eff_tower_07
+  rotate: true
+  xy: 1015, 103
+  size: 103, 121
+  orig: 103, 121
+  offset: 0, 0
+  index: -1
+elec-sentry/wave_00
+  rotate: false
+  xy: 3, 429
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 300 copy
+  rotate: false
+  xy: 959, 537
+  size: 282, 212
+  orig: 282, 212
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 300 copy 2
+  rotate: true
+  xy: 1413, 402
+  size: 125, 58
+  orig: 125, 58
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 300 copy 3
+  rotate: false
+  xy: 1793, 519
+  size: 204, 230
+  orig: 204, 230
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 300 copy 4
+  rotate: true
+  xy: 610, 481
+  size: 95, 50
+  orig: 95, 50
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 312
+  rotate: false
+  xy: 663, 583
+  size: 293, 166
+  orig: 293, 166
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 324
+  rotate: true
+  xy: 1470, 163
+  size: 70, 88
+  orig: 70, 88
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 324 copy
+  rotate: true
+  xy: 689, 3
+  size: 65, 70
+  orig: 65, 70
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 324 copy 2
+  rotate: false
+  xy: 1573, 10
+  size: 64, 69
+  orig: 64, 69
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 325
+  rotate: false
+  xy: 1578, 86
+  size: 79, 78
+  orig: 79, 78
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 325 copy
+  rotate: false
+  xy: 1420, 82
+  size: 80, 78
+  orig: 80, 78
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 326
+  rotate: false
+  xy: 655, 282
+  size: 130, 147
+  orig: 130, 147
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 327
+  rotate: true
+  xy: 1218, 3
+  size: 61, 66
+  orig: 61, 66
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 327 copy
+  rotate: true
+  xy: 1287, 3
+  size: 61, 66
+  orig: 61, 66
+  offset: 0, 0
+  index: -1
+fire-sentry/Layer 338
+  rotate: true
+  xy: 1660, 86
+  size: 78, 79
+  orig: 78, 79
+  offset: 0, 0
+  index: -1
+fire-sentry/lava_bubble
+  rotate: true
+  xy: 894, 391
+  size: 38, 33
+  orig: 38, 33
+  offset: 0, 0
+  index: -1
+fire-sentry/lava_ex2
+  rotate: true
+  xy: 1151, 209
+  size: 28, 23
+  orig: 28, 23
+  offset: 0, 0
+  index: -1
+fire-sentry/lava_ex3
+  rotate: false
+  xy: 610, 455
+  size: 27, 23
+  orig: 27, 23
+  offset: 0, 0
+  index: -1
+fire-sentry/mouth_00000
+  rotate: false
+  xy: 1174, 377
+  size: 236, 150
+  orig: 236, 150
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 308
+  rotate: false
+  xy: 192, 96
+  size: 210, 118
+  orig: 210, 118
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 308 copy 2
+  rotate: true
+  xy: 1244, 530
+  size: 219, 262
+  orig: 219, 262
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 310 copy
+  rotate: false
+  xy: 889, 47
+  size: 105, 94
+  orig: 105, 94
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 310 copy 2
+  rotate: false
+  xy: 1027, 315
+  size: 134, 46
+  orig: 134, 46
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 310 copy 3
+  rotate: false
+  xy: 894, 308
+  size: 130, 53
+  orig: 130, 53
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 310 copy 4
+  rotate: true
+  xy: 788, 260
+  size: 45, 134
+  orig: 45, 134
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 311
+  rotate: false
+  xy: 1174, 240
+  size: 236, 134
+  orig: 236, 134
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 312
+  rotate: false
+  xy: 1606, 261
+  size: 179, 138
+  orig: 179, 138
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 315 copy 2
+  rotate: false
+  xy: 767, 71
+  size: 119, 80
+  orig: 119, 80
+  offset: 0, 0
+  index: -1
+ice-sentry/may
+  rotate: false
+  xy: 767, 71
+  size: 119, 80
+  orig: 119, 80
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 321
+  rotate: true
+  xy: 661, 80
+  size: 75, 103
+  orig: 75, 103
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 321 copy
+  rotate: false
+  xy: 589, 120
+  size: 69, 131
+  orig: 69, 131
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 321 copy 2
+  rotate: true
+  xy: 1816, 184
+  size: 78, 103
+  orig: 78, 103
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 322
+  rotate: false
+  xy: 1816, 108
+  size: 95, 73
+  orig: 95, 73
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 322 copy
+  rotate: true
+  xy: 1057, 4
+  size: 96, 78
+  orig: 96, 78
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 323
+  rotate: false
+  xy: 1500, 10
+  size: 70, 69
+  orig: 70, 69
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 323 copy
+  rotate: false
+  xy: 1713, 19
+  size: 67, 63
+  orig: 67, 63
+  offset: 0, 0
+  index: -1
+ice-sentry/Layer 323 copy 2
+  rotate: false
+  xy: 1640, 14
+  size: 70, 69
+  orig: 70, 69
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 310
+  rotate: false
+  xy: 1218, 143
+  size: 68, 94
+  orig: 68, 94
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 311
+  rotate: true
+  xy: 1373, 167
+  size: 66, 94
+  orig: 66, 94
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 314 copy 4
+  rotate: false
+  xy: 762, 3
+  size: 65, 65
+  orig: 65, 65
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 316
+  rotate: false
+  xy: 322, 218
+  size: 262, 183
+  orig: 262, 183
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 316 copy
+  rotate: false
+  xy: 1606, 167
+  size: 150, 91
+  orig: 150, 91
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 318
+  rotate: true
+  xy: 930, 364
+  size: 170, 241
+  orig: 170, 241
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 329
+  rotate: true
+  xy: 1900, 25
+  size: 73, 78
+  orig: 73, 78
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 330
+  rotate: false
+  xy: 614, 3
+  size: 72, 65
+  orig: 72, 65
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 330 copy
+  rotate: true
+  xy: 1742, 85
+  size: 72, 71
+  orig: 72, 71
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 331
+  rotate: true
+  xy: 405, 80
+  size: 135, 181
+  orig: 135, 181
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 336
+  rotate: false
+  xy: 1474, 502
+  size: 31, 25
+  orig: 31, 25
+  offset: 0, 0
+  index: -1
+water-sentry/Layer 337
+  rotate: true
+  xy: 930, 545
+  size: 35, 25
+  orig: 35, 25
+  offset: 0, 0
+  index: -1

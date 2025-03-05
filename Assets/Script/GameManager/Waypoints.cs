@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Waypoints : MonoBehaviour
 {
-    public List<Vector2> wp0 = new List<Vector2>();
-    public List<Vector2> wp1 = new List<Vector2>();
-    public List<Vector2> wp2 = new List<Vector2>();
-    public List<Vector2> wp3 = new List<Vector2>();
+    public List<WaypointPath> waypoints = new();
 
     public int num;
 
@@ -20,17 +17,24 @@ public class Waypoints : MonoBehaviour
             if (t != transform)
             list.Add(t.position);
         }
-        switch (num)
+        if (num >= waypoints.Count)
         {
-            case 0:
-                wp0.Clear();
-                wp0.AddRange(list); break;
-            case 1:
-                wp1.Clear();
-                wp1.AddRange(list); break;
-            case 2:
-                wp2.Clear();
-                wp2.AddRange(list); break;
+            waypoints.Add(new(list));
         }
+        else
+        {
+            waypoints[num] = new(list);
+        }
+    }
+
+}
+
+[System.Serializable]
+public class WaypointPath
+{
+    public List<Vector2> points = new();
+    public WaypointPath(List<Vector2> points)
+    {
+        this.points = new(points);
     }
 }

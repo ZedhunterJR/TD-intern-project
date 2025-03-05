@@ -5,23 +5,24 @@ using UnityEngine;
 
 public class ExplosionAdvanced : MonoBehaviour
 {
-    //event
+    // Reference to all enemies
+    [HideInInspector] public List<GameObject> AllEnemies = new();
+
+    // Events
     public Action PreDestruct = null;
     public Action UpdateFunc = null;
     public Action<GameObject> HitEvent = null;
 
-    //property
+    // Properties
     public float lifeSpan = 0.5f;
     public int pierce = 99;
-    public string enemyTag = "enemy";
     public float delayFirstDmgInstance = 0.2f;
     public float dmgInterval = 0.5f;
+    public float explosionRadius = 3f; // Explosion detection radius
 
-    //public modifier
-    [HideInInspector] public List<GameObject> enemies = new();
-
-    //private modifier
-    private float lifeSpanCountDown = 0f;
+    // Private Variables
+    private float lifeSpanCountDown;
+    private List<GameObject> enemiesInRange = new();
 
     // Start is called before the first frame update
     void Start()
@@ -35,45 +36,56 @@ public class ExplosionAdvanced : MonoBehaviour
         lifeSpanCountDown -= Time.deltaTime;
         delayFirstDmgInstance -= Time.deltaTime;
 
+        // Update the enemies in range
+        UpdateEnemiesInRange();
+
+        // Damage enemies in range at intervals
         if (delayFirstDmgInstance < 0)
         {
-            foreach (GameObject enemy in enemies)
-            {
-                if (pierce <= 0)
-                    break;
-                if (enemy != null)
-                {
-                    HitEvent?.Invoke(enemy);
-                    pierce--;
-                }
-            }
-            delayFirstDmgInstance = dmgInterval;
+            DamageEnemies();
+            delayFirstDmgInstance = dmgInterval; // Reset damage interval
         }
 
+        // Custom update function
         UpdateFunc?.Invoke();
+
+        // Destroy the explosion after lifespan ends
         if (lifeSpanCountDown < 0)
         {
             DestroyObj();
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
+
+    private void UpdateEnemiesInRange()
     {
-        Transform enemy = other.gameObject.transform;
-        if (enemy != null)
-            if (enemy.CompareTag(enemyTag))
+        float explosionRadiusSqr = explosionRadius * explosionRadius; // Use squared distance for efficiency
+        enemiesInRange.Clear(); // Refresh enemies in range
+
+        foreach (var enemy in AllEnemies)
+        {
+            if (enemy == null) continue; // Skip null enemies
+
+            float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;
+            if (sqrDistance <= explosionRadiusSqr) // If within explosion radius
             {
-                enemies.Add(other.gameObject);
+                enemiesInRange.Add(enemy);
             }
+        }
     }
-    void OnTriggerExit2D(Collider2D other)
+
+    private void DamageEnemies()
     {
-        Transform enemy = other.gameObject.transform;
-        if (enemy != null)
-            if (enemy.CompareTag(enemyTag))
+        foreach (GameObject enemy in enemiesInRange)
+        {
+            if (pierce <= 0) break;
+            if (enemy != null)
             {
-                enemies.Remove(other.gameObject);
+                HitEvent?.Invoke(enemy);
+                pierce--;
             }
+        }
     }
+
     private void DestroyObj()
     {
         PreDestruct?.Invoke();

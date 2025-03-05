@@ -5,32 +5,34 @@ using UnityEngine;
 
 public class EnemyStat : MonoBehaviour
 {
+    public EnemyData data;
+
     public bool immuneToDebuff;
     public float maxHealth;
-    [HideInInspector]
     public float currentHp;
-    private GameObject hpBarCover;
+    public float moveSpeed;
 
     public List<MovementDebuff> debuffList = new List<MovementDebuff>();
     public bool isStunned;
 
-    public float moveSpeed;
-
-    [HideInInspector]
-    public float baseMoveSpeed;
-
-    public float enemyEquivalent;
-
     public Action<Vector2> PreDestruction;
-    // Start is called before the first frame update
-    void Start()
+
+    //ref
+    private GameObject hpBarCover;
+
+    void Awake()
     {
-        //int currentWave = EventManager.Instance.spawnerEvent.currentWave;
-        //maxHealth *= Mathf.Pow(1.022f, currentWave);
-        //moveSpeed *= Mathf.Pow(1.02f, currentWave);
         hpBarCover = transform.Find("health/cover").gameObject;
-        baseMoveSpeed = moveSpeed;
+    }
+
+    public void Init(EnemyData data)
+    {
+        this.data = data;
+        maxHealth = data.maxHp;
         currentHp = maxHealth;
+        moveSpeed = data.baseMoveSpeed;
+
+        //sprite and other bs
     }
 
     // Update is called once per frame
@@ -54,7 +56,7 @@ public class EnemyStat : MonoBehaviour
             }
 
             isStunned = stun;
-            moveSpeed = baseMoveSpeed * (1 - slowPer);
+            moveSpeed = data.baseMoveSpeed * (1 - slowPer);
         }
     }
     public void UpdateHp(float value)
@@ -64,8 +66,9 @@ public class EnemyStat : MonoBehaviour
         if (currentHp == 0)
         {
             PreDestruction?.Invoke(transform.position);
+            EnemyManager.Instance.RemoveEnemy(gameObject);
+            Destroy(gameObject);
             //EventManager.Instance.ModiGold(enemyEquivalent * 10f);
-            gameObject.DestroyWithTween();
         }
 
         Vector2 scale = new Vector2(1 - (currentHp / maxHealth), 1);

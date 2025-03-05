@@ -7,5 +7,6 @@ public class EnemyData : ScriptableObject
 {
     public Sprite sprite;
     public string enemyName;
-    public float hp, ms;
+    public float maxHp;
+    public float baseMoveSpeed;
 }
