@@ -66,8 +66,10 @@ public class EnemyStat : MonoBehaviour
         if (currentHp == 0)
         {
             PreDestruction?.Invoke(transform.position);
-            EnemyManager.Instance.RemoveEnemy(gameObject);
-            Destroy(gameObject);
+
+            PoolManager.Instance.SpawnObject(OBJ_TYPE.enemyTest, gameObject);
+            //EnemyManager.Instance.RemoveEnemy(gameObject);
+            //Destroy(gameObject);
             //EventManager.Instance.ModiGold(enemyEquivalent * 10f);
         }
 

@@ -35,8 +35,12 @@ public class TestEnemyAndTowerSpawn : Singleton<TestEnemyAndTowerSpawn>
     [ContextMenu("Spawn enemy")]
     public void SpawnEnemy()
     {
-        GameObject instance = Instantiate(enemyPrefab);
-        instance.GetComponent<EnemyStat>().Init(enemyData);
-        EnemyManager.Instance.AddEnemy(instance);
+        GameObject enemy = PoolManager.Instance.GetPoolObject(OBJ_TYPE.enemyTest);
+        enemy.SetActive(true);
+        
+
+        //GameObject instance = Instantiate(enemyPrefab);
+        //instance.GetComponent<EnemyStat>().Init(enemyData);
+        //EnemyManager.Instance.AddEnemy(instance);
     }
 }

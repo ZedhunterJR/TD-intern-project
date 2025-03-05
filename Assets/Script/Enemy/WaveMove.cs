@@ -64,9 +64,10 @@ public class WaveMove : MonoBehaviour
         else
         {
             //EventManager.Instance.modiHp(hpDmg);
-            EnemyManager.Instance.RemoveEnemy(gameObject);
             GameManager.Instance.TakeDame();
-            Destroy(gameObject);
+            PoolManager.Instance.SpawnObject(OBJ_TYPE.enemyTest, gameObject);
+            //EnemyManager.Instance.RemoveEnemy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
