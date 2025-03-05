@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: sentry_water
   m_EditorClassIdentifier: 
   towerName: water
-  towerType: {fileID: 11400000, guid: 6a75187f8cbcb36498794f131f029284, type: 2}
+  towerType: {fileID: 11400000, guid: 2c89537773a178c4fbc89280b5b00319, type: 2}
   towerInitialSkin: Water-sentry
   baseDamage: 1
   baseAtkSpd: 2

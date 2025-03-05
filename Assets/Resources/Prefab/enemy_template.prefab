@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1655686633
-  m_SortingLayer: 0
+  m_SortingLayerID: -1532097577
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -758499243, guid: ad248d13c1b0cfa4aa1f20d2828136d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -176,8 +176,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 32021953
-  m_SortingLayer: 0
+  m_SortingLayerID: -1184212407
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -789197750, guid: 0cba6ec06bae8f944b05e15121928021, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -254,13 +254,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2156d35d0100b34428b5e948dec666ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
   immuneToDebuff: 0
   maxHealth: 300
   currentHp: 0
-  isStunned: 0
   moveSpeed: 1
-  baseMoveSpeed: 0
-  enemyEquivalent: 4
+  isStunned: 0
 --- !u!1 &7966498991154106271
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,8 +331,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 32021953
-  m_SortingLayer: 0
+  m_SortingLayerID: -1184212407
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -91156215, guid: 0cba6ec06bae8f944b05e15121928021, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -15,21 +15,21 @@ public class WaveMove : MonoBehaviour
     public bool isSummoned = false;
 
     public int hpDmg = 1;
-    
+
     public float DistanceToGoal()
     {
-         float distance = 0;
-         if (waypointIndex < waypoints.Count)
-         {
-               distance += Vector2.Distance(gameObject.transform.position, currentWaypointPos);
-         }
-         for (int i = waypointIndex; i < waypoints.Count - 1; i++)
-         {
-               Vector3 startPosition = waypoints [i];
-               Vector3 endPosition = waypoints [i + 1];
-               distance += Vector2.Distance(startPosition, endPosition);
-         }
-    return distance;
+        float distance = 0;
+        if (waypointIndex < waypoints.Count)
+        {
+            distance += Vector2.Distance(gameObject.transform.position, currentWaypointPos);
+        }
+        for (int i = waypointIndex; i < waypoints.Count - 1; i++)
+        {
+            Vector3 startPosition = waypoints[i];
+            Vector3 endPosition = waypoints[i + 1];
+            distance += Vector2.Distance(startPosition, endPosition);
+        }
+        return distance;
     }
 
     private void Move()
@@ -38,7 +38,7 @@ public class WaveMove : MonoBehaviour
         // If enemy reached last waypoint then it stops
         if (waypointIndex < waypoints.Count)
         {
-            
+
             // Move Enemy from current waypoint to the next one
             // using MoveTowards method
             transform.position = Vector2.MoveTowards(transform.position,
@@ -51,33 +51,31 @@ public class WaveMove : MonoBehaviour
             if ((Vector2)transform.position == currentWaypointPos)
             {
                 waypointIndex += 1;
-                if (waypointIndex < waypoints.Count) {
+                if (waypointIndex < waypoints.Count)
+                {
                     //Debug.Log(waypoints[waypointIndex].transform.position.x - waypoints[waypointIndex + 1].transform.position.x);
-                    if (waypoints[waypointIndex-1].x - waypoints[waypointIndex].x > 0)
-                    {
+                    if (waypoints[waypointIndex - 1].x - waypoints[waypointIndex].x > 0)
                         transform.Find("sprite").GetComponent<SpriteRenderer>().flipX = true;
-                    }
                     else
-                    {
                         transform.Find("sprite").GetComponent<SpriteRenderer>().flipX = false;
-                    }
                 }
-
             }
         }
-		else
-		{
+        else
+        {
             //EventManager.Instance.modiHp(hpDmg);
-			Destroy(gameObject);
-		}
+            EnemyManager.Instance.RemoveEnemy(gameObject);
+            GameManager.Instance.TakeDame();
+            Destroy(gameObject);
+        }
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
         Waypoints obj = FindFirstObjectByType<Waypoints>();
         waypoints.AddRange(obj.waypoints[waypointNum].points);
-        
+
         //temporary
         //ranMod = Random.Range(0.4f, -0.4f);
         ranMod = 0f;
@@ -86,25 +84,27 @@ public class WaveMove : MonoBehaviour
         tempStartPos.y = waypoints[waypointIndex].y + ranMod;
         tempStartPos.x = waypoints[waypointIndex].x + ranMod;
 
-        if (isSummoned == false) {
-        transform.position = tempStartPos;
+        if (isSummoned == false)
+        {
+            transform.position = tempStartPos;
         }
     }
 
     // Update is called once per frame
     void Update()
-    {        
+    {
         moveSpeed = GetComponent<EnemyStat>().moveSpeed;
         if (waypointIndex < waypoints.Count)
         {
-             currentWaypointPos.x = waypoints[waypointIndex].x + ranMod;
-             currentWaypointPos.y = waypoints[waypointIndex].y + ranMod;
+            currentWaypointPos.x = waypoints[waypointIndex].x + ranMod;
+            currentWaypointPos.y = waypoints[waypointIndex].y + ranMod;
         }
-        if (!GetComponent<EnemyStat>().isStunned) {
+        if (!GetComponent<EnemyStat>().isStunned)
+        {
             Move();
             //GetComponentInChildren<SimpleAnim>().isStunned = false;
         }
         //else {GetComponentInChildren<SimpleAnim>().isStunned = true;}
-    
+
     }
 }

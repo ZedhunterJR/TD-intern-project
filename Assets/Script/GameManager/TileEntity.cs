@@ -21,9 +21,7 @@ public class TileEntity : MonoBehaviour
     {
         if (status != newStatus)
         {
-            Debug.Log($"{status} -- {newStatus}");
             status = newStatus;
-            Debug.Log($"{status} -- {newStatus}");
             switch (status)
             {
                 case TILE_BUILDING_STATUS.None:
