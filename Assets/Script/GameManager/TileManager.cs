@@ -36,8 +36,6 @@ public class TileManager : Singleton<TileManager>
             TileEntity tile = tilesNoneTower.GetRandom();
             tile.ChangeStatus(TILE_BUILDING_STATUS.HasTower);
             TestEnemyAndTowerSpawn.Instance.SpawnTower(tile.transform.position);
-
-            Debug.Log($"Tháp đã được đặt là {tile.name}");
         }
         else
         {
