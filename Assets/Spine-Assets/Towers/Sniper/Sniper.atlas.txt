@@ -1,0 +1,664 @@
+
+Sniper.png
+size: 2036,1472
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+earth-sniper/Group 29
+  rotate: true
+  xy: 822, 1035
+  size: 131, 127
+  orig: 131, 127
+  offset: 0, 0
+  index: -1
+earth-sniper/Group 30
+  rotate: false
+  xy: 166, 43
+  size: 256, 358
+  orig: 256, 358
+  offset: 0, 0
+  index: -1
+earth-sniper/Group 30 copy
+  rotate: true
+  xy: 606, 28
+  size: 410, 215
+  orig: 410, 215
+  offset: 0, 0
+  index: -1
+earth-sniper/Group 30 copy 2
+  rotate: false
+  xy: 878, 453
+  size: 145, 110
+  orig: 145, 110
+  offset: 0, 0
+  index: -1
+earth-sniper/Group 30 copy 3
+  rotate: true
+  xy: 1785, 833
+  size: 164, 197
+  orig: 164, 197
+  offset: 0, 0
+  index: -1
+earth-sniper/Group 30 copy 4
+  rotate: true
+  xy: 713, 1031
+  size: 135, 106
+  orig: 135, 106
+  offset: 0, 0
+  index: -1
+earth-sniper/Group 30 copy 5
+  rotate: true
+  xy: 1726, 464
+  size: 168, 190
+  orig: 168, 190
+  offset: 0, 0
+  index: -1
+earth-sniper/Group 30 copy 6
+  rotate: true
+  xy: 1849, 235
+  size: 74, 174
+  orig: 74, 174
+  offset: 0, 0
+  index: -1
+earth-sniper/Layer 2
+  rotate: false
+  xy: 1259, 5
+  size: 278, 146
+  orig: 278, 146
+  offset: 0, 0
+  index: -1
+earth-sniper/Layer 317
+  rotate: true
+  xy: 447, 1024
+  size: 445, 263
+  orig: 445, 263
+  offset: 0, 0
+  index: -1
+earth-sniper/Layer 358
+  rotate: true
+  xy: 1642, 635
+  size: 91, 166
+  orig: 91, 166
+  offset: 0, 0
+  index: -1
+earth-sniper/core_white
+  rotate: false
+  xy: 1378, 459
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy
+  rotate: false
+  xy: 1509, 488
+  size: 69, 99
+  orig: 69, 99
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 10
+  rotate: false
+  xy: 1919, 500
+  size: 57, 60
+  orig: 57, 60
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 11
+  rotate: true
+  xy: 166, 5
+  size: 35, 53
+  orig: 35, 53
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 12
+  rotate: false
+  xy: 721, 876
+  size: 169, 152
+  orig: 169, 152
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 12_0
+  rotate: false
+  xy: 1595, 729
+  size: 185, 165
+  orig: 185, 165
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 13
+  rotate: false
+  xy: 548, 869
+  size: 170, 152
+  orig: 170, 152
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 13_0
+  rotate: true
+  xy: 1811, 645
+  size: 185, 165
+  orig: 185, 165
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 2
+  rotate: false
+  xy: 952, 1036
+  size: 77, 130
+  orig: 77, 130
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 3
+  rotate: false
+  xy: 812, 451
+  size: 63, 112
+  orig: 63, 112
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 4
+  rotate: false
+  xy: 734, 443
+  size: 75, 120
+  orig: 75, 120
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 5
+  rotate: true
+  xy: 1785, 1073
+  size: 93, 219
+  orig: 93, 219
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 6
+  rotate: true
+  xy: 1417, 894
+  size: 180, 175
+  orig: 180, 175
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 7
+  rotate: false
+  xy: 1733, 312
+  size: 178, 149
+  orig: 178, 149
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 8
+  rotate: true
+  xy: 447, 867
+  size: 154, 98
+  orig: 154, 98
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 300 copy 9
+  rotate: true
+  xy: 1814, 167
+  size: 65, 69
+  orig: 65, 69
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 313 copy
+  rotate: true
+  xy: 1622, 1236
+  size: 233, 100
+  orig: 233, 100
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 356
+  rotate: true
+  xy: 1919, 397
+  size: 67, 90
+  orig: 67, 90
+  offset: 0, 0
+  index: -1
+elec-sniper/Layer 357
+  rotate: true
+  xy: 425, 102
+  size: 305, 152
+  orig: 305, 152
+  offset: 0, 0
+  index: -1
+elec-sniper/vfx_0
+  rotate: false
+  xy: 638, 566
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+elec-sniper/vfx_1
+  rotate: false
+  xy: 824, 148
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+elec-sniper/vfx_10
+  rotate: false
+  xy: 1244, 590
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+elec-sniper/vfx_12
+  rotate: false
+  xy: 1430, 156
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+elec-sniper/vfx_14
+  rotate: false
+  xy: 1733, 1169
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+elec-sniper/vfx_3
+  rotate: false
+  xy: 713, 1169
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+elec-sniper/vfx_4
+  rotate: false
+  xy: 1016, 1169
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+elec-sniper/vfx_6
+  rotate: false
+  xy: 941, 569
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+elec-sniper/vfx_7
+  rotate: false
+  xy: 1127, 154
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+elec-sniper/vfx_9
+  rotate: false
+  xy: 1319, 1169
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 306
+  rotate: true
+  xy: 489, 441
+  size: 423, 146
+  orig: 423, 146
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 307
+  rotate: false
+  xy: 1547, 634
+  size: 92, 92
+  orig: 92, 92
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 308
+  rotate: false
+  xy: 1160, 462
+  size: 104, 104
+  orig: 104, 104
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 309
+  rotate: false
+  xy: 638, 441
+  size: 93, 122
+  orig: 93, 122
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 309 copy
+  rotate: true
+  xy: 425, 3
+  size: 96, 88
+  orig: 96, 88
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 309 copy 19
+  rotate: false
+  xy: 3, 404
+  size: 221, 460
+  orig: 221, 460
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 309 copy 3
+  rotate: true
+  xy: 1547, 1077
+  size: 89, 72
+  orig: 89, 72
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 309 copy 4
+  rotate: false
+  xy: 1692, 897
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 309 copy 5
+  rotate: true
+  xy: 516, 3
+  size: 96, 87
+  orig: 96, 87
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 309 copy 6
+  rotate: true
+  xy: 1949, 17
+  size: 75, 77
+  orig: 75, 77
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 309 copy 7
+  rotate: true
+  xy: 824, 7
+  size: 138, 212
+  orig: 138, 212
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 309 copy 8
+  rotate: false
+  xy: 1723, 3
+  size: 59, 150
+  orig: 59, 150
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 336
+  rotate: false
+  xy: 893, 872
+  size: 67, 160
+  orig: 67, 160
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 337
+  rotate: false
+  xy: 1323, 458
+  size: 52, 129
+  orig: 52, 129
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 338
+  rotate: false
+  xy: 1267, 458
+  size: 53, 129
+  orig: 53, 129
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 339
+  rotate: false
+  xy: 1581, 462
+  size: 70, 169
+  orig: 70, 169
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 340
+  rotate: false
+  xy: 1654, 463
+  size: 69, 169
+  orig: 69, 169
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 341
+  rotate: false
+  xy: 1039, 7
+  size: 51, 138
+  orig: 51, 138
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 342
+  rotate: false
+  xy: 1725, 990
+  size: 57, 176
+  orig: 57, 176
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 343
+  rotate: false
+  xy: 1886, 35
+  size: 60, 197
+  orig: 60, 197
+  offset: 0, 0
+  index: -1
+fire-sniper/Layer 344
+  rotate: true
+  xy: 1785, 1000
+  size: 70, 198
+  orig: 70, 198
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 308 copy
+  rotate: false
+  xy: 1785, 19
+  size: 61, 143
+  orig: 61, 143
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 315 copy
+  rotate: true
+  xy: 1622, 1084
+  size: 149, 100
+  orig: 149, 100
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 315 copy 2
+  rotate: true
+  xy: 1622, 1084
+  size: 149, 100
+  orig: 149, 100
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 328
+  rotate: true
+  xy: 227, 410
+  size: 454, 259
+  orig: 454, 259
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 329
+  rotate: false
+  xy: 3, 867
+  size: 441, 602
+  orig: 441, 602
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 329 copy 2
+  rotate: false
+  xy: 1184, 4
+  size: 72, 147
+  orig: 72, 147
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 329 copy 3
+  rotate: false
+  xy: 1733, 165
+  size: 78, 144
+  orig: 78, 144
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 329 copy 4
+  rotate: false
+  xy: 1979, 675
+  size: 53, 90
+  orig: 53, 90
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 329 copy 4_0
+  rotate: false
+  xy: 1026, 457
+  size: 64, 109
+  orig: 64, 109
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 329 copy 5
+  rotate: false
+  xy: 1979, 582
+  size: 53, 90
+  orig: 53, 90
+  offset: 0, 0
+  index: -1
+ice-sniper/Layer 329 copy 5_0
+  rotate: false
+  xy: 1093, 457
+  size: 64, 109
+  orig: 64, 109
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 307
+  rotate: false
+  xy: 1986, 964
+  size: 42, 52
+  orig: 42, 52
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 307 copy
+  rotate: false
+  xy: 1986, 1019
+  size: 45, 51
+  orig: 45, 51
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 307 copy 2
+  rotate: false
+  xy: 1979, 528
+  size: 52, 51
+  orig: 52, 51
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 314 copy
+  rotate: false
+  xy: 1595, 917
+  size: 94, 94
+  orig: 94, 94
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 334
+  rotate: false
+  xy: 1163, 893
+  size: 251, 273
+  orig: 251, 273
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 335
+  rotate: true
+  xy: 3, 28
+  size: 373, 160
+  orig: 373, 160
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 345
+  rotate: true
+  xy: 1979, 467
+  size: 58, 50
+  orig: 58, 50
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 346
+  rotate: false
+  xy: 1417, 1079
+  size: 57, 87
+  orig: 57, 87
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 347
+  rotate: false
+  xy: 1477, 1079
+  size: 55, 87
+  orig: 55, 87
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 348
+  rotate: false
+  xy: 963, 938
+  size: 66, 95
+  orig: 66, 95
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 349
+  rotate: true
+  xy: 1622, 1014
+  size: 67, 95
+  orig: 67, 95
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 350
+  rotate: false
+  xy: 1949, 95
+  size: 79, 58
+  orig: 79, 58
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 351
+  rotate: true
+  xy: 1093, 9
+  size: 136, 88
+  orig: 136, 88
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 352
+  rotate: true
+  xy: 1919, 563
+  size: 79, 57
+  orig: 79, 57
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 353
+  rotate: false
+  xy: 1032, 878
+  size: 128, 288
+  orig: 128, 288
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 353 copy
+  rotate: true
+  xy: 1540, 3
+  size: 150, 180
+  orig: 150, 180
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 354
+  rotate: true
+  xy: 289, 14
+  size: 26, 47
+  orig: 26, 47
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 354 copy
+  rotate: true
+  xy: 1949, 156
+  size: 76, 80
+  orig: 76, 80
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 354 copy 2
+  rotate: true
+  xy: 1914, 314
+  size: 80, 79
+  orig: 80, 79
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 355
+  rotate: true
+  xy: 222, 11
+  size: 29, 64
+  orig: 29, 64
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 355 copy
+  rotate: true
+  xy: 963, 873
+  size: 62, 54
+  orig: 62, 54
+  offset: 0, 0
+  index: -1
+water-sniper/Layer 355 copy 2
+  rotate: true
+  xy: 1979, 768
+  size: 62, 54
+  orig: 62, 54
+  offset: 0, 0
+  index: -1

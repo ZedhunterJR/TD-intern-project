@@ -1,0 +1,496 @@
+
+Towers.png
+size: 4084,768
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+earth-tower/Layer 1
+  rotate: true
+  xy: 3264, 406
+  size: 107, 213
+  orig: 107, 213
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 2
+  rotate: true
+  xy: 3754, 256
+  size: 151, 134
+  orig: 151, 134
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 3
+  rotate: false
+  xy: 2776, 3
+  size: 123, 93
+  orig: 123, 93
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 391
+  rotate: false
+  xy: 3934, 628
+  size: 144, 137
+  orig: 144, 137
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 392
+  rotate: true
+  xy: 3934, 128
+  size: 132, 133
+  orig: 132, 133
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 393
+  rotate: false
+  xy: 3480, 409
+  size: 120, 106
+  orig: 120, 106
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 394
+  rotate: true
+  xy: 3684, 609
+  size: 156, 113
+  orig: 156, 113
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 395
+  rotate: false
+  xy: 3655, 97
+  size: 142, 152
+  orig: 142, 152
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 396
+  rotate: true
+  xy: 3497, 239
+  size: 167, 147
+  orig: 167, 147
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 397
+  rotate: true
+  xy: 2325, 5
+  size: 374, 306
+  orig: 374, 306
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 398
+  rotate: true
+  xy: 2896, 116
+  size: 285, 245
+  orig: 285, 245
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 399
+  rotate: true
+  xy: 3036, 489
+  size: 276, 219
+  orig: 276, 219
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 4
+  rotate: true
+  xy: 2988, 406
+  size: 57, 40
+  orig: 57, 40
+  offset: 0, 0
+  index: -1
+earth-tower/Layer 5
+  rotate: true
+  xy: 2860, 404
+  size: 59, 55
+  orig: 59, 55
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 285 copy
+  rotate: true
+  xy: 1830, 10
+  size: 351, 243
+  orig: 351, 243
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 285 copy 2
+  rotate: true
+  xy: 1631, 364
+  size: 401, 290
+  orig: 401, 290
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 285 copy 3
+  rotate: true
+  xy: 1544, 6
+  size: 343, 283
+  orig: 343, 283
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 290
+  rotate: false
+  xy: 3800, 104
+  size: 131, 149
+  orig: 131, 149
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 293
+  rotate: true
+  xy: 803, 333
+  size: 432, 213
+  orig: 432, 213
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 381
+  rotate: true
+  xy: 2395, 387
+  size: 378, 170
+  orig: 378, 170
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 382
+  rotate: true
+  xy: 2799, 466
+  size: 299, 234
+  orig: 299, 234
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 383
+  rotate: false
+  xy: 3891, 263
+  size: 78, 121
+  orig: 78, 121
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 384
+  rotate: false
+  xy: 3456, 12
+  size: 112, 194
+  orig: 112, 194
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 385
+  rotate: true
+  xy: 3119, 404
+  size: 82, 142
+  orig: 82, 142
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 386
+  rotate: true
+  xy: 3113, 5
+  size: 108, 195
+  orig: 108, 195
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 387
+  rotate: true
+  xy: 3800, 520
+  size: 143, 124
+  orig: 143, 124
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 387 copy
+  rotate: true
+  xy: 3365, 516
+  size: 66, 94
+  orig: 66, 94
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 388
+  rotate: false
+  xy: 3898, 5
+  size: 130, 96
+  orig: 130, 96
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 389
+  rotate: false
+  xy: 3800, 666
+  size: 129, 99
+  orig: 129, 99
+  offset: 0, 0
+  index: -1
+elec-tower/Layer 390
+  rotate: true
+  xy: 3934, 387
+  size: 135, 139
+  orig: 135, 139
+  offset: 0, 0
+  index: -1
+fire-tower/Group 11
+  rotate: true
+  xy: 3, 5
+  size: 273, 352
+  orig: 273, 352
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 297 copy
+  rotate: true
+  xy: 2568, 403
+  size: 362, 228
+  orig: 362, 228
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 297 copy 2
+  rotate: true
+  xy: 1333, 27
+  size: 312, 208
+  orig: 312, 208
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 297 copy 3
+  rotate: false
+  xy: 794, 5
+  size: 330, 301
+  orig: 330, 301
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 304
+  rotate: true
+  xy: 556, 309
+  size: 456, 244
+  orig: 456, 244
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 374
+  rotate: true
+  xy: 1127, 16
+  size: 323, 203
+  orig: 323, 203
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 375
+  rotate: true
+  xy: 2634, 38
+  size: 362, 139
+  orig: 362, 139
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 376
+  rotate: true
+  xy: 3258, 516
+  size: 249, 104
+  orig: 249, 104
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 377
+  rotate: false
+  xy: 3311, 3
+  size: 142, 170
+  orig: 142, 170
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 378
+  rotate: false
+  xy: 3547, 594
+  size: 134, 171
+  orig: 134, 171
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 379
+  rotate: false
+  xy: 3144, 133
+  size: 85, 40
+  orig: 85, 40
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 379 copy
+  rotate: false
+  xy: 3762, 413
+  size: 117, 103
+  orig: 117, 103
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 379 copy 2
+  rotate: true
+  xy: 3733, 519
+  size: 87, 64
+  orig: 87, 64
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 379 copy 3
+  rotate: false
+  xy: 3649, 16
+  size: 92, 61
+  orig: 92, 61
+  offset: 0, 0
+  index: -1
+fire-tower/Layer 380
+  rotate: true
+  xy: 3144, 176
+  size: 225, 209
+  orig: 225, 209
+  offset: 0, 0
+  index: -1
+fire-tower/f1
+  rotate: true
+  xy: 3031, 412
+  size: 51, 85
+  orig: 51, 85
+  offset: 0, 0
+  index: -1
+fire-tower/f2
+  rotate: false
+  xy: 3972, 306
+  size: 94, 78
+  orig: 94, 78
+  offset: 0, 0
+  index: -1
+fire-tower/f3
+  rotate: true
+  xy: 2799, 403
+  size: 60, 58
+  orig: 60, 58
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 301
+  rotate: true
+  xy: 2189, 382
+  size: 383, 203
+  orig: 383, 203
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 302
+  rotate: true
+  xy: 2902, 5
+  size: 108, 208
+  orig: 108, 208
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 314
+  rotate: true
+  xy: 3, 281
+  size: 484, 229
+  orig: 484, 229
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 315
+  rotate: false
+  xy: 3927, 525
+  size: 149, 100
+  orig: 149, 100
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 315 copy
+  rotate: false
+  xy: 3927, 525
+  size: 149, 100
+  orig: 149, 100
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 360
+  rotate: true
+  xy: 3744, 11
+  size: 83, 151
+  orig: 83, 151
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 361
+  rotate: true
+  xy: 3462, 518
+  size: 64, 149
+  orig: 64, 149
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 362
+  rotate: true
+  xy: 3571, 8
+  size: 69, 75
+  orig: 69, 75
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 363
+  rotate: true
+  xy: 3614, 521
+  size: 70, 116
+  orig: 70, 116
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 364
+  rotate: false
+  xy: 3571, 80
+  size: 81, 156
+  orig: 81, 156
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 365
+  rotate: false
+  xy: 3356, 209
+  size: 138, 194
+  orig: 138, 194
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 366
+  rotate: true
+  xy: 2918, 405
+  size: 58, 67
+  orig: 58, 67
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 367
+  rotate: true
+  xy: 1924, 372
+  size: 393, 262
+  orig: 393, 262
+  offset: 0, 0
+  index: -1
+ice-tower/Layer 368
+  rotate: true
+  xy: 2076, 5
+  size: 364, 246
+  orig: 364, 246
+  offset: 0, 0
+  index: -1
+water-tower/Layer 318
+  rotate: true
+  xy: 1338, 352
+  size: 413, 290
+  orig: 413, 290
+  offset: 0, 0
+  index: -1
+water-tower/Layer 319
+  rotate: true
+  xy: 235, 294
+  size: 471, 318
+  orig: 471, 318
+  offset: 0, 0
+  index: -1
+water-tower/Layer 321
+  rotate: false
+  xy: 3365, 585
+  size: 179, 180
+  orig: 179, 180
+  offset: 0, 0
+  index: -1
+water-tower/Layer 369
+  rotate: true
+  xy: 1019, 342
+  size: 423, 316
+  orig: 423, 316
+  offset: 0, 0
+  index: -1
+water-tower/Layer 370
+  rotate: true
+  xy: 2776, 99
+  size: 301, 117
+  orig: 301, 117
+  offset: 0, 0
+  index: -1
+water-tower/Layer 371
+  rotate: false
+  xy: 358, 4
+  size: 433, 287
+  orig: 433, 287
+  offset: 0, 0
+  index: -1
+water-tower/Layer 372
+  rotate: false
+  xy: 3647, 252
+  size: 104, 155
+  orig: 104, 155
+  offset: 0, 0
+  index: -1
+water-tower/Layer 373
+  rotate: true
+  xy: 3603, 410
+  size: 105, 156
+  orig: 105, 156
+  offset: 0, 0
+  index: -1
