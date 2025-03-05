@@ -19,8 +19,6 @@ public class TestEnemyAndTowerSpawn : Singleton<TestEnemyAndTowerSpawn>
     public Transform spawnTowerSpot;
 
     //public List<GameObject> AllEnemies = EnemyManager.Instance.AllEnemies;
-
-    [ContextMenu("Spawn tower")]
     public void SpawnTower(Vector2 Position)
     {
         GameObject instance = Instantiate(towerPrefab, Position, Quaternion.identity);
@@ -36,6 +34,7 @@ public class TestEnemyAndTowerSpawn : Singleton<TestEnemyAndTowerSpawn>
     public void SpawnEnemy()
     {
         GameObject enemy = PoolManager.Instance.GetPoolObject(OBJ_TYPE.enemyTest);
+        enemy.GetComponent<EnemyStat>().Init(enemyData);
         enemy.SetActive(true);
         
 

@@ -1,20 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveMove : MonoBehaviour
 {
+    private Action OnEnemyExit = null;
     private List<Vector2> waypoints = new List<Vector2>();
-    public int waypointNum;
-    private float ranMod;
+    private float ranMod = 0;
     private Vector2 currentWaypointPos;
-    public int waypointIndex = 0;
+    private int waypointIndex = 0;
 
-    public float moveSpeed;
-
-    public bool isSummoned = false;
-
-    public int hpDmg = 1;
+    [HideInInspector] public float moveSpeed;
+    [HideInInspector] public bool isSummoned = false;
+    [HideInInspector] public bool isStunned = false;
+    [HideInInspector] public bool FlipX { get; private set; }
 
     public float DistanceToGoal()
     {
@@ -32,8 +32,28 @@ public class WaveMove : MonoBehaviour
         return distance;
     }
 
+    public void Init(List<Vector2> wps, Action onExit, int currentIndex = 0)
+    {
+        OnEnemyExit = onExit;
+        waypoints.AddRange(wps);
+        waypointIndex = currentIndex;
+
+        //random offset on map, if needed
+        ranMod = 0f;
+        Vector2 tempStartPos = waypoints[waypointIndex];
+        tempStartPos.y = waypoints[waypointIndex].y + ranMod;
+        tempStartPos.x = waypoints[waypointIndex].x + ranMod;
+
+        //if summoned on the track, set the currentIndex param
+        if (currentIndex == 0)
+        {
+            transform.position = tempStartPos;
+        }
+    }
+
     private void Move()
     {
+        //print(waypointIndex); print(waypoints.Count);
         // If Enemy didn't reach last waypoint it can move
         // If enemy reached last waypoint then it stops
         if (waypointIndex < waypoints.Count)
@@ -55,18 +75,15 @@ public class WaveMove : MonoBehaviour
                 {
                     //Debug.Log(waypoints[waypointIndex].transform.position.x - waypoints[waypointIndex + 1].transform.position.x);
                     if (waypoints[waypointIndex - 1].x - waypoints[waypointIndex].x > 0)
-                        transform.Find("sprite").GetComponent<SpriteRenderer>().flipX = true;
+                        FlipX = true;
                     else
-                        transform.Find("sprite").GetComponent<SpriteRenderer>().flipX = false;
+                        FlipX = false;
                 }
             }
         }
         else
         {
-            //EventManager.Instance.modiHp(hpDmg);
-            GameManager.Instance.TakeDame();
-            PoolManager.Instance.SpawnObject(OBJ_TYPE.enemyTest, gameObject);
-            //EnemyManager.Instance.RemoveEnemy(gameObject);
+            OnEnemyExit?.Invoke();
             //Destroy(gameObject);
         }
     }
@@ -74,27 +91,13 @@ public class WaveMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Waypoints obj = FindFirstObjectByType<Waypoints>();
-        waypoints.AddRange(obj.waypoints[waypointNum].points);
-
-        //temporary
-        //ranMod = Random.Range(0.4f, -0.4f);
-        ranMod = 0f;
-
-        Vector2 tempStartPos = waypoints[waypointIndex];
-        tempStartPos.y = waypoints[waypointIndex].y + ranMod;
-        tempStartPos.x = waypoints[waypointIndex].x + ranMod;
-
-        if (isSummoned == false)
-        {
-            transform.position = tempStartPos;
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveSpeed = GetComponent<EnemyStat>().moveSpeed;
+        //moveSpeed = GetComponent<EnemyStat>().moveSpeed;
         if (waypointIndex < waypoints.Count)
         {
             currentWaypointPos.x = waypoints[waypointIndex].x + ranMod;

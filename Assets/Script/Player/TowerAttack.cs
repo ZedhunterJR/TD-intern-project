@@ -5,11 +5,12 @@ using UnityEngine;
 /// <summary>
 /// Base class for managing tower behavior
 /// For each individual tower, create a derivative of this class and modify it instead
+/// Always call base.Attack(target), as it contains animation
 /// </summary>
 public class TowerAttack : MonoBehaviour
 {
     //private variables
-    private float attackTimer;
+    private float attackTimer = 1f;
 
     //references
     protected Range range;
@@ -50,7 +51,8 @@ public class TowerAttack : MonoBehaviour
 
     protected virtual void Attack(GameObject target)
     {
-        print($"Attacking {target.name}. This is the base class. This shouldn't be on any run-time objects");
+        //print($"Attacking {target.name}. This is the base class. This shouldn't be on any run-time objects");
+        stat.AttackAnimation();
     }
 }
 

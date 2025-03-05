@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a9abd3d3962f34896a22aa3913580f, type: 3}
   m_Name: test 2
   m_EditorClassIdentifier: 
-  sprite: {fileID: 71800701, guid: ad248d13c1b0cfa4aa1f20d2828136d4, type: 3}
-  enemyName: 
-  maxHp: 5
-  baseMoveSpeed: 1.5
+  enemyName: Test 2
+  enemyType: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
+  enemyInitialSkin: skin1-fire
+  hpBarPosY: 0
+  maxHp: 8
+  baseMoveSpeed: 1.2

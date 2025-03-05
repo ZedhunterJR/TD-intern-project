@@ -15,6 +15,7 @@ public class TestWater : TowerAttack
     }
     protected override void Attack(GameObject target)
     {
+        base.Attack(target);
         //might need pooling for projectile
         var instance = GameObject.Instantiate(projectile, transform.position, Quaternion.identity);
         ProjectileLibrary.Instance.ProjectileLob(instance, target);

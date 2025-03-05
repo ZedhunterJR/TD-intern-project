@@ -10,7 +10,7 @@ public static class Extensions
 {
     public static bool HasComponent<T>(this GameObject flag) where T : Component
     {
-        return flag.GetComponent<T>() != null;
+        return flag.GetComponent(typeof(T)) != null;
     }
     public static string DecimalFormat(this float val, int decimalPlaces)
     {
