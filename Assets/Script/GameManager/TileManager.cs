@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,6 +8,12 @@ public class TileManager : Singleton<TileManager>
 {
     [SerializeField]
     List<TileEntity> tiles = new List<TileEntity>();
+
+    private List<OBJ_TYPE> objType = new List<OBJ_TYPE>() 
+    {
+        OBJ_TYPE.tower_earth,
+        OBJ_TYPE.tower_water,
+    };
 
     public void OnStart()
     {
@@ -35,7 +42,10 @@ public class TileManager : Singleton<TileManager>
         {
             TileEntity tile = tilesNoneTower.GetRandom();
             tile.ChangeStatus(TILE_BUILDING_STATUS.HasTower);
-            TestEnemyAndTowerSpawn.Instance.SpawnTower(tile.transform.position);
+            //TestEnemyAndTowerSpawn.Instance.SpawnTower(tile.transform.position);
+            GameObject tower = PoolManager.Instance.GetPoolObject(objType.GetRandom());
+            tower.transform.position = tile.transform.position;
+            tower.SetActive(true);
         }
         else
         {

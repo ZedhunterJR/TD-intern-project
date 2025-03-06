@@ -5,6 +5,7 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] TileManager tileManager;
     [SerializeField] EnemyManager enemyManager;
+    [SerializeField] TowerManager towerManager;
     [SerializeField] PoolManager poolManager;
     [SerializeField] UIManager uiManager;
 
