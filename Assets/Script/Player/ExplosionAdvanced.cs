@@ -63,7 +63,7 @@ public class ExplosionAdvanced : MonoBehaviour
 
         foreach (var enemy in AllEnemies)
         {
-            if (enemy == null) continue; // Skip null enemies
+            if (enemy == null || !enemy.activeSelf) continue; // Skip null enemies
 
             float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;
             if (sqrDistance <= explosionRadiusSqr) // If within explosion radius
@@ -89,6 +89,6 @@ public class ExplosionAdvanced : MonoBehaviour
     private void DestroyObj()
     {
         PreDestruct?.Invoke();
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

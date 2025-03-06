@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class TestEarth : TowerAttack
 {
-    private GameObject projectile;
     protected override void OnAwake()
     {
-        projectile = Resources.Load<GameObject>("Prefab/projectile");
+        InitPool("Earth_thrower_bullet", 5);
     }
     protected override GameObject GetTarget()
     {
@@ -17,12 +16,14 @@ public class TestEarth : TowerAttack
     {
         base.Attack(target);
         //might need pooling for projectile
-        var instance = GameObject.Instantiate(projectile, transform.position, Quaternion.identity);
-        ProjectileLibrary.Instance.ProjectileLob(instance, target);
+        var instance = GetFromPool();
+        ProjectileLibrary.Instance.ProjectileStraightNoHitbox(instance, target);
+        instance.SetActive(true);
         instance.GetComponent<ProjectileAdvanced>().PreDestruct += () =>
         {
-            if (target != null)
+            if (target != null || !target.activeSelf)
                 target.GetComponent<EnemyStat>().PreMitiDmg(stat.data.baseDamage);
+            ReturnToPool(instance);
         };
     }
 }

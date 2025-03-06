@@ -1,0 +1,1175 @@
+
+Bullet-impact.png
+size: 4048,1152
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Impact/Earth/Layer 352
+  rotate: true
+  xy: 492, 8
+  size: 88, 84
+  orig: 88, 84
+  offset: 0, 0
+  index: -1
+Impact/Earth/Layer 353
+  rotate: true
+  xy: 579, 6
+  size: 94, 65
+  orig: 94, 65
+  offset: 0, 0
+  index: -1
+Impact/Earth/Layer 354
+  rotate: false
+  xy: 306, 818
+  size: 78, 58
+  orig: 78, 58
+  offset: 0, 0
+  index: -1
+Impact/Earth/Layer 355
+  rotate: true
+  xy: 647, 24
+  size: 79, 62
+  orig: 79, 62
+  offset: 0, 0
+  index: -1
+Impact/Earth/circle_line_white
+  rotate: false
+  xy: 533, 630
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/circle_line_white
+  rotate: false
+  xy: 533, 630
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Ice/circle_line_white
+  rotate: false
+  xy: 533, 630
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/core_white
+  rotate: false
+  xy: 3876, 634
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+Impact/Elec/core_white
+  rotate: false
+  xy: 3876, 634
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+Impact/Earth/particular
+  rotate: false
+  xy: 3, 8
+  size: 222, 67
+  orig: 222, 67
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_00
+  rotate: false
+  xy: 705, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_01
+  rotate: false
+  xy: 736, 634
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_02
+  rotate: false
+  xy: 908, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_03
+  rotate: false
+  xy: 768, 431
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_04
+  rotate: false
+  xy: 939, 634
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_05
+  rotate: false
+  xy: 1111, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_06
+  rotate: false
+  xy: 971, 431
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_07
+  rotate: false
+  xy: 1142, 634
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_08
+  rotate: false
+  xy: 1314, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_09
+  rotate: false
+  xy: 1174, 431
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_10
+  rotate: false
+  xy: 1345, 634
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_11
+  rotate: false
+  xy: 1517, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_12
+  rotate: false
+  xy: 1377, 431
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_13
+  rotate: false
+  xy: 1548, 634
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/smk_14
+  rotate: false
+  xy: 1720, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_00
+  rotate: false
+  xy: 1720, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_00
+  rotate: false
+  xy: 1720, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/glow_08
+  rotate: false
+  xy: 1720, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/glow_09
+  rotate: false
+  xy: 1720, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Earth/spark_particular
+  rotate: false
+  xy: 712, 18
+  size: 165, 111
+  orig: 165, 111
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_01
+  rotate: false
+  xy: 1580, 431
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_02
+  rotate: false
+  xy: 1751, 634
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_03
+  rotate: false
+  xy: 1923, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_04
+  rotate: false
+  xy: 1783, 431
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_05
+  rotate: false
+  xy: 1954, 634
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_06
+  rotate: false
+  xy: 2126, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_07
+  rotate: false
+  xy: 1986, 431
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_08
+  rotate: false
+  xy: 2157, 745
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_09
+  rotate: false
+  xy: 2329, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_10
+  rotate: false
+  xy: 2189, 542
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Elec/elec_11
+  rotate: false
+  xy: 2360, 745
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_01
+  rotate: false
+  xy: 2532, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_02
+  rotate: false
+  xy: 2189, 339
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_03
+  rotate: false
+  xy: 2504, 3
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_04
+  rotate: false
+  xy: 2392, 542
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_05
+  rotate: false
+  xy: 2563, 745
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_06
+  rotate: false
+  xy: 2735, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_07
+  rotate: false
+  xy: 2392, 339
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_08
+  rotate: false
+  xy: 2707, 3
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_09
+  rotate: false
+  xy: 2595, 542
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_10
+  rotate: false
+  xy: 2766, 745
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_11
+  rotate: false
+  xy: 2938, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_12
+  rotate: false
+  xy: 2595, 339
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Fire explode_13
+  rotate: false
+  xy: 2910, 3
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Fire/Layer 306
+  rotate: true
+  xy: 324, 243
+  size: 17, 19
+  orig: 17, 19
+  offset: 0, 0
+  index: -1
+Thrower/Fire/Layer 306
+  rotate: true
+  xy: 324, 243
+  size: 17, 19
+  orig: 17, 19
+  offset: 0, 0
+  index: -1
+Impact/Fire/Layer 307
+  rotate: true
+  xy: 637, 106
+  size: 23, 31
+  orig: 23, 31
+  offset: 0, 0
+  index: -1
+Thrower/Fire/Layer 307
+  rotate: true
+  xy: 637, 106
+  size: 23, 31
+  orig: 23, 31
+  offset: 0, 0
+  index: -1
+Impact/Fire/Layer 309
+  rotate: true
+  xy: 301, 243
+  size: 17, 20
+  orig: 17, 20
+  offset: 0, 0
+  index: -1
+Thrower/Fire/Layer 309
+  rotate: true
+  xy: 301, 243
+  size: 17, 20
+  orig: 17, 20
+  offset: 0, 0
+  index: -1
+Impact/Fire/Layer 310
+  rotate: false
+  xy: 561, 859
+  size: 28, 30
+  orig: 28, 30
+  offset: 0, 0
+  index: -1
+Thrower/Fire/Layer 310
+  rotate: false
+  xy: 561, 859
+  size: 28, 30
+  orig: 28, 30
+  offset: 0, 0
+  index: -1
+Impact/Fire/Layer 311
+  rotate: true
+  xy: 671, 108
+  size: 21, 29
+  orig: 21, 29
+  offset: 0, 0
+  index: -1
+Thrower/Fire/Layer 311
+  rotate: true
+  xy: 671, 108
+  size: 21, 29
+  orig: 21, 29
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_00
+  rotate: false
+  xy: 600, 834
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_01
+  rotate: true
+  xy: 711, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_02
+  rotate: true
+  xy: 817, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_03
+  rotate: true
+  xy: 923, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_04
+  rotate: true
+  xy: 1029, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_05
+  rotate: true
+  xy: 1135, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_06
+  rotate: true
+  xy: 1241, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_07
+  rotate: true
+  xy: 1347, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_08
+  rotate: true
+  xy: 1453, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_09
+  rotate: true
+  xy: 1559, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_10
+  rotate: true
+  xy: 1665, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_11
+  rotate: true
+  xy: 1771, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_12
+  rotate: true
+  xy: 1877, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Fire/fire_13
+  rotate: true
+  xy: 1983, 837
+  size: 108, 103
+  orig: 108, 103
+  offset: 0, 0
+  index: -1
+Impact/Ice/Layer 308
+  rotate: true
+  xy: 228, 3
+  size: 72, 132
+  orig: 72, 132
+  offset: 0, 0
+  index: -1
+Thrower/Ice/Layer 308
+  rotate: true
+  xy: 228, 3
+  size: 72, 132
+  orig: 72, 132
+  offset: 0, 0
+  index: -1
+Impact/Ice/Layer 308 copy
+  rotate: true
+  xy: 363, 7
+  size: 76, 126
+  orig: 76, 126
+  offset: 0, 0
+  index: -1
+Thrower/Ice/Layer 308 copy
+  rotate: true
+  xy: 363, 7
+  size: 76, 126
+  orig: 76, 126
+  offset: 0, 0
+  index: -1
+Impact/Ice/Part_ice_01
+  rotate: false
+  xy: 553, 892
+  size: 44, 45
+  orig: 44, 45
+  offset: 0, 0
+  index: -1
+Thrower/Ice/Part_ice_01
+  rotate: false
+  xy: 553, 892
+  size: 44, 45
+  orig: 44, 45
+  offset: 0, 0
+  index: -1
+Impact/Ice/Part_ice_02
+  rotate: true
+  xy: 473, 99
+  size: 30, 55
+  orig: 30, 55
+  offset: 0, 0
+  index: -1
+Thrower/Ice/Part_ice_02
+  rotate: true
+  xy: 473, 99
+  size: 30, 55
+  orig: 30, 55
+  offset: 0, 0
+  index: -1
+Impact/Ice/Part_ice_03
+  rotate: true
+  xy: 266, 246
+  size: 14, 32
+  orig: 14, 32
+  offset: 0, 0
+  index: -1
+Thrower/Ice/Part_ice_03
+  rotate: true
+  xy: 266, 246
+  size: 14, 32
+  orig: 14, 32
+  offset: 0, 0
+  index: -1
+Impact/Ice/core_white
+  rotate: false
+  xy: 3914, 837
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+Impact/Ice/impact_explosion
+  rotate: true
+  xy: 360, 86
+  size: 43, 110
+  orig: 43, 110
+  offset: 0, 0
+  index: -1
+Impact/Ice/smk
+  rotate: true
+  xy: 3407, 354
+  size: 185, 174
+  orig: 185, 174
+  offset: 0, 0
+  index: -1
+Impact/Water/explode water_00
+  rotate: false
+  xy: 2798, 542
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/glow_00
+  rotate: false
+  xy: 2798, 542
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/explode water_01
+  rotate: false
+  xy: 2969, 745
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/explode water_02
+  rotate: false
+  xy: 3141, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/explode water_03
+  rotate: false
+  xy: 2798, 339
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/explode water_04
+  rotate: false
+  xy: 3113, 3
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/explode water_05
+  rotate: false
+  xy: 3001, 542
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/explode water_06
+  rotate: false
+  xy: 3172, 745
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/explode water_07
+  rotate: false
+  xy: 3344, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/explode water_08
+  rotate: false
+  xy: 3001, 339
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/explode water_09
+  rotate: false
+  xy: 3316, 3
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/glow_01
+  rotate: false
+  xy: 3204, 542
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/glow_02
+  rotate: false
+  xy: 3375, 745
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/glow_03
+  rotate: false
+  xy: 3547, 948
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/glow_04
+  rotate: false
+  xy: 3204, 339
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/glow_05
+  rotate: false
+  xy: 3519, 3
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/glow_06
+  rotate: false
+  xy: 3407, 542
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/glow_07
+  rotate: false
+  xy: 3578, 745
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/splash_00
+  rotate: true
+  xy: 755, 149
+  size: 138, 200
+  orig: 138, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/splash_01
+  rotate: true
+  xy: 880, 8
+  size: 138, 200
+  orig: 138, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/splash_02
+  rotate: true
+  xy: 768, 290
+  size: 138, 200
+  orig: 138, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/splash_03
+  rotate: true
+  xy: 958, 149
+  size: 138, 200
+  orig: 138, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/splash_04
+  rotate: true
+  xy: 1083, 8
+  size: 138, 200
+  orig: 138, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/splash_05
+  rotate: true
+  xy: 971, 290
+  size: 138, 200
+  orig: 138, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/splash_06
+  rotate: true
+  xy: 1161, 149
+  size: 138, 200
+  orig: 138, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/splash_07
+  rotate: true
+  xy: 1286, 8
+  size: 138, 200
+  orig: 138, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/splash_08
+  rotate: true
+  xy: 1174, 290
+  size: 138, 200
+  orig: 138, 200
+  offset: 0, 0
+  index: -1
+Impact/Water/splash_09
+  rotate: true
+  xy: 1364, 149
+  size: 138, 200
+  orig: 138, 200
+  offset: 0, 0
+  index: -1
+Thrower/Earth/Layer 290
+  rotate: true
+  xy: 266, 263
+  size: 260, 250
+  orig: 260, 250
+  offset: 0, 0
+  index: -1
+Thrower/Earth/Layer 304
+  rotate: false
+  xy: 3, 242
+  size: 260, 281
+  orig: 260, 281
+  offset: 0, 0
+  index: -1
+Thrower/Earth/Layer 305
+  rotate: true
+  xy: 459, 819
+  size: 57, 51
+  orig: 57, 51
+  offset: 0, 0
+  index: -1
+Thrower/Earth/Layer 305 copy
+  rotate: false
+  xy: 387, 819
+  size: 69, 57
+  orig: 69, 57
+  offset: 0, 0
+  index: -1
+Thrower/Earth/Layer 305 copy 2
+  rotate: true
+  xy: 513, 833
+  size: 51, 45
+  orig: 51, 45
+  offset: 0, 0
+  index: -1
+Thrower/Elec/Layer 304
+  rotate: true
+  xy: 360, 132
+  size: 128, 392
+  orig: 128, 392
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_00
+  rotate: true
+  xy: 1489, 16
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_01
+  rotate: true
+  xy: 1377, 298
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_02
+  rotate: true
+  xy: 1567, 165
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_03
+  rotate: true
+  xy: 1692, 32
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_04
+  rotate: true
+  xy: 1580, 298
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_05
+  rotate: true
+  xy: 1770, 165
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_06
+  rotate: true
+  xy: 1895, 32
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_07
+  rotate: true
+  xy: 1783, 298
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_08
+  rotate: true
+  xy: 1973, 165
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_09
+  rotate: true
+  xy: 2098, 32
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/out_10
+  rotate: true
+  xy: 1986, 298
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_00
+  rotate: true
+  xy: 2176, 165
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_01
+  rotate: true
+  xy: 2301, 32
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_02
+  rotate: true
+  xy: 2379, 206
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_03
+  rotate: true
+  xy: 2582, 206
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_04
+  rotate: true
+  xy: 2785, 206
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_05
+  rotate: true
+  xy: 2988, 206
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_06
+  rotate: true
+  xy: 3191, 206
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_07
+  rotate: true
+  xy: 3394, 206
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_08
+  rotate: false
+  xy: 3584, 339
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_09
+  rotate: true
+  xy: 3597, 206
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/particle_10
+  rotate: false
+  xy: 3722, 3
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/trail_06
+  rotate: false
+  xy: 3722, 3
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/trail_07
+  rotate: false
+  xy: 3722, 3
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/trail_00
+  rotate: false
+  xy: 3610, 542
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/trail_01
+  rotate: false
+  xy: 3717, 339
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/trail_02
+  rotate: true
+  xy: 3800, 206
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/trail_03
+  rotate: false
+  xy: 3855, 3
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/trail_04
+  rotate: false
+  xy: 3743, 542
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/trail_05
+  rotate: false
+  xy: 3850, 339
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Elec/trail_08
+  rotate: false
+  xy: 3781, 765
+  size: 130, 200
+  orig: 130, 200
+  offset: 0, 0
+  index: -1
+Thrower/Fire/Layer 304
+  rotate: true
+  xy: 500, 940
+  size: 208, 202
+  orig: 208, 202
+  offset: 0, 0
+  index: -1
+Thrower/Fire/Layer 305
+  rotate: false
+  xy: 306, 879
+  size: 191, 269
+  orig: 191, 269
+  offset: 0, 0
+  index: -1
+Thrower/Fire/Layer 308
+  rotate: true
+  xy: 584, 105
+  size: 24, 50
+  orig: 24, 50
+  offset: 0, 0
+  index: -1
+Thrower/Ice/Layer 305
+  rotate: true
+  xy: 3, 78
+  size: 161, 354
+  orig: 161, 354
+  offset: 0, 0
+  index: -1
+Thrower/Ice/Layer 311
+  rotate: false
+  xy: 290, 540
+  size: 240, 270
+  orig: 240, 270
+  offset: 0, 0
+  index: -1
+Thrower/Ice/Part_ice_04
+  rotate: true
+  xy: 531, 103
+  size: 26, 50
+  orig: 26, 50
+  offset: 0, 0
+  index: -1
+Thrower/Ice/blur_00
+  rotate: false
+  xy: 3, 813
+  size: 300, 335
+  orig: 300, 335
+  offset: 0, 0
+  index: -1
+Thrower/Water/Layer 294
+  rotate: false
+  xy: 3, 526
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+Thrower/Water/Layer 308
+  rotate: false
+  xy: 519, 290
+  size: 246, 247
+  orig: 246, 247
+  offset: 0, 0
+  index: -1
+Thrower/Water/Layer 321
+  rotate: false
+  xy: 3750, 968
+  size: 179, 180
+  orig: 179, 180
+  offset: 0, 0
+  index: -1
+Thrower/Water/Layer 343_00
+  rotate: false
+  xy: 500, 887
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1

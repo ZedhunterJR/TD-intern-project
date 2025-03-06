@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class TestWater : TowerAttack
 {
-    private GameObject projectile;
     protected override void OnAwake()
     {
-        projectile = Resources.Load<GameObject>("Prefab/projectile");
+        InitPool("Water_thrower_bullet", 5);
     }
     protected override GameObject GetTarget()
     {
@@ -17,14 +16,14 @@ public class TestWater : TowerAttack
     {
         base.Attack(target);
         //might need pooling for projectile
-        var instance = GameObject.Instantiate(projectile, transform.position, Quaternion.identity);
+        var instance = GetFromPool();
         ProjectileLibrary.Instance.ProjectileLob(instance, target);
+        instance.SetActive(true);
         instance.GetComponent<ProjectileAdvanced>().PreDestruct += () =>
         {
-            if (target != null)
+            if (target != null || !target.activeSelf)
                 target.GetComponent<EnemyStat>().PreMitiDmg(stat.data.baseDamage);
+            ReturnToPool(instance);
         };
-        //change color to blue for different, will remove later in favor of different projectiles for each tower
-        instance.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
     }
 }
