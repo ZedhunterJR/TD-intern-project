@@ -29,7 +29,7 @@ public class ProjectileAdvanced : MonoBehaviour
     private float lifeSpanCountDown;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         lifeSpanCountDown = lifeSpan;
     }
@@ -59,7 +59,7 @@ public class ProjectileAdvanced : MonoBehaviour
 
         foreach (var enemy in AllEnemies)
         {
-            if (enemy == null || targetsHit.Contains(enemy)) continue; // Skip null or already hit enemies, might not stay
+            if (enemy == null || !enemy.activeSelf || targetsHit.Contains(enemy)) continue; // Skip null or already hit enemies, might not stay
 
             float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;
             if (sqrDistance <= hitRadiusSqr) // Enemy within hit radius
@@ -80,6 +80,6 @@ public class ProjectileAdvanced : MonoBehaviour
     private void DestroyObj()
     {
         PreDestruct?.Invoke();
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

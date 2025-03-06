@@ -37,8 +37,8 @@ public class PoolManager : Singleton<PoolManager>
     #region Instantiate Method
     GameObject CreateEnemyTest()
     {
-        GameObject objInstance = null;
-        objInstance = Instantiate(PrefabsEnemyTest, ContainerEnemyTest);
+        //GameObject objInstance = null;
+        var objInstance = Instantiate(PrefabsEnemyTest, ContainerEnemyTest);
         objInstance.gameObject.SetActive(false);
         //objInstance.GetComponent<EnemyStat>().Init(enemyData); don't init enemydata on empty pool objects
         poolEnemyTest.Add(objInstance);

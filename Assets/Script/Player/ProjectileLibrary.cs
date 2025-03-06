@@ -15,14 +15,15 @@ public class ProjectileLibrary
             return instance;
         }
     }
-
-    public void ProjectileLob(GameObject projectile, GameObject target, bool rotation = true, float height = 5f)
+    //lob at target enemy, if enemy die, use the last position
+    public void ProjectileLob(GameObject projectile, GameObject target, bool rotation = true, float height = 5f, float lifeSpan = 1f)
     {
         var sc = projectile.GetComponent<ProjectileAdvanced>();
         var startPos = projectile.transform.position;
+        sc.lifeSpan = lifeSpan;
         sc.UpdateFunc += () =>
         {
-            if (target != null)
+            if (target != null || !target.activeSelf)
             {
                 sc.direction = target.transform.position;
             }
@@ -40,6 +41,127 @@ public class ProjectileLibrary
             if (rotation)
             {
                 var dir = m2 - m1;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+        };
+    }
+    //lob at target position
+    public void ProjectileLob(GameObject projectile, Vector2 endPos, bool rotation = true, float height = 5f, float lifeSpan = 1f)
+    {
+        var sc = projectile.GetComponent<ProjectileAdvanced>();
+        var startPos = projectile.transform.position;
+        sc.lifeSpan = lifeSpan;
+        sc.UpdateFunc += () =>
+        {
+            var start = startPos;
+            Vector3 end = endPos;
+            var control = (start + end) / 2 + new Vector3(0, height);
+
+            float count = sc.LifeSpanInInterpolation;
+
+            Vector3 m1 = Vector2.Lerp(start, control, count);
+            Vector3 m2 = Vector2.Lerp(control, end, count);
+
+            projectile.transform.position = Vector2.Lerp(m1, m2, count);
+
+            if (rotation)
+            {
+                var dir = m2 - m1;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+        };
+    }
+    //straight and pierce
+    public void ProjectileStraight(GameObject projectile, Vector2 dir, bool rotation = true, float lifeSpan = 1f)
+    {
+        var sc = projectile.GetComponent<ProjectileAdvanced>();
+        sc.lifeSpan = lifeSpan;
+        dir.Normalize();
+        sc.UpdateFunc += () =>
+        {
+            projectile.transform.position += sc.speed * Time.deltaTime * dir.ToVector3();
+
+            if (rotation)
+            {
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+        };
+    }
+    //straight at target
+    public void ProjectileStraightNoHitbox(GameObject projectile, GameObject target, bool rotation = true, float lifeSpan = 1f)
+    {
+        var sc = projectile.GetComponent<ProjectileAdvanced>();
+        var startPos = projectile.transform.position;
+        sc.lifeSpan = lifeSpan;
+        sc.UpdateFunc += () =>
+        {
+            if (target != null || !target.activeSelf)
+            {
+                sc.direction = target.transform.position;
+            }
+
+            float count = sc.LifeSpanInInterpolation;
+            projectile.transform.position = Vector2.Lerp(startPos, sc.direction, count);
+
+            if (rotation)
+            {
+                var dir = (Vector3)sc.direction - startPos;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+        };
+    }
+    //straight at target position
+    public void ProjectileStraightNoHitbox(GameObject projectile, Vector3 pos, bool rotation = true, float lifeSpan = 1f)
+    {
+        var sc = projectile.GetComponent<ProjectileAdvanced>();
+        var startPos = projectile.transform.position;
+        sc.lifeSpan = lifeSpan;
+        sc.UpdateFunc += () =>
+        {
+            float count = sc.LifeSpanInInterpolation;
+            projectile.transform.position = Vector2.Lerp(startPos, pos, count);
+
+            if (rotation)
+            {
+                var dir = pos - startPos;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+        };
+    }
+    //sine wave at target
+    public void ProjectileSineWaveNoHitbox(GameObject projectile, GameObject target, bool rotation = true, float amplitude = 0.5f, float frequency = 2f, float lifeSpan = 1f)
+    {
+        var sc = projectile.GetComponent<ProjectileAdvanced>();
+        var startPos = projectile.transform.position;
+        sc.lifeSpan = lifeSpan;
+        sc.UpdateFunc += () =>
+        {
+            if (target != null)
+            {
+                if (target != null || !target.activeSelf)
+                {
+                    sc.direction = target.transform.position;
+                }
+            }
+
+            float count = sc.LifeSpanInInterpolation;
+            Vector2 straightPath = Vector2.Lerp(startPos, sc.direction, count);
+
+            // Calculate sine wave offset
+            Vector2 dir = (Vector3)sc.direction - startPos;
+            Vector2 perpendicularDir = new Vector2(-dir.y, dir.x).normalized; // Perpendicular to the main direction
+            float sineOffset = Mathf.Sin(count * frequency * Mathf.PI * 2) * amplitude;
+
+            // Apply the sine wave offset
+            projectile.transform.position = straightPath + perpendicularDir * sineOffset;
+
+            if (rotation)
+            {
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }

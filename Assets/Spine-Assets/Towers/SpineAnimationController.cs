@@ -43,4 +43,9 @@ public class SpineAnimationController : MonoBehaviour
         // Queue "Idle" to play after (true = loop)
         state.AddAnimation(0, fallbackAnimation, true, 0);
     }
+    public void PlayAnimation(string animationName)
+    {
+        var state = skeletonAnimation.AnimationState;
+        state.SetAnimation(0, animationName, true);
+    }
 }

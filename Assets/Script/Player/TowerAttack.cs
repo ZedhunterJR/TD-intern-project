@@ -6,6 +6,7 @@ using UnityEngine;
 /// Base class for managing tower behavior
 /// For each individual tower, create a derivative of this class and modify it instead
 /// Always call base.Attack(target), as it contains animation
+/// Also pooling because fuck it
 /// </summary>
 public class TowerAttack : MonoBehaviour
 {
@@ -15,6 +16,33 @@ public class TowerAttack : MonoBehaviour
     //references
     protected Range range;
     protected TowerStat stat;
+
+    //pooling projectiles
+    private List<GameObject> projectilePool = new();
+    protected void InitPool(string spineAniType, int num)
+    {
+        var res = Resources.Load<GameObject>("Prefab/projectile_object");
+        for (int i = 0; i < num; i++)
+        {
+            //print("this si bs");
+            var item = Instantiate(res, this.transform);
+            item.GetComponentInChildren<SpineAnimationController>().PlayAnimation(spineAniType);
+            item.SetActive(false);
+            projectilePool.Add(item);
+        }
+
+    }
+    protected GameObject GetFromPool()
+    {
+        GameObject projGet = projectilePool.Find(x => !x.activeSelf);
+        projGet.transform.position = transform.position;
+        //projGet.SetActive(true);
+        return projGet;
+    }
+    protected void ReturnToPool(GameObject projectile)
+    {
+        projectile.SetActive(false);
+    }
 
     private void Awake()
     {
