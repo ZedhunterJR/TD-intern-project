@@ -1,0 +1,51 @@
+{
+  "waves": [
+    {
+      "waveIndex": 1,
+      "startTime": 0,
+      "enemies": [
+        {
+          "type": "test",
+          "count": 5,
+          "spawnInterval": 1.5,
+          "pathId": 0,
+          "waveInterval": 0
+        },
+        {
+          "type": "test 1",
+          "count": 5,
+          "spawnInterval": 2,
+          "pathId": 0,
+          "waveInterval": 20
+        }
+      ]
+    },
+    {
+      "waveIndex": 1,
+      "startTime": 40,
+      "enemies": [
+        {
+          "type": "test 2",
+          "count": 5,
+          "spawnInterval": 1.5,
+          "pathId": 0,
+          "waveInterval": 0
+        },
+        {
+          "type": "test 3",
+          "count": 5,
+          "spawnInterval": 2,
+          "pathId": 0,
+          "waveInterval": 30
+        },
+        {
+          "type": "test 4",
+          "count": 5,
+          "spawnInterval": 2,
+          "pathId": 0,
+          "waveInterval": 50
+        }
+      ]
+    }
+  ]
+}

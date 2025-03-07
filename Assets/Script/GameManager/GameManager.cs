@@ -5,32 +5,45 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] TileManager tileManager;
     [SerializeField] EnemyManager enemyManager;
+    [SerializeField] TowerManager towerManager;
     [SerializeField] PoolManager poolManager;
     [SerializeField] UIManager uiManager;
+    [SerializeField] WaveManager waveManager;
 
     // Win/Lose Condition 
     [Header("Win / Lose Condition")]
     [SerializeField] float baseHealth = 3;
     private float currentHealth;
-    [SerializeField] Image healthBar; 
+    [SerializeField] Image healthBar;
 
     // Game Status
     private GAME_STATUS status;
 
     private void Awake()
     {
-        currentHealth = baseHealth;
-        status = GAME_STATUS.Init;
+        if (status == GAME_STATUS.Init)
+        {
+            currentHealth = baseHealth;
+            status = GAME_STATUS.Init;
+
+            if (waveManager != null)
+                waveManager.OnAwake();
+        }
     }
 
     private void Start()
     {
-        if (tileManager != null)
-            tileManager.OnStart();
-        if (enemyManager != null)
-            enemyManager.OnStart();
-        if (poolManager != null)
-            poolManager.OnStart();
+        if (status == GAME_STATUS.Init)
+        {
+            if (tileManager != null)
+                tileManager.OnStart();
+            if (enemyManager != null)
+                enemyManager.OnStart();
+            if (poolManager != null)
+                poolManager.OnStart();
+            if (waveManager != null)
+                waveManager.OnStart();
+        }
 
         ChangeStatus(GAME_STATUS.Playing);
     }
@@ -45,6 +58,8 @@ public class GameManager : Singleton<GameManager>
                 enemyManager.OnUpdate();
             if (poolManager != null)
                 poolManager.OnUpdate();
+            if (waveManager != null)
+                waveManager.OnUpdate();
         }
     }
 
@@ -93,7 +108,7 @@ public class GameManager : Singleton<GameManager>
 
     private void UpdateHealthBar()
     {
-        healthBar.fillAmount = currentHealth / baseHealth; 
+        healthBar.fillAmount = currentHealth / baseHealth;
     }
     #endregion
 }

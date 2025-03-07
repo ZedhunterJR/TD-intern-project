@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestWater : TowerAttack
+public class SentryFire : TowerAttack
 {
     protected override void OnAwake()
     {
-        InitPool("Water_thrower_bullet", 5);
+        var res = Resources.Load<GameObject>("Prefab/projectile_object");
+        var proj = Instantiate(res);
+        InitPool(proj, "Fire_thrower_bullet", 5);
     }
     protected override GameObject GetTarget()
     {
@@ -17,7 +19,7 @@ public class TestWater : TowerAttack
         base.Attack(target);
         //might need pooling for projectile
         var instance = GetFromPool();
-        ProjectileLibrary.Instance.ProjectileLob(instance, target);
+        ProjectileLibrary.Instance.ProjectileStraightNoHitbox(instance, target);
         instance.SetActive(true);
         instance.GetComponent<ProjectileAdvanced>().PreDestruct += () =>
         {

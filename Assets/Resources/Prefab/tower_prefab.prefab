@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 6a75187f8cbcb36498794f131f029284, type: 2}
-  initialSkinName: Water-sentry
+  initialSkinName: Electric-sentry
   initialFlipX: 0
   initialFlipY: 0
   updateWhenInvisible: 3

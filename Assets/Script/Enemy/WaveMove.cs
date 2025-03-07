@@ -35,7 +35,7 @@ public class WaveMove : MonoBehaviour
     public void Init(List<Vector2> wps, Action onExit, int currentIndex = 0)
     {
         OnEnemyExit = onExit;
-        waypoints.AddRange(wps);
+        waypoints = new(wps);
         waypointIndex = currentIndex;
 
         //random offset on map, if needed

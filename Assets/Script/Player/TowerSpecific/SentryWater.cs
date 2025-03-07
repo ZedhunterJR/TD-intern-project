@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestEarth : TowerAttack
+public class SentryWater : TowerAttack
 {
     protected override void OnAwake()
     {
-        InitPool("Earth_thrower_bullet", 5);
+        var res = Resources.Load<GameObject>("Prefab/projectile_object");
+        var proj = Instantiate(res);
+        InitPool(proj, "Water_thrower_bullet", 5);
     }
     protected override GameObject GetTarget()
     {

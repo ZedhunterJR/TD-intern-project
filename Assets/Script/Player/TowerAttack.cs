@@ -32,6 +32,25 @@ public class TowerAttack : MonoBehaviour
         }
 
     }
+
+    /// <summary>
+    /// The bullshit SpineAnimation doesn't allow direct copy in runtime, so
+    /// have to reapply the skin, otherwise the projectile can have any properties
+    /// </summary>
+    /// <param name="projectile"></param>
+    /// <param name="spineAniType"></param>
+    /// <param name="num"></param>
+    protected void InitPool(GameObject projectile, string spineAniType, int num)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            var item = Instantiate(projectile, this.transform);
+            item.GetComponentInChildren<SpineAnimationController>().PlayAnimation(spineAniType);
+            item.SetActive(false);
+            projectilePool.Add(item);
+        }
+        Destroy(projectile);
+    }
     protected GameObject GetFromPool()
     {
         GameObject projGet = projectilePool.Find(x => !x.activeSelf);
