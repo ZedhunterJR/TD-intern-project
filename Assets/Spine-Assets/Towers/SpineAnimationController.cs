@@ -16,11 +16,13 @@ public class SpineAnimationController : MonoBehaviour
     {
         skeletonAnimation.skeletonDataAsset = data.towerType;
         skeletonAnimation.initialSkinName = data.towerInitialSkin;
+        skeletonAnimation.Initialize(true);
     }
     public void Init(EnemyData data)
     {
         skeletonAnimation.skeletonDataAsset = data.enemyType;
         skeletonAnimation.initialSkinName = data.enemyInitialSkin;
+        skeletonAnimation.Initialize(true);
     }
 
     public void SpawnAnimation()

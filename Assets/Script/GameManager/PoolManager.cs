@@ -18,6 +18,9 @@ public class PoolManager : Singleton<PoolManager>
     [SerializeField] TowerData dataTowerWater;
     [SerializeField] TowerData dataTowerEarth;
 
+    List<TowerData> allTowerDatas = new();
+    Dictionary<string, TowerData> allTowersDict = new();
+
     [Header("Contain")]
     [SerializeField] Transform ContainerEnemyTest;
     [SerializeField] Transform containerTowerWater;
@@ -26,6 +29,12 @@ public class PoolManager : Singleton<PoolManager>
     public void OnStart()
     {
         FillPool();
+
+        foreach (var item in allTowerDatas)
+        {
+            allTowersDict.Add(item.name, item);
+        }
+        //var test = allTowersDIct["sentry_earth"];
     }
 
     public void OnUpdate()
@@ -69,6 +78,15 @@ public class PoolManager : Singleton<PoolManager>
         //GameObject objInstance = null;
         var objInstance = Instantiate(PrefabsTower, containerTowerEarth);
         objInstance.GetComponent<TowerStat>().Init(dataTowerEarth);
+        objInstance.gameObject.SetActive(false);
+        poolTowerEarth.Add(objInstance);
+        return objInstance;
+    }
+
+    GameObject CreateTower(TowerData data)
+    {
+        var objInstance = Instantiate(PrefabsTower, containerTowerEarth);
+        objInstance.GetComponent<TowerStat>().Init(data);
         objInstance.gameObject.SetActive(false);
         poolTowerEarth.Add(objInstance);
         return objInstance;
