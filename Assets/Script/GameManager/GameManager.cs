@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] TowerManager towerManager;
     [SerializeField] PoolManager poolManager;
     [SerializeField] UIManager uiManager;
+    [SerializeField] WaveManager waveManager;
 
     // Win/Lose Condition 
     [Header("Win / Lose Condition")]
@@ -22,6 +23,9 @@ public class GameManager : Singleton<GameManager>
     {
         currentHealth = baseHealth;
         status = GAME_STATUS.Init;
+
+        if(waveManager != null)
+            waveManager.OnAwake();
     }
 
     private void Start()
