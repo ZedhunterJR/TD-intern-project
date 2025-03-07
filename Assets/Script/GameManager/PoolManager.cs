@@ -6,7 +6,7 @@ public class PoolManager : Singleton<PoolManager>
 {
     [Header("Pool")]
     [SerializeField] List<GameObject> poolEnemyTest = new List<GameObject>();
-    [SerializeField] List<GameObject> poolTowerWater = new List<GameObject>();
+    [SerializeField] List<GameObject> poolTower = new List<GameObject>();
     [SerializeField] List<GameObject> poolTowerEarth = new List<GameObject>();
 
     [Header("Prefabs")]
@@ -48,8 +48,8 @@ public class PoolManager : Singleton<PoolManager>
         {
             CreateEnemyTest();
 
-            CreateTowerWater();
-            CreateTowerEarth();
+            CreateTower(containerTowerWater);
+            CreateTower(containerTowerEarth);
         }
     }
 
@@ -64,78 +64,45 @@ public class PoolManager : Singleton<PoolManager>
         return objInstance;
     }
 
-    GameObject CreateTowerWater()
+    GameObject CreateTower(Transform container)
     {
         //GameObject objInstance = null;
-        var objInstance = Instantiate(PrefabsTower, containerTowerWater);
-        objInstance.GetComponent<TowerStat>().Init(dataTowerWater);
+        var objInstance = Instantiate(PrefabsTower, container);
+        //objInstance.GetComponent<TowerStat>().Init(data);
         objInstance.gameObject.SetActive(false);
-        poolTowerWater.Add(objInstance);
-        return objInstance;
-    }
-    GameObject CreateTowerEarth()
-    {
-        //GameObject objInstance = null;
-        var objInstance = Instantiate(PrefabsTower, containerTowerEarth);
-        objInstance.GetComponent<TowerStat>().Init(dataTowerEarth);
-        objInstance.gameObject.SetActive(false);
-        poolTowerEarth.Add(objInstance);
-        return objInstance;
-    }
-
-    GameObject CreateTower(TowerData data)
-    {
-        var objInstance = Instantiate(PrefabsTower, containerTowerEarth);
-        objInstance.GetComponent<TowerStat>().Init(data);
-        objInstance.gameObject.SetActive(false);
-        poolTowerEarth.Add(objInstance);
+        poolTower.Add(objInstance);
         return objInstance;
     }
     #endregion
 
     #region GetObjFromPool
-    public GameObject GetPoolObject(OBJ_TYPE type)
+    public GameObject GetEnemyFromPool()
     {
-        if(type == OBJ_TYPE.enemyTest)
-        {
-            GameObject enemyTest = poolEnemyTest.Find(x => !x.gameObject.activeSelf);
-            if (enemyTest == null)
-            {
-                enemyTest = CreateEnemyTest();
-                EnemyManager.Instance.AddEnemy(enemyTest);
-            }
-            else
-                EnemyManager.Instance.AddEnemy(enemyTest);
-            return enemyTest;
-        }
 
-        if (type == OBJ_TYPE.tower_water)
+        GameObject enemyTest = poolEnemyTest.Find(x => !x.gameObject.activeSelf);
+        if (enemyTest == null)
         {
-            GameObject towerWater = poolTowerWater.Find(x => !x.gameObject.activeSelf);
-            if (towerWater == null)
-            {
-                towerWater = CreateEnemyTest();
-                TowerManager.Instance.AddTower(towerWater);
-            }
-            else
-                TowerManager.Instance.AddTower(towerWater);
-            return towerWater;
+            enemyTest = CreateEnemyTest();
+            //   EnemyManager.Instance.AddEnemy(enemyTest);
+            GetEnemyFromPool();
         }
+        else
+            EnemyManager.Instance.AddEnemy(enemyTest);
+        return enemyTest;
+    }
 
-        if (type == OBJ_TYPE.tower_earth)
+    public GameObject GetTowerFromPool()
+    {
+        GameObject towerWater = poolTower.Find(x => !x.gameObject.activeSelf);
+        if (towerWater == null)
         {
-            GameObject towerEarth = poolTowerEarth.Find(x => !x.gameObject.activeSelf);
-            if (towerEarth == null)
-            {
-                towerEarth = CreateEnemyTest();
-                TowerManager.Instance.AddTower(towerEarth);
-            }
-            else
-                TowerManager.Instance.AddTower(towerEarth);
-            return towerEarth;
+            towerWater = CreateTower(containerTowerWater);
+            //TowerManager.Instance.AddTower(towerWater);
+            return GetTowerFromPool();
         }
-
-        return null;
+        else
+            TowerManager.Instance.AddTower(towerWater);
+        return towerWater;
     }
     #endregion
 
@@ -167,7 +134,7 @@ public class PoolManager : Singleton<PoolManager>
 
 public enum OBJ_TYPE
 {
-    enemyTest, 
+    enemyTest,
     tower_water,
     tower_earth,
 }

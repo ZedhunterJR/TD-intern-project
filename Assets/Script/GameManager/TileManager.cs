@@ -9,11 +9,8 @@ public class TileManager : Singleton<TileManager>
     [SerializeField]
     List<TileEntity> tiles = new List<TileEntity>();
 
-    private List<OBJ_TYPE> objType = new List<OBJ_TYPE>() 
-    {
-        OBJ_TYPE.tower_earth,
-        OBJ_TYPE.tower_water,
-    };
+    [SerializeField]
+    List<TowerData> listData = new List<TowerData>();
 
     public void OnStart()
     {
@@ -43,7 +40,8 @@ public class TileManager : Singleton<TileManager>
             TileEntity tile = tilesNoneTower.GetRandom();
             tile.ChangeStatus(TILE_BUILDING_STATUS.HasTower);
             //TestEnemyAndTowerSpawn.Instance.SpawnTower(tile.transform.position);
-            GameObject tower = PoolManager.Instance.GetPoolObject(objType.GetRandom());
+            GameObject tower = PoolManager.Instance.GetTowerFromPool();
+            tower.GetComponent<TowerStat>().Init(listData.GetRandom());
             tower.transform.position = tile.transform.position;
             tower.SetActive(true);
         }

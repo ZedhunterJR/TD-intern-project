@@ -33,7 +33,7 @@ public class TestEnemyAndTowerSpawn : Singleton<TestEnemyAndTowerSpawn>
     [ContextMenu("Spawn enemy")]
     public void SpawnEnemy()
     {
-        GameObject enemy = PoolManager.Instance.GetPoolObject(OBJ_TYPE.enemyTest);
+        GameObject enemy = PoolManager.Instance.GetEnemyFromPool();
         enemy.GetComponent<EnemyStat>().Init(enemyData);
         enemy.SetActive(true);
         

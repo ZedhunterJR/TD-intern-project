@@ -8,7 +8,7 @@ public class SentryElectric : TowerAttack
     {
         var res = Resources.Load<GameObject>("Prefab/projectile_object");
         var proj = Instantiate(res);
-        InitPool(proj, "Electric_thrower_bullet", 5);
+        InitPool(proj, "Elec_thrower_bullet", 5);
     }
     protected override GameObject GetTarget()
     {
