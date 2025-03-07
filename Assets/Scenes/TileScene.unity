@@ -665,6 +665,7 @@ MonoBehaviour:
   towerManager: {fileID: 1653507626}
   poolManager: {fileID: 371978929}
   uiManager: {fileID: 2130264505}
+  waveManager: {fileID: 102559401}
   baseHealth: 3
   healthBar: {fileID: 397151991}
 --- !u!4 &201356262

@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Win / Lose Condition")]
     [SerializeField] float baseHealth = 3;
     private float currentHealth;
-    [SerializeField] Image healthBar; 
+    [SerializeField] Image healthBar;
 
     // Game Status
     private GAME_STATUS status;
@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
         currentHealth = baseHealth;
         status = GAME_STATUS.Init;
 
-        if(waveManager != null)
+        if (waveManager != null)
             waveManager.OnAwake();
     }
 
@@ -36,6 +36,8 @@ public class GameManager : Singleton<GameManager>
             enemyManager.OnStart();
         if (poolManager != null)
             poolManager.OnStart();
+        if (waveManager != null)
+            waveManager.OnStart();
 
         ChangeStatus(GAME_STATUS.Playing);
     }
@@ -50,6 +52,8 @@ public class GameManager : Singleton<GameManager>
                 enemyManager.OnUpdate();
             if (poolManager != null)
                 poolManager.OnUpdate();
+            if (waveManager != null)
+                waveManager.OnUpdate();
         }
     }
 
@@ -98,7 +102,7 @@ public class GameManager : Singleton<GameManager>
 
     private void UpdateHealthBar()
     {
-        healthBar.fillAmount = currentHealth / baseHealth; 
+        healthBar.fillAmount = currentHealth / baseHealth;
     }
     #endregion
 }
