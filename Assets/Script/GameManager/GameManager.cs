@@ -21,23 +21,29 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-        currentHealth = baseHealth;
-        status = GAME_STATUS.Init;
+        if (status == GAME_STATUS.Init)
+        {
+            currentHealth = baseHealth;
+            status = GAME_STATUS.Init;
 
-        if (waveManager != null)
-            waveManager.OnAwake();
+            if (waveManager != null)
+                waveManager.OnAwake();
+        }
     }
 
     private void Start()
     {
-        if (tileManager != null)
-            tileManager.OnStart();
-        if (enemyManager != null)
-            enemyManager.OnStart();
-        if (poolManager != null)
-            poolManager.OnStart();
-        if (waveManager != null)
-            waveManager.OnStart();
+        if (status == GAME_STATUS.Init)
+        {
+            if (tileManager != null)
+                tileManager.OnStart();
+            if (enemyManager != null)
+                enemyManager.OnStart();
+            if (poolManager != null)
+                poolManager.OnStart();
+            if (waveManager != null)
+                waveManager.OnStart();
+        }
 
         ChangeStatus(GAME_STATUS.Playing);
     }

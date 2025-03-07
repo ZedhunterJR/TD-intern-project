@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class WaveManager : Singleton<WaveManager>
 {
-    List<Wave> waves;
+    //List<Wave> waves;
     List<EnemyData> enemiesData = new List<EnemyData>();
     Dictionary<string, EnemyData> enemiesDict = new Dictionary<string, EnemyData>();
+
+    WaveList waveList;
 
     // Path của file json waveData
     private string path;
@@ -44,16 +46,16 @@ public class WaveManager : Singleton<WaveManager>
         }
     }
 
-    public void SaveData() // lưu ý đừng dùng hàm này, nó hoạt động rồi, dùng là mất nó save waves default mất hết dữ liệu từ json 
-    {
-        string savaPath = path;
+    //public void SaveData() // lưu ý đừng dùng hàm này, nó hoạt động rồi, dùng là mất nó save waves default mất hết dữ liệu từ json 
+    //{
+    //    string savaPath = path;
 
-        string json = JsonUtility.ToJson(waves);
-        Debug.Log(json);
+    //    string json = JsonUtility.ToJson(waves);
+    //    Debug.Log(json);
 
-        using StreamWriter writer = new StreamWriter(savaPath);
-        writer.Write(json);
-    }
+    //    using StreamWriter writer = new StreamWriter(savaPath);
+    //    writer.Write(json);
+    //}
 
     public void LoadDataFromJsonToList()
     {
@@ -61,13 +63,18 @@ public class WaveManager : Singleton<WaveManager>
         string json = reader.ReadToEnd();
         //Debug.Log(json);
 
-        WaveList waveList = JsonUtility.FromJson<WaveList>(json);
+        WaveList waveListJson = JsonUtility.FromJson<WaveList>(json);
+        waveList = waveListJson;
 
-        foreach (Wave wave in waveList.waves)
-        {
-            Debug.Log($"Đây là wave thứ {wave.waveIndex} = Thời gian bắt đầu {wave.startTime} = EnemyGruop là {wave.enemyGroup}");
-        }
+        //foreach (Wave wave in waveList.waves) Đã test và hoạt động thành công 
+        //{
+        //    Debug.Log($"Đây là wave thứ {wave.waveIndex} = Thời gian bắt đầu {wave.startTime} = EnemyGruop là {wave.enemyGroup}");
 
+        //    foreach (var enemy in wave.enemyGroup)
+        //    {
+        //        Debug.Log($"Data {enemy.enemyName} = {enemy.count} = {enemy.spawnInterval} = {enemy.waveInterval}");
+        //    }
+        //}
     }
     #endregion
 
@@ -87,7 +94,7 @@ public class EnemyItem
     public string enemyName;
     public int count;
     public float spawnInterval;
-    public int pathID;
+    public int pathId;
     public float waveInterval;
 }
 

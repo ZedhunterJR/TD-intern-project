@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TileManager : Singleton<TileManager>
 {
@@ -12,9 +13,12 @@ public class TileManager : Singleton<TileManager>
     [SerializeField]
     List<TowerData> listData = new List<TowerData>();
 
+    [SerializeField] Button spawnTower;
+
     public void OnStart()
     {
         InitAllTiles();
+        spawnTower.onClick.AddListener(SpawnRandomTile);
     }
 
     public void OnUpdate()
