@@ -18,4 +18,4 @@ MonoBehaviour:
   baseDamage: 1
   baseAtkSpd: 2
   range: 3
-  attackScriptName: TestWater
+  attackScriptName: SentryWater

@@ -18,4 +18,4 @@ MonoBehaviour:
   baseDamage: 1
   baseAtkSpd: 1
   range: 4
-  attackScriptName: TestEarth
+  attackScriptName: SentryEarth
