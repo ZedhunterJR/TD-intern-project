@@ -47,6 +47,7 @@ public class WaveManager : Singleton<WaveManager>
     }
 
     //public void SaveData() // lưu ý đừng dùng hàm này, nó hoạt động rồi, dùng là mất nó save waves default mất hết dữ liệu từ json 
+    // ok cool
     //{
     //    string savaPath = path;
 

@@ -918,6 +918,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 91f0c03d3a10556409616827660298a3, type: 2}
   - {fileID: 11400000, guid: 03ae68d43aca0d84697b86f846aaf0cb, type: 2}
   - {fileID: 11400000, guid: 5737dbda509e5224d8a9ef4b191b901f, type: 2}
+  spawnTower: {fileID: 1063883856}
 --- !u!114 &287235815
 MonoBehaviour:
   m_ObjectHideFlags: 0

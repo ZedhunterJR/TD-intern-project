@@ -13,12 +13,13 @@ public class TileManager : Singleton<TileManager>
     [SerializeField]
     List<TowerData> listData = new List<TowerData>();
 
-    [SerializeField] Button spawnTower;
+    //[SerializeField] Button spawnTower;
 
     public void OnStart()
     {
         InitAllTiles();
-        spawnTower.onClick.AddListener(SpawnRandomTile);
+        /* Already linked this from CanvasAction/Content1/GameObject/Button
+        spawnTower.onClick.AddListener(SpawnRandomTile);*/
     }
 
     public void OnUpdate()
