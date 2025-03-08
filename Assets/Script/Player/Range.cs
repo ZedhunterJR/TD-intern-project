@@ -85,6 +85,13 @@ public class Range : MonoBehaviour
             return targets[0];
         return null;
     }
+    public GameObject StrongTarget()
+    {
+        var targets = StrongTargets();
+        if (targets.Count > 0)
+            return targets[0];
+        return null;
+    }
 
     void UpdateEnemiesInRange()
     {

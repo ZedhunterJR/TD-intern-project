@@ -15,7 +15,7 @@ MonoBehaviour:
   towerName: test
   towerType: {fileID: 11400000, guid: 6a75187f8cbcb36498794f131f029284, type: 2}
   towerInitialSkin: Earth-sentry
-  baseDamage: 1
-  baseAtkSpd: 1
-  range: 4
+  baseDamage: 5
+  baseAtkSpd: 0.3
+  range: 5
   attackScriptName: SentryEarth

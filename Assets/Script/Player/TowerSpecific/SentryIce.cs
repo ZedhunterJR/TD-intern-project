@@ -8,24 +8,24 @@ public class SentryIce : TowerAttack
     {
         var res = Resources.Load<GameObject>("Prefab/projectile_object");
         var proj = Instantiate(res);
+        proj.GetComponent<ProjectileAdvanced>().speed = 15f;
+        proj.GetComponent<ProjectileAdvanced>().pierce = 5;
         InitPool(proj, "Ice_thrower_bullet", 5);
-    }
-    protected override GameObject GetTarget()
-    {
-        return range.LastTarget();
     }
     protected override void Attack(GameObject target)
     {
         base.Attack(target);
         //might need pooling for projectile
         var instance = GetFromPool();
-        ProjectileLibrary.Instance.ProjectileStraightNoHitbox(instance, target);
+        ProjectileLibrary.Instance.ProjectileStraight(instance, target.transform.position - transform.position, lifeSpan: 1f);
         instance.SetActive(true);
-        instance.GetComponent<ProjectileAdvanced>().PreDestruct += () =>
+        var sc = instance.GetComponent<ProjectileAdvanced>();
+        sc.AllEnemies = EnemyManager.Instance.AllEnemies;
+        sc.HitEvent = (target) =>
         {
-            if (target != null || !target.activeSelf)
-                target.GetComponent<EnemyStat>().PreMitiDmg(stat.data.baseDamage);
-            ReturnToPool(instance);
+            //print("??");
+            target.GetComponent<EnemyStat>().PreMitiDmg(stat.data.baseDamage);
         };
+        sc.PreDestruct = () => ReturnToPool(instance);
     }
 }

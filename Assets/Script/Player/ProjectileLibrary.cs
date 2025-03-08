@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ProjectileLibrary
 {
@@ -16,12 +19,12 @@ public class ProjectileLibrary
         }
     }
     //lob at target enemy, if enemy die, use the last position
-    public void ProjectileLob(GameObject projectile, GameObject target, bool rotation = true, float height = 5f, float lifeSpan = 1f)
+    public void ProjectileLob(GameObject projectile, GameObject target, bool rotation = true, float controlHeight = 5f, float lifeSpan = 1f, float controlRotation = 0)
     {
         var sc = projectile.GetComponent<ProjectileAdvanced>();
         var startPos = projectile.transform.position;
         sc.lifeSpan = lifeSpan;
-        sc.UpdateFunc += () =>
+        sc.UpdateFunc = () =>
         {
             if (target != null || !target.activeSelf)
             {
@@ -29,7 +32,7 @@ public class ProjectileLibrary
             }
             var start = startPos;
             Vector3 end = sc.direction;
-            var control = (start + end) / 2 + new Vector3(0, height);
+            var control = CalculateControlPoint(start, end, controlHeight, controlRotation);
 
             float count = sc.LifeSpanInInterpolation;
 
@@ -47,21 +50,19 @@ public class ProjectileLibrary
         };
     }
     //lob at target position
-    public void ProjectileLob(GameObject projectile, Vector2 endPos, bool rotation = true, float height = 5f, float lifeSpan = 1f)
+    public void ProjectileLob(GameObject projectile, Vector3 endPos, bool rotation = true, float controlHeight = 5f, float controlRotation = 0f, float lifeSpan = 1f)
     {
         var sc = projectile.GetComponent<ProjectileAdvanced>();
         var startPos = projectile.transform.position;
+        var controlSign = endPos.x - startPos.x >= 0f ? -1 : 1;
+        var control = CalculateControlPoint(startPos, endPos, controlHeight, controlRotation);
         sc.lifeSpan = lifeSpan;
-        sc.UpdateFunc += () =>
+        sc.UpdateFunc = () =>
         {
-            var start = startPos;
-            Vector3 end = endPos;
-            var control = (start + end) / 2 + new Vector3(0, height);
-
             float count = sc.LifeSpanInInterpolation;
 
-            Vector3 m1 = Vector2.Lerp(start, control, count);
-            Vector3 m2 = Vector2.Lerp(control, end, count);
+            Vector3 m1 = Vector2.Lerp(startPos, control, count);
+            Vector3 m2 = Vector2.Lerp(control, endPos, count);
 
             projectile.transform.position = Vector2.Lerp(m1, m2, count);
 
@@ -79,7 +80,7 @@ public class ProjectileLibrary
         var sc = projectile.GetComponent<ProjectileAdvanced>();
         sc.lifeSpan = lifeSpan;
         dir.Normalize();
-        sc.UpdateFunc += () =>
+        sc.UpdateFunc = () =>
         {
             projectile.transform.position += sc.speed * Time.deltaTime * dir.ToVector3();
 
@@ -96,7 +97,7 @@ public class ProjectileLibrary
         var sc = projectile.GetComponent<ProjectileAdvanced>();
         var startPos = projectile.transform.position;
         sc.lifeSpan = lifeSpan;
-        sc.UpdateFunc += () =>
+        sc.UpdateFunc = () =>
         {
             if (target != null || !target.activeSelf)
             {
@@ -120,7 +121,7 @@ public class ProjectileLibrary
         var sc = projectile.GetComponent<ProjectileAdvanced>();
         var startPos = projectile.transform.position;
         sc.lifeSpan = lifeSpan;
-        sc.UpdateFunc += () =>
+        sc.UpdateFunc = () =>
         {
             float count = sc.LifeSpanInInterpolation;
             projectile.transform.position = Vector2.Lerp(startPos, pos, count);
@@ -139,7 +140,7 @@ public class ProjectileLibrary
         var sc = projectile.GetComponent<ProjectileAdvanced>();
         var startPos = projectile.transform.position;
         sc.lifeSpan = lifeSpan;
-        sc.UpdateFunc += () =>
+        sc.UpdateFunc = () =>
         {
             if (target != null)
             {
@@ -166,5 +167,18 @@ public class ProjectileLibrary
                 projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
         };
+    }
+
+    private Vector2 CalculateControlPoint(Vector2 start, Vector2 end, float controlHeight, float controlRotation)
+    {
+        Vector2 midPoint = (start + end) / 2;
+        if (controlRotation == 0)
+            return midPoint + new Vector2(0, controlHeight);
+
+        Vector2 offset = new Vector2(0, controlHeight);
+        // Rotate the offset around the midpoint by `controlRotation`
+        Vector2 rotatedOffset = Quaternion.Euler(0, 0, controlRotation) * offset;
+        // Final control point
+        return midPoint + rotatedOffset;
     }
 }
