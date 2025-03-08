@@ -2,11 +2,11 @@
   "waves": [
     {
       "waveIndex": 1,
-      "startTime": 0,
+      "startTime": 5,
       "enemyGroup": [
         {
           "enemyName": "test",
-          "count": 5,
+          "count": 10,
           "spawnInterval": 1.5,
           "pathId": 0,
           "waveInterval": 0
@@ -22,7 +22,7 @@
     },
     {
       "waveIndex": 2,
-      "startTime": 40,
+      "startTime": 10,
       "enemyGroup": [
         {
           "enemyName": "test 2",

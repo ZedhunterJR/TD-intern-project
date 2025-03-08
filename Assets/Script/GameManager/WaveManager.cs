@@ -6,10 +6,21 @@ using UnityEngine;
 public class WaveManager : Singleton<WaveManager>
 {
     //List<Wave> waves;
+    [SerializeField]
     List<EnemyData> enemiesData = new List<EnemyData>();
     Dictionary<string, EnemyData> enemiesDict = new Dictionary<string, EnemyData>();
 
+    // Wave Attributes 
     WaveList waveList;
+    int currentWave = 0;
+    bool isSpawning = false;
+    float spawnTimer = 0f;
+    float waveTimer = 0f;
+    int enemySpawned = 0;
+    Wave waveTemp;
+    int currentEnemyIndex = 0;
+
+    [SerializeField] Transform[] spawnPoints; // Điểm spawn enemy
 
     // Path của file json waveData
     private string path;
@@ -23,14 +34,97 @@ public class WaveManager : Singleton<WaveManager>
     public void OnStart()
     {
         SetPath();
-        //SaveData();
         LoadDataFromJsonToList();
+
+        waveTemp = waveList.waves[currentWave];
+        waveTimer = waveTemp.startTime;
     }
 
     public void OnUpdate()
     {
+        // Nếu mà không còn wave trong Level thì return
+        if (currentWave >= waveList.waves.Count) return;
 
+        if (!isSpawning)
+        {
+            waveTimer -= Time.deltaTime;
+            if (waveTimer <= 0)
+            {
+                StartWave();
+            }
+        }
+        else
+        {
+            SpawnEnemies();
+        }
     }
+
+    #region Wave Spawner Methods
+    void StartWave()
+    {
+        isSpawning = true;
+        enemySpawned = 0;
+        currentEnemyIndex = 0;
+        waveTemp = waveList.waves[currentWave];
+
+        Debug.Log($"Bắt đầu Wave {waveTemp.waveIndex}");
+    }
+
+    void EndWave()
+    {
+        isSpawning = false;
+        currentWave++;
+        if (currentWave < waveList.waves.Count)
+        {
+            waveTimer = waveList.waves[currentWave].startTime;
+            Debug.Log($"Wave {currentWave} đã kết thúc. Chờ {waveTimer}s để wave mới bắt đầu.");
+        }
+        else
+            Debug.Log("Tất cả waves đã kết thúc!");
+    }
+
+    void SpawnEnemies()
+    {
+        if (currentEnemyIndex >= waveTemp.enemyGroup.Count)
+        {
+            EndWave();
+            return;
+        }
+
+        EnemyItem enemyItem = waveTemp.enemyGroup[currentEnemyIndex];
+
+        if (enemySpawned >= enemyItem.count)
+        {
+            currentEnemyIndex++;
+            enemySpawned = 0;
+            return;
+        }
+
+        spawnTimer -= Time.deltaTime;
+        if (spawnTimer <= 0)
+        {
+            SpawnEnemy(enemyItem.enemyName);
+            enemySpawned++;
+            spawnTimer = enemyItem.spawnInterval;
+        }
+    }
+
+    void SpawnEnemy(string enemyName)
+    {
+        if (!enemiesDict.ContainsKey(enemyName))
+        {
+            Debug.Log($"Không tìm thấy enemyData có tên là {enemyName}");
+            return;
+        }
+
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject enemy = PoolManager.Instance.GetEnemyFromPool();
+        enemy.GetComponent<EnemyStat>().Init(enemiesDict[enemyName]);
+        enemy.SetActive(true);
+
+        Debug.Log($"Spawned: {enemyName}");
+    }
+    #endregion
 
     #region Init Methods
     void SetPath()
@@ -62,11 +156,11 @@ public class WaveManager : Singleton<WaveManager>
     {
         using StreamReader reader = new StreamReader(path);
         string json = reader.ReadToEnd();
-        //Debug.Log(json);
 
         WaveList waveListJson = JsonUtility.FromJson<WaveList>(json);
         waveList = waveListJson;
 
+        /*
         //foreach (Wave wave in waveList.waves) Đã test và hoạt động thành công 
         //{
         //    Debug.Log($"Đây là wave thứ {wave.waveIndex} = Thời gian bắt đầu {wave.startTime} = EnemyGruop là {wave.enemyGroup}");
@@ -76,17 +170,18 @@ public class WaveManager : Singleton<WaveManager>
         //        Debug.Log($"Data {enemy.enemyName} = {enemy.count} = {enemy.spawnInterval} = {enemy.waveInterval}");
         //    }
         //}
+        */ // Dữ liệu lấy ra từ Json là đúng đắn 
     }
-    #endregion
 
+    #endregion
 }
 
 [System.Serializable]
 public class Wave
 {
-    public int waveIndex; 
+    public int waveIndex;
     public float startTime;
-    public List<EnemyItem> enemyGroup; 
+    public List<EnemyItem> enemyGroup;
 }
 
 [System.Serializable]
