@@ -22,16 +22,19 @@ public class ProjectileAdvanced : MonoBehaviour
     // Public Modifiers
     [HideInInspector] public Vector2 direction;
     [HideInInspector] public GameObject currentTarget;
-    [HideInInspector] public List<GameObject> targetsHit = new();
+    [HideInInspector] public List<GameObject> targetsHit = new(); //this is very computationally expensive //nvm this is needed
     public float LifeSpanInInterpolation { get => 1 - lifeSpanCountDown / lifeSpan; }
 
     // Private Modifiers
     private float lifeSpanCountDown;
+    private float runtimePierce;
 
     // Start is called before the first frame update
     void OnEnable()
     {
         lifeSpanCountDown = lifeSpan;
+        runtimePierce = pierce;
+        targetsHit = new();
     }
 
     // Update is called once per frame
@@ -57,18 +60,17 @@ public class ProjectileAdvanced : MonoBehaviour
     {
         float hitRadiusSqr = hitRadius * hitRadius; // Use squared distance for performance
 
-        foreach (var enemy in AllEnemies)
+        foreach (var enemy in new List<GameObject>(AllEnemies))
         {
-            if (enemy == null || !enemy.activeSelf || targetsHit.Contains(enemy)) continue; // Skip null or already hit enemies, might not stay
+            if (!AllEnemies.Contains(enemy) || targetsHit.Contains(enemy)) continue; // Skip null or already hit enemies, might not stay
 
             float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;
             if (sqrDistance <= hitRadiusSqr) // Enemy within hit radius
             {
-                targetsHit.Add(enemy);
                 HitEvent?.Invoke(enemy);
-
-                pierce--;
-                if (pierce == 0)
+                targetsHit.Add(enemy);
+                runtimePierce--;
+                if (runtimePierce == 0)
                 {
                     DestroyObj();
                     return;

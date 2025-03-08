@@ -10,20 +10,19 @@ public class SentryElectric : TowerAttack
         var proj = Instantiate(res);
         InitPool(proj, "Elec_thrower_bullet", 5);
     }
-    protected override GameObject GetTarget()
-    {
-        return range.LastTarget();
-    }
+
     protected override void Attack(GameObject target)
     {
         base.Attack(target);
         //might need pooling for projectile
         var instance = GetFromPool();
-        ProjectileLibrary.Instance.ProjectileStraightNoHitbox(instance, target);
+        var ran = Random.Range(0, 2) == 0 ? 300f : 240f;
+        ProjectileLibrary.Instance.ProjectileLob(instance, target, controlHeight:5f, controlRotation:ran, lifeSpan:0.8f);
         instance.SetActive(true);
-        instance.GetComponent<ProjectileAdvanced>().PreDestruct += () =>
+        var projSc = instance.GetComponent<ProjectileAdvanced>();
+        projSc.PreDestruct = () =>
         {
-            if (target != null || !target.activeSelf)
+            if (!projSc.AllEnemies.Contains(target))
                 target.GetComponent<EnemyStat>().PreMitiDmg(stat.data.baseDamage);
             ReturnToPool(instance);
         };

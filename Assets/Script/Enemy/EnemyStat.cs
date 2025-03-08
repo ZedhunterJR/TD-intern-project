@@ -90,7 +90,7 @@ public class EnemyStat : MonoBehaviour
     }
     public void UpdateHp(float value)
     {
-        currentHp -= value;
+        currentHp += value;
         currentHp = Mathf.Clamp(currentHp, 0, maxHealth);
         if (currentHp == 0)
         {
@@ -107,7 +107,8 @@ public class EnemyStat : MonoBehaviour
 
     public void PreMitiDmg(float dmg)
     {
-        UpdateHp(dmg);
+        //print(dmg);
+        UpdateHp(-dmg);
     }
     
 }

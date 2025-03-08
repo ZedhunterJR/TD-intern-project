@@ -8,24 +8,29 @@ public class SentryWater : TowerAttack
     {
         var res = Resources.Load<GameObject>("Prefab/projectile_object");
         var proj = Instantiate(res);
-        InitPool(proj, "Water_thrower_bullet", 5);
+        proj.GetComponent<ProjectileAdvanced>().speed = 5f;
+        proj.GetComponent<ProjectileAdvanced>().pierce = 3;
+        InitPool(proj, "Water_thrower_bullet", 24);
     }
-    protected override GameObject GetTarget()
-    {
-        return range.LastTarget();
-    }
+    
     protected override void Attack(GameObject target)
     {
         base.Attack(target);
         //might need pooling for projectile
-        var instance = GetFromPool();
-        ProjectileLibrary.Instance.ProjectileStraightNoHitbox(instance, target);
-        instance.SetActive(true);
-        instance.GetComponent<ProjectileAdvanced>().PreDestruct += () =>
+        for (int i = 0; i < 6; i++)
         {
-            if (target != null || !target.activeSelf)
+            var dir = Quaternion.Euler(0, 0, 60f * i) * Vector2.up;
+            var instance = GetFromPool();
+            ProjectileLibrary.Instance.ProjectileStraight(instance, dir, lifeSpan:0.6f);
+            instance.SetActive(true);
+            var sc = instance.GetComponent<ProjectileAdvanced>();
+            sc.AllEnemies = EnemyManager.Instance.AllEnemies;
+            sc.HitEvent = (target) =>
+            {
+                //print("??");
                 target.GetComponent<EnemyStat>().PreMitiDmg(stat.data.baseDamage);
-            ReturnToPool(instance);
-        };
+            };
+            sc.PreDestruct = () => ReturnToPool(instance);
+        }
     }
 }

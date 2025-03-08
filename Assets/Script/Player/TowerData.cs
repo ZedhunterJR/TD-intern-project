@@ -13,8 +13,8 @@ public class TowerData : ScriptableObject
 
     [Header("Stats")]
     public float baseDamage;
-    public float baseAtkSpd; //attack per sec
-    public float range; //range in point radius
+    [Tooltip("Attacks per second")] public float baseAtkSpd; //attack per sec
+    [Tooltip("Radius in world unit")] public float range; //range in point radius
 
     public string attackScriptName; //derived from TowerAttack.cs
 }

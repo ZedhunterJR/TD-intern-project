@@ -22,28 +22,32 @@ public class ExplosionAdvanced : MonoBehaviour
 
     // Private Variables
     private float lifeSpanCountDown;
+    private int runTimePierce;
+    private float dmgCountDown;
     private List<GameObject> enemiesInRange = new();
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         lifeSpanCountDown = lifeSpan;
+        runTimePierce = pierce;
+        dmgCountDown = delayFirstDmgInstance;
     }
 
     // Update is called once per frame
     void Update()
     {
         lifeSpanCountDown -= Time.deltaTime;
-        delayFirstDmgInstance -= Time.deltaTime;
+        dmgCountDown -= Time.deltaTime;
 
         // Update the enemies in range
         UpdateEnemiesInRange();
 
         // Damage enemies in range at intervals
-        if (delayFirstDmgInstance < 0)
+        if (dmgCountDown < 0)
         {
             DamageEnemies();
-            delayFirstDmgInstance = dmgInterval; // Reset damage interval
+            dmgCountDown = dmgInterval; // Reset damage interval
         }
 
         // Custom update function
@@ -61,9 +65,9 @@ public class ExplosionAdvanced : MonoBehaviour
         float explosionRadiusSqr = explosionRadius * explosionRadius; // Use squared distance for efficiency
         enemiesInRange.Clear(); // Refresh enemies in range
 
-        foreach (var enemy in AllEnemies)
+        foreach (var enemy in new List<GameObject>(AllEnemies))
         {
-            if (enemy == null || !enemy.activeSelf) continue; // Skip null enemies
+            if (!AllEnemies.Contains(enemy)) continue; // Skip null enemies
 
             float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;
             if (sqrDistance <= explosionRadiusSqr) // If within explosion radius
@@ -77,11 +81,13 @@ public class ExplosionAdvanced : MonoBehaviour
     {
         foreach (GameObject enemy in enemiesInRange)
         {
-            if (pierce <= 0) break;
+            if (!AllEnemies.Contains(enemy))
+                continue;
+            if (runTimePierce <= 0) break;
             if (enemy != null)
             {
                 HitEvent?.Invoke(enemy);
-                pierce--;
+                runTimePierce--;
             }
         }
     }

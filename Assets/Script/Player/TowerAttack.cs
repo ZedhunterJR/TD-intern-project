@@ -17,43 +17,40 @@ public class TowerAttack : MonoBehaviour
     protected Range range;
     protected TowerStat stat;
 
-    //pooling projectiles
-    private List<GameObject> projectilePool = new();
-    protected void InitPool(string spineAniType, int num)
-    {
-        var res = Resources.Load<GameObject>("Prefab/projectile_object");
-        for (int i = 0; i < num; i++)
-        {
-            //print("this si bs");
-            var item = Instantiate(res, this.transform);
-            item.GetComponentInChildren<SpineAnimationController>().PlayAnimation(spineAniType);
-            item.SetActive(false);
-            projectilePool.Add(item);
-        }
-
-    }
+    //pooling projectiles, also fuck this, like a tower has several objects to pool: projectile, explosion, vfx etc
+    //no, honestly, fuck this
+    private List<List<GameObject>> projectilePool = new();
 
     /// <summary>
     /// The bullshit SpineAnimation doesn't allow direct copy in runtime, so
     /// have to reapply the skin, otherwise the projectile can have any properties
+    /// Also please don't mess up the poolNumber for god sake, cuz im not making fallback for that
     /// </summary>
     /// <param name="projectile"></param>
     /// <param name="spineAniType"></param>
     /// <param name="num"></param>
     protected void InitPool(GameObject projectile, string spineAniType, int num)
     {
+        projectilePool.Add(new List<GameObject>());
         for (int i = 0; i < num; i++)
         {
             var item = Instantiate(projectile, this.transform);
             item.GetComponentInChildren<SpineAnimationController>().PlayAnimation(spineAniType);
             item.SetActive(false);
-            projectilePool.Add(item);
+            projectilePool[^1].Add(item);
         }
         Destroy(projectile);
     }
-    protected GameObject GetFromPool()
+    protected GameObject GetFromPool(int poolNum = 0)
     {
-        GameObject projGet = projectilePool.Find(x => !x.activeSelf);
+        if (poolNum >= projectilePool.Count)
+        {
+            GameObject fallback = projectilePool[0].Find(x => !x.activeSelf);
+            fallback.transform.position = transform.position;
+            //projGet.SetActive(true);
+            return fallback;
+        }
+        GameObject projGet = projectilePool[poolNum].Find(x => !x.activeSelf);
         projGet.transform.position = transform.position;
         //projGet.SetActive(true);
         return projGet;

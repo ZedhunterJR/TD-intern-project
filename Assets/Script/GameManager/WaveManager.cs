@@ -20,7 +20,8 @@ public class WaveManager : Singleton<WaveManager>
     Wave waveTemp;
     int currentEnemyIndex = 0;
 
-    [SerializeField] Transform[] spawnPoints; // Điểm spawn enemy
+    //[SerializeField] Transform[] spawnPoints; // Điểm spawn enemy 
+    //Not neccesary, enemy already spawn at the PathWaypoint[0]
 
     // Path của file json waveData
     private string path;
@@ -117,7 +118,7 @@ public class WaveManager : Singleton<WaveManager>
             return;
         }
 
-        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        //Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject enemy = PoolManager.Instance.GetEnemyFromPool();
         enemy.GetComponent<EnemyStat>().Init(enemiesDict[enemyName]);
         enemy.SetActive(true);
