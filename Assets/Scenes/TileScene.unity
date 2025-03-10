@@ -198,6 +198,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -481,6 +485,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -562,6 +570,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -701,6 +713,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -782,6 +798,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -1491,6 +1511,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -1873,7 +1897,7 @@ GameObject:
   - component: {fileID: 962780080}
   - component: {fileID: 962780079}
   m_Layer: 0
-  m_Name: WaypointsManager
+  m_Name: PathManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2552,6 +2576,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -2756,6 +2784,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -2837,6 +2869,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -3127,6 +3163,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -3344,6 +3384,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -3425,6 +3469,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -3537,6 +3585,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -3873,6 +3925,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -3954,6 +4010,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 290636456}
     m_Modifications:
+    - target: {fileID: 1153679824816208675, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2992602877458345134, guid: 776f23fafec42e8478f27a98ca3f469c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
