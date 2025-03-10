@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -11,14 +12,17 @@ public class WaveManager : Singleton<WaveManager>
     Dictionary<string, EnemyData> enemiesDict = new Dictionary<string, EnemyData>();
 
     // Wave Attributes 
+    [SerializeField]
     WaveList waveList;
     int currentWave = 0;
     bool isSpawning = false;
     float waveTimer = 0f;
     Wave waveTemp;
+    /*
     //float spawnTimer = 0f;
     //int enemySpawned = 0;
     //int currentEnemyIndex = 0;
+     */ // Spawn lần lượt từ trên xuống 
 
     //New Wave Attibutes
     List<float> spawnTimers = new List<float>();
@@ -30,6 +34,9 @@ public class WaveManager : Singleton<WaveManager>
     // Path của file json waveData
     private string path;
 
+    // Đọc dữ liệu từ file CSV 
+    [SerializeField] TextAsset textAssetData; 
+
     public void OnAwake()
     {
         enemiesData.AddRange(Resources.LoadAll<EnemyData>("EnemyData"));
@@ -38,8 +45,9 @@ public class WaveManager : Singleton<WaveManager>
 
     public void OnStart()
     {
-        SetPath();
-        LoadDataFromJsonToList();
+        //SetPath();
+        //LoadDataFromJsonToList();
+        LoadDataFromCSVToList();
 
         waveTemp = waveList.waves[currentWave];
         waveTimer = waveTemp.startTime;
@@ -68,8 +76,10 @@ public class WaveManager : Singleton<WaveManager>
     void StartWave()
     {
         isSpawning = true;
+        /*
         //enemySpawned = 0;
         //currentEnemyIndex = 0;
+         */ // Spawn lần lượt từ trên xuống 
         waveTemp = waveList.waves[currentWave];
 
         spawnTimers.Clear();
@@ -148,7 +158,7 @@ public class WaveManager : Singleton<WaveManager>
             enemySpawned++;
             spawnTimer = enemyItem.spawnInterval;
         }
-        */
+        */ // Spawn lần lượt từ trên xuống 
     }
 
     void SpawnEnemy(string enemyName)
@@ -215,6 +225,54 @@ public class WaveManager : Singleton<WaveManager>
         */ // Dữ liệu lấy ra từ Json là đúng đắn 
     }
 
+    public void LoadDataFromCSVToList()
+    {
+        if (textAssetData == null)
+        {
+            Debug.LogError("CSV file not assigned!");
+            return;
+        }
+
+        string[] lines = textAssetData.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries); // Loại bỏ dòng trống
+        waveList = new WaveList { waves = new List<Wave>() }; // Khởi tạo danh sách waves
+
+        Wave currentWave = null;
+
+        for (int i = 2; i < lines.Length; i++) // Bỏ qua 2 dòng đầu
+        {
+            string[] data = lines[i].Split(',');
+
+            if (data.Length < 7) continue; // Bỏ qua dòng không hợp lệ
+
+            if (!string.IsNullOrWhiteSpace(data[0])) // Nếu có waveIndex mới => tạo Wave mới
+            {
+                currentWave = new Wave
+                {
+                    waveIndex = int.Parse(data[0].Trim()),
+                    startTime = float.Parse(data[1].Trim()),
+                    enemyGroup = new List<EnemyItem>()
+                };
+
+                waveList.waves.Add(currentWave);
+            }
+
+            // Nếu là enemyGroup (có dữ liệu enemyName)
+            if (!string.IsNullOrWhiteSpace(data[2]) && currentWave != null)
+            {
+                string enemyName = data[2].Trim();
+                int count = int.TryParse(data[3].Trim(), out int c) ? c : 0; // Cố gắng trả về kiểu int nếu đúng thì return c sai thì trả về 0
+                float spawnInterval = float.TryParse(data[4].Trim(), out float si) ? si : 0f;
+                int pathId = int.TryParse(data[5].Trim(), out int p) ? p : 0;
+                float waveInterval = float.TryParse(data[6].Trim(), out float wi) ? wi : 0f;
+
+                currentWave.enemyGroup.Add(new EnemyItem(enemyName, count, spawnInterval, pathId, waveInterval));
+            }
+        }
+
+        Debug.Log("Loaded " + waveList.waves.Count + " waves successfully!");
+    }
+
+
     #endregion
 }
 
@@ -234,6 +292,15 @@ public class EnemyItem
     public float spawnInterval;
     public int pathId;
     public float waveInterval;
+
+    public EnemyItem(string enemyName, int count, float spawnInterval, int pathId, float waveInterval)
+    {
+        this.enemyName = enemyName;
+        this.count = count;
+        this.spawnInterval = spawnInterval;
+        this.pathId = pathId;
+        this.waveInterval = waveInterval;
+    }
 }
 
 [System.Serializable]
