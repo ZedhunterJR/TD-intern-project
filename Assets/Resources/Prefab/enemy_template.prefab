@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
-  initialSkinName: skin1-air
+  skeletonDataAsset: {fileID: 11400000, guid: 7bc0475ebca2c2b4895985b381cd9306, type: 2}
+  initialSkinName: skin2-earth
   initialFlipX: 0
   initialFlipY: 0
   updateWhenInvisible: 3

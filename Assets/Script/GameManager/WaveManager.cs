@@ -14,11 +14,15 @@ public class WaveManager : Singleton<WaveManager>
     WaveList waveList;
     int currentWave = 0;
     bool isSpawning = false;
-    float spawnTimer = 0f;
     float waveTimer = 0f;
-    int enemySpawned = 0;
     Wave waveTemp;
-    int currentEnemyIndex = 0;
+    //float spawnTimer = 0f;
+    //int enemySpawned = 0;
+    //int currentEnemyIndex = 0;
+
+    //New Wave Attibutes
+    List<float> spawnTimers = new List<float>();
+    List<int> enemiesSpawned = new List<int>();
 
     //[SerializeField] Transform[] spawnPoints; // Điểm spawn enemy 
     //Not neccesary, enemy already spawn at the PathWaypoint[0]
@@ -64,9 +68,18 @@ public class WaveManager : Singleton<WaveManager>
     void StartWave()
     {
         isSpawning = true;
-        enemySpawned = 0;
-        currentEnemyIndex = 0;
+        //enemySpawned = 0;
+        //currentEnemyIndex = 0;
         waveTemp = waveList.waves[currentWave];
+
+        spawnTimers.Clear();
+        enemiesSpawned.Clear();
+
+        foreach (EnemyItem enemy in waveTemp.enemyGroup)
+        {
+            spawnTimers.Add(enemy.waveInterval);
+            enemiesSpawned.Add(0);
+        }
 
         Debug.Log($"Bắt đầu Wave {waveTemp.waveIndex}");
     }
@@ -86,14 +99,41 @@ public class WaveManager : Singleton<WaveManager>
 
     void SpawnEnemies()
     {
+        bool allEnemiesSpawned = true;
+
+        for (int i = 0; i < waveTemp.enemyGroup.Count; i++)
+        {
+            EnemyItem enemyItem = waveTemp.enemyGroup[i];
+
+            if (enemiesSpawned[i] < enemyItem.count)
+            {
+                allEnemiesSpawned = false;
+                spawnTimers[i] -= Time.deltaTime;
+
+                if (spawnTimers[i] <= 0)
+                {
+                    SpawnEnemy(enemyItem.enemyName);
+                    enemiesSpawned[i]++;
+                    spawnTimers[i] = enemyItem.spawnInterval;
+                }
+            }
+        }
+
+        if (allEnemiesSpawned)
+        {
+            EndWave();
+        }
+
+
+        /*
         if (currentEnemyIndex >= waveTemp.enemyGroup.Count)
         {
             EndWave();
             return;
-        }
-
+        } 
+         
         EnemyItem enemyItem = waveTemp.enemyGroup[currentEnemyIndex];
-
+         
         if (enemySpawned >= enemyItem.count)
         {
             currentEnemyIndex++;
@@ -108,6 +148,7 @@ public class WaveManager : Singleton<WaveManager>
             enemySpawned++;
             spawnTimer = enemyItem.spawnInterval;
         }
+        */
     }
 
     void SpawnEnemy(string enemyName)

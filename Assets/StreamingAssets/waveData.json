@@ -6,17 +6,17 @@
       "enemyGroup": [
         {
           "enemyName": "test",
-          "count": 10,
-          "spawnInterval": 1.5,
+          "count": 2,
+          "spawnInterval": 1,
           "pathId": 0,
           "waveInterval": 0
         },
         {
           "enemyName": "test 1",
-          "count": 5,
-          "spawnInterval": 2,
+          "count": 2,
+          "spawnInterval": 1,
           "pathId": 0,
-          "waveInterval": 20
+          "waveInterval": 0
         }
       ]
     },
@@ -26,24 +26,24 @@
       "enemyGroup": [
         {
           "enemyName": "test 2",
-          "count": 5,
-          "spawnInterval": 1.5,
+          "count": 2,
+          "spawnInterval": 1,
           "pathId": 0,
           "waveInterval": 0
         },
         {
           "enemyName": "test 3",
-          "count": 5,
-          "spawnInterval": 2,
+          "count": 2,
+          "spawnInterval": 1,
           "pathId": 0,
-          "waveInterval": 30
+          "waveInterval": 5
         },
         {
           "enemyName": "test 4",
-          "count": 5,
-          "spawnInterval": 2,
+          "count": 2,
+          "spawnInterval": 1,
           "pathId": 0,
-          "waveInterval": 50
+          "waveInterval": 0
         }
       ]
     }
