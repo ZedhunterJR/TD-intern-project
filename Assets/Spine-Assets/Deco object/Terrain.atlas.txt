@@ -1,0 +1,111 @@
+
+Terrain.png
+size: 2508,2024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+AS
+  rotate: false
+  xy: 3, 1184
+  size: 834, 834
+  orig: 834, 834
+  offset: 0, 0
+  index: -1
+Cua vao
+  rotate: true
+  xy: 354, 15
+  size: 333, 347
+  orig: 333, 347
+  offset: 0, 0
+  index: -1
+Cua vao (1)
+  rotate: false
+  xy: 3, 13
+  size: 348, 335
+  orig: 348, 335
+  offset: 0, 0
+  index: -1
+Cua vao (2)
+  rotate: true
+  xy: 836, 3
+  size: 349, 383
+  orig: 349, 383
+  offset: 0, 0
+  index: -1
+Cua vao (3)
+  rotate: true
+  xy: 1222, 19
+  size: 333, 343
+  orig: 333, 343
+  offset: 0, 0
+  index: -1
+Cua vao (4)
+  rotate: true
+  xy: 1568, 19
+  size: 333, 343
+  orig: 333, 343
+  offset: 0, 0
+  index: -1
+Cua vao (5)
+  rotate: false
+  xy: 1914, 29
+  size: 349, 323
+  orig: 349, 323
+  offset: 0, 0
+  index: -1
+Layer 2
+  rotate: false
+  xy: 2266, 192
+  size: 59, 160
+  orig: 59, 160
+  offset: 0, 0
+  index: -1
+Layer 3
+  rotate: false
+  xy: 704, 222
+  size: 111, 126
+  orig: 111, 126
+  offset: 0, 0
+  index: -1
+OBJECTS
+  rotate: false
+  xy: 704, 8
+  size: 86, 211
+  orig: 86, 211
+  offset: 0, 0
+  index: -1
+XAOY
+  rotate: false
+  xy: 840, 1188
+  size: 830, 830
+  orig: 830, 830
+  offset: 0, 0
+  index: -1
+XOAY (2)
+  rotate: false
+  xy: 840, 355
+  size: 830, 830
+  orig: 830, 830
+  offset: 0, 0
+  index: -1
+XOAY (3)
+  rotate: false
+  xy: 3, 351
+  size: 830, 830
+  orig: 830, 830
+  offset: 0, 0
+  index: -1
+XOAy (1)
+  rotate: false
+  xy: 1673, 1188
+  size: 830, 830
+  orig: 830, 830
+  offset: 0, 0
+  index: -1
+Xoay
+  rotate: false
+  xy: 1673, 355
+  size: 830, 830
+  orig: 830, 830
+  offset: 0, 0
+  index: -1

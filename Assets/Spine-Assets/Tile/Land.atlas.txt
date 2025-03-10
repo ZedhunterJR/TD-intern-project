@@ -1,0 +1,832 @@
+
+Land.png
+size: 1684,652
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Anti gravity/DG01 copy 9
+  rotate: false
+  xy: 576, 364
+  size: 139, 136
+  orig: 139, 136
+  offset: 0, 0
+  index: -1
+Anti gravity/Layer 153
+  rotate: true
+  xy: 840, 499
+  size: 150, 169
+  orig: 150, 169
+  offset: 0, 0
+  index: -1
+Anti gravity/Layer 208
+  rotate: true
+  xy: 1460, 3
+  size: 80, 73
+  orig: 80, 73
+  offset: 0, 0
+  index: -1
+Anti gravity/Layer 208 copy
+  rotate: false
+  xy: 455, 36
+  size: 42, 38
+  orig: 42, 38
+  offset: 0, 0
+  index: -1
+Anti gravity/Layer 215
+  rotate: false
+  xy: 408, 30
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+Anti gravity/Layer 216
+  rotate: false
+  xy: 1593, 14
+  size: 45, 44
+  orig: 45, 44
+  offset: 0, 0
+  index: -1
+Anti gravity/Layer 217
+  rotate: true
+  xy: 1220, 3
+  size: 54, 58
+  orig: 54, 58
+  offset: 0, 0
+  index: -1
+Anti gravity/Layer 218
+  rotate: true
+  xy: 1641, 15
+  size: 43, 40
+  orig: 43, 40
+  offset: 0, 0
+  index: -1
+Anti gravity/Layer 219
+  rotate: true
+  xy: 1281, 3
+  size: 54, 51
+  orig: 54, 51
+  offset: 0, 0
+  index: -1
+Crystal field/Layer 157
+  rotate: true
+  xy: 1238, 195
+  size: 74, 107
+  orig: 74, 107
+  offset: 0, 0
+  index: -1
+Crystal field/Layer 157 copy
+  rotate: false
+  xy: 402, 216
+  size: 139, 136
+  orig: 139, 136
+  offset: 0, 0
+  index: -1
+Crystal field/Layer 157 copy 3
+  rotate: false
+  xy: 1460, 86
+  size: 81, 90
+  orig: 81, 90
+  offset: 0, 0
+  index: -1
+Crystal field/Layer 157 copy 4
+  rotate: false
+  xy: 273, 360
+  size: 151, 147
+  orig: 151, 147
+  offset: 0, 0
+  index: -1
+Crystal field/Layer 157 copy 5
+  rotate: false
+  xy: 950, 3
+  size: 97, 31
+  orig: 97, 31
+  offset: 0, 0
+  index: -1
+Dirty mist/Group 54 copy 4
+  rotate: false
+  xy: 699, 274
+  size: 58, 38
+  orig: 58, 38
+  offset: 0, 0
+  index: -1
+Dirty mist/Layer 193
+  rotate: false
+  xy: 576, 315
+  size: 139, 46
+  orig: 139, 46
+  offset: 0, 0
+  index: -1
+Dirty mist/Layer 194
+  rotate: true
+  xy: 349, 36
+  size: 86, 30
+  orig: 86, 30
+  offset: 0, 0
+  index: -1
+Dirty mist/Layer 197 copy
+  rotate: true
+  xy: 349, 36
+  size: 86, 30
+  orig: 86, 30
+  offset: 0, 0
+  index: -1
+Dirty mist/Layer 195
+  rotate: true
+  xy: 1012, 491
+  size: 158, 166
+  orig: 158, 166
+  offset: 0, 0
+  index: -1
+Dirty mist/Layer 199
+  rotate: false
+  xy: 1209, 197
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Dirty mist/Layer 200
+  rotate: false
+  xy: 209, 3
+  size: 13, 12
+  orig: 13, 12
+  offset: 0, 0
+  index: -1
+Dirty mist/Layer 201
+  rotate: false
+  xy: 544, 274
+  size: 152, 38
+  orig: 152, 38
+  offset: 0, 0
+  index: -1
+Ice lake/DG01 copy 13
+  rotate: true
+  xy: 1181, 508
+  size: 141, 168
+  orig: 141, 168
+  offset: 0, 0
+  index: -1
+Ice lake/IC01_0
+  rotate: true
+  xy: 480, 503
+  size: 146, 177
+  orig: 146, 177
+  offset: 0, 0
+  index: -1
+Ice lake/Ice lake_0
+  rotate: true
+  xy: 660, 503
+  size: 146, 177
+  orig: 146, 177
+  offset: 0, 0
+  index: -1
+Lava/Layer 146
+  rotate: false
+  xy: 833, 360
+  size: 139, 136
+  orig: 139, 136
+  offset: 0, 0
+  index: -1
+Lava/Layer 155
+  rotate: true
+  xy: 816, 255
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+Lava/Layer 156
+  rotate: false
+  xy: 1243, 491
+  size: 13, 14
+  orig: 13, 14
+  offset: 0, 0
+  index: -1
+Lava/Layer 157
+  rotate: false
+  xy: 225, 3
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+Lava/Layer 158
+  rotate: false
+  xy: 391, 19
+  size: 14, 16
+  orig: 14, 16
+  offset: 0, 0
+  index: -1
+Lava/Layer 159
+  rotate: false
+  xy: 786, 255
+  size: 12, 11
+  orig: 12, 11
+  offset: 0, 0
+  index: -1
+Lava/lava_bubble
+  rotate: false
+  xy: 500, 41
+  size: 38, 33
+  orig: 38, 33
+  offset: 0, 0
+  index: -1
+Lava/lava_ex2
+  rotate: true
+  xy: 382, 94
+  size: 28, 23
+  orig: 28, 23
+  offset: 0, 0
+  index: -1
+Lava/lava_ex3
+  rotate: true
+  xy: 382, 64
+  size: 27, 23
+  orig: 27, 23
+  offset: 0, 0
+  index: -1
+Mine field/Group 48
+  rotate: true
+  xy: 718, 346
+  size: 154, 112
+  orig: 154, 112
+  offset: 0, 0
+  index: -1
+Mine field/Layer 156
+  rotate: false
+  xy: 3, 9
+  size: 180, 147
+  orig: 180, 147
+  offset: 0, 0
+  index: -1
+Mine field/Layer 160
+  rotate: true
+  xy: 427, 355
+  size: 145, 146
+  orig: 145, 146
+  offset: 0, 0
+  index: -1
+Mine field/Layer 161
+  rotate: true
+  xy: 1621, 113
+  size: 63, 39
+  orig: 63, 39
+  offset: 0, 0
+  index: -1
+Mine field/Layer 162
+  rotate: true
+  xy: 1646, 72
+  size: 38, 35
+  orig: 38, 35
+  offset: 0, 0
+  index: -1
+Mine field/Layer 163
+  rotate: true
+  xy: 1420, 37
+  size: 38, 36
+  orig: 38, 36
+  offset: 0, 0
+  index: -1
+Mine field/Layer 164
+  rotate: false
+  xy: 1420, 11
+  size: 21, 23
+  orig: 21, 23
+  offset: 0, 0
+  index: -1
+Mine field/Layer 165
+  rotate: false
+  xy: 382, 38
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: -1
+Pond/Layer 185
+  rotate: false
+  xy: 975, 352
+  size: 139, 136
+  orig: 139, 136
+  offset: 0, 0
+  index: -1
+Pond/Layer 190
+  rotate: true
+  xy: 1166, 170
+  size: 74, 40
+  orig: 74, 40
+  offset: 0, 0
+  index: -1
+Pond/Layer 192
+  rotate: false
+  xy: 248, 360
+  size: 18, 17
+  orig: 18, 17
+  offset: 0, 0
+  index: -1
+Pond/Layer 194
+  rotate: false
+  xy: 820, 10
+  size: 127, 110
+  orig: 127, 110
+  offset: 0, 0
+  index: -1
+Pond/Layer 198
+  rotate: true
+  xy: 541, 67
+  size: 7, 6
+  orig: 7, 6
+  offset: 0, 0
+  index: -1
+Pond/Layer 199
+  rotate: false
+  xy: 1536, 3
+  size: 10, 6
+  orig: 10, 6
+  offset: 0, 0
+  index: -1
+Pond/Layer 200
+  rotate: true
+  xy: 1673, 631
+  size: 18, 8
+  orig: 18, 8
+  offset: 0, 0
+  index: -1
+Pond/Layer 201
+  rotate: false
+  xy: 1191, 24
+  size: 21, 10
+  orig: 21, 10
+  offset: 0, 0
+  index: -1
+Pond/Layer 202
+  rotate: false
+  xy: 718, 324
+  size: 34, 19
+  orig: 34, 19
+  offset: 0, 0
+  index: -1
+Pond/Layer 203
+  rotate: false
+  xy: 1601, 61
+  size: 42, 46
+  orig: 42, 46
+  offset: 0, 0
+  index: -1
+Pond/Layer 204
+  rotate: false
+  xy: 764, 255
+  size: 19, 11
+  orig: 19, 11
+  offset: 0, 0
+  index: -1
+Pond/Layer 205
+  rotate: false
+  xy: 1050, 9
+  size: 56, 25
+  orig: 56, 25
+  offset: 0, 0
+  index: -1
+Pond/Layer 206
+  rotate: true
+  xy: 1203, 146
+  size: 21, 14
+  orig: 21, 14
+  offset: 0, 0
+  index: -1
+Pond/Layer 207
+  rotate: true
+  xy: 1238, 278
+  size: 34, 13
+  orig: 34, 13
+  offset: 0, 0
+  index: -1
+Pond/Layer 208
+  rotate: false
+  xy: 1166, 150
+  size: 34, 17
+  orig: 34, 17
+  offset: 0, 0
+  index: -1
+Pond/Layer 209
+  rotate: false
+  xy: 1238, 315
+  size: 18, 34
+  orig: 18, 34
+  offset: 0, 0
+  index: -1
+Pond/Layer 210
+  rotate: true
+  xy: 186, 3
+  size: 12, 20
+  orig: 12, 20
+  offset: 0, 0
+  index: -1
+Pond/Layer 211
+  rotate: true
+  xy: 1214, 491
+  size: 14, 26
+  orig: 14, 26
+  offset: 0, 0
+  index: -1
+Sand storm/DG01 copy 3
+  rotate: false
+  xy: 408, 77
+  size: 139, 136
+  orig: 139, 136
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 174 copy - Smart Object Group
+  rotate: false
+  xy: 764, 123
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 175
+  rotate: true
+  xy: 1352, 504
+  size: 145, 160
+  orig: 145, 160
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 176
+  rotate: false
+  xy: 1544, 61
+  size: 54, 46
+  orig: 54, 46
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 177
+  rotate: false
+  xy: 1335, 10
+  size: 82, 65
+  orig: 82, 65
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 178
+  rotate: false
+  xy: 1536, 12
+  size: 54, 46
+  orig: 54, 46
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 179
+  rotate: false
+  xy: 186, 125
+  size: 37, 31
+  orig: 37, 31
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 179 copy
+  rotate: false
+  xy: 186, 125
+  size: 37, 31
+  orig: 37, 31
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 182
+  rotate: false
+  xy: 3, 380
+  size: 267, 269
+  orig: 267, 269
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 183
+  rotate: false
+  xy: 1181, 491
+  size: 30, 14
+  orig: 30, 14
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 184
+  rotate: false
+  xy: 896, 126
+  size: 49, 13
+  orig: 49, 13
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 185
+  rotate: true
+  xy: 487, 11
+  size: 22, 10
+  orig: 22, 10
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 186
+  rotate: false
+  xy: 226, 141
+  size: 19, 15
+  orig: 19, 15
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 187
+  rotate: false
+  xy: 764, 111
+  size: 10, 9
+  orig: 10, 9
+  offset: 0, 0
+  index: -1
+Sand storm/Layer 188
+  rotate: false
+  xy: 801, 255
+  size: 12, 11
+  orig: 12, 11
+  offset: 0, 0
+  index: -1
+Snow field/DG01 copy 12
+  rotate: false
+  xy: 248, 214
+  size: 151, 143
+  orig: 151, 143
+  offset: 0, 0
+  index: -1
+Snow field/Layer 1
+  rotate: false
+  xy: 1646, 61
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+Static/Layer 154
+  rotate: true
+  xy: 764, 269
+  size: 74, 66
+  orig: 74, 66
+  offset: 0, 0
+  index: -1
+Static/Layer 154 copy 2
+  rotate: true
+  xy: 764, 269
+  size: 74, 66
+  orig: 74, 66
+  offset: 0, 0
+  index: -1
+Static/Layer 154 copy 3
+  rotate: true
+  xy: 764, 269
+  size: 74, 66
+  orig: 74, 66
+  offset: 0, 0
+  index: -1
+Static/Layer 154 copy
+  rotate: false
+  xy: 1544, 110
+  size: 74, 66
+  orig: 74, 66
+  offset: 0, 0
+  index: -1
+Static/Layer 204
+  rotate: false
+  xy: 3, 159
+  size: 242, 218
+  orig: 242, 218
+  offset: 0, 0
+  index: -1
+Static/Layer 212
+  rotate: true
+  xy: 544, 322
+  size: 30, 29
+  orig: 30, 29
+  offset: 0, 0
+  index: -1
+Static/Layer 212 copy
+  rotate: true
+  xy: 455, 3
+  size: 30, 29
+  orig: 30, 29
+  offset: 0, 0
+  index: -1
+Static/Layer 212 copy 2
+  rotate: true
+  xy: 455, 3
+  size: 30, 29
+  orig: 30, 29
+  offset: 0, 0
+  index: -1
+Static/Layer 212 copy 5
+  rotate: true
+  xy: 455, 3
+  size: 30, 29
+  orig: 30, 29
+  offset: 0, 0
+  index: -1
+Static/Layer 212 copy 3
+  rotate: true
+  xy: 1209, 216
+  size: 28, 26
+  orig: 28, 26
+  offset: 0, 0
+  index: -1
+Static/Layer 212 copy 4
+  rotate: true
+  xy: 1109, 4
+  size: 30, 38
+  orig: 30, 38
+  offset: 0, 0
+  index: -1
+Static/elec_00
+  rotate: false
+  xy: 550, 6
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Static/elec_01
+  rotate: false
+  xy: 685, 6
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Static/elec_02
+  rotate: false
+  xy: 833, 255
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Static/elec_03
+  rotate: false
+  xy: 968, 247
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Static/elec_04
+  rotate: false
+  xy: 1103, 247
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Static/elec_05
+  rotate: false
+  xy: 896, 142
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Static/elec_06
+  rotate: false
+  xy: 1031, 142
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Static/elec_07
+  rotate: false
+  xy: 950, 37
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Static/elec_08
+  rotate: false
+  xy: 1085, 37
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Static/elec_09
+  rotate: true
+  xy: 1220, 60
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Static/elec_11
+  rotate: false
+  xy: 1325, 78
+  size: 132, 102
+  orig: 132, 102
+  offset: 0, 0
+  index: -1
+Swamp/Swamp
+  rotate: true
+  xy: 1515, 500
+  size: 149, 155
+  orig: 149, 155
+  offset: 0, 0
+  index: -1
+Swamp/lava_bubble
+  rotate: false
+  xy: 500, 5
+  size: 38, 33
+  orig: 38, 33
+  offset: 0, 0
+  index: -1
+Swamp/lava_ex2
+  rotate: false
+  xy: 349, 3
+  size: 39, 30
+  orig: 39, 30
+  offset: 0, 0
+  index: -1
+Swamp/lava_ex3
+  rotate: false
+  xy: 1150, 4
+  size: 38, 30
+  orig: 38, 30
+  offset: 0, 0
+  index: -1
+Thunder storm/Group 62
+  rotate: false
+  xy: 1117, 352
+  size: 139, 136
+  orig: 139, 136
+  offset: 0, 0
+  index: -1
+Thunder storm/Layer 193
+  rotate: false
+  xy: 273, 510
+  size: 204, 139
+  orig: 204, 139
+  offset: 0, 0
+  index: -1
+Thunder storm/Layer 196 copy
+  rotate: true
+  xy: 1259, 390
+  size: 115, 86
+  orig: 115, 86
+  offset: 0, 0
+  index: -1
+Thunder storm/Layer 196 copy 2
+  rotate: true
+  xy: 1259, 272
+  size: 115, 86
+  orig: 115, 86
+  offset: 0, 0
+  index: -1
+Thunder storm/Layer 214
+  rotate: false
+  xy: 248, 125
+  size: 157, 86
+  orig: 157, 86
+  offset: 0, 0
+  index: -1
+Thunder storm/vfx_00
+  rotate: true
+  xy: 186, 18
+  size: 104, 160
+  orig: 104, 160
+  offset: 0, 0
+  index: -1
+Thunder storm/vfx_01
+  rotate: true
+  xy: 186, 18
+  size: 104, 160
+  orig: 104, 160
+  offset: 0, 0
+  index: -1
+Thunder storm/vfx_02
+  rotate: true
+  xy: 1348, 397
+  size: 104, 160
+  orig: 104, 160
+  offset: 0, 0
+  index: -1
+Thunder storm/vfx_03
+  rotate: true
+  xy: 1511, 393
+  size: 104, 160
+  orig: 104, 160
+  offset: 0, 0
+  index: -1
+Thunder storm/vfx_04
+  rotate: true
+  xy: 1348, 290
+  size: 104, 160
+  orig: 104, 160
+  offset: 0, 0
+  index: -1
+Thunder storm/vfx_05
+  rotate: true
+  xy: 1511, 286
+  size: 104, 160
+  orig: 104, 160
+  offset: 0, 0
+  index: -1
+Thunder storm/vfx_06
+  rotate: true
+  xy: 1348, 183
+  size: 104, 160
+  orig: 104, 160
+  offset: 0, 0
+  index: -1
+Thunder storm/vfx_08
+  rotate: true
+  xy: 1511, 179
+  size: 104, 160
+  orig: 104, 160
+  offset: 0, 0
+  index: -1
+Thunder storm/vfx_12
+  rotate: false
+  xy: 550, 111
+  size: 104, 160
+  orig: 104, 160
+  offset: 0, 0
+  index: -1
+Thunder storm/vfx_14
+  rotate: false
+  xy: 657, 111
+  size: 104, 160
+  orig: 104, 160
+  offset: 0, 0
+  index: -1
