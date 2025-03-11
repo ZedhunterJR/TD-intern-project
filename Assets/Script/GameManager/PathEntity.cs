@@ -10,11 +10,12 @@ public class PathEntity : MonoBehaviour
 
     private PathType currentPathType = PathType.None;
     public PathType CurrentPathType => currentPathType;
-    private void Awake()
+    public void Awake()
     {
+        currentPathType = PathType.None;
         spineAniCon = GetComponentInChildren<SpineAnimationController>();
         defaultSprite = transform.Find("default_sprite").gameObject;
-        SetGraphic(PathType.None);
+        SetGraphic(currentPathType);
     }
     private void SetGraphic(PathType pathType)
     {

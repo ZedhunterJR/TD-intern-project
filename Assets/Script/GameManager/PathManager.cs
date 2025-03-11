@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PathManager : Singleton<PathManager>
 {
+    public List<PathEntity> pathList = new List<PathEntity>(); 
     public Dictionary<Vector2, PathEntity> PathEntityDictionary = new();
+
+    public void OnAwake()
+    {
+        
+    }
 
     public void Init(List<GameObject> pathEntities)
     {
@@ -14,6 +20,8 @@ public class PathManager : Singleton<PathManager>
             var objClass = entity.GetComponent<PathEntity>();
             PathEntityDictionary.Add(entity.transform.position, objClass);
         }
+
+        Debug.Log(PathEntityDictionary);
     }
 
     public PathEntity GetCurrentStandingPath(Vector2 pos)
@@ -33,5 +41,15 @@ public class PathManager : Singleton<PathManager>
     public void UndoPathEffect(GameObject enemy, PathType pathType)
     {
 
+    }
+
+    public void AddPath(PathEntity path)
+    {
+        pathList.Add(path);
+    }
+
+    public void RemovePath(PathEntity path)
+    {
+        pathList.Remove(path);
     }
 }

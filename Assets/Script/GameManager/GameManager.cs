@@ -9,6 +9,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] PoolManager poolManager;
     [SerializeField] UIManager uiManager;
     [SerializeField] WaveManager waveManager;
+    [SerializeField] PathManager pathManager;
 
     // Win/Lose Condition 
     [Header("Win / Lose Condition")]
@@ -28,6 +29,8 @@ public class GameManager : Singleton<GameManager>
 
             if (waveManager != null)
                 waveManager.OnAwake();
+            if (pathManager != null)
+                pathManager.OnAwake();
         }
     }
 
