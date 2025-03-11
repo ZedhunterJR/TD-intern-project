@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class PathManager : Singleton<PathManager>
 {
-    public List<PathEntity> pathList = new List<PathEntity>(); 
     public Dictionary<Vector2, PathEntity> PathEntityDictionary = new();
-
-    public void OnAwake()
-    {
-        
-    }
 
     public void Init(List<GameObject> pathEntities)
     {
@@ -21,35 +15,35 @@ public class PathManager : Singleton<PathManager>
             PathEntityDictionary.Add(entity.transform.position, objClass);
         }
 
-        Debug.Log(PathEntityDictionary);
+        //temp, remove later
+        var ranPath = PathEntityDictionary.GetRandomValue();
+        ranPath.InflictLandMaking(PathType.Lava);
     }
 
-    public PathEntity GetCurrentStandingPath(Vector2 pos)
+    public PathType GetCurrentStandingPath(Vector2 pos)
     {
-        //convert that pos into closet path position, not finished yet
-        var pathPos = pos;
-
-        return PathEntityDictionary[pathPos];
+        try
+        {
+            return PathEntityDictionary[pos].CurrentPathType;
+        }
+        catch 
+        {
+            //Debug.LogError("somehow this happen?" + pos);
+            return PathType.None;
+        }
     }
 
     //when enemy first enter path
     public void ApplyPathEffect(GameObject enemy, PathType pathType)
     {
-
+        if (pathType == PathType.Lava)
+            print("entering lava");
     }
     //when enemy leave path
     public void UndoPathEffect(GameObject enemy, PathType pathType)
     {
+        if (pathType == PathType.Lava)
+            print("leaving lava");
 
-    }
-
-    public void AddPath(PathEntity path)
-    {
-        pathList.Add(path);
-    }
-
-    public void RemovePath(PathEntity path)
-    {
-        pathList.Remove(path);
     }
 }

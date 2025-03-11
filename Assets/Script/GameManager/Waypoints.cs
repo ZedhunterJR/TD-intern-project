@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
 
 public class Waypoints : MonoBehaviour
 {
     public List<WaypointPath> waypoints = new();
     [SerializeField] List<Vector2Int> points = new();
-    [SerializeField] GameObject terrainPrefab;
+    [SerializeField] GameObject pathPrefab;
+    [SerializeField] List<GameObject> pathList = new();
 
     public int num;
 
@@ -41,7 +43,9 @@ public class Waypoints : MonoBehaviour
 
     public void GeneratePath()
     {
-        for (int i = 0; i < points.Count -1; i++)
+        //print(points[0]);
+        pathList = new();
+        for (int i = 0; i < points.Count - 1; i++)
         {
             Vector2Int start = points[i];
             Vector2Int end = points[(i + 1)];
@@ -51,9 +55,10 @@ public class Waypoints : MonoBehaviour
                 int minY = Mathf.Min(start.y, end.y);
                 int maxY = Mathf.Max(start.y, end.y);
 
-                for (int y = minY; y <= maxY; y++)
+                for (int y = minY + 1; y < maxY; y++)
                 {
-                    Instantiate(terrainPrefab, new Vector3(start.x, y, 0), Quaternion.identity);
+                    GameObject path = Instantiate(pathPrefab, new Vector3(start.x, y, 0), Quaternion.identity);
+                    pathList.Add(path);
                 }
             }
             else if (start.y == end.y) // Đi theo trục X
@@ -61,12 +66,21 @@ public class Waypoints : MonoBehaviour
                 int minX = Mathf.Min(start.x, end.x);
                 int maxX = Mathf.Max(start.x, end.x);
 
-                for (int x = minX; x <= maxX; x++)
+                for (int x = minX + 1; x < maxX; x++)
                 {
-                    Instantiate(terrainPrefab, new Vector3(x, start.y, 0), Quaternion.identity);
+                    GameObject path = Instantiate(pathPrefab, new Vector3(x, start.y, 0), Quaternion.identity);
+                    pathList.Add(path);
                 }
             }
         }
+
+        foreach (var item in points)
+        {
+            GameObject path = Instantiate(pathPrefab, new Vector3(item.x, item.y), Quaternion.identity);
+            pathList.Add(path);
+        }
+
+        PathManager.Instance.Init(pathList);
     }
 
     List<Vector2Int> ConvertToIntPoints(List<Vector2> vector2List)

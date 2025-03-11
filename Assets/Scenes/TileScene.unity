@@ -682,6 +682,7 @@ MonoBehaviour:
   poolManager: {fileID: 371978929}
   uiManager: {fileID: 2130264505}
   waveManager: {fileID: 102559401}
+  pathManager: {fileID: 0}
   baseHealth: 3
   healthBar: {fileID: 397151991}
 --- !u!4 &201356262
@@ -2008,7 +2009,8 @@ MonoBehaviour:
     - {x: 3, y: -2}
     - {x: 1, y: -2}
   points: []
-  terrainPrefab: {fileID: 3353702864299163311, guid: fa4f145ccfe824242b035e8a8daee519, type: 3}
+  pathPrefab: {fileID: 3353702864299163311, guid: fa4f145ccfe824242b035e8a8daee519, type: 3}
+  pathList: []
   num: 0
 --- !u!4 &962780081
 Transform:

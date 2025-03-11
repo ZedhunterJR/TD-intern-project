@@ -29,8 +29,8 @@ public class GameManager : Singleton<GameManager>
 
             if (waveManager != null)
                 waveManager.OnAwake();
-            if (pathManager != null)
-                pathManager.OnAwake();
+            //if (pathManager != null)
+            //    pathManager.OnAwake();
         }
     }
 

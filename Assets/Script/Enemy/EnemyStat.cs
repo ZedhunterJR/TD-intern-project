@@ -17,6 +17,9 @@ public class EnemyStat : MonoBehaviour
 
     public Action<Vector2> PreDestruction;
 
+    private Vector2 currentPositionInAbs = new Vector2(-69, 42);
+    private PathType currentStandingPathType = PathType.None;
+
     //ref
     private GameObject hpBarCover;
     private WaveMove moveScript;
@@ -87,6 +90,8 @@ public class EnemyStat : MonoBehaviour
             }
             
         }
+
+        UpdatePathPosition();
     }
     public void UpdateHp(float value)
     {
@@ -110,7 +115,37 @@ public class EnemyStat : MonoBehaviour
         //print(dmg);
         UpdateHp(-dmg);
     }
-    
+
+    public void UpdatePathPosition(float gridSize = 1f)
+    {
+        Vector2 pos = transform.position;
+        Vector2 snappedPos = GetNearestTileCenter(pos, gridSize);
+
+        if (snappedPos == currentPositionInAbs)
+            return;
+
+        // Continue
+        var pathManager = PathManager.Instance;
+        var pType = pathManager.GetCurrentStandingPath(snappedPos);
+        currentPositionInAbs = snappedPos;
+
+        if (pType == currentStandingPathType)
+            return;
+
+        // And continue
+        pathManager.UndoPathEffect(this.gameObject, currentStandingPathType);
+        pathManager.ApplyPathEffect(gameObject, pType);
+        currentStandingPathType = pType;
+    }
+
+    // Helper method to get the nearest tile center
+    private Vector2 GetNearestTileCenter(Vector2 position, float tileSize)
+    {
+        float tileX = Mathf.Round(position.x / tileSize) * tileSize;
+        float tileY = Mathf.Round(position.y / tileSize) * tileSize;
+        return new Vector2(tileX, tileY);
+    }
+
 }
 
 //move here for easier managing

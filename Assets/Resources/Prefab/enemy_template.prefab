@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a37d1d6cece4c1c48910037ed2b2dd99, type: 2}
+  - {fileID: 2100000, guid: 6d92bd75753ca6a4e876ad7bce9aa15c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 964877fd537e3ce4cabd22574b65f9d2, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
   initialSkinName: skin2-earth
   initialFlipX: 0
   initialFlipY: 0
