@@ -45,9 +45,9 @@ public class WaveManager : Singleton<WaveManager>
 
     public void OnStart()
     {
-        //SetPath();
-        //LoadDataFromJsonToList();
-        LoadDataFromCSVToList();
+        SetPath();
+        LoadDataFromJsonToList();
+        //LoadDataFromCSVToList();
 
         waveTemp = waveList.waves[currentWave];
         waveTimer = waveTemp.startTime;
@@ -224,7 +224,7 @@ public class WaveManager : Singleton<WaveManager>
         //}
         */ // Dữ liệu lấy ra từ Json là đúng đắn 
     }
-
+    /*
     public void LoadDataFromCSVToList()
     {
         if (textAssetData == null)
@@ -271,7 +271,7 @@ public class WaveManager : Singleton<WaveManager>
 
         Debug.Log("Loaded " + waveList.waves.Count + " waves successfully!");
     }
-
+    */
 
     #endregion
 }

@@ -14,6 +14,7 @@ public class PathEntity : MonoBehaviour
     {
         spineAniCon = GetComponentInChildren<SpineAnimationController>();
         defaultSprite = transform.Find("default_sprite").gameObject;
+        SetGraphic(PathType.None);
     }
     private void SetGraphic(PathType pathType)
     {
