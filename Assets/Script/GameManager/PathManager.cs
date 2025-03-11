@@ -36,14 +36,45 @@ public class PathManager : Singleton<PathManager>
     //when enemy first enter path
     public void ApplyPathEffect(GameObject enemy, PathType pathType)
     {
-        if (pathType == PathType.Lava)
-            print("entering lava");
+        switch (pathType)
+        {
+            case PathType.None:
+                break;
+            case PathType.Lava:
+                print("entering lava");
+                break;
+            case PathType.Pond:
+                break;
+            case PathType.DirtyMist:
+                break;
+            case PathType.CrystalField:
+                break;
+            case PathType.Swamp:
+                break;
+            default:
+                break;
+        }
     }
     //when enemy leave path
     public void UndoPathEffect(GameObject enemy, PathType pathType)
     {
-        if (pathType == PathType.Lava)
-            print("leaving lava");
-
+        switch (pathType)
+        {
+            case PathType.None:
+                break;
+            case PathType.Lava:
+                print("leaving lava");
+                break;
+            case PathType.Pond:
+                break;
+            case PathType.DirtyMist:
+                break;
+            case PathType.CrystalField:
+                break;
+            case PathType.Swamp:
+                break;
+            default:
+                break;
+        }
     }
 }

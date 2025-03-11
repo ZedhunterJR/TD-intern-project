@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 public class WaveManager : Singleton<WaveManager>
 {
@@ -206,23 +207,48 @@ public class WaveManager : Singleton<WaveManager>
 
     public void LoadDataFromJsonToList()
     {
+        if (!File.Exists(path))
+        {
+            Debug.LogError($"File không tồn tại: {path}");
+            return;
+        }
+
         using StreamReader reader = new StreamReader(path);
-        string json = reader.ReadToEnd();
+        string json = reader.ReadToEnd().Trim();
 
-        WaveList waveListJson = JsonUtility.FromJson<WaveList>(json);
-        waveList = waveListJson;
+        try
+        {
+            // Parse JSON vào danh sách waveList
+            WaveList waveListJson = JsonUtility.FromJson<WaveList>(json);
 
-        /*
-        //foreach (Wave wave in waveList.waves) Đã test và hoạt động thành công 
-        //{
-        //    Debug.Log($"Đây là wave thứ {wave.waveIndex} = Thời gian bắt đầu {wave.startTime} = EnemyGruop là {wave.enemyGroup}");
+            if (waveListJson != null)
+            {
+                // Loại bỏ khoảng trắng ở đầu và cuối của tất cả chuỗi trong dữ liệu
+                CleanWaveList(waveListJson);
 
-        //    foreach (var enemy in wave.enemyGroup)
-        //    {
-        //        Debug.Log($"Data {enemy.enemyName} = {enemy.count} = {enemy.spawnInterval} = {enemy.waveInterval}");
-        //    }
-        //}
-        */ // Dữ liệu lấy ra từ Json là đúng đắn 
+                waveList = waveListJson;
+                Debug.Log("Dữ liệu đã load thành công.");
+            }
+            else
+            {
+                Debug.LogError("JSON không thể chuyển đổi sang WaveList.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Lỗi khi parse JSON: {ex.Message}");
+        }
+    }
+
+    private void CleanWaveList(WaveList waveList)
+    {
+        foreach (var wave in waveList.waves)
+        {
+            foreach (var enemy in wave.enemyGroup)
+            {
+                enemy.enemyName = enemy.enemyName.Trim();
+            }
+        }
     }
 
     public void LoadDataFromCSVToList()
