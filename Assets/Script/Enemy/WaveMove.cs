@@ -6,7 +6,7 @@ using UnityEngine;
 public class WaveMove : MonoBehaviour
 {
     private Action OnEnemyExit = null;
-    private List<Vector2> waypoints = new List<Vector2>();
+    [SerializeField] private List<Vector2> waypoints = new List<Vector2>();
     private float ranMod = 0;
     private Vector2 currentWaypointPos;
     private int waypointIndex = 0;
@@ -91,11 +91,11 @@ public class WaveMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
-    void Update()
+    public void OnUpdate()
     {
         //moveSpeed = GetComponent<EnemyStat>().moveSpeed;
         if (waypointIndex < waypoints.Count)

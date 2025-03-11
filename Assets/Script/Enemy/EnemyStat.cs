@@ -58,7 +58,7 @@ public class EnemyStat : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void OnUpdate()
     {
         if (!immuneToDebuff)
         {

@@ -16,7 +16,16 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void OnUpdate()
     {
+        AllEnemiesAction();
+    }
 
+    void AllEnemiesAction()
+    {
+        foreach (var enemy in allEnemies.ToArray())
+        {
+            enemy.GetComponent<WaveMove>().OnUpdate();
+            enemy.GetComponent<EnemyStat>().OnUpdate();
+        }
     }
 
     public void AddEnemy(GameObject enemy)
