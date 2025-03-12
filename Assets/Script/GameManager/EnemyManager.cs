@@ -11,7 +11,10 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void OnStart()
     {
-
+        foreach (var enemy in allEnemies.ToArray())
+        {
+            enemy.GetComponent<EnemyStat>().OnStart();
+        }
     }
 
     public void OnUpdate()

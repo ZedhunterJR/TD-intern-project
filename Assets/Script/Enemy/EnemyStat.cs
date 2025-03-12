@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,13 +7,16 @@ public class EnemyStat : MonoBehaviour
 {
     public EnemyData data;
 
-    public bool immuneToDebuff;
     public float maxHealth;
     public float currentHp;
     public float moveSpeed;
+    public float currentSpeed;
 
-    public List<MovementDebuff> debuffList = new List<MovementDebuff>();
+    // Buff and DeBuff List 
+    [SerializeField]
+    List<StatusEffect> activeEffects = new List<StatusEffect>();
     public bool isStunned;
+    StatusEffect statusEffect;
 
     public Action<Vector2> PreDestruction;
 
@@ -41,6 +44,7 @@ public class EnemyStat : MonoBehaviour
         maxHealth = data.maxHp;
         currentHp = maxHealth;
         moveSpeed = data.baseMoveSpeed;
+        currentSpeed = moveSpeed;
         UpdateHp(0); //to reset hp bar
 
         //spine init
@@ -58,41 +62,46 @@ public class EnemyStat : MonoBehaviour
     }
 
     // Update is called once per frame
+    public void OnStart()
+    {
+        statusEffect = new StatusEffect() { status = STATUS_EFFECT.Slow, duration = 2f };
+    }
+
     public void OnUpdate()
     {
-        if (!immuneToDebuff)
+        /* Test thành công apply hiệu ứng vào trong enem, có thể apply nhiều hiệu ứng cùng lúc 
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            bool stun = false;
-            float slowPer = 0;
-            for (int i = debuffList.Count - 1; i >= 0; i--)
-            {
-                if (debuffList[i].Timer())
-                {
-                    debuffList.RemoveAt(i);
-                    continue;
-                }
-                if (debuffList[i].stunTimer > 0)
-                    stun = true;
-                if (debuffList[i].slowTimer > 0 && debuffList[i].slowPercentage > slowPer)
-                    slowPer = debuffList[i].slowPercentage;
-            }
+            statusEffect = new StatusEffect() { status = STATUS_EFFECT.Slow, duration = 2f };
+            Debug.Log($"Hiệu ứng là {statusEffect.status} thời gian {statusEffect.duration}");
+            AddEffect(statusEffect);
+        }
 
-            isStunned = stun;
-            moveSpeed = data.baseMoveSpeed * (1 - slowPer);
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            statusEffect = new StatusEffect() { status = STATUS_EFFECT.Stun, duration = 1f };
+            Debug.Log($"Hiệu ứng là {statusEffect.status} thời gian {statusEffect.duration}");
+            AddEffect(statusEffect);
+        }
+        */
 
-            //Manage movement and rotation
-            if (!isStunned)
-                moveScript.MoveUpdate(moveSpeed);
-            if (flipX != moveScript.FlipX)
-            {
-                flipX = moveScript.FlipX;
-                spineAnimation.localScale = new Vector3(initialScale * (flipX ? -1 : 1), initialScale, initialScale);
-            }
-            
+        // Effect Apply and Undo
+        ApplyEffects();
+        UpdateEffect();
+
+        //Manage movement and rotation
+        if (!isStunned)
+            moveScript.MoveUpdate(currentSpeed);
+        if (flipX != moveScript.FlipX)
+        {
+            flipX = moveScript.FlipX;
+            spineAnimation.localScale = new Vector3(initialScale * (flipX ? -1 : 1), initialScale, initialScale);
         }
 
         UpdatePathPosition();
     }
+
+    #region HP,Pos Update
     public void UpdateHp(float value)
     {
         currentHp += value;
@@ -149,29 +158,74 @@ public class EnemyStat : MonoBehaviour
         float tileY = Mathf.Round(position.y / tileSize) * tileSize;
         return new Vector2(tileX, tileY);
     }
+    #endregion
+
+    #region Status Effect
+    public void AddEffect(StatusEffect effect)
+    {
+        StatusEffect existingEffect = activeEffects.Find(e => e.status == effect.status);
+        if (existingEffect != null)
+        {
+            existingEffect.duration = Mathf.Max(existingEffect.duration, effect.duration);
+        }
+        else
+            activeEffects.Add(effect);
+    }
+
+    private void ApplyEffects()
+    {
+        currentSpeed = moveSpeed;
+
+        foreach (StatusEffect effect in activeEffects)
+        {
+            switch (effect.status)
+            {
+                case STATUS_EFFECT.None:
+                    break;
+                case STATUS_EFFECT.Slow:
+                    currentSpeed *= (1 - .5f);
+                    break;
+                case STATUS_EFFECT.Stun:
+                    currentSpeed = 0f;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void UpdateEffect()
+    {
+        for (int i = activeEffects.Count - 1; i >= 0; i--)
+        {
+            activeEffects[i].duration -= Time.deltaTime;
+            if (activeEffects[i].duration <= 0)
+            {
+                activeEffects.RemoveAt(i); // Xóa hiệu ứng khi hết thời gian
+            }
+        }
+
+        // Nếu danh sách trống => Reset tốc độ về bình thường
+        if (activeEffects.Count == 0)
+        {
+            currentSpeed = moveSpeed;
+        }
+    }
+    #endregion
 
 }
 
 //move here for easier managing
-public class MovementDebuff
+[System.Serializable]
+public class StatusEffect
 {
-    public float slowPercentage;
-    public float slowTimer;
+    public STATUS_EFFECT status;
+    public float duration;
+}
 
-    public float stunTimer;
-
-    public MovementDebuff(float slowPercentage, float slowTimer, float stunTimer)
-    {
-        this.slowPercentage = slowPercentage;
-        this.slowTimer = slowTimer;
-        this.stunTimer = stunTimer;
-    }
-
-    public bool Timer()
-    {
-        slowTimer -= Time.deltaTime;
-        stunTimer -= Time.deltaTime;
-
-        return slowTimer < 0 && stunTimer < 0;
-    }
+public enum STATUS_EFFECT
+{
+    None,
+    Slow,
+    Stun,
 }
