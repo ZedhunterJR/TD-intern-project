@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f5b6e7ec9262cea4888a71c3714ec6c1, type: 2}
+  - {fileID: 2100000, guid: 9befeae27fa5f504d8c431ef49ef7a42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 6a75187f8cbcb36498794f131f029284, type: 2}
-  initialSkinName: Electric-sentry
+  skeletonDataAsset: {fileID: 11400000, guid: b38bba59f389b034e81dff5c0a701951, type: 2}
+  initialSkinName: earth-tower
   initialFlipX: 0
   initialFlipY: 0
   updateWhenInvisible: 3
@@ -280,4 +280,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4d9d218dd11364cb419599ded5d0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: f0778fa63ed10e24ea053676cbaa5bd2, type: 2}
+  data: {fileID: 0}

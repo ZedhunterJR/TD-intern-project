@@ -41,7 +41,7 @@ public class SentryEarth : TowerAttack
         sc.PreDestruct = () => ReturnToPool(instance);
         sc.HitEvent = (target) =>
         {
-            target.GetComponent<EnemyStat>().PreMitiDmg(stat.data.baseDamage);
+            target.GetComponent<EnemyStat>().PreMitiDmg(stat.data.baseDamage, stat.data);
         };
         instance.transform.position = spot;
         instance.SetActive(true);

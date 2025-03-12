@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TRP_005
   m_EditorClassIdentifier: 
   enemyName: Fiery Solider
-  enemyType: {fileID: 0}
+  enemyType: {fileID: 11400000, guid: 964877fd537e3ce4cabd22574b65f9d2, type: 2}
   hpBarPosY: 0
   tier: 0
   maxHp: 2

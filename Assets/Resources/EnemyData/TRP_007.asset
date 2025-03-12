@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TRP_007
   m_EditorClassIdentifier: 
   enemyName: Watery Scout
-  enemyType: {fileID: 0}
+  enemyType: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
   hpBarPosY: 0
   tier: 1
   maxHp: 1

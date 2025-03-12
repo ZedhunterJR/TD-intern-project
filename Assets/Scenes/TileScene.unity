@@ -683,7 +683,7 @@ MonoBehaviour:
   uiManager: {fileID: 2130264505}
   waveManager: {fileID: 102559401}
   pathManager: {fileID: 1526107979}
-  baseHealth: 3
+  baseHealth: 20
   healthBar: {fileID: 397151991}
 --- !u!4 &201356262
 Transform:
@@ -887,7 +887,6 @@ GameObject:
   m_Component:
   - component: {fileID: 287235813}
   - component: {fileID: 287235814}
-  - component: {fileID: 287235815}
   m_Layer: 0
   m_Name: TileManager
   m_TagString: Untagged
@@ -942,21 +941,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 46823455e8c185948a093cd1b6c3f672, type: 2}
   - {fileID: 11400000, guid: e437adafb872f664a8064438a94c9f52, type: 2}
   - {fileID: 11400000, guid: fa3c4fbbe6cdc7d45853236ed76bdcab, type: 2}
---- !u!114 &287235815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287235812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2daa0b04e6cfa3d44a7e397cf0c2fd52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerData: {fileID: 11400000, guid: 5737dbda509e5224d8a9ef4b191b901f, type: 2}
-  enemyData: {fileID: 0}
-  spawnTowerSpot: {fileID: 0}
 --- !u!1 &290636455
 GameObject:
   m_ObjectHideFlags: 0
