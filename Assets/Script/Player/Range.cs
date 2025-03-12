@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class Range : MonoBehaviour
 {
@@ -101,7 +100,8 @@ public class Range : MonoBehaviour
 
         foreach (GameObject enemy in AllEnemies)
         {
-            if (enemy == null) continue; // Avoid null reference errors
+            if (enemy == null || enemy.GetComponent<EnemyStat>().isUntargetable) 
+                continue; // Avoid null reference errors
 
             float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;
             if (sqrDistance < detectionRange * detectionRange)
