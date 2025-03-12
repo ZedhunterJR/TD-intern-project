@@ -8,5 +8,4 @@ using UnityEngine;
 /// </summary>
 public class EnemyAbilityLibrary
 {
-   
 }

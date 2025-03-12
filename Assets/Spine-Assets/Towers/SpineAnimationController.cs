@@ -21,7 +21,6 @@ public class SpineAnimationController : MonoBehaviour
     public void Init(EnemyData data)
     {
         skeletonAnimation.skeletonDataAsset = data.enemyType;
-        skeletonAnimation.initialSkinName = data.enemyInitialSkin;
         skeletonAnimation.Initialize(true);
     }
     public void SetSkinName(string skin)

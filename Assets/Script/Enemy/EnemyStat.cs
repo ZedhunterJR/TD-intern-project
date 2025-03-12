@@ -59,6 +59,8 @@ public class EnemyStat : MonoBehaviour
             PoolManager.Instance.RespawnObject(OBJ_TYPE.enemyTest, gameObject);
         };
         moveScript.Init(wps, onexit);
+
+        
     }
 
     // Update is called once per frame
