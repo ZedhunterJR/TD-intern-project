@@ -15,8 +15,8 @@ public class SpineAnimationController : MonoBehaviour
     public void Init(TowerData data)
     {
         skeletonAnimation.skeletonDataAsset = data.towerType;
-        skeletonAnimation.initialSkinName = data.towerInitialSkin;
         skeletonAnimation.Initialize(true);
+        SetSkinName(data.towerInitialSkin);
     }
     public void Init(EnemyData data)
     {
@@ -53,5 +53,10 @@ public class SpineAnimationController : MonoBehaviour
     {
         var state = skeletonAnimation.AnimationState;
         state.SetAnimation(0, animationName, true);
+    }
+
+    public void SetAnimationSpeed(float speed)
+    {
+        skeletonAnimation.timeScale = speed;
     }
 }

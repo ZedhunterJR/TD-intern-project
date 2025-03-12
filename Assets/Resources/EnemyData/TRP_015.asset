@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TRP_015
   m_EditorClassIdentifier: 
   enemyName: Terrestrial Diver
-  enemyType: {fileID: 0}
+  enemyType: {fileID: 11400000, guid: 0eaab1a030d6dad40be574dabacae4ce, type: 2}
   hpBarPosY: 0
   tier: 3
   maxHp: 2

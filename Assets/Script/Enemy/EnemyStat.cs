@@ -9,8 +9,8 @@ public class EnemyStat : MonoBehaviour
 
     public float maxHealth;
     public float currentHp;
-    public float moveSpeed;
     public float currentSpeed;
+    public float maxSpeed;
 
     // Buff and DeBuff List 
     [SerializeField]
@@ -19,6 +19,9 @@ public class EnemyStat : MonoBehaviour
     StatusEffect statusEffect;
 
     public Action<Vector2> PreDestruction;
+    public Action AbilityUpdateFunc;
+    public float InternalTimer { get; private set; }
+    public Func<float, TowerData, float> PreMitiDmgFunc;
 
     private Vector2 currentPositionInAbs = new Vector2(-69, 42);
     private PathType currentStandingPathType = PathType.None;
@@ -37,18 +40,31 @@ public class EnemyStat : MonoBehaviour
         moveScript = GetComponent<WaveMove>();
         spineAnimation = transform.Find("spine_animation");
     }
+    private string skinName(int level)
+    {
+        string res = "skin" + level + "-";
+        switch (data.element)
+        {
+            case Element.Fire: res += "fire"; break;
+            case Element.Water: res += "water"; break;
+            case Element.Earth: res += "earth"; break;
+        }
+        return res;
+    }
 
-    public void Init(EnemyData data)
+    public void Init(EnemyData data, int level)
     {
         this.data = data;
         maxHealth = data.maxHp;
         currentHp = maxHealth;
-        moveSpeed = data.baseMoveSpeed;
-        currentSpeed = moveSpeed;
+        maxSpeed = data.baseMoveSpeed;
+        currentSpeed = maxSpeed;
         UpdateHp(0); //to reset hp bar
+        InternalTimer = 0;
 
         //spine init
         spineAnimation.GetComponent<SpineAnimationController>().Init(data);
+        spineAnimation.GetComponent<SpineAnimationController>().SetSkinName(skinName(level));
         initialScale = spineAnimation.transform.localScale.y;
 
         //init wave move script
@@ -60,7 +76,9 @@ public class EnemyStat : MonoBehaviour
         };
         moveScript.Init(wps, onexit);
 
-        
+        //init ability
+        AbilityUpdateFunc = null;
+        PreMitiDmgFunc = (d, s) => 0;
     }
 
     // Update is called once per frame
@@ -100,6 +118,8 @@ public class EnemyStat : MonoBehaviour
             spineAnimation.localScale = new Vector3(initialScale * (flipX ? -1 : 1), initialScale, initialScale);
         }
 
+        InternalTimer += Time.deltaTime;
+        AbilityUpdateFunc?.Invoke();
         UpdatePathPosition();
     }
 
@@ -121,9 +141,10 @@ public class EnemyStat : MonoBehaviour
         hpBarCover.transform.localScale = scale;
     }
 
-    public void PreMitiDmg(float dmg)
+    public void PreMitiDmg(float dmg, TowerData attackData)
     {
         //print(dmg);
+        dmg = PreMitiDmgFunc(dmg, attackData);
         UpdateHp(-dmg);
     }
     /// <summary>
@@ -176,7 +197,7 @@ public class EnemyStat : MonoBehaviour
 
     private void ApplyEffects()
     {
-        currentSpeed = moveSpeed;
+        currentSpeed = maxSpeed;
 
         foreach (StatusEffect effect in activeEffects)
         {
@@ -210,7 +231,7 @@ public class EnemyStat : MonoBehaviour
         // Nếu danh sách trống => Reset tốc độ về bình thường
         if (activeEffects.Count == 0)
         {
-            currentSpeed = moveSpeed;
+            currentSpeed = maxSpeed;
         }
     }
     #endregion

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TRP_002
   m_EditorClassIdentifier: 
   enemyName: Fiery Guard
-  enemyType: {fileID: 0}
+  enemyType: {fileID: 11400000, guid: 7bc0475ebca2c2b4895985b381cd9306, type: 2}
   hpBarPosY: 0
   tier: 0
   maxHp: 3
