@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a9abd3d3962f34896a22aa3913580f, type: 3}
   m_Name: TRP_006
   m_EditorClassIdentifier: 
-  enemyName: 
-  enemyType: {fileID: 11400000, guid: 964877fd537e3ce4cabd22574b65f9d2, type: 2}
-  enemyInitialSkin: 
+  enemyName: Terrestrial Solider
+  enemyType: {fileID: 0}
   hpBarPosY: 0
   tier: 0
-  maxHp: 0
-  baseMoveSpeed: 0
-  element: 0
-  lvl1Abilities: []
-  lvl2Abilities: []
-  lvl3Abilities: []
+  maxHp: 2
+  baseMoveSpeed: 2
+  element: 2
+  lvl1Abilities:
+  - ABI_010
+  lvl2Abilities:
+  - ABI_016
+  lvl3Abilities:
+  - ABI_019

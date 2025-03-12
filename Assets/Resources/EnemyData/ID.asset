@@ -10,11 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2a9abd3d3962f34896a22aa3913580f, type: 3}
-  m_Name: test 3
+  m_Name: ID
   m_EditorClassIdentifier: 
-  enemyName: Test 3
-  enemyType: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
-  enemyInitialSkin: skin1-light
+  enemyName: troop_name
+  enemyType: {fileID: 0}
   hpBarPosY: 0
-  maxHp: 20
-  baseMoveSpeed: 0.7
+  tier: 0
+  maxHp: 1
+  baseMoveSpeed: 1
+  element: 0
+  lvl1Abilities:
+  - ability_lv1_1
+  - ability_lv1_2
+  - ability_lv1_3
+  lvl2Abilities:
+  - ability_lv2_1
+  - ability_lv2_2
+  - ability_lv2_3
+  lvl3Abilities:
+  - ability_lv3_1

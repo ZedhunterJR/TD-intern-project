@@ -682,7 +682,7 @@ MonoBehaviour:
   poolManager: {fileID: 371978929}
   uiManager: {fileID: 2130264505}
   waveManager: {fileID: 102559401}
-  pathManager: {fileID: 0}
+  pathManager: {fileID: 1526107979}
   baseHealth: 3
   healthBar: {fileID: 397151991}
 --- !u!4 &201356262
@@ -939,9 +939,9 @@ MonoBehaviour:
   - {fileID: 1629336232}
   - {fileID: 2139307661}
   listData:
-  - {fileID: 11400000, guid: 2f0785a367d07fb439a223bdad0ee61c, type: 2}
-  - {fileID: 11400000, guid: 91f0c03d3a10556409616827660298a3, type: 2}
-  - {fileID: 11400000, guid: 5737dbda509e5224d8a9ef4b191b901f, type: 2}
+  - {fileID: 11400000, guid: 46823455e8c185948a093cd1b6c3f672, type: 2}
+  - {fileID: 11400000, guid: e437adafb872f664a8064438a94c9f52, type: 2}
+  - {fileID: 11400000, guid: fa3c4fbbe6cdc7d45853236ed76bdcab, type: 2}
 --- !u!114 &287235815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,7 +1496,7 @@ Transform:
   m_GameObject: {fileID: 632811216}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08595854, y: 0.883301, z: 6.911934}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

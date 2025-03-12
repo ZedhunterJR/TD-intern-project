@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a9abd3d3962f34896a22aa3913580f, type: 3}
   m_Name: TRP_003
   m_EditorClassIdentifier: 
-  enemyName: 
-  enemyType: {fileID: 11400000, guid: 7bc0475ebca2c2b4895985b381cd9306, type: 2}
-  enemyInitialSkin: 
+  enemyName: Terrestrial Guard
+  enemyType: {fileID: 0}
   hpBarPosY: 0
   tier: 0
-  maxHp: 0
-  baseMoveSpeed: 0
-  element: 0
-  lvl1Abilities: []
-  lvl2Abilities: []
-  lvl3Abilities: []
+  maxHp: 3
+  baseMoveSpeed: 1
+  element: 2
+  lvl1Abilities:
+  - ABI_010
+  lvl2Abilities:
+  - ABI_011
+  lvl3Abilities:
+  - ABI_012

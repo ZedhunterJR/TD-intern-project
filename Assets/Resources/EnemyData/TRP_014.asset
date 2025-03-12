@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a9abd3d3962f34896a22aa3913580f, type: 3}
   m_Name: TRP_014
   m_EditorClassIdentifier: 
-  enemyName: 
-  enemyType: {fileID: 11400000, guid: 0eaab1a030d6dad40be574dabacae4ce, type: 2}
-  enemyInitialSkin: 
+  enemyName: Fiery Walker
+  enemyType: {fileID: 0}
   hpBarPosY: 0
-  tier: 0
-  maxHp: 0
-  baseMoveSpeed: 0
+  tier: 3
+  maxHp: 2
+  baseMoveSpeed: 2
   element: 0
-  lvl1Abilities: []
+  lvl1Abilities:
+  - ABI_004
+  - ABI_028
   lvl2Abilities: []
-  lvl3Abilities: []
+  lvl3Abilities:
+  - ABI_019

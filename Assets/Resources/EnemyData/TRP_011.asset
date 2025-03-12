@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a9abd3d3962f34896a22aa3913580f, type: 3}
   m_Name: TRP_011
   m_EditorClassIdentifier: 
-  enemyName: 
-  enemyType: {fileID: 11400000, guid: 68514bdfa406fef4a8825546c61c4b2a, type: 2}
-  enemyInitialSkin: 
+  enemyName: Fiery Summoner
+  enemyType: {fileID: 0}
   hpBarPosY: 0
-  tier: 0
-  maxHp: 0
-  baseMoveSpeed: 0
+  tier: 2
+  maxHp: 1
+  baseMoveSpeed: 1
   element: 0
-  lvl1Abilities: []
+  lvl1Abilities:
+  - ABI_023
+  - ABI_004
   lvl2Abilities: []
   lvl3Abilities: []

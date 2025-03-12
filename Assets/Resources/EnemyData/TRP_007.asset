@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a9abd3d3962f34896a22aa3913580f, type: 3}
   m_Name: TRP_007
   m_EditorClassIdentifier: 
-  enemyName: 
-  enemyType: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
-  enemyInitialSkin: 
+  enemyName: Watery Scout
+  enemyType: {fileID: 0}
   hpBarPosY: 0
-  tier: 0
-  maxHp: 0
-  baseMoveSpeed: 0
-  element: 0
-  lvl1Abilities: []
-  lvl2Abilities: []
-  lvl3Abilities: []
+  tier: 1
+  maxHp: 1
+  baseMoveSpeed: 3
+  element: 1
+  lvl1Abilities:
+  - ABI_001
+  lvl2Abilities:
+  - ABI_032
+  lvl3Abilities:
+  - ABI_020
