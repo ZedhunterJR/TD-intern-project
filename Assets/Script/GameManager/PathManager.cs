@@ -32,6 +32,17 @@ public class PathManager : Singleton<PathManager>
             return PathType.None;
         }
     }
+    public PathEntity GetCurrentPathEntity(Vector2 pos)
+    {
+        try
+        {
+            return PathEntityDictionary[pos];
+        }
+        catch
+        {
+            return null;
+        }
+    }
 
     //when enemy first enter path
     public void ApplyPathEffect(GameObject enemy, PathType pathType)

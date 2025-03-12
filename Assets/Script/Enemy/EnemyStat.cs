@@ -81,8 +81,8 @@ public class EnemyStat : MonoBehaviour
             moveSpeed = data.baseMoveSpeed * (1 - slowPer);
 
             //Manage movement and rotation
-            moveScript.moveSpeed = moveSpeed;
-            moveScript.isStunned = isStunned;
+            if (!isStunned)
+                moveScript.MoveUpdate(moveSpeed);
             if (flipX != moveScript.FlipX)
             {
                 flipX = moveScript.FlipX;
@@ -115,7 +115,11 @@ public class EnemyStat : MonoBehaviour
         //print(dmg);
         UpdateHp(-dmg);
     }
-
+    /// <summary>
+    /// have to check every frame, not even skipping checking the same grid because of possible
+    /// changing path
+    /// </summary>
+    /// <param name="gridSize"></param>
     public void UpdatePathPosition(float gridSize = 1f)
     {
         Vector2 pos = transform.position;

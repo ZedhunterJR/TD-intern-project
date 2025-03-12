@@ -11,9 +11,7 @@ public class WaveMove : MonoBehaviour
     private Vector2 currentWaypointPos;
     private int waypointIndex = 0;
 
-    [HideInInspector] public float moveSpeed;
     [HideInInspector] public bool isSummoned = false;
-    [HideInInspector] public bool isStunned = false;
     [HideInInspector] public bool FlipX { get; private set; }
 
     public float DistanceToGoal()
@@ -51,7 +49,7 @@ public class WaveMove : MonoBehaviour
         }
     }
 
-    private void Move()
+    private void Move(float moveSpeed)
     {
         //print(waypointIndex); print(waypoints.Count);
         // If Enemy didn't reach last waypoint it can move
@@ -95,7 +93,7 @@ public class WaveMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void OnUpdate()
+    public void MoveUpdate(float moveSpeed)
     {
         //moveSpeed = GetComponent<EnemyStat>().moveSpeed;
         if (waypointIndex < waypoints.Count)
@@ -105,7 +103,7 @@ public class WaveMove : MonoBehaviour
         }
         if (!GetComponent<EnemyStat>().isStunned)
         {
-            Move();
+            Move(moveSpeed);
             //GetComponentInChildren<SimpleAnim>().isStunned = false;
         }
         //else {GetComponentInChildren<SimpleAnim>().isStunned = true;}

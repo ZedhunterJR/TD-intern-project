@@ -23,7 +23,6 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         foreach (var enemy in allEnemies.ToArray())
         {
-            enemy.GetComponent<WaveMove>().OnUpdate();
             enemy.GetComponent<EnemyStat>().OnUpdate();
         }
     }
