@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b452b4c040fa343b1f42072d001818, type: 3}
+  m_Name: TW_003
+  m_EditorClassIdentifier: 
+  towerName: Terrestrial Tower
+  towerType: {fileID: 11400000, guid: b38bba59f389b034e81dff5c0a701951, type: 2}
+  towerInitialSkin: Tower-earth
+  element: 2
+  baseDamage: 1
+  baseAtkSpd: 0.3
+  range: 3
+  attackScriptName: TowerAttack

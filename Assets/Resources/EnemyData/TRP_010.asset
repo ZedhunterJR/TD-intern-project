@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a9abd3d3962f34896a22aa3913580f, type: 3}
+  m_Name: TRP_010
+  m_EditorClassIdentifier: 
+  enemyName: 
+  enemyType: {fileID: 11400000, guid: 68514bdfa406fef4a8825546c61c4b2a, type: 2}
+  enemyInitialSkin: 
+  hpBarPosY: 0
+  tier: 0
+  maxHp: 0
+  baseMoveSpeed: 0
+  element: 0
+  lvl1Abilities: []
+  lvl2Abilities: []
+  lvl3Abilities: []

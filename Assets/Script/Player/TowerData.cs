@@ -9,7 +9,8 @@ public class TowerData : ScriptableObject
     [Header("Graphic")]
     public string towerName;
     public SkeletonDataAsset towerType;
-    public string towerInitialSkin; 
+    public string towerInitialSkin;
+    public Element element;
 
     [Header("Stats")]
     public float baseDamage;
