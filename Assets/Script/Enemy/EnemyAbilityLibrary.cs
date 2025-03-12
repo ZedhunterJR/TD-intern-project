@@ -204,7 +204,7 @@ public class EnemyAbilityLibrary
                     enemy.EnteringTile = (path) =>
                     {
                         if (path == PathType.Swamp)
-                            enemy.AddEffect(new(1f, 2f));
+                            enemy.AddEffect(new(2f, 2f));
                     };
                 }
                 break;
