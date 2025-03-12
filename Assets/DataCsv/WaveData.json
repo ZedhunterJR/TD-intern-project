@@ -5,14 +5,16 @@
       "startTime": 5,
       "enemyGroup": [
         {
-          "enemyName": "test",
+          "enemyName": "TRP_001",
+          "level": 1,
           "count": 2,
           "spawnInterval": 1,
           "pathId": 0,
           "waveInterval": 0
         },
         {
-          "enemyName": "test 1",
+          "enemyName": "TRP_002",
+          "level": 1,
           "count": 2,
           "spawnInterval": 1,
           "pathId": 0,
@@ -25,21 +27,24 @@
       "startTime": 10,
       "enemyGroup": [
         {
-          "enemyName": "test 2",
+          "enemyName": "TRP_001",
+          "level": 1,
           "count": 2,
           "spawnInterval": 1,
           "pathId": 0,
           "waveInterval": 0
         },
         {
-          "enemyName": "test 3",
+          "enemyName": "TRP_002",
+          "level": 1,
           "count": 2,
           "spawnInterval": 1,
           "pathId": 0,
           "waveInterval": 5
         },
         {
-          "enemyName": "test 4 ",
+          "enemyName": "TRP_003",
+          "level": 1,
           "count": 2,
           "spawnInterval": 1,
           "pathId": 0,
@@ -52,14 +57,16 @@
       "startTime": 10,
       "enemyGroup": [
         {
-          "enemyName": "test 1 ",
+          "enemyName": "TRP_001",
+          "level": 1,
           "count": 10,
           "spawnInterval": 1,
           "pathId": 0,
           "waveInterval": 0
         },
         {
-          "enemyName": "test 4",
+          "enemyName": "TRP_002",
+          "level": 1,
           "count": 10,
           "spawnInterval": 1,
           "pathId": 0,

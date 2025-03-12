@@ -36,7 +36,7 @@ public class WaveManager : Singleton<WaveManager>
     private string path;
 
     // Đọc dữ liệu từ file CSV 
-    [SerializeField] TextAsset textAssetData; 
+    [SerializeField] TextAsset textAssetData;
 
     public void OnAwake()
     {
@@ -286,12 +286,13 @@ public class WaveManager : Singleton<WaveManager>
             if (!string.IsNullOrWhiteSpace(data[2]) && currentWave != null)
             {
                 string enemyName = data[2].Trim();
-                int count = int.TryParse(data[3].Trim(), out int c) ? c : 0; // Cố gắng trả về kiểu int nếu đúng thì return c sai thì trả về 0
-                float spawnInterval = float.TryParse(data[4].Trim(), out float si) ? si : 0f;
-                int pathId = int.TryParse(data[5].Trim(), out int p) ? p : 0;
-                float waveInterval = float.TryParse(data[6].Trim(), out float wi) ? wi : 0f;
+                int level = int.TryParse(data[3].Trim(), out int l) ? l : 0;
+                int count = int.TryParse(data[4].Trim(), out int c) ? c : 0; // Cố gắng trả về kiểu int nếu đúng thì return c sai thì trả về 0
+                float spawnInterval = float.TryParse(data[5].Trim(), out float si) ? si : 0f;
+                int pathId = int.TryParse(data[6].Trim(), out int p) ? p : 0;
+                float waveInterval = float.TryParse(data[7].Trim(), out float wi) ? wi : 0f;
 
-                currentWave.enemyGroup.Add(new EnemyItem(enemyName, count, spawnInterval, pathId, waveInterval));
+                currentWave.enemyGroup.Add(new EnemyItem(enemyName, level, count, spawnInterval, pathId, waveInterval));
             }
         }
 
@@ -314,14 +315,16 @@ public class Wave
 public class EnemyItem
 {
     public string enemyName;
+    public int level;
     public int count;
     public float spawnInterval;
     public int pathId;
     public float waveInterval;
 
-    public EnemyItem(string enemyName, int count, float spawnInterval, int pathId, float waveInterval)
+    public EnemyItem(string enemyName, int level, int count, float spawnInterval, int pathId, float waveInterval)
     {
         this.enemyName = enemyName;
+        this.level = level;
         this.count = count;
         this.spawnInterval = spawnInterval;
         this.pathId = pathId;
