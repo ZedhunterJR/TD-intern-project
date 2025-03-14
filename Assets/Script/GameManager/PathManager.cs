@@ -49,18 +49,20 @@ public class PathManager : Singleton<PathManager>
     {
         switch (pathType)
         {
-            case PathType.None:
-                break;
             case PathType.Lava:
-                print("entering lava");
+                enemy.GetComponent<EnemyStat>().InflictVisibleStatusEffect(VisibleStatusEffect.Heated);
                 break;
             case PathType.Pond:
+                enemy.GetComponent<EnemyStat>().InflictVisibleStatusEffect(VisibleStatusEffect.Wet);
                 break;
             case PathType.DirtyMist:
+                enemy.GetComponent<EnemyStat>().InflictVisibleStatusEffect(VisibleStatusEffect.Dirted);
                 break;
             case PathType.CrystalField:
+                enemy.GetComponent<EnemyStat>().InflictVisibleStatusEffect(VisibleStatusEffect.Crystalized);
                 break;
             case PathType.Swamp:
+                enemy.GetComponent<EnemyStat>().InflictVisibleStatusEffect(VisibleStatusEffect.Glutinous);
                 break;
             default:
                 break;
@@ -69,23 +71,7 @@ public class PathManager : Singleton<PathManager>
     //when enemy leave path
     public void UndoPathEffect(GameObject enemy, PathType pathType)
     {
-        switch (pathType)
-        {
-            case PathType.None:
-                break;
-            case PathType.Lava:
-                print("leaving lava");
-                break;
-            case PathType.Pond:
-                break;
-            case PathType.DirtyMist:
-                break;
-            case PathType.CrystalField:
-                break;
-            case PathType.Swamp:
-                break;
-            default:
-                break;
-        }
+        //yeah turn out this is currently not needed
+        //still keep it here if future demand
     }
 }

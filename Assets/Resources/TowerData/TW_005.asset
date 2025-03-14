@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b452b4c040fa343b1f42072d001818, type: 3}
   m_Name: TW_005
   m_EditorClassIdentifier: 
-  towerName: Fiery Tower
+  towerName: Fiery Thrower
   towerType: {fileID: 11400000, guid: 0edec40dc5d63e44c95d16f496f4f43b, type: 2}
-  towerInitialSkin: Thrower-fire
+  towerInitialSkin: Fire-thrower
   element: 0
-  baseDamage: 1
+  projSpwPosY: 1.5
+  baseDamage: 2
   baseAtkSpd: 0.3
   range: 3
-  attackScriptName: TowerAttack
+  attackScriptName: ThrowerFire
+  lvl1Abilites:
+  - ABL_002
+  lvl2Abilites:
+  - ABL_014
+  lvl3Abilites:
+  - ABL_013

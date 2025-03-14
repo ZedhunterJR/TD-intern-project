@@ -1,23 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
-using Unity.VisualScripting;
-using UnityEditor;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class ProjectileLibrary
+public class TowerBehaviorLibrary 
 {
-    private static ProjectileLibrary instance;
-    public static ProjectileLibrary Instance
+    private static TowerBehaviorLibrary instance;
+    public static TowerBehaviorLibrary Instance
     {
         get
         {
             if (instance == null)
+            {
                 instance = new();
+            }
             return instance;
         }
     }
+    private List<GameObject> AllEnemies => EnemyManager.Instance.AllEnemies;
     //lob at target enemy, if enemy die, use the last position
     public void ProjectileLob(GameObject projectile, GameObject target, bool rotation = true, float controlHeight = 5f, float lifeSpan = 1f, float controlRotation = 0)
     {
@@ -26,7 +26,7 @@ public class ProjectileLibrary
         sc.lifeSpan = lifeSpan;
         sc.UpdateFunc = () =>
         {
-            if (target != null || !target.activeSelf)
+            if (AllEnemies.Contains(target))
             {
                 sc.direction = target.transform.position;
             }
@@ -92,29 +92,37 @@ public class ProjectileLibrary
         };
     }
     //straight at target
-    public void ProjectileStraightNoHitbox(GameObject projectile, GameObject target, bool rotation = true, float lifeSpan = 1f)
+    public void ProjectileStraightNoHitbox(GameObject projectile, GameObject target, bool rotation = true, float speed = 10f)
     {
         var sc = projectile.GetComponent<ProjectileAdvanced>();
-        var startPos = projectile.transform.position;
-        sc.lifeSpan = lifeSpan;
+        sc.lifeSpan = 99;
+
+        Vector2 direction = (target != null && target.activeSelf)
+            ? (Vector2)(target.transform.position - projectile.transform.position).normalized
+            : Vector2.zero;
+
         sc.UpdateFunc = () =>
         {
-            if (target != null || !target.activeSelf)
+            if (AllEnemies.Contains(target))
             {
-                sc.direction = target.transform.position;
+                sc.direction = target.transform.position; // Update target position if it moves
             }
 
-            float count = sc.LifeSpanInInterpolation;
-            projectile.transform.position = Vector2.Lerp(startPos, sc.direction, count);
+            projectile.transform.position = Vector2.MoveTowards(projectile.transform.position, sc.direction, speed * Time.deltaTime);
 
             if (rotation)
             {
-                var dir = (Vector3)sc.direction - startPos;
-                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                var dir = (Vector3)sc.direction - projectile.transform.position;
+                if (dir.sqrMagnitude < 0.001f) // Prevent NaN errors when the projectile reaches the target
+                {
+                    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                    projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                    sc.DestroyObj();
+                }
             }
         };
     }
+
     //straight at target position
     public void ProjectileStraightNoHitbox(GameObject projectile, Vector3 pos, bool rotation = true, float lifeSpan = 1f)
     {
@@ -142,12 +150,9 @@ public class ProjectileLibrary
         sc.lifeSpan = lifeSpan;
         sc.UpdateFunc = () =>
         {
-            if (target != null)
+            if (AllEnemies.Contains(target))
             {
-                if (target != null || !target.activeSelf)
-                {
-                    sc.direction = target.transform.position;
-                }
+                sc.direction = target.transform.position;
             }
 
             float count = sc.LifeSpanInInterpolation;
@@ -180,5 +185,128 @@ public class ProjectileLibrary
         Vector2 rotatedOffset = Quaternion.Euler(0, 0, controlRotation) * offset;
         // Final control point
         return midPoint + rotatedOffset;
+    }
+    public void GetTowerAbility(string ability, TowerAttack sc)
+    {
+        switch (ability)
+        {
+            case "ABL_001": //water bullet
+                {
+                    sc.HitEffect += (e) =>
+                    {
+                        e.InflictVisibleStatusEffect(VisibleStatusEffect.Wet);
+                    };
+                }
+                break;
+            case "ABL_002": //fire bullet
+                {
+                    sc.HitEffect += (e) =>
+                    {
+                        e.InflictVisibleStatusEffect(VisibleStatusEffect.Heated);
+                    };
+                }
+                break;
+            case "ABL_004": //dir bullet
+                {
+                    sc.HitEffect += (e) =>
+                    {
+                        e.InflictVisibleStatusEffect(VisibleStatusEffect.Dirted);
+                    };
+                }
+                break;
+            case "ABL_006": //pond create
+                {
+                    sc.KillEffect += (pos) =>
+                    {
+                        var path = PathManager.Instance.GetCurrentPathEntity(pos);
+                        if (path != null)
+                            path.InflictLandMaking(PathType.Pond);
+                    };
+                }
+                break;
+            case "ABL_007": //lava create
+                {
+                    sc.KillEffect += (pos) =>
+                    {
+                        var path = PathManager.Instance.GetCurrentPathEntity(pos);
+                        if (path != null)
+                            path.InflictLandMaking(PathType.Lava);
+                    };
+                }
+                break;
+            case "ABL_009": //dirt create
+                {
+                    sc.KillEffect += (pos) =>
+                    {
+                        var path = PathManager.Instance.GetCurrentPathEntity(pos);
+                        if (path != null)
+                            path.InflictLandMaking(PathType.DirtyMist);
+                    };
+                }
+                break;
+            case "ABL_011":
+                {
+                    sc.stat.dmg += 1;
+                }
+                break;
+            case "ABL_012":
+                {
+                    sc.stat.dmg += 2;
+                }
+                break;
+            case "ABL_013":
+                {
+                    sc.stat.dmg += 3;
+                }
+                break;
+            case "ABL_014":
+                {
+                    sc.range.detectionRange += 1;
+                }
+                break;
+            case "ABL_015":
+                {
+                    sc.range.detectionRange += 2;
+                }
+                break;
+            case "ABL_016":
+                {
+                    sc.range.detectionRange += 3;
+                }
+                break;
+            case "ABL_019": //crit
+                {
+                    sc.AttackDmg = (d) => CritDmg(d, 20);
+                }
+                break;
+            case "ABL_020":
+                {
+                    sc.AttackDmg = (d) => CritDmg(d, 50);
+                }
+                break;
+            case "ABL_026": //atk speed
+                {
+                    sc.stat.atkSpd *= 1.2f;
+                }
+                break;
+            case "ABL_027":
+                {
+                    sc.stat.atkSpd *= 1.5f;
+                }
+                break;
+            case "ABL_028":
+                {
+                    sc.stat.atkSpd *= 2f;
+                }
+                break;
+        }
+    }
+
+    private float CritDmg(float dmg, float critChance)
+    {
+        var ran = Random.Range(0, 100);
+        if (ran < critChance)
+            return dmg * 2;
+        return dmg;
     }
 }

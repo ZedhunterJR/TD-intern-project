@@ -14,9 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Watery Thrower
   towerType: {fileID: 11400000, guid: 0edec40dc5d63e44c95d16f496f4f43b, type: 2}
-  towerInitialSkin: Thrower-water
+  towerInitialSkin: Water-thrower
   element: 1
-  baseDamage: 1
+  projSpwPosY: 1.5
+  baseDamage: 2
   baseAtkSpd: 0.3
   range: 3
-  attackScriptName: TowerAttack
+  attackScriptName: ThrowerWater
+  lvl1Abilites:
+  - ABL_001
+  lvl2Abilites:
+  - ABL_014
+  lvl3Abilites:
+  - ABL_013

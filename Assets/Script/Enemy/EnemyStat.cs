@@ -15,15 +15,20 @@ public class EnemyStat : MonoBehaviour
     // Buff and DeBuff List 
     [SerializeField]
     List<StatusEffect> activeEffects = new List<StatusEffect>();
-    public bool isStunned;
-    StatusEffect statusEffect;
 
-    public Action<Vector2> PreDestruction;
-    public Action AbilityUpdateFunc;
-    public float InternalTimer { get; private set; }
+    public VisibleStatusEffect CurrentVisibleStatusEffect { get; private set; }
+    private float currentVisibleStatusTimer;
+
+    //related to ability
+    public Action PreDestruction;
+    public List<AbilityUpdateFunc> AbilityUpdates = new();
     public Func<float, TowerData, float> PreMitiDmgFunc;
+    public bool isUntargetable;
+    public Action<PathType> EnteringTile;
+    public Action<PathType> ExitingTile;
 
-    private Vector2 currentPositionInAbs = new Vector2(-69, 42);
+    //tile and path
+    public Vector2 CurrentPositionInAbs { get; private set; }
     private PathType currentStandingPathType = PathType.None;
 
     //ref
@@ -40,7 +45,7 @@ public class EnemyStat : MonoBehaviour
         moveScript = GetComponent<WaveMove>();
         spineAnimation = transform.Find("spine_animation");
     }
-    private string skinName(int level)
+    private string SkinName(int level)
     {
         string res = "skin" + level + "-";
         switch (data.element)
@@ -60,11 +65,10 @@ public class EnemyStat : MonoBehaviour
         maxSpeed = data.baseMoveSpeed;
         currentSpeed = maxSpeed;
         UpdateHp(0); //to reset hp bar
-        InternalTimer = 0;
 
         //spine init
         spineAnimation.GetComponent<SpineAnimationController>().Init(data);
-        spineAnimation.GetComponent<SpineAnimationController>().SetSkinName(skinName(level));
+        spineAnimation.GetComponent<SpineAnimationController>().SetSkinName(SkinName(level));
         initialScale = spineAnimation.transform.localScale.y;
 
         //init wave move script
@@ -76,15 +80,23 @@ public class EnemyStat : MonoBehaviour
         };
         moveScript.Init(wps, onexit);
 
-        //init ability
-        AbilityUpdateFunc = null;
-        PreMitiDmgFunc = (d, s) => 0;
-    }
+        //idk but this should be be4 ability
+        CurrentPositionInAbs = new Vector2(69, 420);
+        CurrentVisibleStatusEffect = VisibleStatusEffect.None;
+        isUntargetable = false;
+        PreDestruction = null;
+        EnteringTile = null;
+        ExitingTile = null;
+        AbilityUpdates = new();
+        PreMitiDmgFunc = (d, s) => d;
 
-    // Update is called once per frame
-    public void OnStart()
-    {
-        statusEffect = new StatusEffect() { status = STATUS_EFFECT.Slow, duration = 2f };
+        //init ability
+        foreach (var item in data.lvl1Abilities)
+            EnemyAbilityLibrary.Instance.GetAbility(this, item);
+        if (level > 1) foreach (var item in data.lvl2Abilities)
+                EnemyAbilityLibrary.Instance.GetAbility(this, item);
+        if (level > 2) foreach (var item in data.lvl3Abilities)
+                EnemyAbilityLibrary.Instance.GetAbility(this, item);
     }
 
     public void OnUpdate()
@@ -106,46 +118,59 @@ public class EnemyStat : MonoBehaviour
         */
 
         // Effect Apply and Undo
-        ApplyEffects();
-        UpdateEffect();
+        UpdateMovementEffect();
+        if (currentVisibleStatusTimer > 0)
+            currentVisibleStatusTimer -= Time.deltaTime;
+        else
+            SetVisibleStatusEffectGraphic(VisibleStatusEffect.None);
 
         //Manage movement and rotation
-        if (!isStunned)
-            moveScript.MoveUpdate(currentSpeed);
+        moveScript.MoveUpdate(currentSpeed);
+        spineAnimation.GetComponent<SpineAnimationController>().SetAnimationSpeedBaseOnMoveSpeed(currentSpeed);
         if (flipX != moveScript.FlipX)
         {
             flipX = moveScript.FlipX;
             spineAnimation.localScale = new Vector3(initialScale * (flipX ? -1 : 1), initialScale, initialScale);
         }
 
-        InternalTimer += Time.deltaTime;
-        AbilityUpdateFunc?.Invoke();
+        //Enemy ability
+        foreach (var item in AbilityUpdates)
+        {
+            item.OnUpdate();
+        }
+
         UpdatePathPosition();
     }
 
     #region HP,Pos Update
-    public void UpdateHp(float value)
+    public bool UpdateHp(float value)
     {
         currentHp += value;
         currentHp = Mathf.Clamp(currentHp, 0, maxHealth);
         if (currentHp == 0)
         {
-            PreDestruction?.Invoke(transform.position);
+            PreDestruction?.Invoke();
 
             PoolManager.Instance.RespawnObject(OBJ_TYPE.enemyTest, gameObject);
             //Destroy(gameObject);
             //EventManager.Instance.ModiGold(enemyEquivalent * 10f);
+            return true;
         }
 
         Vector2 scale = new Vector2(1 - (currentHp / maxHealth), 1);
         hpBarCover.transform.localScale = scale;
+        return false;
     }
 
-    public void PreMitiDmg(float dmg, TowerData attackData)
+    public bool PreMitiDmg(float dmg, TowerData attackData)
     {
         //print(dmg);
         dmg = PreMitiDmgFunc(dmg, attackData);
-        UpdateHp(-dmg);
+        if (CurrentVisibleStatusEffect == VisibleStatusEffect.Crystalized)
+            dmg = 0;
+        if (CurrentVisibleStatusEffect == VisibleStatusEffect.Fortified)
+            dmg = dmg / 2f;
+        return UpdateHp(-Mathf.Floor(dmg));
     }
     /// <summary>
     /// have to check every frame, not even skipping checking the same grid because of possible
@@ -157,21 +182,20 @@ public class EnemyStat : MonoBehaviour
         Vector2 pos = transform.position;
         Vector2 snappedPos = GetNearestTileCenter(pos, gridSize);
 
-        if (snappedPos == currentPositionInAbs)
-            return;
-
         // Continue
         var pathManager = PathManager.Instance;
         var pType = pathManager.GetCurrentStandingPath(snappedPos);
-        currentPositionInAbs = snappedPos;
 
-        if (pType == currentStandingPathType)
+        if (currentStandingPathType == pType && CurrentPositionInAbs == snappedPos)
             return;
 
         // And continue
         pathManager.UndoPathEffect(this.gameObject, currentStandingPathType);
+        ExitingTile?.Invoke(currentStandingPathType);
         pathManager.ApplyPathEffect(gameObject, pType);
+        EnteringTile?.Invoke(pType);
         currentStandingPathType = pType;
+        CurrentPositionInAbs = snappedPos;
     }
 
     // Helper method to get the nearest tile center
@@ -186,15 +210,10 @@ public class EnemyStat : MonoBehaviour
     #region Status Effect
     public void AddEffect(StatusEffect effect)
     {
-        StatusEffect existingEffect = activeEffects.Find(e => e.status == effect.status);
-        if (existingEffect != null)
-        {
-            existingEffect.duration = Mathf.Max(existingEffect.duration, effect.duration);
-        }
-        else
-            activeEffects.Add(effect);
+        activeEffects.Add(effect);
     }
 
+    /* idk honestly
     private void ApplyEffects()
     {
         currentSpeed = maxSpeed;
@@ -233,7 +252,78 @@ public class EnemyStat : MonoBehaviour
         {
             currentSpeed = maxSpeed;
         }
+    }*/
+    private void UpdateMovementEffect()
+    {
+        //update timer first
+        for (int i = activeEffects.Count - 1; i >= 0; i--)
+        {
+            activeEffects[i].duration -= Time.deltaTime;
+            if (activeEffects[i].duration <= 0)
+            {
+                activeEffects.RemoveAt(i); // Xóa hiệu ứng khi hết thời gian
+            }
+        }
+
+        var stun = false;
+        var msIncrease = 1f;
+        var msDecrease = 1f;
+        foreach (StatusEffect effect in activeEffects)
+        {
+            if (effect.status == STATUS_EFFECT.Stun)
+            {
+                stun = true;
+                break;
+            }
+            if (effect.status == STATUS_EFFECT.MovespeedChange)
+            {
+                if (effect.msPercentage > 1)
+                    msIncrease += effect.msPercentage - 1;
+                if (effect.msPercentage < 1)
+                    msDecrease += effect.msPercentage - 1;
+            }
+        }
+        if (stun)
+        {
+            currentSpeed = 0f;
+            return;
+        }
+        currentSpeed = maxSpeed * msIncrease * Mathf.Max(msDecrease, 0.2f); //slow never go past 80% slow
     }
+
+    public void InflictVisibleStatusEffect(VisibleStatusEffect status)
+    {
+        var pathSet = new HashSet<VisibleStatusEffect> { CurrentVisibleStatusEffect, status };
+
+        if (pathSet.SetEquals(new HashSet<VisibleStatusEffect> { VisibleStatusEffect.Wet, VisibleStatusEffect.Heated }))
+            SetVisibleStatusEffectGraphic(VisibleStatusEffect.None);
+        if (pathSet.SetEquals(new HashSet<VisibleStatusEffect> { VisibleStatusEffect.Wet, VisibleStatusEffect.Dirted }))
+        {
+            SetVisibleStatusEffectGraphic(VisibleStatusEffect.Glutinous);
+            AddEffect(new StatusEffect(3f, 0.5f));
+        }
+        if (pathSet.SetEquals(new HashSet<VisibleStatusEffect> { VisibleStatusEffect.Dirted, VisibleStatusEffect.Heated }))
+        {
+            SetVisibleStatusEffectGraphic(VisibleStatusEffect.Crystalized);
+            AddEffect(new StatusEffect(3f));
+        }
+        if (CurrentVisibleStatusEffect == VisibleStatusEffect.None)
+        {
+            SetVisibleStatusEffectGraphic(status);
+        }
+    }
+    private void SetVisibleStatusEffectGraphic(VisibleStatusEffect status)
+    {
+        CurrentVisibleStatusEffect = status;
+        if (status == VisibleStatusEffect.None)
+        {
+            return;
+        }
+        currentVisibleStatusTimer = 3f; //3s timer for status, after which, return to None status
+        //maybe dealing with icon on top of healthbar later
+    }
+
+
     #endregion
 
 }
@@ -244,11 +334,66 @@ public class StatusEffect
 {
     public STATUS_EFFECT status;
     public float duration;
+
+    public float msPercentage;
+    /// <summary>
+    /// Constructor for stun, just need duration
+    /// </summary>
+    /// <param name="duration"></param>
+    public StatusEffect(float duration)
+    {
+        status = STATUS_EFFECT.Stun;
+        this.duration = duration;
+    }
+    /// <summary>
+    /// constructor for ms change. E.g. 1.2f -> 20% speed up, 0.8f -> 20% slow down
+    /// </summary>
+    /// <param name="duration"></param>
+    /// <param name="msPercentage"></param>
+    public StatusEffect(float duration, float msPercentage)
+    {
+        status = STATUS_EFFECT.MovespeedChange;
+        this.duration = duration;
+        this.msPercentage = msPercentage;
+    }
 }
 
 public enum STATUS_EFFECT
 {
     None,
-    Slow,
+    MovespeedChange,
     Stun,
+}
+public enum VisibleStatusEffect //yeah terrible naming i know
+{
+    None,
+    Heated,
+    Wet,
+    Dirted,
+    Fortified,
+    Crystalized,
+    Glutinous
+}
+
+public class AbilityUpdateFunc
+{
+    private Action updateFunc = null;
+    private float interval = 3f;
+    private float timer = 1f;
+    public AbilityUpdateFunc(Action updateFunc, float interval, float beginTimer = 1f)
+    {
+        this.updateFunc = updateFunc;
+        this.interval = interval;
+        timer = beginTimer;
+    }
+    public void OnUpdate()
+    {
+        if (timer <= 0)
+        {
+            updateFunc?.Invoke();
+            timer = interval;
+        }
+        else
+            timer -= Time.deltaTime;
+    }
 }

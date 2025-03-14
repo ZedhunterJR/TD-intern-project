@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9befeae27fa5f504d8c431ef49ef7a42, type: 2}
+  - {fileID: 2100000, guid: 2b63846fdfe7f9144a4c083df460a816, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: b38bba59f389b034e81dff5c0a701951, type: 2}
-  initialSkinName: earth-tower
+  skeletonDataAsset: {fileID: 11400000, guid: 0c9689a686a4d39498aa4d184beb4d09, type: 2}
+  initialSkinName: earth-sniper
   initialFlipX: 0
   initialFlipY: 0
   updateWhenInvisible: 3

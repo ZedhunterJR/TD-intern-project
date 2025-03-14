@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class Range : MonoBehaviour
 {
@@ -10,26 +9,11 @@ public class Range : MonoBehaviour
     // this will serve as reference point
     [HideInInspector] public List<GameObject> AllEnemies = new();
 
-    [SerializeField] private List<GameObject> EnemiesInRange = new();
-
     public float detectionRange = 3f;
     //private float enemyUpdateTimer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        EnemiesInRange = new List<GameObject>();
-        //MOVED TO TowerStat.cs
-        //AllEnemies = EnemyManager.Instance.AllEnemies;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateEnemiesInRange();
-    }
     public List<GameObject> FirstTargets()
     {
-        var result = new List<GameObject>(EnemiesInRange); // Directly initialize with EnemiesInRange
+        var result = EnemiesInRange(); // Directly initialize with EnemiesInRange
         result.Sort(
             delegate (GameObject e1, GameObject e2)
             {
@@ -48,8 +32,7 @@ public class Range : MonoBehaviour
 
     public List<GameObject> StrongTargets()
     {
-        var result = new List<GameObject>();
-        result.AddRange(EnemiesInRange);
+        var result = EnemiesInRange();
         result.Sort(
             delegate (GameObject e1, GameObject e2)
             {
@@ -93,35 +76,24 @@ public class Range : MonoBehaviour
         return null;
     }
 
-    void UpdateEnemiesInRange()
+    List<GameObject> EnemiesInRange()
     {
-        // Using a HashSet for quick lookup
-        HashSet<GameObject> currentEnemies = new HashSet<GameObject>(EnemiesInRange);
-        HashSet<GameObject> allEnemiesSet = new HashSet<GameObject>(AllEnemies); // For quick lookup
 
-        foreach (GameObject enemy in AllEnemies)
+        List<GameObject> possibleEnemies = new();
+
+        foreach (GameObject enemy in new List<GameObject>(AllEnemies))
         {
-            if (enemy == null) continue; // Avoid null reference errors
+            if (enemy == null || enemy.GetComponent<EnemyStat>().isUntargetable) 
+                continue; // Avoid null reference errors
 
             float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;
             if (sqrDistance < detectionRange * detectionRange)
             {
-                if (!currentEnemies.Contains(enemy))
-                {
-                    EnemiesInRange.Add(enemy); // Add only if not already in the list
-                }
+                possibleEnemies.Add(enemy); // Add only if not already in the list
             }
-            else
-            {
-                if (currentEnemies.Contains(enemy))
-                {
-                    EnemiesInRange.Remove(enemy); // Remove enemies that moved out of range
-                }
-            }
-        }
 
-        // Remove enemies that are in EnemiesInRange but NOT in AllEnemies
-        EnemiesInRange.RemoveAll(enemy => !allEnemiesSet.Contains(enemy));
+        }
+        return possibleEnemies;
     }
 
 }

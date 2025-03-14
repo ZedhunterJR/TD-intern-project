@@ -14,9 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Terrestrial Thrower
   towerType: {fileID: 11400000, guid: 0edec40dc5d63e44c95d16f496f4f43b, type: 2}
-  towerInitialSkin: Thrower-earth
+  towerInitialSkin: Earth-thrower
   element: 2
-  baseDamage: 1
+  projSpwPosY: 1.5
+  baseDamage: 2
   baseAtkSpd: 0.3
   range: 3
-  attackScriptName: TowerAttack
+  attackScriptName: ThrowerEarth
+  lvl1Abilites:
+  - ABL_004
+  lvl2Abilites:
+  - ABL_014
+  lvl3Abilites:
+  - ABL_013

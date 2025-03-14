@@ -11,10 +11,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void OnStart()
     {
-        foreach (var enemy in allEnemies.ToArray())
-        {
-            enemy.GetComponent<EnemyStat>().OnStart();
-        }
+       
     }
 
     public void OnUpdate()
@@ -38,5 +35,16 @@ public class EnemyManager : Singleton<EnemyManager>
     public void RemoveEnemy(GameObject enemy)
     {
         allEnemies.Remove(enemy);
+    }
+
+    public List<GameObject> SamePathEnemies(Vector2 absPos)
+    {
+        var list = new List<GameObject>();
+        foreach (var enemy in AllEnemies)
+        {
+            if (enemy.GetComponent<EnemyStat>().CurrentPositionInAbs == absPos)
+                list.Add(enemy);
+        }
+        return list;
     }
 }

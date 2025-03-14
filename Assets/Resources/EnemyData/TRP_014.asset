@@ -17,7 +17,7 @@ MonoBehaviour:
   hpBarPosY: 0
   tier: 3
   maxHp: 2
-  baseMoveSpeed: 2
+  baseMoveSpeed: 1.5
   element: 0
   lvl1Abilities:
   - ABI_004

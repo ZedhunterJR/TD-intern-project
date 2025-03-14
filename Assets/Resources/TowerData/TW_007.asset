@@ -16,7 +16,16 @@ MonoBehaviour:
   towerType: {fileID: 11400000, guid: 0c9689a686a4d39498aa4d184beb4d09, type: 2}
   towerInitialSkin: water-sniper
   element: 1
+  projSpwPosY: 2
   baseDamage: 1
-  baseAtkSpd: 0.3
+  baseAtkSpd: 0.5
   range: 3
-  attackScriptName: TowerAttack
+  attackScriptName: SniperWater
+  lvl1Abilites:
+  - ABL_001
+  - ABL_019
+  lvl2Abilites:
+  - ABL_015
+  lvl3Abilites:
+  - ABL_011
+  - ABL_026
