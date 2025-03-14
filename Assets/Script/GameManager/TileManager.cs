@@ -46,8 +46,8 @@ public class TileManager : Singleton<TileManager>
             tile.ChangeStatus(TILE_BUILDING_STATUS.HasTower);
             //TestEnemyAndTowerSpawn.Instance.SpawnTower(tile.transform.position);
             GameObject tower = PoolManager.Instance.GetTowerFromPool();
-            tower.GetComponent<TowerStat>().Init(listData.GetRandom(), 1);
-            tower.transform.position = tile.transform.position;
+            tower.GetComponent<TowerStat>().Init(listData.GetRandom(), 2);
+            tower.transform.position = Vector2.zero;
             tower.SetActive(true);
         }
         else

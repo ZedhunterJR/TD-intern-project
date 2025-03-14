@@ -297,17 +297,31 @@ public class EnemyStat : MonoBehaviour
 
         if (pathSet.SetEquals(new HashSet<VisibleStatusEffect> { VisibleStatusEffect.Wet, VisibleStatusEffect.Heated }))
             SetVisibleStatusEffectGraphic(VisibleStatusEffect.None);
-        if (pathSet.SetEquals(new HashSet<VisibleStatusEffect> { VisibleStatusEffect.Wet, VisibleStatusEffect.Dirted }))
+        else if (pathSet.SetEquals(new HashSet<VisibleStatusEffect> { VisibleStatusEffect.Wet, VisibleStatusEffect.Dirted }))
         {
             SetVisibleStatusEffectGraphic(VisibleStatusEffect.Glutinous);
             AddEffect(new StatusEffect(3f, 0.5f));
         }
-        if (pathSet.SetEquals(new HashSet<VisibleStatusEffect> { VisibleStatusEffect.Dirted, VisibleStatusEffect.Heated }))
+        else if (status == VisibleStatusEffect.Glutinous)
+        {
+            SetVisibleStatusEffectGraphic(VisibleStatusEffect.Glutinous);
+            AddEffect(new StatusEffect(3f, 0.5f));
+        }
+        else if (pathSet.SetEquals(new HashSet<VisibleStatusEffect> { VisibleStatusEffect.Dirted, VisibleStatusEffect.Heated }))
         {
             SetVisibleStatusEffectGraphic(VisibleStatusEffect.Crystalized);
             AddEffect(new StatusEffect(3f));
         }
-        if (CurrentVisibleStatusEffect == VisibleStatusEffect.None)
+        else if (status == VisibleStatusEffect.Crystalized)
+        {
+            SetVisibleStatusEffectGraphic(VisibleStatusEffect.Crystalized);
+            AddEffect(new StatusEffect(3f));
+        }
+        else if (CurrentVisibleStatusEffect == VisibleStatusEffect.None)
+        {
+            SetVisibleStatusEffectGraphic(status);
+        }
+        else if (status == VisibleStatusEffect.Fortified)
         {
             SetVisibleStatusEffectGraphic(status);
         }

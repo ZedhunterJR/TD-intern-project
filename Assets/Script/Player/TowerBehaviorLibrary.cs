@@ -218,7 +218,8 @@ public class TowerBehaviorLibrary
                 {
                     sc.KillEffect += (pos) =>
                     {
-                        var path = PathManager.Instance.GetCurrentPathEntity(pos);
+                        var absolutePos = PathManager.Instance.GetNearestTileCenter(pos);
+                        var path = PathManager.Instance.GetCurrentPathEntity(absolutePos);
                         if (path != null)
                             path.InflictLandMaking(PathType.Pond);
                     };
@@ -228,7 +229,8 @@ public class TowerBehaviorLibrary
                 {
                     sc.KillEffect += (pos) =>
                     {
-                        var path = PathManager.Instance.GetCurrentPathEntity(pos);
+                        var absolutePos = PathManager.Instance.GetNearestTileCenter(pos);
+                        var path = PathManager.Instance.GetCurrentPathEntity(absolutePos);
                         if (path != null)
                             path.InflictLandMaking(PathType.Lava);
                     };
@@ -238,7 +240,8 @@ public class TowerBehaviorLibrary
                 {
                     sc.KillEffect += (pos) =>
                     {
-                        var path = PathManager.Instance.GetCurrentPathEntity(pos);
+                        var absolutePos = PathManager.Instance.GetNearestTileCenter(pos);
+                        var path = PathManager.Instance.GetCurrentPathEntity(absolutePos);
                         if (path != null)
                             path.InflictLandMaking(PathType.DirtyMist);
                     };
@@ -276,12 +279,12 @@ public class TowerBehaviorLibrary
                 break;
             case "ABL_019": //crit
                 {
-                    sc.AttackDmg = (d) => CritDmg(d, 20);
+                    sc.AttackDmg = (d) => CritDmg(d,50);
                 }
                 break;
             case "ABL_020":
                 {
-                    sc.AttackDmg = (d) => CritDmg(d, 50);
+                    sc.AttackDmg = (d) => CritDmg(d, 80);
                 }
                 break;
             case "ABL_026": //atk speed
@@ -304,6 +307,7 @@ public class TowerBehaviorLibrary
 
     private float CritDmg(float dmg, float critChance)
     {
+        Debug.Log("Dead Eye 1");
         var ran = Random.Range(0, 100);
         if (ran < critChance)
             return dmg * 2;

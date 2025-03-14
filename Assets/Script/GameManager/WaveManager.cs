@@ -123,7 +123,7 @@ public class WaveManager : Singleton<WaveManager>
 
                 if (spawnTimers[i] <= 0)
                 {
-                    SpawnEnemy(enemyItem.enemyName);
+                    SpawnEnemy(enemyItem.enemyName, enemyItem.level);
                     enemiesSpawned[i]++;
                     spawnTimers[i] = enemyItem.spawnInterval;
                 }
@@ -162,7 +162,7 @@ public class WaveManager : Singleton<WaveManager>
         */ // Spawn lần lượt từ trên xuống 
     }
 
-    void SpawnEnemy(string enemyName)
+    void SpawnEnemy(string enemyName, int level)
     {
         if (!enemiesDict.ContainsKey(enemyName))
         {
@@ -172,7 +172,7 @@ public class WaveManager : Singleton<WaveManager>
 
         //Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject enemy = PoolManager.Instance.GetEnemyFromPool();
-        enemy.GetComponent<EnemyStat>().Init(enemiesDict[enemyName], 1); //temporary
+        enemy.GetComponent<EnemyStat>().Init(enemiesDict[enemyName], level); //temporary
         enemy.SetActive(true);
 
         Debug.Log($"Spawned: {enemyName}");

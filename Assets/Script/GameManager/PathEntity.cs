@@ -48,6 +48,13 @@ public class PathEntity : MonoBehaviour
     }
     public void InflictLandMaking(PathType pathType)
     {
+        //condition for None type
+        if (currentPathType == PathType.None)
+        {
+            SetGraphic(pathType);
+            return;
+        }
+
         //condition for combination
         var pathSet = new HashSet<PathType> { currentPathType, pathType };
 
@@ -57,10 +64,6 @@ public class PathEntity : MonoBehaviour
             SetGraphic(PathType.Swamp);
         if (pathSet.SetEquals(new HashSet<PathType> { PathType.Lava, PathType.Pond }))
             SetGraphic(PathType.None);
-
-        //condition for None type
-        if (currentPathType == PathType.None)
-            SetGraphic(pathType);
 
     }
 }

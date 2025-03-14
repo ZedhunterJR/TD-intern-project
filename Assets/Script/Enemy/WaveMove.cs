@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WaveMove : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class WaveMove : MonoBehaviour
         waypointIndex = currentIndex;
 
         //random offset on map, if needed
-        ranMod = 0f;
+        ranMod = Random.Range(-.2f, .2f);
         Vector2 tempStartPos = waypoints[waypointIndex];
         tempStartPos.y = waypoints[waypointIndex].y + ranMod;
         tempStartPos.x = waypoints[waypointIndex].x + ranMod;

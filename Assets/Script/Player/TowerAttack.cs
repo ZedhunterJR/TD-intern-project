@@ -22,7 +22,7 @@ public class TowerAttack : MonoBehaviour
     public Action<EnemyStat> HitEffect = null;
     public Func<float, float> AttackDmg;
 
-    private void Awake()
+    public void Init()
     {
         range = GetComponent<Range>();
         stat = GetComponent<TowerStat>();

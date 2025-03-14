@@ -43,6 +43,7 @@ public class TowerStat : MonoBehaviour
         }
         gameObject.AddComponentByString(data.attackScriptName);
         var sc = GetComponent<TowerAttack>();
+        sc.Init();
 
         //graphic
         spineAnimationController.Init(data);

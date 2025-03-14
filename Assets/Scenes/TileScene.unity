@@ -938,7 +938,7 @@ MonoBehaviour:
   - {fileID: 1629336232}
   - {fileID: 2139307661}
   listData:
-  - {fileID: 11400000, guid: 317d6db6af73a174194995f98edf2dd1, type: 2}
+  - {fileID: 11400000, guid: 46823455e8c185948a093cd1b6c3f672, type: 2}
 --- !u!1 &290636455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,7 +1584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &669175877
 Transform:
   m_ObjectHideFlags: 0

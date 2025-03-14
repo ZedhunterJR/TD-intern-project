@@ -14,10 +14,6 @@ public class PathManager : Singleton<PathManager>
             var objClass = entity.GetComponent<PathEntity>();
             PathEntityDictionary.Add(entity.transform.position, objClass);
         }
-
-        //temp, remove later
-        var ranPath = PathEntityDictionary.GetRandomValue();
-        ranPath.InflictLandMaking(PathType.Lava);
     }
 
     public PathType GetCurrentStandingPath(Vector2 pos)
@@ -73,5 +69,12 @@ public class PathManager : Singleton<PathManager>
     {
         //yeah turn out this is currently not needed
         //still keep it here if future demand
+    }
+
+    public Vector2 GetNearestTileCenter(Vector2 position, float tileSize = 1)
+    {
+        float tileX = Mathf.Round(position.x / tileSize) * tileSize;
+        float tileY = Mathf.Round(position.y / tileSize) * tileSize;
+        return new Vector2(tileX, tileY);
     }
 }

@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6d92bd75753ca6a4e876ad7bce9aa15c, type: 2}
+  - {fileID: 2100000, guid: a37d1d6cece4c1c48910037ed2b2dd99, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
-  initialSkinName: skin2-earth
+  skeletonDataAsset: {fileID: 11400000, guid: 68514bdfa406fef4a8825546c61c4b2a, type: 2}
+  initialSkinName: Skin3-water
   initialFlipX: 0
   initialFlipY: 0
   updateWhenInvisible: 3
@@ -265,9 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baef402d8c67eb54fb64b8f0f825d049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  waypoints: []
   isSummoned: 0
-  isStunned: 0
 --- !u!114 &7966498990930400097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,11 +280,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 0}
-  immuneToDebuff: 0
   maxHealth: 300
   currentHp: 0
-  moveSpeed: 1
-  isStunned: 0
+  currentSpeed: 0
+  maxSpeed: 0
+  activeEffects: []
+  isUntargetable: 0
 --- !u!1 &7966498991154106271
 GameObject:
   m_ObjectHideFlags: 0
