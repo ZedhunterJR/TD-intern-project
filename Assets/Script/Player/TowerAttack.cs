@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,60 +15,25 @@ public class TowerAttack : MonoBehaviour
     private float attackTimer = 1f;
 
     //references
-    protected Range range;
-    protected TowerStat stat;
+    public Range range;
+    public TowerStat stat;
 
-    //pooling projectiles, also fuck this, like a tower has several objects to pool: projectile, explosion, vfx etc
-    //no, honestly, fuck this
-    private List<List<GameObject>> projectilePool = new();
-
-    /// <summary>
-    /// The bullshit SpineAnimation doesn't allow direct copy in runtime, so
-    /// have to reapply the skin, otherwise the projectile can have any properties
-    /// Also please don't mess up the poolNumber for god sake, cuz im not making fallback for that
-    /// </summary>
-    /// <param name="projectile"></param>
-    /// <param name="spineAniType"></param>
-    /// <param name="num"></param>
-    protected void InitPool(GameObject projectile, string spineAniType, int num)
-    {
-        projectilePool.Add(new List<GameObject>());
-        for (int i = 0; i < num; i++)
-        {
-            var item = Instantiate(projectile, this.transform);
-            item.GetComponentInChildren<SpineAnimationController>().PlayAnimation(spineAniType);
-            item.SetActive(false);
-            projectilePool[^1].Add(item);
-        }
-        Destroy(projectile);
-    }
-    protected GameObject GetFromPool(int poolNum = 0)
-    {
-        if (poolNum >= projectilePool.Count)
-        {
-            GameObject fallback = projectilePool[0].Find(x => !x.activeSelf);
-            fallback.transform.position = transform.position;
-            //projGet.SetActive(true);
-            return fallback;
-        }
-        GameObject projGet = projectilePool[poolNum].Find(x => !x.activeSelf);
-        projGet.transform.position = transform.position;
-        //projGet.SetActive(true);
-        return projGet;
-    }
-    protected void ReturnToPool(GameObject projectile)
-    {
-        projectile.SetActive(false);
-    }
+    public Action<Vector2> KillEffect = null;
+    public Action<EnemyStat> HitEffect = null;
+    public Func<float, float> AttackDmg;
 
     private void Awake()
     {
         range = GetComponent<Range>();
         stat = GetComponent<TowerStat>();
+        AttackDmg = (d) =>
+        {
+            return d;
+        };
         OnAwake();
     }
 
-    private void Update()
+    public void OnUpdate()
     {
 
         if (attackTimer >= 0) 
@@ -97,6 +63,19 @@ public class TowerAttack : MonoBehaviour
     {
         //print($"Attacking {target.name}. This is the base class. This shouldn't be on any run-time objects");
         stat.AttackAnimation();
+    }
+
+    protected void DealDmg(GameObject enemy, Vector2 position)
+    {
+        if (!range.AllEnemies.Contains(enemy))
+            return;
+
+        var st = enemy.GetComponent<EnemyStat>();
+        HitEffect?.Invoke(st);
+        if (st.PreMitiDmg(AttackDmg(stat.dmg), stat.data))
+        {
+            KillEffect?.Invoke(position);
+        }
     }
 }
 

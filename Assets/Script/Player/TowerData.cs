@@ -11,6 +11,7 @@ public class TowerData : ScriptableObject
     public SkeletonDataAsset towerType;
     public string towerInitialSkin;
     public Element element;
+    public float projSpwPosY;
 
     [Header("Stats")]
     public float baseDamage;
@@ -18,4 +19,7 @@ public class TowerData : ScriptableObject
     [Tooltip("Radius in world unit")] public float range; //range in point radius
 
     public string attackScriptName; //derived from TowerAttack.cs
+    public List<string> lvl1Abilites;
+    public List<string> lvl2Abilites;
+    public List<string> lvl3Abilites;
 }

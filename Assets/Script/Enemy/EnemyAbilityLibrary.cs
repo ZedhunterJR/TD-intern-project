@@ -154,7 +154,8 @@ public class EnemyAbilityLibrary
                     enemy.AbilityUpdates.Add(new(() =>
                     {
                         var path = PathManager.Instance.GetCurrentPathEntity(enemy.CurrentPositionInAbs);
-                        path.InflictLandMaking(PathType.Pond);
+                        if (path != null)
+                            path.InflictLandMaking(PathType.Pond);
                     }, 5f));
                 }
                 break;
@@ -163,7 +164,8 @@ public class EnemyAbilityLibrary
                     enemy.AbilityUpdates.Add(new(() =>
                     {
                         var path = PathManager.Instance.GetCurrentPathEntity(enemy.CurrentPositionInAbs);
-                        path.InflictLandMaking(PathType.Lava);
+                        if (path != null)
+                            path.InflictLandMaking(PathType.Lava);
                     }, 5f));
                 }
                 break;
@@ -172,7 +174,8 @@ public class EnemyAbilityLibrary
                     enemy.AbilityUpdates.Add(new(() =>
                     {
                         var path = PathManager.Instance.GetCurrentPathEntity(enemy.CurrentPositionInAbs);
-                        path.InflictLandMaking(PathType.DirtyMist);
+                        if (path != null)
+                            path.InflictLandMaking(PathType.DirtyMist);
                     }, 5f));
                 }
                 break;
@@ -213,7 +216,8 @@ public class EnemyAbilityLibrary
                     enemy.PreDestruction += () =>
                     {
                         var path = PathManager.Instance.GetCurrentPathEntity(enemy.CurrentPositionInAbs);
-                        path.InflictLandMaking(PathType.Pond);
+                        if (path != null)
+                            path.InflictLandMaking(PathType.Pond);
                     };
                 }
                 break;
@@ -222,7 +226,8 @@ public class EnemyAbilityLibrary
                     enemy.PreDestruction += () =>
                     {
                         var path = PathManager.Instance.GetCurrentPathEntity(enemy.CurrentPositionInAbs);
-                        path.InflictLandMaking(PathType.Lava);
+                        if (path != null)
+                            path.InflictLandMaking(PathType.Lava);
                     };
                 }
                 break;
@@ -231,7 +236,8 @@ public class EnemyAbilityLibrary
                     enemy.PreDestruction += () =>
                     {
                         var path = PathManager.Instance.GetCurrentPathEntity(enemy.CurrentPositionInAbs);
-                        path.InflictLandMaking(PathType.DirtyMist);
+                        if (path != null)
+                            path.InflictLandMaking(PathType.DirtyMist);
                     };
                 }
                 break;

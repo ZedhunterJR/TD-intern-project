@@ -938,9 +938,7 @@ MonoBehaviour:
   - {fileID: 1629336232}
   - {fileID: 2139307661}
   listData:
-  - {fileID: 11400000, guid: 46823455e8c185948a093cd1b6c3f672, type: 2}
-  - {fileID: 11400000, guid: e437adafb872f664a8064438a94c9f52, type: 2}
-  - {fileID: 11400000, guid: fa3c4fbbe6cdc7d45853236ed76bdcab, type: 2}
+  - {fileID: 11400000, guid: 317d6db6af73a174194995f98edf2dd1, type: 2}
 --- !u!1 &290636455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,15 +1062,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolEnemyTest: []
   poolTower: []
-  poolTowerEarth: []
   PrefabsEnemyTest: {fileID: 7966498990930400109, guid: 98dbf991a4ca7b34c837d897e5946188, type: 3}
   PrefabsTower: {fileID: 8847355661232603447, guid: fdd1263646393eb48b3e3118ba837035, type: 3}
-  enemyData: {fileID: 11400000, guid: 50fd124ca7cac8447b7cf6fd67603b0e, type: 2}
-  dataTowerWater: {fileID: 11400000, guid: 5737dbda509e5224d8a9ef4b191b901f, type: 2}
-  dataTowerEarth: {fileID: 11400000, guid: 2f0785a367d07fb439a223bdad0ee61c, type: 2}
+  allTowerDatas:
+  - {fileID: 11400000, guid: 46823455e8c185948a093cd1b6c3f672, type: 2}
   ContainerEnemyTest: {fileID: 560659379}
-  containerTowerWater: {fileID: 1932764653}
-  containerTowerEarth: {fileID: 1207810481}
+  containerTower: {fileID: 1932764653}
+  containerProjectile: {fileID: 1207810481}
 --- !u!1 &397151989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,7 +2422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1207810481}
   m_Layer: 0
-  m_Name: 'TowerEarthContainer '
+  m_Name: ProjectileContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3090,6 +3086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towers: []
+  projectiles: []
 --- !u!1 &1663534829
 GameObject:
   m_ObjectHideFlags: 0
@@ -3655,7 +3652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1932764653}
   m_Layer: 0
-  m_Name: TowerWaterContainer
+  m_Name: TowerContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

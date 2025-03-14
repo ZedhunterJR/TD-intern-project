@@ -11,12 +11,14 @@ public class TowerStat : MonoBehaviour
     //public variables
     public TowerData data;
 
-    //private variables
-    private bool hasInit = false; //for testing, might need to remove later
-
     //references
     private Range range;
     private SpineAnimationController spineAnimationController;
+
+    //live stats
+    public float dmg;
+    public float atkSpd;
+    public int level;
 
     private void Awake()
     {
@@ -25,12 +27,14 @@ public class TowerStat : MonoBehaviour
     }
 
     //Call this when instantiate the object
-    public void Init(TowerData data)
+    public void Init(TowerData data, int level)
     {
         this.data = data;
         //initialize all the needed stats
         range.detectionRange = data.range;
         range.AllEnemies = EnemyManager.Instance.AllEnemies;
+        dmg = data.baseDamage;
+        atkSpd = data.baseAtkSpd;
 
         //init attack script
         if (gameObject.HasComponent<TowerAttack>())
@@ -38,6 +42,7 @@ public class TowerStat : MonoBehaviour
             Destroy(GetComponent<TowerAttack>());
         }
         gameObject.AddComponentByString(data.attackScriptName);
+        var sc = GetComponent<TowerAttack>();
 
         //graphic
         spineAnimationController.Init(data);
@@ -46,16 +51,13 @@ public class TowerStat : MonoBehaviour
         //if there is runtime range modification, move this to a method instead
         transform.Find("range_display").localScale = Vector3.one * data.range;
 
-
-        hasInit = true;
-    }
-    private void Update()
-    {
-        if (!hasInit)
-        {
-            Init(data);
-        }
-
+        //a lotta bs
+        foreach (var item in data.lvl1Abilites)
+            TowerBehaviorLibrary.Instance.GetTowerAbility(item, sc);
+        if (level > 1) foreach (var item in data.lvl2Abilites)
+                TowerBehaviorLibrary.Instance.GetTowerAbility(item, sc);
+        if (level > 2) foreach (var item in data.lvl3Abilites)
+                TowerBehaviorLibrary.Instance.GetTowerAbility(item, sc);
     }
 
     public void AttackAnimation()

@@ -16,7 +16,15 @@ MonoBehaviour:
   towerType: {fileID: 11400000, guid: b38bba59f389b034e81dff5c0a701951, type: 2}
   towerInitialSkin: earth-tower
   element: 2
+  projSpwPosY: 1
   baseDamage: 1
-  baseAtkSpd: 0.3
+  baseAtkSpd: 0.4
   range: 3
-  attackScriptName: SentryEarth
+  attackScriptName: TowerEarth
+  lvl1Abilites:
+  - ABL_004
+  - ABL_009
+  lvl2Abilites:
+  - ABL_011
+  lvl3Abilites:
+  - ABL_026

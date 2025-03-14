@@ -15,7 +15,7 @@ public class EnemyStat : MonoBehaviour
     // Buff and DeBuff List 
     [SerializeField]
     List<StatusEffect> activeEffects = new List<StatusEffect>();
-    public bool isStunned;
+
     public VisibleStatusEffect CurrentVisibleStatusEffect { get; private set; }
     private float currentVisibleStatusTimer;
 
@@ -87,10 +87,16 @@ public class EnemyStat : MonoBehaviour
         PreDestruction = null;
         EnteringTile = null;
         ExitingTile = null;
-
-        //init ability
         AbilityUpdates = new();
         PreMitiDmgFunc = (d, s) => d;
+
+        //init ability
+        foreach (var item in data.lvl1Abilities)
+            EnemyAbilityLibrary.Instance.GetAbility(this, item);
+        if (level > 1) foreach (var item in data.lvl2Abilities)
+                EnemyAbilityLibrary.Instance.GetAbility(this, item);
+        if (level > 2) foreach (var item in data.lvl3Abilities)
+                EnemyAbilityLibrary.Instance.GetAbility(this, item);
     }
 
     public void OnUpdate()
@@ -119,8 +125,8 @@ public class EnemyStat : MonoBehaviour
             SetVisibleStatusEffectGraphic(VisibleStatusEffect.None);
 
         //Manage movement and rotation
-        if (!isStunned)
-            moveScript.MoveUpdate(currentSpeed);
+        moveScript.MoveUpdate(currentSpeed);
+        spineAnimation.GetComponent<SpineAnimationController>().SetAnimationSpeedBaseOnMoveSpeed(currentSpeed);
         if (flipX != moveScript.FlipX)
         {
             flipX = moveScript.FlipX;
@@ -137,7 +143,7 @@ public class EnemyStat : MonoBehaviour
     }
 
     #region HP,Pos Update
-    public void UpdateHp(float value)
+    public bool UpdateHp(float value)
     {
         currentHp += value;
         currentHp = Mathf.Clamp(currentHp, 0, maxHealth);
@@ -148,21 +154,23 @@ public class EnemyStat : MonoBehaviour
             PoolManager.Instance.RespawnObject(OBJ_TYPE.enemyTest, gameObject);
             //Destroy(gameObject);
             //EventManager.Instance.ModiGold(enemyEquivalent * 10f);
+            return true;
         }
 
         Vector2 scale = new Vector2(1 - (currentHp / maxHealth), 1);
         hpBarCover.transform.localScale = scale;
+        return false;
     }
 
-    public void PreMitiDmg(float dmg, TowerData attackData)
+    public bool PreMitiDmg(float dmg, TowerData attackData)
     {
         //print(dmg);
         dmg = PreMitiDmgFunc(dmg, attackData);
         if (CurrentVisibleStatusEffect == VisibleStatusEffect.Crystalized)
             dmg = 0;
         if (CurrentVisibleStatusEffect == VisibleStatusEffect.Fortified)
-            dmg = MathF.Floor(dmg / 2f);
-        UpdateHp(-dmg);
+            dmg = dmg / 2f;
+        return UpdateHp(-Mathf.Floor(dmg));
     }
     /// <summary>
     /// have to check every frame, not even skipping checking the same grid because of possible

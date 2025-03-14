@@ -7,24 +7,20 @@ public class PoolManager : Singleton<PoolManager>
     [Header("Pool")]
     [SerializeField] List<GameObject> poolEnemyTest = new List<GameObject>();
     [SerializeField] List<GameObject> poolTower = new List<GameObject>();
-    [SerializeField] List<GameObject> poolTowerEarth = new List<GameObject>();
+    private Dictionary<string, List<GameObject>> projectilePool = new();
 
     [Header("Prefabs")]
     [SerializeField] GameObject PrefabsEnemyTest;
     [SerializeField] GameObject PrefabsTower;
 
     [Header("Data")]
-    [SerializeField] EnemyData enemyData;
-    [SerializeField] TowerData dataTowerWater;
-    [SerializeField] TowerData dataTowerEarth;
-
-    List<TowerData> allTowerDatas = new();
+    [SerializeField] List<TowerData> allTowerDatas = new();
     Dictionary<string, TowerData> allTowersDict = new();
 
     [Header("Contain")]
     [SerializeField] Transform ContainerEnemyTest;
-    [SerializeField] Transform containerTowerWater;
-    [SerializeField] Transform containerTowerEarth;
+    [SerializeField] Transform containerTower;
+    [SerializeField] Transform containerProjectile;
 
     public void OnStart()
     {
@@ -44,12 +40,11 @@ public class PoolManager : Singleton<PoolManager>
 
     private void FillPool()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 20; i++)
         {
             CreateEnemyTest();
 
-            CreateTower(containerTowerWater);
-            CreateTower(containerTowerEarth);
+            CreateTower(containerTower);
         }
     }
 
@@ -96,7 +91,7 @@ public class PoolManager : Singleton<PoolManager>
         GameObject towerWater = poolTower.Find(x => !x.gameObject.activeSelf);
         if (towerWater == null)
         {
-            towerWater = CreateTower(containerTowerWater);
+            towerWater = CreateTower(containerTower);
             //TowerManager.Instance.AddTower(towerWater);
             return GetTowerFromPool();
         }
@@ -129,6 +124,43 @@ public class PoolManager : Singleton<PoolManager>
         }
     }
 
+    #endregion
+
+    #region Projectile pooling
+    public void RegisterProjectilePool(GameObject projectile, string spineAniType, int count, string key)
+    {
+        // Check if key exists, if not, add a new list
+        if (!projectilePool.TryGetValue(key, out List<GameObject> pool))
+        {
+            pool = new List<GameObject>();
+            projectilePool[key] = pool;
+        }
+
+        // Add new projectiles to the pool
+        for (int i = 0; i < count; i++)
+        {
+            var item = Instantiate(projectile, containerProjectile);
+            item.GetComponentInChildren<SpineAnimationController>().PlayAnimation(spineAniType);
+            item.SetActive(false);
+            pool.Add(item);
+        }
+
+        Destroy(projectile);
+    }
+
+    public GameObject GetProjectileFromPool(string key)
+    {
+        GameObject projGet = projectilePool[key].Find(x => !x.activeSelf);
+        //projGet.transform.position = transform.position;
+        TowerManager.Instance.AddProjectile(projGet);
+        //projGet.SetActive(true);
+        return projGet;
+    }
+    public void ReturnProjectileToPool(GameObject projectile)
+    {
+        TowerManager.Instance.RemoveProjectile(projectile);
+        projectile.SetActive(false);
+    }
     #endregion
 }
 

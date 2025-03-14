@@ -16,13 +16,13 @@
           "count": 2,
           "spawnInterval": 1,
           "pathId": 0,
-          "waveInterval": 0
+          "waveInterval": 5
         }
       ]
     },
     {
       "waveIndex": 2,
-      "startTime": 10,
+      "startTime": 20,
       "enemyGroup": [
         {
           "enemyName": "TRP_003",

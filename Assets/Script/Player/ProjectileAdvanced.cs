@@ -38,7 +38,7 @@ public class ProjectileAdvanced : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void OnUpdate()
     {
         // Check lifespan expiration
         lifeSpanCountDown -= Time.deltaTime;
@@ -79,7 +79,7 @@ public class ProjectileAdvanced : MonoBehaviour
         }
     }
 
-    private void DestroyObj()
+    public void DestroyObj()
     {
         PreDestruct?.Invoke();
         //Destroy(gameObject);

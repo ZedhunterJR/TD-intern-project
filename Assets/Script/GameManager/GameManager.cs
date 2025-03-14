@@ -63,6 +63,8 @@ public class GameManager : Singleton<GameManager>
                 poolManager.OnUpdate();
             if (waveManager != null)
                 waveManager.OnUpdate();
+            if (towerManager != null)
+                towerManager.OnUpdate();
         }
     }
 

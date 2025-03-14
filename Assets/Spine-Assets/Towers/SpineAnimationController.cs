@@ -15,13 +15,15 @@ public class SpineAnimationController : MonoBehaviour
     public void Init(TowerData data)
     {
         skeletonAnimation.skeletonDataAsset = data.towerType;
-        skeletonAnimation.Initialize(true);
+        skeletonAnimation.ClearState(); // Reset internal state before applying changes
+        //skeletonAnimation.Initialize(true); // Ensure full reinitialization
         SetSkinName(data.towerInitialSkin);
     }
     public void Init(EnemyData data)
     {
         skeletonAnimation.skeletonDataAsset = data.enemyType;
-        skeletonAnimation.Initialize(true);
+        skeletonAnimation.ClearState(); // Reset internal state before applying changes
+        //skeletonAnimation.Initialize(true); // Ensure full reinitialization
     }
     public void SetSkinName(string skin)
     {
@@ -58,5 +60,15 @@ public class SpineAnimationController : MonoBehaviour
     public void SetAnimationSpeed(float speed)
     {
         skeletonAnimation.timeScale = speed;
+    }
+
+    private float storedSpeed;
+    public void SetAnimationSpeedBaseOnMoveSpeed(float speed, float denominator = 2f)
+    {
+        if (storedSpeed == speed)
+            return;
+
+        storedSpeed = speed;
+        SetAnimationSpeed(speed/denominator);
     }
 }

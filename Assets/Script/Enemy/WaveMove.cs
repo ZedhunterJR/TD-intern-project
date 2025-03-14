@@ -101,12 +101,7 @@ public class WaveMove : MonoBehaviour
             currentWaypointPos.x = waypoints[waypointIndex].x + ranMod;
             currentWaypointPos.y = waypoints[waypointIndex].y + ranMod;
         }
-        if (!GetComponent<EnemyStat>().isStunned)
-        {
-            Move(moveSpeed);
-            //GetComponentInChildren<SimpleAnim>().isStunned = false;
-        }
-        //else {GetComponentInChildren<SimpleAnim>().isStunned = true;}
+        Move(moveSpeed);
 
     }
 }
