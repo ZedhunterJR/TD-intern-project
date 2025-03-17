@@ -5,10 +5,38 @@
       "startTime": 5,
       "enemyGroup": [
         {
-          "enemyName": "TRP_002",
-          "level": 2,
-          "count": 20,
-          "spawnInterval": 2,
+          "enemyName": "TRP_007",
+          "level": 3,
+          "count": 5,
+          "spawnInterval": 1,
+          "pathId": 0,
+          "waveInterval": 0
+        }
+      ]
+    },
+    {
+      "waveIndex": 1,
+      "startTime": 5,
+      "enemyGroup": [
+        {
+          "enemyName": "TRP_008",
+          "level": 3,
+          "count": 5,
+          "spawnInterval": 1,
+          "pathId": 0,
+          "waveInterval": 0
+        }
+      ]
+    },
+    {
+      "waveIndex": 1,
+      "startTime": 5,
+      "enemyGroup": [
+        {
+          "enemyName": "TRP_009",
+          "level": 3,
+          "count": 5,
+          "spawnInterval": 1,
           "pathId": 0,
           "waveInterval": 0
         }

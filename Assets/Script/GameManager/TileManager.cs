@@ -17,6 +17,8 @@ public class TileManager : Singleton<TileManager>
 
     public void OnStart()
     {
+        AddTilesToList();
+
         InitAllTiles();
         /* Already linked this from CanvasAction/Content1/GameObject/Button
         spawnTower.onClick.AddListener(SpawnRandomTile);*/
@@ -36,6 +38,11 @@ public class TileManager : Singleton<TileManager>
         }
     }
 
+    void AddTilesToList()
+    {
+        tiles.AddRange(FindObjectsOfType<TileEntity>());
+    }
+
     public void SpawnRandomTile()
     {
         List<TileEntity> tilesNoneTower = tiles.Where(n => n.Status == TILE_BUILDING_STATUS.None).ToList();
@@ -47,7 +54,7 @@ public class TileManager : Singleton<TileManager>
             //TestEnemyAndTowerSpawn.Instance.SpawnTower(tile.transform.position);
             GameObject tower = PoolManager.Instance.GetTowerFromPool();
             tower.GetComponent<TowerStat>().Init(listData.GetRandom(), 2);
-            tower.transform.position = Vector2.zero;
+            tower.transform.position = tile.transform.position;
             tower.SetActive(true);
         }
         else
