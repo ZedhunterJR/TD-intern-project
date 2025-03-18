@@ -20,6 +20,9 @@ public class GameManager : Singleton<GameManager>
     // Game Status
     private GAME_STATUS status;
 
+    // LoadRadom map
+    private int lastMapIndex = -1;
+
     private void Awake()
     {
         if (status == GAME_STATUS.Init)
@@ -38,6 +41,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (status == GAME_STATUS.Init)
         {
+            LoadRandomMap();
             if (tileManager != null)
                 tileManager.OnStart();
             if (enemyManager != null)
@@ -109,12 +113,39 @@ public class GameManager : Singleton<GameManager>
                     break;
             }
         }
-
     }
 
     private void UpdateHealthBar()
     {
         healthBar.fillAmount = currentHealth / baseHealth;
+    }
+    #endregion
+    #region Load Random Map
+    void LoadRandomMap()
+    {
+        GameObject[] maps = Resources.LoadAll<GameObject>("Map");
+
+        if (maps.Length == 0)
+        {
+            Debug.Log("Không tìm thấy map nào");
+            return;
+        }
+
+        int randomIndex;
+        do
+        {
+            randomIndex = Random.Range(0, maps.Length);
+        }
+        while (randomIndex == PlayerPrefs.GetInt("LastMapIndex", -1)); // Kiểm tra map có trùng lần trước không
+
+        // Lưu lại map đã chơi để tránh trùng
+        PlayerPrefs.SetInt("LastMapIndex", randomIndex);
+        PlayerPrefs.Save();
+
+        GameObject selectedMap = maps[randomIndex];
+
+        // Instantiate map vào game
+        Instantiate(selectedMap, Vector3.zero, Quaternion.identity);
     }
     #endregion
 }
