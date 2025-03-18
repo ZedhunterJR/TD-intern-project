@@ -6,6 +6,9 @@ public class PathManager : Singleton<PathManager>
 {
     public Dictionary<Vector2, PathEntity> PathEntityDictionary = new();
 
+    [SerializeField] Sprite _spriteCaslte;
+    [SerializeField] Sprite _spriteSpawner;
+
     public void Init(List<GameObject> pathEntities)
     {
         PathEntityDictionary = new();

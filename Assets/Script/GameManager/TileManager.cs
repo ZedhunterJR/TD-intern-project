@@ -13,6 +13,7 @@ public class TileManager : Singleton<TileManager>
     [SerializeField]
     List<TowerData> listData = new List<TowerData>();
 
+
     //[SerializeField] Button spawnTower;
 
     public void OnStart()
@@ -26,7 +27,7 @@ public class TileManager : Singleton<TileManager>
 
     public void OnUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.R)) 
+        if (Input.GetKeyDown(KeyCode.R))
             SpawnRandomTile();
     }
 

@@ -7,6 +7,7 @@ public class TileEntity : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
 
     [SerializeField] Sprite _sprite;
+
     TILE_BUILDING_STATUS status;
 
     public TILE_BUILDING_STATUS Status => status; 
@@ -14,6 +15,12 @@ public class TileEntity : MonoBehaviour
     public void Init()
     {
         spriteRenderer.sprite = _sprite;
+        status = TILE_BUILDING_STATUS.None;
+    }
+
+    public void Init(Sprite sprite)
+    {
+        spriteRenderer.sprite = sprite;
         status = TILE_BUILDING_STATUS.None;
     }
 

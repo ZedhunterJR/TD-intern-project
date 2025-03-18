@@ -77,7 +77,7 @@ public class GameManager : Singleton<GameManager>
     {
         currentHealth -= 1;
         currentHealth = Mathf.Clamp(currentHealth, 0, baseHealth);
-        UpdateHealthBar();
+        //UpdateHealthBar();
         Debug.Log(currentHealth);
         if (currentHealth == 0)
         {
