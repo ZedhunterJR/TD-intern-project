@@ -5,9 +5,9 @@ using UnityEngine;
 public class PoolManager : Singleton<PoolManager>
 {
     [Header("Pool")]
-    [SerializeField] List<GameObject> poolEnemyTest = new List<GameObject>();
-    [SerializeField] List<GameObject> poolTower = new List<GameObject>();
-    private Dictionary<string, List<GameObject>> projectilePool = new();
+    [SerializeField] Queue<GameObject> poolEnemyTest = new();
+    [SerializeField] Queue<GameObject> poolTower = new();
+    private Dictionary<string, Queue<GameObject>> projectilePool = new();
 
     [Header("Prefabs")]
     [SerializeField] GameObject PrefabsEnemyTest;
@@ -22,7 +22,7 @@ public class PoolManager : Singleton<PoolManager>
     [SerializeField] Transform containerTower;
     [SerializeField] Transform containerProjectile;
 
-    public void OnStart()
+    private void Start()
     {
         FillPool();
 
@@ -31,11 +31,6 @@ public class PoolManager : Singleton<PoolManager>
             allTowersDict.Add(item.name, item);
         }
         //var test = allTowersDIct["sentry_earth"];
-    }
-
-    public void OnUpdate()
-    {
-
     }
 
     private void FillPool()
@@ -55,7 +50,7 @@ public class PoolManager : Singleton<PoolManager>
         var objInstance = Instantiate(PrefabsEnemyTest, ContainerEnemyTest);
         objInstance.gameObject.SetActive(false);
         //objInstance.GetComponent<EnemyStat>().Init(enemyData); don't init enemydata on empty pool objects
-        poolEnemyTest.Add(objInstance);
+        poolEnemyTest.Enqueue(objInstance);
         return objInstance;
     }
 
@@ -65,7 +60,7 @@ public class PoolManager : Singleton<PoolManager>
         var objInstance = Instantiate(PrefabsTower, container);
         //objInstance.GetComponent<TowerStat>().Init(data);
         objInstance.gameObject.SetActive(false);
-        poolTower.Add(objInstance);
+        poolTower.Enqueue(objInstance);
         return objInstance;
     }
     #endregion
@@ -73,55 +68,44 @@ public class PoolManager : Singleton<PoolManager>
     #region GetObjFromPool
     public GameObject GetEnemyFromPool()
     {
-
-        GameObject enemyTest = poolEnemyTest.Find(x => !x.gameObject.activeSelf);
-        if (enemyTest == null)
+        if (poolEnemyTest.Count == 0)
         {
-            enemyTest = CreateEnemyTest();
+            CreateEnemyTest();
             //   EnemyManager.Instance.AddEnemy(enemyTest);
-            GetEnemyFromPool();
+            return GetEnemyFromPool();
         }
-        else
-            EnemyManager.Instance.AddEnemy(enemyTest);
+        GameObject enemyTest = poolEnemyTest.Dequeue();
+        EnemyManager.Instance.AddEnemy(enemyTest);
         return enemyTest;
     }
 
     public GameObject GetTowerFromPool()
     {
-        GameObject towerWater = poolTower.Find(x => !x.gameObject.activeSelf);
-        if (towerWater == null)
+        if (poolTower.Count == 0)
         {
-            towerWater = CreateTower(containerTower);
+            CreateTower(containerTower);
             //TowerManager.Instance.AddTower(towerWater);
             return GetTowerFromPool();
         }
-        else
-            TowerManager.Instance.AddTower(towerWater);
+
+        GameObject towerWater = poolTower.Dequeue();
+        TowerManager.Instance.AddTower(towerWater);
         return towerWater;
     }
     #endregion
 
-    #region Respawn OBJ
-    public void RespawnObject(OBJ_TYPE type, GameObject objSpawn)
+    #region Return OBJ
+    public void ReturnTower(GameObject tower)
     {
-        if (type == OBJ_TYPE.enemyTest)
-        {
-            GameObject enemyTest = objSpawn;
-            enemyTest.gameObject.SetActive(false);
-            EnemyManager.Instance.RemoveEnemy(enemyTest);
-        }
-        if (type == OBJ_TYPE.tower_water)
-        {
-            GameObject towerWater = objSpawn;
-            towerWater.gameObject.SetActive(false);
-            TowerManager.Instance.RemoveTower(towerWater);
-        }
-        if (type == OBJ_TYPE.tower_earth)
-        {
-            GameObject towerEarth = objSpawn;
-            towerEarth.gameObject.SetActive(false);
-            TowerManager.Instance.RemoveTower(towerEarth);
-        }
+        tower.SetActive(false);
+        poolTower.Enqueue(tower);
+        TowerManager.Instance.RemoveTower(tower);
+    }
+    public void ReturnEnemy(GameObject enemy)
+    {
+        enemy.SetActive(false);
+        poolEnemyTest.Enqueue(enemy);
+        EnemyManager.Instance.RemoveEnemy(enemy);
     }
 
     #endregion
@@ -130,9 +114,9 @@ public class PoolManager : Singleton<PoolManager>
     public void RegisterProjectilePool(GameObject projectile, string spineAniType, int count, string key)
     {
         // Check if key exists, if not, add a new list
-        if (!projectilePool.TryGetValue(key, out List<GameObject> pool))
+        if (!projectilePool.TryGetValue(key, out Queue<GameObject> pool))
         {
-            pool = new List<GameObject>();
+            pool = new Queue<GameObject>();
             projectilePool[key] = pool;
         }
 
@@ -142,7 +126,7 @@ public class PoolManager : Singleton<PoolManager>
             var item = Instantiate(projectile, containerProjectile);
             item.GetComponentInChildren<SpineAnimationController>().PlayAnimation(spineAniType);
             item.SetActive(false);
-            pool.Add(item);
+            pool.Enqueue(item);
         }
 
         Destroy(projectile);
@@ -150,15 +134,20 @@ public class PoolManager : Singleton<PoolManager>
 
     public GameObject GetProjectileFromPool(string key)
     {
-        GameObject projGet = projectilePool[key].Find(x => !x.activeSelf);
+        if (projectilePool[key].Count == 0)
+        {
+            return null;
+        }
+        GameObject projGet = projectilePool[key].Dequeue();
         //projGet.transform.position = transform.position;
         TowerManager.Instance.AddProjectile(projGet);
         //projGet.SetActive(true);
         return projGet;
     }
-    public void ReturnProjectileToPool(GameObject projectile)
+    public void ReturnProjectileToPool(GameObject projectile, string key)
     {
         TowerManager.Instance.RemoveProjectile(projectile);
+        projectilePool[key].Enqueue(projectile);
         projectile.SetActive(false);
     }
     #endregion

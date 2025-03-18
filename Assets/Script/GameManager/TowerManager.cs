@@ -16,25 +16,6 @@ public class TowerManager : Singleton<TowerManager>
     {
         towers.Remove(tower);
     }
-    public void OnUpdate()
-    {
-        foreach (GameObject tower in new List<GameObject>(towers))
-        {
-            tower.GetComponent<TowerAttack>().OnUpdate();
-        }
-        foreach (GameObject proj in new List<GameObject>(projectiles))
-        {
-            if (proj.TryGetComponent<ProjectileAdvanced>(out var projA))
-            {
-                projA.OnUpdate();
-                continue;
-            }
-            if (proj.TryGetComponent<ExplosionAdvanced>(out var explosA))
-            {
-                explosA.OnUpdate(); 
-            }
-        }
-    }
 
     public void AddProjectile(GameObject proj)
     {

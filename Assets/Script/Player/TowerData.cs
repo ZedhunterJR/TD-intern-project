@@ -14,12 +14,12 @@ public class TowerData : ScriptableObject
     public float projSpwPosY;
 
     [Header("Stats")]
-    public float baseDamage;
-    [Tooltip("Attacks per second")] public float baseAtkSpd; //attack per sec
-    [Tooltip("Radius in world unit")] public float range; //range in point radius
+    public float[] baseDamage = new float[3];
+    [Tooltip("Attacks per second")] public float[] baseAtkSpd = new float[3]; //attack per sec
+    [Tooltip("Radius in world unit")] public float[] range = new float[3]; //range in point radius
+    [Tooltip("Status effect stack")] public int[] statusEffectStack = new int[3];
 
     public string attackScriptName; //derived from TowerAttack.cs
-    public List<string> lvl1Abilites;
-    public List<string> lvl2Abilites;
-    public List<string> lvl3Abilites;
+    public string lvl1Ability = "none";
+    public string lvl2Ability = "none";
 }

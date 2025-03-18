@@ -18,7 +18,10 @@ public class TowerStat : MonoBehaviour
     //live stats
     public float dmg;
     public float atkSpd;
-    public int level;
+    public int level = -1;
+    public int statusStack;
+    public string lvl3Ability;
+    public TowerAttack liveAttackScript;
 
     private void Awake()
     {
@@ -27,14 +30,12 @@ public class TowerStat : MonoBehaviour
     }
 
     //Call this when instantiate the object
-    public void Init(TowerData data, int level)
+    public void Init(TowerData data)
     {
         this.data = data;
         //initialize all the needed stats
-        range.detectionRange = data.range;
         range.AllEnemies = EnemyManager.Instance.AllEnemies;
-        dmg = data.baseDamage;
-        atkSpd = data.baseAtkSpd;
+        LevelUp();
 
         //init attack script
         if (gameObject.HasComponent<TowerAttack>())
@@ -42,25 +43,36 @@ public class TowerStat : MonoBehaviour
             Destroy(GetComponent<TowerAttack>());
         }
         gameObject.AddComponentByString(data.attackScriptName);
-        var sc = GetComponent<TowerAttack>();
-        sc.Init();
+        liveAttackScript = GetComponent<TowerAttack>();
+        liveAttackScript.Init();
 
         //graphic
         spineAnimationController.Init(data);
         spineAnimationController.PlayAnimationOnce("Build", "Idle");
+
+    }
+    public void LevelUp()
+    {
+        level++;
+        dmg = data.baseDamage[level];
+        atkSpd = data.baseAtkSpd[level];
+        statusStack = data.statusEffectStack[level];
+        ModifyRange(data.range[level]);
+
+        switch (level)
+        {
+            case 0: TowerBehaviorLibrary.Instance.GetTowerAbility(data.lvl1Ability, liveAttackScript); break;
+            case 1: TowerBehaviorLibrary.Instance.GetTowerAbility(data.lvl2Ability, liveAttackScript); break;
+            case 2: TowerBehaviorLibrary.Instance.GetTowerAbility(lvl3Ability, liveAttackScript); break;
+        }
+    }
+    private void ModifyRange(float value)
+    {
+        range.detectionRange = data.range[0];
         //initialize the range display
         //if there is runtime range modification, move this to a method instead
-        transform.Find("range_display").localScale = Vector3.one * data.range;
-
-        //a lotta bs
-        foreach (var item in data.lvl1Abilites)
-            TowerBehaviorLibrary.Instance.GetTowerAbility(item, sc);
-        if (level > 1) foreach (var item in data.lvl2Abilites)
-                TowerBehaviorLibrary.Instance.GetTowerAbility(item, sc);
-        if (level > 2) foreach (var item in data.lvl3Abilites)
-                TowerBehaviorLibrary.Instance.GetTowerAbility(item, sc);
+        transform.Find("range_display").localScale = Vector3.one * data.range[0];
     }
-
     public void AttackAnimation()
     {
         spineAnimationController.PlayAnimationOnce("Attack", "Idle");

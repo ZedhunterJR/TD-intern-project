@@ -83,7 +83,7 @@ public class Range : MonoBehaviour
 
         foreach (GameObject enemy in new List<GameObject>(AllEnemies))
         {
-            if (enemy == null || enemy.GetComponent<EnemyStat>().isUntargetable) 
+            if (enemy == null || enemy.GetComponent<EnemyStat>().IsUntargetable) 
                 continue; // Avoid null reference errors
 
             float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;

@@ -24,7 +24,7 @@ public class SniperFire : TowerAttack
         projSc.PreDestruct = () =>
         {
             DealDmg(target, projSc.transform.position);
-            PoolManager.Instance.ReturnProjectileToPool(instance);
+            PoolManager.Instance.ReturnProjectileToPool(instance, "sniper_fire_proj");
         };
     }
 }

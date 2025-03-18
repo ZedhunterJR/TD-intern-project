@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 0c9689a686a4d39498aa4d184beb4d09, type: 2}
-  initialSkinName: earth-sniper
+  initialSkinName: elec-sniper
   initialFlipX: 0
   initialFlipY: 0
   updateWhenInvisible: 3
@@ -266,7 +266,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllEnemies: []
-  EnemiesInRange: []
   detectionRange: 3
 --- !u!114 &6881823228068962706
 MonoBehaviour:
@@ -281,3 +280,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 0}
+  dmg: 0
+  atkSpd: 0
+  level: -1
+  statusStack: 0
+  lvl3Ability: 
+  liveAttackScript: {fileID: 0}

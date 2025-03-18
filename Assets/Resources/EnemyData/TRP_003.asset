@@ -14,14 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Terrestrial Guard
   enemyType: {fileID: 11400000, guid: 7bc0475ebca2c2b4895985b381cd9306, type: 2}
+  skinName: skin1-water
   hpBarPosY: 0
   tier: 0
   maxHp: 3
   baseMoveSpeed: 1
   element: 2
-  lvl1Abilities:
-  - ABI_010
-  lvl2Abilities:
-  - ABI_011
-  lvl3Abilities:
-  - ABI_012
+  ability: 

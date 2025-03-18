@@ -38,7 +38,7 @@ public class ProjectileAdvanced : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void OnUpdate()
+    private void Update()
     {
         // Check lifespan expiration
         lifeSpanCountDown -= Time.deltaTime;

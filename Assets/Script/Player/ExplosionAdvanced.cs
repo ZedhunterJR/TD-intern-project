@@ -35,7 +35,7 @@ public class ExplosionAdvanced : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void OnUpdate()
+    private void Update()
     {
         lifeSpanCountDown -= Time.deltaTime;
         dmgCountDown -= Time.deltaTime;

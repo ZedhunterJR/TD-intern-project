@@ -192,26 +192,17 @@ public class TowerBehaviorLibrary
         {
             case "ABL_001": //water bullet
                 {
-                    sc.HitEffect += (e) =>
-                    {
-                        e.InflictVisibleStatusEffect(VisibleStatusEffect.Wet);
-                    };
+                    
                 }
                 break;
             case "ABL_002": //fire bullet
                 {
-                    sc.HitEffect += (e) =>
-                    {
-                        e.InflictVisibleStatusEffect(VisibleStatusEffect.Heated);
-                    };
+                    
                 }
                 break;
             case "ABL_004": //dir bullet
                 {
-                    sc.HitEffect += (e) =>
-                    {
-                        e.InflictVisibleStatusEffect(VisibleStatusEffect.Dirted);
-                    };
+                    
                 }
                 break;
             case "ABL_006": //pond create
@@ -249,32 +240,32 @@ public class TowerBehaviorLibrary
                 break;
             case "ABL_011":
                 {
-                    sc.stat.dmg += 1;
+                    
                 }
                 break;
             case "ABL_012":
                 {
-                    sc.stat.dmg += 2;
+                    
                 }
                 break;
             case "ABL_013":
                 {
-                    sc.stat.dmg += 3;
+                    
                 }
                 break;
             case "ABL_014":
                 {
-                    sc.range.detectionRange += 1;
+                    
                 }
                 break;
             case "ABL_015":
                 {
-                    sc.range.detectionRange += 2;
+                    
                 }
                 break;
             case "ABL_016":
                 {
-                    sc.range.detectionRange += 3;
+                    
                 }
                 break;
             case "ABL_019": //crit
@@ -289,17 +280,17 @@ public class TowerBehaviorLibrary
                 break;
             case "ABL_026": //atk speed
                 {
-                    sc.stat.atkSpd *= 1.2f;
+                    
                 }
                 break;
             case "ABL_027":
                 {
-                    sc.stat.atkSpd *= 1.5f;
+                    
                 }
                 break;
             case "ABL_028":
                 {
-                    sc.stat.atkSpd *= 2f;
+                    
                 }
                 break;
         }
