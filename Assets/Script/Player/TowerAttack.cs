@@ -30,6 +30,12 @@ public class TowerAttack : MonoBehaviour
         {
             return d;
         };
+        KillEffect = null;
+        HitEffect = (enemy) =>
+        {
+            //print("fuck");
+            enemy.StackElement(stat.statusStack, stat.data.element);
+        };
         OnAwake();
     }
 
@@ -44,7 +50,7 @@ public class TowerAttack : MonoBehaviour
             if (target != null)
             {
                 Attack(target);
-                attackTimer = 1 / stat.data.baseAtkSpd; // base, if to implement buff, use live attack speed instead
+                attackTimer = 1 / stat.atkSpd; // base, if to implement buff, use live attack speed instead
             }
         }
 
@@ -71,11 +77,11 @@ public class TowerAttack : MonoBehaviour
             return;
 
         var st = enemy.GetComponent<EnemyStat>();
-        HitEffect?.Invoke(st);
         if (st.PreMitiDmg(AttackDmg(stat.dmg), stat.data))
         {
             KillEffect?.Invoke(position);
         }
+        HitEffect?.Invoke(st);
     }
 }
 

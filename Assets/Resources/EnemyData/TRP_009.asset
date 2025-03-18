@@ -14,14 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Terrestrial Scout
   enemyType: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
+  skinName: skin1-water
   hpBarPosY: 0
   tier: 1
   maxHp: 1
   baseMoveSpeed: 2
   element: 2
-  lvl1Abilities:
-  - ABI_010
-  lvl2Abilities:
-  - ABI_035
-  lvl3Abilities:
-  - ABI_020
+  ability: 

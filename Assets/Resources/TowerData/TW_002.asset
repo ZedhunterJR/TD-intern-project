@@ -17,14 +17,19 @@ MonoBehaviour:
   towerInitialSkin: fire-tower
   element: 0
   projSpwPosY: 1
-  baseDamage: 1
-  baseAtkSpd: 0.4
-  range: 3
+  baseDamage:
+  - 1
+  - 1
+  - 1
+  baseAtkSpd:
+  - 1
+  - 1
+  - 1
+  range:
+  - 4
+  - 3
+  - 3
+  statusEffectStack: 020000000100000001000000
   attackScriptName: TowerFire
-  lvl1Abilites:
-  - ABL_002
-  - ABL_007
-  lvl2Abilites:
-  - ABL_011
-  lvl3Abilites:
-  - ABL_026
+  lvl1Ability: none
+  lvl2Ability: none

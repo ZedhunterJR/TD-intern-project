@@ -14,14 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Watery Guard
   enemyType: {fileID: 11400000, guid: 7bc0475ebca2c2b4895985b381cd9306, type: 2}
+  skinName: skin1-water
   hpBarPosY: 0
   tier: 0
-  maxHp: 3
-  baseMoveSpeed: 1
+  maxHp: 40
+  baseMoveSpeed: 0.5
   element: 1
-  lvl1Abilities:
-  - ABI_001
-  lvl2Abilities:
-  - ABI_002
-  lvl3Abilities:
-  - ABI_003
+  ability: 

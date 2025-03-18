@@ -14,14 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Fiery Solider
   enemyType: {fileID: 11400000, guid: 964877fd537e3ce4cabd22574b65f9d2, type: 2}
+  skinName: skin1-water
   hpBarPosY: 0
   tier: 0
   maxHp: 2
   baseMoveSpeed: 1.3
   element: 0
-  lvl1Abilities:
-  - ABI_004
-  lvl2Abilities:
-  - ABI_016
-  lvl3Abilities:
-  - ABI_019
+  ability: 

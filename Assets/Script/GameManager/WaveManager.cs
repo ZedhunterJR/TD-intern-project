@@ -172,7 +172,7 @@ public class WaveManager : Singleton<WaveManager>
 
         //Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject enemy = PoolManager.Instance.GetEnemyFromPool();
-        enemy.GetComponent<EnemyStat>().Init(enemiesDict[enemyName], level); //temporary
+        enemy.GetComponent<EnemyStat>().Init(enemiesDict[enemyName]); //temporary
         enemy.SetActive(true);
 
         Debug.Log($"Spawned: {enemyName}");

@@ -68,7 +68,7 @@ public class CSVtoSO
                 Debug.LogWarning($"Không thể parse Element: {splitData[6]} cho enemy {enemy.enemyName}");
             }
 
-            // Xử lý kỹ năng
+            /* Xử lý kỹ năng 
             enemy.lvl1Abilities = new List<string>();
             enemy.lvl2Abilities = new List<string>();
             enemy.lvl3Abilities = new List<string>();
@@ -82,7 +82,7 @@ public class CSVtoSO
             if (!string.IsNullOrEmpty(splitData[17])) enemy.lvl2Abilities.Add(splitData[17]);
 
             if (!string.IsNullOrEmpty(splitData[19])) enemy.lvl3Abilities.Add(splitData[19]);
-
+            */
             AssetDatabase.CreateAsset(enemy, $"Assets/Resources/EnemyData/{splitData[0]}.asset");
         }
 

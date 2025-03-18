@@ -17,14 +17,19 @@ MonoBehaviour:
   towerInitialSkin: earth-tower
   element: 2
   projSpwPosY: 1
-  baseDamage: 1
-  baseAtkSpd: 0.4
-  range: 3
+  baseDamage:
+  - 1
+  - 1
+  - 1
+  baseAtkSpd:
+  - 0.6
+  - 1
+  - 1
+  range:
+  - 4
+  - 4
+  - 4
+  statusEffectStack: 020000000100000001000000
   attackScriptName: TowerEarth
-  lvl1Abilites:
-  - ABL_004
-  - ABL_009
-  lvl2Abilites:
-  - ABL_011
-  lvl3Abilites:
-  - ABL_026
+  lvl1Ability: none
+  lvl2Ability: none

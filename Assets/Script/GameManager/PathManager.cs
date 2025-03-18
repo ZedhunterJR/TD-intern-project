@@ -46,19 +46,19 @@ public class PathManager : Singleton<PathManager>
         switch (pathType)
         {
             case PathType.Lava:
-                enemy.GetComponent<EnemyStat>().InflictVisibleStatusEffect(VisibleStatusEffect.Heated);
+                
                 break;
             case PathType.Pond:
-                enemy.GetComponent<EnemyStat>().InflictVisibleStatusEffect(VisibleStatusEffect.Wet);
+                
                 break;
             case PathType.DirtyMist:
-                enemy.GetComponent<EnemyStat>().InflictVisibleStatusEffect(VisibleStatusEffect.Dirted);
+                
                 break;
             case PathType.CrystalField:
-                enemy.GetComponent<EnemyStat>().InflictVisibleStatusEffect(VisibleStatusEffect.Crystalized);
+                
                 break;
             case PathType.Swamp:
-                enemy.GetComponent<EnemyStat>().InflictVisibleStatusEffect(VisibleStatusEffect.Glutinous);
+                
                 break;
             default:
                 break;

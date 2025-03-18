@@ -5,9 +5,9 @@
       "startTime": 5,
       "enemyGroup": [
         {
-          "enemyName": "TRP_002",
+          "enemyName": "TRP_001",
           "level": 2,
-          "count": 20,
+          "count": 1,
           "spawnInterval": 2,
           "pathId": 0,
           "waveInterval": 0

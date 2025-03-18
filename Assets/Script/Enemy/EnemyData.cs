@@ -9,6 +9,7 @@ public class EnemyData : ScriptableObject
     [Header("Graphic")]
     public string enemyName;
     public SkeletonDataAsset enemyType;
+    public string skinName;
     public float hpBarPosY;
 
     [Header("Stats")]
@@ -18,9 +19,7 @@ public class EnemyData : ScriptableObject
     public Element element;
 
     [Header("Behavior")]
-    public List<string> lvl1Abilities;
-    public List<string> lvl2Abilities;
-    public List<string> lvl3Abilities;
+    public string ability;
 }
 
 public enum Element
