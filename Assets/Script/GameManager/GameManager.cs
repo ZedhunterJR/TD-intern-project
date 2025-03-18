@@ -109,6 +109,7 @@ public class GameManager : Singleton<GameManager>
                     break;
             }
         }
+
     }
 
     private void UpdateHealthBar()
