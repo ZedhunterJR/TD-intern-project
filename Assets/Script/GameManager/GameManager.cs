@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
@@ -156,3 +156,6 @@ public enum GAME_STATUS
     Win,
     Lose
 }
+
+
+

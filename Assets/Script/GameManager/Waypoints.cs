@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Waypoints : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Waypoints : MonoBehaviour
     [SerializeField] List<Vector2Int> points = new();
     [SerializeField] GameObject pathPrefab;
     [SerializeField] List<GameObject> pathList = new();
+
+    [SerializeField] GameObject castlePrefabs; 
+    [SerializeField] GameObject spawnerPrefabs; 
 
     public int num;
 
@@ -74,12 +78,28 @@ public class Waypoints : MonoBehaviour
             }
         }
 
-        foreach (var item in points)
-        {
-            GameObject path = Instantiate(pathPrefab, new Vector3(item.x, item.y), Quaternion.identity);
-            pathList.Add(path);
-        }
+        //foreach (var item in points)
+        //{
+        //    GameObject path = Instantiate(pathPrefab, new Vector3(item.x, item.y), Quaternion.identity);
+        //    pathList.Add(path);
+        //}
 
+        for (int i = 0; i < points.Count; i++)
+        {
+            if(i == 0)
+            {
+                GameObject path = Instantiate(castlePrefabs, new Vector3(points[i].x, points[i].y + .5f), Quaternion.identity);
+            }
+            else if (i == points.Count - 1)
+            {
+                GameObject path = Instantiate(spawnerPrefabs, new Vector3(points[i].x, points[i].y + .5f), Quaternion.identity);
+            }
+            else
+            {
+                GameObject path = Instantiate(pathPrefab, new Vector3(points[i].x, points[i].y), Quaternion.identity);
+                pathList.Add(path);
+            }
+        }
         PathManager.Instance.Init(pathList);
     }
 
