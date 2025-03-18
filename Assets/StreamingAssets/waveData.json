@@ -1,0 +1,18 @@
+{
+  "waves": [
+    {
+      "waveIndex": 1,
+      "startTime": 5,
+      "enemyGroup": [
+        {
+          "enemyName": "TRP_001",
+          "level": 2,
+          "count": 1,
+          "spawnInterval": 2,
+          "pathId": 0,
+          "waveInterval": 0
+        }
+      ]
+    }
+  ]
+}
