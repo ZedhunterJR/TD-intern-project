@@ -151,6 +151,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1540194356}
+  - {fileID: 175713689}
+  - {fileID: 1102059983}
   - {fileID: 2047589925}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -178,12 +181,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175713688}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2047589925}
+  m_Father: {fileID: 50557117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &280483253
 GameObject:
@@ -488,6 +491,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 702359735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &497935040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 497935041}
+  - component: {fileID: 497935042}
+  m_Layer: 0
+  m_Name: DmgNumManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &497935041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497935040}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 702359735}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &497935042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497935040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c84fe6c41ff5f4c96d00dc309d63b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmgNumPrefab: {fileID: 3551941605912793936, guid: 8be5be313799f204ebd696fcbc0e892a, type: 3}
+  dmgNumPoolTransform: {fileID: 2047589925}
 --- !u!1 &589994630
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +698,7 @@ Transform:
   - {fileID: 1360440742}
   - {fileID: 1069406979}
   - {fileID: 467097090}
+  - {fileID: 497935041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &704995530
@@ -855,12 +905,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102059982}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2047589925}
+  m_Father: {fileID: 50557117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1255550756
 GameObject:
@@ -1159,12 +1209,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540194355}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2047589925}
+  m_Father: {fileID: 50557117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1580560964
 GameObject:
@@ -1301,8 +1351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1a1c4a384935c43a068f7f786d2334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolEnemyTest: []
-  poolTower: []
   PrefabsEnemyTest: {fileID: 7966498990930400109, guid: 98dbf991a4ca7b34c837d897e5946188, type: 3}
   PrefabsTower: {fileID: 8847355661232603447, guid: fdd1263646393eb48b3e3118ba837035, type: 3}
   allTowerDatas:
@@ -1441,7 +1489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047589925}
   m_Layer: 0
-  m_Name: EnemyContainer
+  m_Name: DmgNumContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1459,10 +1507,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1102059983}
-  - {fileID: 175713689}
-  - {fileID: 1540194356}
+  m_Children: []
   m_Father: {fileID: 50557117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807

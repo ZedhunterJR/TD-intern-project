@@ -36,6 +36,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         ChangeStatus(GAME_STATUS.Playing);
+        LoadRandomMap();
     }
 
     private void Update()
