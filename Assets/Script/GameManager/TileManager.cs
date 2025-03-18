@@ -30,6 +30,8 @@ public class TileManager : Singleton<TileManager>
 
     void InitAllTiles()
     {
+        tiles = new();
+        tiles.AddRange(FindObjectsOfType<TileEntity>());
         foreach (var tile in tiles)
         {
             tile.Init();

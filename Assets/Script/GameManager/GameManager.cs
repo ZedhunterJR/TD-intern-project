@@ -118,6 +118,34 @@ public class GameManager : Singleton<GameManager>
         else
             Time.timeScale = 1;
     }
+    #region Load Random Map
+    void LoadRandomMap()
+    {
+        GameObject[] maps = Resources.LoadAll<GameObject>("Map");
+
+        if (maps.Length == 0)
+        {
+            Debug.Log("Không tìm thấy map nào");
+            return;
+        }
+
+        int randomIndex;
+        do
+        {
+            randomIndex = Random.Range(0, maps.Length);
+        }
+        while (randomIndex == PlayerPrefs.GetInt("LastMapIndex", -1)); // Kiểm tra map có trùng lần trước không
+
+        // Lưu lại map đã chơi để tránh trùng
+        PlayerPrefs.SetInt("LastMapIndex", randomIndex);
+        PlayerPrefs.Save();
+
+        GameObject selectedMap = maps[randomIndex];
+
+        // Instantiate map vào game
+        Instantiate(selectedMap, Vector3.zero, Quaternion.identity);
+    }
+    #endregion
 }
 
 public enum GAME_STATUS
