@@ -25,7 +25,7 @@ public class SniperWater : TowerAttack
         {
             //print(target);
             DealDmg(target, projSc.transform.position);
-            PoolManager.Instance.ReturnProjectileToPool(instance);
+            PoolManager.Instance.ReturnProjectileToPool(instance, "sniper_water_proj");
         };
     }
 }

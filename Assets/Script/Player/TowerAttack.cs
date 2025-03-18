@@ -33,7 +33,7 @@ public class TowerAttack : MonoBehaviour
         OnAwake();
     }
 
-    public void OnUpdate()
+    private void Update()
     {
 
         if (attackTimer >= 0) 

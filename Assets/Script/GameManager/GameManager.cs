@@ -26,9 +26,8 @@ public class GameManager : Singleton<GameManager>
         {
             currentHealth = baseHealth;
             status = GAME_STATUS.Init;
+            Time.timeScale = 1;
 
-            if (waveManager != null)
-                waveManager.OnAwake();
             //if (pathManager != null)
             //    pathManager.OnAwake();
         }
@@ -36,18 +35,6 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        if (status == GAME_STATUS.Init)
-        {
-            if (tileManager != null)
-                tileManager.OnStart();
-            if (enemyManager != null)
-                enemyManager.OnStart();
-            if (poolManager != null)
-                poolManager.OnStart();
-            if (waveManager != null)
-                waveManager.OnStart();
-        }
-
         ChangeStatus(GAME_STATUS.Playing);
     }
 
@@ -55,16 +42,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (status == GAME_STATUS.Playing)
         {
-            if (tileManager != null)
-                tileManager.OnUpdate();
-            if (enemyManager != null)
-                enemyManager.OnUpdate();
-            if (poolManager != null)
-                poolManager.OnUpdate();
-            if (waveManager != null)
-                waveManager.OnUpdate();
-            if (towerManager != null)
-                towerManager.OnUpdate();
+            
         }
     }
 
@@ -94,16 +72,20 @@ public class GameManager : Singleton<GameManager>
                     break;
                 case GAME_STATUS.Playing:
                     Debug.Log($"Change status done!! {status}");
+                    PauseGame(2);
                     break;
                 case GAME_STATUS.Pause:
                     Debug.Log($"Change status done!! {status}");
+                    PauseGame(1);
                     break;
                 case GAME_STATUS.Win:
                     Debug.Log($"Change status done!! {status}");
+                    PauseGame(1);
                     break;
                 case GAME_STATUS.Lose:
                     Debug.Log($"Change status done!! {status}");
                     uiManager.ActivePanel(GAME_STATUS.Lose);
+                    PauseGame(1);
                     break;
                 default:
                     break;
@@ -117,6 +99,25 @@ public class GameManager : Singleton<GameManager>
         healthBar.fillAmount = currentHealth / baseHealth;
     }
     #endregion
+
+    private bool gameIsPause = false;
+    /// <summary>
+    /// 0 = invert, 1 = pause, 2 = unpause
+    /// </summary>
+    /// <param name="pauseStatus"></param>
+    public void PauseGame(int pauseStatus)
+    {
+        switch (pauseStatus)
+        {
+            case 0: gameIsPause = !gameIsPause; break;
+            case 1: gameIsPause = true; break;
+            case 2: gameIsPause = false; break;
+        }
+        if (gameIsPause)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
+    }
 }
 
 public enum GAME_STATUS

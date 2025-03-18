@@ -38,13 +38,13 @@ public class WaveManager : Singleton<WaveManager>
     // Đọc dữ liệu từ file CSV 
     [SerializeField] TextAsset textAssetData;
 
-    public void OnAwake()
+    private void Awake()
     {
         enemiesData.AddRange(Resources.LoadAll<EnemyData>("EnemyData"));
         LoadEnemyDataFromListToDict();
     }
 
-    public void OnStart()
+    private void Start()
     {
         SetPath();
         LoadDataFromJsonToList();
@@ -54,7 +54,7 @@ public class WaveManager : Singleton<WaveManager>
         waveTimer = waveTemp.startTime;
     }
 
-    public void OnUpdate()
+    private void Update()
     {
         // Nếu mà không còn wave trong Level thì return
         if (currentWave >= waveList.waves.Count) return;

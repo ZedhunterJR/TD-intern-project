@@ -76,7 +76,7 @@ public class EnemyStat : MonoBehaviour
         Action onexit = () =>
         {
             GameManager.Instance.TakeDame();
-            PoolManager.Instance.RespawnObject(OBJ_TYPE.enemyTest, gameObject);
+            PoolManager.Instance.ReturnEnemy(gameObject);
         };
         moveScript.Init(wps, onexit);
 
@@ -99,7 +99,7 @@ public class EnemyStat : MonoBehaviour
                 EnemyAbilityLibrary.Instance.GetAbility(this, item);
     }
 
-    public void OnUpdate()
+    private void Update()
     {
         /* Test thành công apply hiệu ứng vào trong enem, có thể apply nhiều hiệu ứng cùng lúc 
         if (Input.GetKeyDown(KeyCode.S))
@@ -151,7 +151,7 @@ public class EnemyStat : MonoBehaviour
         {
             PreDestruction?.Invoke();
 
-            PoolManager.Instance.RespawnObject(OBJ_TYPE.enemyTest, gameObject);
+            PoolManager.Instance.ReturnEnemy(gameObject);
             //Destroy(gameObject);
             //EventManager.Instance.ModiGold(enemyEquivalent * 10f);
             return true;

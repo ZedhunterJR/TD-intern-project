@@ -9,24 +9,6 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public List<GameObject> AllEnemies => allEnemies;
 
-    public void OnStart()
-    {
-       
-    }
-
-    public void OnUpdate()
-    {
-        AllEnemiesAction();
-    }
-
-    void AllEnemiesAction()
-    {
-        foreach (var enemy in allEnemies.ToArray())
-        {
-            enemy.GetComponent<EnemyStat>().OnUpdate();
-        }
-    }
-
     public void AddEnemy(GameObject enemy)
     {
         allEnemies.Add(enemy);

@@ -15,14 +15,14 @@ public class TileManager : Singleton<TileManager>
 
     //[SerializeField] Button spawnTower;
 
-    public void OnStart()
+    private void Start()
     {
         InitAllTiles();
         /* Already linked this from CanvasAction/Content1/GameObject/Button
         spawnTower.onClick.AddListener(SpawnRandomTile);*/
     }
 
-    public void OnUpdate()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) 
             SpawnRandomTile();
