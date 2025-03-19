@@ -18,9 +18,9 @@ MonoBehaviour:
   element: 2
   projSpwPosY: 1
   baseDamage:
-  - 10
-  - 10
-  - 10
+  - 20
+  - 20
+  - 20
   baseAtkSpd:
   - 0.6
   - 1

@@ -35,7 +35,7 @@ public class PoolManager : Singleton<PoolManager>
 
     private void FillPool()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 5; i++)
         {
             CreateEnemyTest();
 

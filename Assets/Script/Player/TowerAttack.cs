@@ -15,7 +15,7 @@ public class TowerAttack : MonoBehaviour
     private float attackTimer = 1f;
 
     //references
-    public Range range;
+    //public Range range;
     public TowerStat stat;
 
     public Action<Vector2> KillEffect = null;
@@ -24,7 +24,6 @@ public class TowerAttack : MonoBehaviour
 
     public void Init()
     {
-        range = GetComponent<Range>();
         stat = GetComponent<TowerStat>();
         AttackDmg = (d) =>
         {
@@ -50,8 +49,8 @@ public class TowerAttack : MonoBehaviour
             if (target != null)
             {
                 Attack(target);
-                attackTimer = 1 / stat.atkSpd; // base, if to implement buff, use live attack speed instead
             }
+            attackTimer = 1 / stat.atkSpd; // base, if to implement buff, use live attack speed instead
         }
 
     }
@@ -62,7 +61,8 @@ public class TowerAttack : MonoBehaviour
     protected virtual GameObject GetTarget()
     {
         //base: get first in range
-        return range.FirstTarget();
+        //Debug.Log(stat.range == null);
+        return stat.range.FirstTarget();
     }
 
     protected virtual void Attack(GameObject target)
@@ -73,7 +73,7 @@ public class TowerAttack : MonoBehaviour
 
     protected void DealDmg(GameObject enemy, Vector2 position)
     {
-        if (!range.AllEnemies.Contains(enemy))
+        if (!stat.range.AllEnemies.Contains(enemy))
             return;
 
         var st = enemy.GetComponent<EnemyStat>();

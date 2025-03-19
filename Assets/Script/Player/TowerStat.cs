@@ -12,30 +12,28 @@ public class TowerStat : MonoBehaviour
     public TowerData data;
 
     //references
-    private Range range;
+    public Range range;
     private SpineAnimationController spineAnimationController;
 
     //live stats
     public float dmg;
     public float atkSpd;
-    public int level = -1;
+    public int level = 0;
     public int statusStack;
     public string lvl3Ability;
     public TowerAttack liveAttackScript;
 
     private void Awake()
     {
-        range = GetComponent<Range>();
         spineAnimationController = transform.Find("spine_animation").GetComponent<SpineAnimationController>();
     }
 
     //Call this when instantiate the object
     public void Init(TowerData data)
     {
+        range = new Range(EnemyManager.Instance.AllEnemies, transform.position);
         this.data = data;
         //initialize all the needed stats
-        range.AllEnemies = EnemyManager.Instance.AllEnemies;
-        LevelUp();
 
         //init attack script
         if (gameObject.HasComponent<TowerAttack>())
@@ -50,6 +48,8 @@ public class TowerStat : MonoBehaviour
         spineAnimationController.Init(data);
         spineAnimationController.PlayAnimationOnce("Build", "Idle");
 
+        level = -1;
+        LevelUp();
     }
     public void LevelUp()
     {

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ public class MergeManager : Singleton<MergeManager>
     [SerializeField] private GameObject mergeButtonPrefabs;
     [SerializeField] private Transform worldCanvas;
 
-    TowerStat currentDragingTowerBeign = null;
+    ButtonUI currentDragingButton = null;
 
     private void Start()
     {
@@ -54,17 +54,43 @@ public class MergeManager : Singleton<MergeManager>
 
         buttonUI.ClickFunc = () => 
         { 
-            TileManager.Instance.RemoveTileInDic(pos);
-            ReturnButtonUI(buttonUI); 
+           
+           
         };
         buttonUI.MouseDragBegin = () =>
         {
-            currentDragingTowerBeign = TileManager.Instance.GetTowerStatInTile(pos);
+            Debug.Log($"Begin = {buttonUI.transform.position}");
+            currentDragingButton = buttonUI;
+
+            Debug.Log($"currentDragingButton {currentDragingButton == null}");
         };
 
         buttonUI.MouseDragEnd = () =>
         {
+            currentDragingButton = null;
+        };
 
+        buttonUI.MouseDrop = () =>
+        {
+            if (currentDragingButton == null) return;
+            Debug.Log("Have Button");
+
+            if (currentDragingButton == buttonUI) return;
+            Debug.Log("Different");
+
+            TowerStat towerBegin = TileManager.Instance.GetTowerStatInTile(currentDragingButton.transform.position);
+            Debug.Log($"Tower Begin = {towerBegin == null}");
+
+            TowerStat towerEnd = TileManager.Instance.GetTowerStatInTile(buttonUI.transform.position);
+            Debug.Log($"Tower End = {towerEnd == null}");
+
+            if(towerBegin.data == towerEnd.data && towerBegin.level == towerEnd.level)
+            {
+                TileManager.Instance.RemoveTileInDic(currentDragingButton.transform.position);
+                ReturnButtonUI(currentDragingButton);
+
+                towerEnd.LevelUp();
+            }
         };
     }
 }

@@ -7,26 +7,10 @@
         {
           "enemyName": "TRP_001",
           "level": 2,
-          "count": 1,
+          "count": 20,
           "spawnInterval": 2,
           "pathId": 0,
           "waveInterval": 0
-        },
-        {
-          "enemyName": "TRP_002",
-          "level": 2,
-          "count": 1,
-          "spawnInterval": 2,
-          "pathId": 0,
-          "waveInterval": 5
-        },
-        {
-          "enemyName": "TRP_003",
-          "level": 2,
-          "count": 1,
-          "spawnInterval": 2,
-          "pathId": 0,
-          "waveInterval": 10
         }
       ]
     }

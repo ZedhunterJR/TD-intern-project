@@ -62,7 +62,7 @@ public class GameManager : Singleton<GameManager>
 
     public void ChangeStatus(GAME_STATUS newStatus)
     {
-        Debug.Log($"Current status: {status}");
+        //Debug.Log($"Current status: {status}");
         if (status != newStatus)
         {
             status = newStatus;

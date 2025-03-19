@@ -2,15 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Range : MonoBehaviour
+public class Range
 {
     //when init, point this to another list like
     // AllEnemies = GameManager.AllEnemies
     // this will serve as reference point
-    [HideInInspector] public List<GameObject> AllEnemies = new();
+    [HideInInspector] private List<GameObject> allEnemies = new();
+    private Vector3 pos;
 
     public float detectionRange = 3f;
     //private float enemyUpdateTimer;
+    public List<GameObject> AllEnemies => allEnemies;
+
+    public Range(List<GameObject> allEnemies, Vector3 pos)
+    {
+        this.allEnemies = allEnemies;
+        this.pos = pos;
+    }
     public List<GameObject> FirstTargets()
     {
         var result = EnemiesInRange(); // Directly initialize with EnemiesInRange
@@ -81,12 +89,12 @@ public class Range : MonoBehaviour
 
         List<GameObject> possibleEnemies = new();
 
-        foreach (GameObject enemy in new List<GameObject>(AllEnemies))
+        foreach (GameObject enemy in new List<GameObject>(allEnemies))
         {
             if (enemy == null || enemy.GetComponent<EnemyStat>().IsUntargetable) 
                 continue; // Avoid null reference errors
 
-            float sqrDistance = (enemy.transform.position - transform.position).sqrMagnitude;
+            float sqrDistance = (enemy.transform.position - pos).sqrMagnitude;
             if (sqrDistance < detectionRange * detectionRange)
             {
                 possibleEnemies.Add(enemy); // Add only if not already in the list
