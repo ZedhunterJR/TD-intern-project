@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class TileEntity : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
 
     [SerializeField] Sprite _sprite;
+
+    [HideInInspector]
+    public TowerStat currentTower;
 
     TILE_BUILDING_STATUS status;
 

@@ -17,7 +17,7 @@ MonoBehaviour:
   skinName: skin1-water
   hpBarPosY: 0
   tier: 0
-  maxHp: 40
+  maxHp: 200
   baseMoveSpeed: 0.5
   element: 1
   ability: 

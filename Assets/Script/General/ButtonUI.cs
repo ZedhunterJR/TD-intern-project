@@ -81,4 +81,15 @@ public class ButtonUI : MonoBehaviour, IPointerClickHandler, IDragHandler, IDrop
                 buttonImage.sprite = disabledSprite;
         }
     }
+
+    public void ResetButtonUI()
+    {
+        ClickFunc = null;
+        MouseRightClickFunc = null;
+        MouseMiddleClickFunc = null;
+        MouseDragBegin = null;
+        MouseDrag = null;
+        MouseDragEnd = null;
+        MouseDrop = null;
+    }
 }

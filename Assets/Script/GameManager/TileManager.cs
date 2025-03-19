@@ -9,6 +9,7 @@ public class TileManager : Singleton<TileManager>
 {
     [SerializeField]
     List<TileEntity> tiles = new List<TileEntity>();
+    Dictionary<Vector2, TileEntity> tilesDic = new Dictionary<Vector2, TileEntity>();
 
     [SerializeField]
     List<TowerData> listData = new List<TowerData>();
@@ -24,7 +25,7 @@ public class TileManager : Singleton<TileManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) 
+        if (Input.GetKeyDown(KeyCode.R))
             SpawnRandomTile();
     }
 
@@ -40,21 +41,52 @@ public class TileManager : Singleton<TileManager>
 
     public void SpawnRandomTile()
     {
-        List<TileEntity> tilesNoneTower = tiles.Where(n => n.Status == TILE_BUILDING_STATUS.None).ToList();
+        List<TileEntity> tilesNoneTower = tiles.Where(n => n.currentTower == null).ToList();
 
         if (tilesNoneTower.Count > 0)
         {
             TileEntity tile = tilesNoneTower.GetRandom();
-            tile.ChangeStatus(TILE_BUILDING_STATUS.HasTower);
+
             //TestEnemyAndTowerSpawn.Instance.SpawnTower(tile.transform.position);
             GameObject tower = PoolManager.Instance.GetTowerFromPool();
             tower.GetComponent<TowerStat>().Init(listData.GetRandom());
             tower.transform.position = tile.transform.position;
             tower.SetActive(true);
+            tile.currentTower = tower.GetComponent<TowerStat>();
+            tilesDic.Add(tile.transform.position, tile);
+            MergeManager.Instance.SetButtonPos(tile.transform.position);
         }
         else
         {
             Debug.Log("Không còn chỗ trống để spawn");
+        }
+    }
+
+    public void RemoveTileInDic(Vector2 pos)
+    {
+        try
+        {
+            TileEntity tileEntity = tilesDic[pos];
+            PoolManager.Instance.ReturnTower(tileEntity.currentTower.gameObject);
+            tileEntity.currentTower = null;
+            tilesDic.Remove(pos);
+        }
+        catch 
+        {
+            Debug.Log("000");
+        }
+    }
+
+    public TowerStat GetTowerStatInTile(Vector2 pos)
+    {
+        try
+        {
+            TileEntity tileEntity = tilesDic[pos];
+            return tileEntity.currentTower;
+        }
+        catch
+        {
+            return null;
         }
     }
 }

@@ -33,7 +33,7 @@ public class EnemyStat : MonoBehaviour
                 dirtedStack += stack;
                 if (dirtedStack >= 5)
                 {
-                    dirtedStack = stack - 5;
+                    dirtedStack -= 5;
                     activeEffects.Remove(dirtedStun);
                     activeEffects.Add(dirtedStun);
                     HandleVisibleStatusEffect(Element.Earth);
@@ -242,10 +242,10 @@ public class EnemyStat : MonoBehaviour
     public bool PreMitiDmg(float dmg, TowerData attackData)
     {
         //print(dmg);
-        var mul = CounterElement(data.element, attackData.element);
+        var mul = CounterElement(attackData.element, data.element);
         var color = "#EEEEEE".HexColor();
-        if (mul == 1.2f) color = "#888888".HexColor();
-        if (mul == 0.7f) color = "#FFDD44".HexColor();
+        if (mul == 1.2f) color = "#FFDD44".HexColor();
+        if (mul == 0.7f) color = "#888888".HexColor();
 
         dmg *= mul;
         dmg = PreMitiDmgFunc(dmg, attackData);
@@ -354,7 +354,7 @@ public class EnemyStat : MonoBehaviour
         currentSpeed = maxSpeed * msIncrease * Mathf.Max(msDecrease, 0.2f); //slow never go past 80% slow
     }
 
-    public void HandleVisibleStatusEffect(Element element)
+    private void HandleVisibleStatusEffect(Element element)
     {
         switch (element)
         {
@@ -366,7 +366,7 @@ public class EnemyStat : MonoBehaviour
         {
             dirtedTime = 0;
             wetTime = 0;
-            combineEffectTimer = 5f;
+            combineEffectTimer = 7f;
             CurrentCombinedStatusEffect = CombinedStatusEffect.Glutinous;
             activeEffects.Add(new(7f, 0.3f));
             statusEffectCon.Mud();
