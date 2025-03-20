@@ -24,7 +24,7 @@ public class SniperWater : TowerAttack
         projSc.PreDestruct = () =>
         {
             //print(target);
-            DealDmg(target, projSc.transform.position);
+            DealDmg(projSc.currentTarget, projSc.transform.position);
             PoolManager.Instance.ReturnProjectileToPool(instance, "sniper_water_proj");
         };
     }

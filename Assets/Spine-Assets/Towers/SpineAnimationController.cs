@@ -71,4 +71,19 @@ public class SpineAnimationController : MonoBehaviour
         storedSpeed = speed;
         SetAnimationSpeed(speed/denominator);
     }
+
+    public void SetOutlineColor(Color color)
+    {
+        var renderer = GetComponent<MeshRenderer>();
+        MaterialPropertyBlock block = new MaterialPropertyBlock();
+
+        // Get existing properties (if any)
+        renderer.GetPropertyBlock(block);
+
+        // Set new outline color
+        block.SetColor("_OutlineColor", color);
+
+        // Apply it back to the renderer
+        renderer.SetPropertyBlock(block);
+    }
 }

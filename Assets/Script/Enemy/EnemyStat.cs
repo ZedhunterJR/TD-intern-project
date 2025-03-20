@@ -22,6 +22,19 @@ public class EnemyStat : MonoBehaviour
     private int dirtedStack = 0;
     private float dirtedTime = 0;
     private float combineEffectTimer = 0;
+    public void ResetAllStatusEffect()
+    {
+        activeEffects = new();
+        burnStack = 0;
+        burnTime = 0;
+        wetStack = 0;
+        wetTime = 0;
+        dirtedStack = 0;
+        dirtedTime = 0;
+        combineEffectTimer = 0;
+        CurrentCombinedStatusEffect = CombinedStatusEffect.None;
+        statusEffectCon.ResetAll();
+    }
     public CombinedStatusEffect CurrentCombinedStatusEffect { get; private set; }
     public void StackElement(int stack, Element element)
     {
@@ -183,6 +196,7 @@ public class EnemyStat : MonoBehaviour
         EnteringTile = null;
         AbilityUpdates = new();
         PreMitiDmgFunc = (d, s) => d;
+        ResetAllStatusEffect();
 
         //init ability
         EnemyAbilityLibrary.Instance.GetAbility(this, data.ability);

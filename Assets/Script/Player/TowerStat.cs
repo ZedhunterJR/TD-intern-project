@@ -13,19 +13,18 @@ public class TowerStat : MonoBehaviour
 
     //references
     public Range range;
-    private SpineAnimationController spineAnimationController;
+    [SerializeField] private SpineAnimationController spineAnimationController;
 
     //live stats
     public float dmg;
     public float atkSpd;
     public int level = 0;
     public int statusStack;
-    public string lvl3Ability;
     public TowerAttack liveAttackScript;
 
     private void Awake()
     {
-        spineAnimationController = transform.Find("spine_animation").GetComponent<SpineAnimationController>();
+        //spineAnimationController = transform.Find("spine_animation").GetComponent<SpineAnimationController>();
     }
 
     //Call this when instantiate the object
@@ -36,20 +35,19 @@ public class TowerStat : MonoBehaviour
         //initialize all the needed stats
 
         //init attack script
-        if (gameObject.HasComponent<TowerAttack>())
+        if (GetComponent<TowerAttack>() != null)
         {
             Destroy(GetComponent<TowerAttack>());
         }
-        gameObject.AddComponentByString(data.attackScriptName);
-        liveAttackScript = GetComponent<TowerAttack>();
-        liveAttackScript.Init();
+        liveAttackScript = gameObject.AddComponentByString(data.attackScriptName) as TowerAttack;
+        liveAttackScript.Init(this);
 
         //graphic
         spineAnimationController.Init(data);
-        spineAnimationController.PlayAnimationOnce("Build", "Idle");
 
         level = -1;
         LevelUp();
+        HideRange();
     }
     public void LevelUp()
     {
@@ -58,23 +56,52 @@ public class TowerStat : MonoBehaviour
         atkSpd = data.baseAtkSpd[level];
         statusStack = data.statusEffectStack[level];
         ModifyRange(data.range[level]);
+        spineAnimationController.PlayAnimationOnce("Build", "Idle");
 
         switch (level)
         {
-            case 0: TowerBehaviorLibrary.Instance.GetTowerAbility(data.lvl1Ability, liveAttackScript); break;
-            case 1: TowerBehaviorLibrary.Instance.GetTowerAbility(data.lvl2Ability, liveAttackScript); break;
-            case 2: TowerBehaviorLibrary.Instance.GetTowerAbility(lvl3Ability, liveAttackScript); break;
+            case 0: 
+                spineAnimationController.SetOutlineColor("#2E7D32".HexColor());
+                spineAnimationController.transform.parent.localScale = Vector3.one;
+                break;
+            case 1:
+                spineAnimationController.SetOutlineColor("#8A2BE2".HexColor());
+                spineAnimationController.transform.parent.localScale = new Vector3(1.2f, 1.2f);
+                break;
+            case 2:
+                spineAnimationController.SetOutlineColor("#FFD700".HexColor());
+                spineAnimationController.transform.parent.localScale = new Vector3(1.5f, 1.5f);
+                TowerBehaviorLibrary.Instance.GetTowerAbility(data.specialAbility, liveAttackScript);
+                break;
         }
     }
     private void ModifyRange(float value)
     {
-        range.detectionRange = data.range[0];
+        range.detectionRange = value;
         //initialize the range display
         //if there is runtime range modification, move this to a method instead
-        transform.Find("range_display").localScale = Vector3.one * data.range[0];
+        transform.Find("range_display").localScale = Vector3.one * value;
+    }
+    public void ShowRange(Color color)
+    {
+        color = color.SetAlpha(0.2f);
+        var rDis = transform.Find("range_display");
+        rDis.GetComponent<SpriteRenderer>().color = color;
+        rDis.gameObject.SetActive(true);
+
+        print(rDis);
+    }
+    public void HideRange()
+    {
+        transform.Find("range_display").gameObject.SetActive(false);
     }
     public void AttackAnimation()
     {
         spineAnimationController.PlayAnimationOnce("Attack", "Idle");
+    }
+
+    public bool CanMerge(TowerStat other)
+    {
+        return this.data == other.data && this.level == other.level;
     }
 }
