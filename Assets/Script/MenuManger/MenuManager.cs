@@ -15,6 +15,11 @@ public class MenuManager : Singleton<MenuManager>
 
     public void LoadPlayScene()
     {
-        SceneManager.LoadScene("PlayScene");
+        SceneManager.LoadScene("FinalPlayingScene");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

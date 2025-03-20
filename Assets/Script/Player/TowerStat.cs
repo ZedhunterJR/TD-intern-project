@@ -102,6 +102,6 @@ public class TowerStat : MonoBehaviour
 
     public bool CanMerge(TowerStat other)
     {
-        return this.data == other.data && this.level == other.level;
+        return this.data == other.data && this.level == other.level && level < 2;
     }
 }
