@@ -20,6 +20,5 @@ public class TowerData : ScriptableObject
     [Tooltip("Status effect stack")] public int[] statusEffectStack = new int[3];
 
     public string attackScriptName; //derived from TowerAttack.cs
-    public string lvl1Ability = "none";
-    public string lvl2Ability = "none";
+    public string specialAbility;
 }

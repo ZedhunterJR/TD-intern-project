@@ -7,8 +7,8 @@
         {
           "enemyName": "TRP_001",
           "level": 2,
-          "count": 20,
-          "spawnInterval": 2,
+          "count": 10,
+          "spawnInterval": 4,
           "pathId": 0,
           "waveInterval": 0
         }

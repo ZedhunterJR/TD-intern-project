@@ -14,16 +14,17 @@ public class StatusEffectCon : MonoBehaviour
         crystal = transform.Find("crystal").GetComponent<Animator>();
         mud = transform.Find("mud").GetComponent<Animator>();
 
-        SetActiveFalse();
+        ResetAll();
     }
 
-    private void SetActiveFalse()
+    public void ResetAll()
     {
         burn.gameObject.SetActive(false);
         wet.gameObject.SetActive(false);
         rock.gameObject.SetActive(false);
         crystal.gameObject.SetActive(false);
         mud.gameObject.SetActive(false);
+        activeEffect = null;
     }
 
     private void ActivateEffect(Animator effect, string animation = null, bool hasExitEffect = false)
@@ -63,9 +64,9 @@ public class StatusEffectCon : MonoBehaviour
         activeEffect = effect;
         activeEffect.gameObject.SetActive(true);
 
-        if (!string.IsNullOrEmpty(animation))
+        if (!string.IsNullOrEmpty(animation) && gameObject.activeSelf)
         {
-            activeEffect.Play(animation);
+            activeEffect.SafePlay(animation);
         }
     }
 
@@ -79,15 +80,17 @@ public class StatusEffectCon : MonoBehaviour
     private void PlayExitEffect(Animator effect)
     {
         // Placeholder for exit effect logic
-        StartCoroutine(DisableAfterAnimation(effect));
+        EnemyManager.Instance.StartCoroutine(DisableAfterAnimation(effect));
     }
 
     private IEnumerator DisableAfterAnimation(Animator effect)
     {
         if (effect == rock)
-            rock.Play("rock_exit");
+            rock.SafePlay("rock_exit");
         if (effect == crystal)
-            crystal.Play("crystal_exit");
+            crystal.SafePlay("crystal_exit");
+        if (!effect.gameObject.activeInHierarchy) yield break;
+
         yield return new WaitForSeconds(effect.GetCurrentAnimatorStateInfo(0).length);
         effect.gameObject.SetActive(false);
     }

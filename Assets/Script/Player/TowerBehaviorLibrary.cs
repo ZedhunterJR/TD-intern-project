@@ -24,11 +24,17 @@ public class TowerBehaviorLibrary
         var sc = projectile.GetComponent<ProjectileAdvanced>();
         var startPos = projectile.transform.position;
         sc.lifeSpan = lifeSpan;
+        sc.currentTarget = target;
         sc.UpdateFunc = () =>
         {
-            if (AllEnemies.Contains(target))
+            if (sc.currentTarget != null)
             {
-                sc.direction = target.transform.position;
+                if (AllEnemies.Contains(sc.currentTarget))
+                {
+                    sc.direction = target.transform.position;
+                }
+                else
+                    sc.currentTarget = null;
             }
             var start = startPos;
             Vector3 end = sc.direction;
@@ -96,16 +102,21 @@ public class TowerBehaviorLibrary
     {
         var sc = projectile.GetComponent<ProjectileAdvanced>();
         sc.lifeSpan = 99;
-
+        sc.currentTarget = target;
         Vector2 direction = (target != null && target.activeSelf)
             ? (Vector2)(target.transform.position - projectile.transform.position).normalized
             : Vector2.zero;
 
         sc.UpdateFunc = () =>
         {
-            if (AllEnemies.Contains(target))
+            if (sc.currentTarget != null)
             {
-                sc.direction = target.transform.position; // Update target position if it moves
+                if (AllEnemies.Contains(sc.currentTarget))
+                {
+                    sc.direction = target.transform.position;
+                }
+                else
+                    sc.currentTarget = null;
             }
 
             projectile.transform.position = Vector2.MoveTowards(projectile.transform.position, sc.direction, speed * Time.deltaTime);

@@ -236,5 +236,13 @@ public static class Extensions
 
         return points;
     }
+    public static bool SafePlay(this Animator animator, string stateName, int layer = -1, float normalizedTime = 0f)
+    {
+        if (animator == null || !animator.gameObject.activeInHierarchy)
+            return false; // Prevent playing if the animator is null or inactive
+
+        animator.Play(stateName, layer, normalizedTime);
+        return true; // Animation played successfully
+    }
 
 }

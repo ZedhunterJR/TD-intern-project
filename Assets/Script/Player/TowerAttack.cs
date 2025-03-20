@@ -22,9 +22,9 @@ public class TowerAttack : MonoBehaviour
     public Action<EnemyStat> HitEffect = null;
     public Func<float, float> AttackDmg;
 
-    public void Init()
+    public void Init(TowerStat stat)
     {
-        stat = GetComponent<TowerStat>();
+        this.stat = stat;
         AttackDmg = (d) =>
         {
             return d;
@@ -61,7 +61,6 @@ public class TowerAttack : MonoBehaviour
     protected virtual GameObject GetTarget()
     {
         //base: get first in range
-        //Debug.Log(stat.range == null);
         return stat.range.FirstTarget();
     }
 
