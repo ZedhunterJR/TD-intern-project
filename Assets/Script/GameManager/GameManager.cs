@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -139,12 +140,24 @@ public class GameManager : Singleton<GameManager>
 
         // Lưu lại map đã chơi để tránh trùng
         PlayerPrefs.SetInt("LastMapIndex", randomIndex);
-        PlayerPrefs.Save();
+        //PlayerPrefs.Save();
+
+        int lastMapIndex = PlayerPrefs.GetInt("LastMapIndex", -1);
+        Debug.Log("LastMapIndex hiện tại: " + lastMapIndex);
 
         GameObject selectedMap = maps[randomIndex];
 
         // Instantiate map vào game
         Instantiate(selectedMap, Vector3.zero, Quaternion.identity);
+    }
+    #endregion
+
+    #region Save Rewards After Finishing Game
+    public void SaveRewards(int rewards)
+    {
+        PlayerPrefs.SetInt("PlayerGold", rewards);
+
+        //PlayerPrefs.Save();
     }
     #endregion
 }
