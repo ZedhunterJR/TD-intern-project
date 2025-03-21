@@ -1195,7 +1195,6 @@ MonoBehaviour:
   tiles: []
   listData:
   - {fileID: 11400000, guid: fa3c4fbbe6cdc7d45853236ed76bdcab, type: 2}
-  - {fileID: 11400000, guid: 46823455e8c185948a093cd1b6c3f672, type: 2}
 --- !u!4 &1409243662
 Transform:
   m_ObjectHideFlags: 0

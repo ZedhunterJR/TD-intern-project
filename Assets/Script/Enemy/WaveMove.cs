@@ -15,6 +15,9 @@ public class WaveMove : MonoBehaviour
     [HideInInspector] public bool isSummoned = false;
     [HideInInspector] public bool FlipX { get; private set; }
 
+    private Vector2 currentPushBackWaypointPos;
+    private float pushBackTimer;
+    private float pushBackSpd;
     public float DistanceToGoal()
     {
         float distance = 0;
@@ -39,9 +42,12 @@ public class WaveMove : MonoBehaviour
 
         //random offset on map, if needed
         ranMod = Random.Range(-.2f, .2f);
+        for (int i = 0; i < waypoints.Count; i++)
+        {
+            waypoints[i] += new Vector2(ranMod, ranMod);
+        }
         Vector2 tempStartPos = waypoints[waypointIndex];
-        tempStartPos.y = waypoints[waypointIndex].y + ranMod;
-        tempStartPos.x = waypoints[waypointIndex].x + ranMod;
+        currentWaypointPos = tempStartPos;
 
         //if summoned on the track, set the currentIndex param
         if (currentIndex == 0)
@@ -52,57 +58,72 @@ public class WaveMove : MonoBehaviour
 
     private void Move(float moveSpeed)
     {
-        //print(waypointIndex); print(waypoints.Count);
-        // If Enemy didn't reach last waypoint it can move
-        // If enemy reached last waypoint then it stops
-        if (waypointIndex < waypoints.Count)
+        if (waypoints.Count == 0) return; // Prevent errors if waypoints are missing
+
+        if (moveSpeed >= 0) // Normal forward movement
         {
-
-            // Move Enemy from current waypoint to the next one
-            // using MoveTowards method
-            transform.position = Vector2.MoveTowards(transform.position,
-               currentWaypointPos,
-               moveSpeed * Time.deltaTime);
-
-            // If Enemy reaches position of waypoint he walked towards
-            // then waypointIndex is increased by 1
-            // and Enemy starts to walk to the next waypoint
-            if ((Vector2)transform.position == currentWaypointPos)
+            if (waypointIndex < waypoints.Count)
             {
-                waypointIndex += 1;
-                if (waypointIndex < waypoints.Count)
+                transform.position = Vector2.MoveTowards(transform.position,
+                    currentWaypointPos,
+                    moveSpeed * Time.deltaTime);
+
+                if ((Vector2)transform.position == currentWaypointPos)
                 {
-                    //Debug.Log(waypoints[waypointIndex].transform.position.x - waypoints[waypointIndex + 1].transform.position.x);
-                    if (waypoints[waypointIndex - 1].x - waypoints[waypointIndex].x > 0)
-                        FlipX = true;
-                    else
-                        FlipX = false;
+                    waypointIndex++;
+                    if (waypointIndex < waypoints.Count)
+                    {
+                        FlipX = waypoints[waypointIndex - 1].x > waypoints[waypointIndex].x;
+                        currentWaypointPos = waypoints[waypointIndex]; // Update current waypoint position
+                        currentPushBackWaypointPos = waypoints[waypointIndex - 1];
+                    }
+                }
+            }
+            else
+            {
+                OnEnemyExit?.Invoke();
+            }
+        }
+        else // Move backward if speed is negative
+        {
+            if (waypointIndex > 0)
+            {
+                transform.position = Vector2.MoveTowards(transform.position,
+                    currentPushBackWaypointPos,
+                    -moveSpeed * Time.deltaTime); // Reverse direction
+
+                if ((Vector2)transform.position == currentPushBackWaypointPos)
+                {
+                    waypointIndex--;
+                    if (waypointIndex >= 1) // Ensure it's within bounds
+                    {
+                        FlipX = waypoints[waypointIndex].x > waypoints[Mathf.Max(waypointIndex - 1, 0)].x;
+                        currentWaypointPos = waypoints[waypointIndex]; //Fix: Update current waypoint position
+                        currentPushBackWaypointPos = waypoints[waypointIndex - 1];
+                    }
                 }
             }
         }
-        else
-        {
-            OnEnemyExit?.Invoke();
-            //Destroy(gameObject);
-        }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     public void MoveUpdate(float moveSpeed)
     {
-        //moveSpeed = GetComponent<EnemyStat>().moveSpeed;
-        if (waypointIndex < waypoints.Count)
+        if (pushBackTimer <= 0)
+            Move(moveSpeed);
+        else
         {
-            currentWaypointPos.x = waypoints[waypointIndex].x + ranMod;
-            currentWaypointPos.y = waypoints[waypointIndex].y + ranMod;
+            pushBackTimer -= Time.deltaTime;
+            Move(-pushBackSpd);
         }
-        Move(moveSpeed);
 
+    }
+
+    public void ApplyPushback(float distance, float pushBackTimer)
+    {
+        this.pushBackTimer = pushBackTimer;
+        pushBackSpd = distance / pushBackTimer;
     }
 }

@@ -171,7 +171,7 @@ MonoBehaviour:
     materialsInsideMask: []
     materialsOutsideMask: []
   disableRenderingOnOverride: 1
-  _animationName: Earth_impact
+  _animationName: Elec_impact
   loop: 1
   timeScale: 1
 --- !u!114 &6948515372348224630

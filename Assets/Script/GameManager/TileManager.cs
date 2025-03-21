@@ -51,7 +51,7 @@ public class TileManager : Singleton<TileManager>
             GameObject tower = PoolManager.Instance.GetTowerFromPool();
             tower.transform.position = tile.transform.position;
             tower.GetComponent<TowerStat>().Init(listData.GetRandom());
-            tower.SetActive(true);
+            //tower.SetActive(true);
             tile.currentTower = tower.GetComponent<TowerStat>();
             tilesDic.Add(tile.transform.position, tile);
             MergeManager.Instance.SetButtonPos(tile.transform.position);

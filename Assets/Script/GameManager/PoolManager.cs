@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Spine;
 using UnityEngine;
 
 public class PoolManager : Singleton<PoolManager>
@@ -8,6 +9,7 @@ public class PoolManager : Singleton<PoolManager>
     [SerializeField] Queue<GameObject> poolEnemyTest = new();
     [SerializeField] Queue<GameObject> poolTower = new();
     private Dictionary<string, Queue<GameObject>> projectilePool = new();
+    private Dictionary<string, (GameObject originalCopy, string spineAniType)> refProjectileDict = new();
 
     [Header("Prefabs")]
     [SerializeField] GameObject PrefabsEnemyTest;
@@ -31,6 +33,11 @@ public class PoolManager : Singleton<PoolManager>
             allTowersDict.Add(item.name, item);
         }
         //var test = allTowersDIct["sentry_earth"];
+
+        var ex = Resources.Load<GameObject>("Prefab/explosion_object");
+        var explos = Instantiate(ex);
+        //explos.transform.Find("spine_animation").transform.localScale = new Vector3(0.8f, 0.8f);
+        RegisterProjectilePool(explos, "Elec_impact", 10, "combustion");
     }
 
     private void FillPool()
@@ -118,6 +125,22 @@ public class PoolManager : Singleton<PoolManager>
         {
             pool = new Queue<GameObject>();
             projectilePool[key] = pool;
+            refProjectileDict[key] = (projectile, spineAniType);
+        }
+        else
+        {
+            // Store reference before destroying the new projectile
+            var storedProjectile = refProjectileDict[key].originalCopy;
+            var storedSpineAniType = refProjectileDict[key].spineAniType;
+
+            // Destroy the unnecessary new projectile
+            if (projectile != null)
+                Destroy(projectile);
+
+            // Use the stored reference
+            projectile = storedProjectile;
+            projectile.SetActive(true);
+            spineAniType = storedSpineAniType;
         }
 
         // Add new projectiles to the pool
@@ -129,14 +152,16 @@ public class PoolManager : Singleton<PoolManager>
             pool.Enqueue(item);
         }
 
-        Destroy(projectile);
+        projectile.transform.SetParent(containerProjectile);
+        projectile.SetActive(false);
     }
 
     public GameObject GetProjectileFromPool(string key)
     {
         if (projectilePool[key].Count == 0)
         {
-            return null;
+            RegisterProjectilePool(null, "", 3, key);
+            return GetProjectileFromPool(key);
         }
         GameObject projGet = projectilePool[key].Dequeue();
         //projGet.transform.position = transform.position;
@@ -151,6 +176,20 @@ public class PoolManager : Singleton<PoolManager>
         projectile.SetActive(false);
     }
     #endregion
+
+    public void ActivateCombustion(Vector2 pos)
+    {
+        var instance = GetProjectileFromPool("combustion");
+        var sc = instance.GetComponent<ExplosionAdvanced>();
+        sc.AllEnemies = EnemyManager.Instance.AllEnemies;
+        sc.PreDestruct = () => ReturnProjectileToPool(instance, "combustion"); ;
+        sc.HitEvent = (target) =>
+        {
+            target.GetComponent<EnemyStat>().UpdateHp(-50, Color.white);
+        };
+        instance.transform.position = pos;
+        instance.SetActive(true);
+    }
 }
 
 public enum OBJ_TYPE

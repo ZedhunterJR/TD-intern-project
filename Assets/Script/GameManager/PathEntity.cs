@@ -5,47 +5,19 @@ using UnityEngine;
 public class PathEntity : MonoBehaviour
 {
     //ref to invoke at runtime
-    private SpineAnimationController spineAniCon;
-    private GameObject defaultSprite;
+    public SpineAnimationController spineAniCon;
+    public GameObject defaultSprite;
 
-    private PathType currentPathType = PathType.None;
-    public PathType CurrentPathType => currentPathType;
-    public void Awake()
+    public PathType currentPathType = PathType.None;
+    public void Init()
     {
         currentPathType = PathType.None;
         spineAniCon = GetComponentInChildren<SpineAnimationController>();
         defaultSprite = transform.Find("default_sprite").gameObject;
-        SetGraphic(currentPathType);
+        //SetGraphic(currentPathType);
     }
-    private void SetGraphic(PathType pathType)
-    {
-        currentPathType = pathType;
-        spineAniCon.gameObject.SetActive(true);
-        defaultSprite.SetActive(false);
-        switch (currentPathType)
-        {
-            case PathType.Lava:
-                spineAniCon.SetSkinName("lava");
-                break;
-            case PathType.Pond:
-                spineAniCon.SetSkinName("pond");
-                break;
-            case PathType.DirtyMist:
-                spineAniCon.SetSkinName("dirty mist");
-                break;
-            case PathType.CrystalField:
-                spineAniCon.SetSkinName("crystal field");
-                break;
-            case PathType.Swamp:
-                spineAniCon.SetSkinName("swamp");
-                break;
-            default:
-                spineAniCon.gameObject.SetActive(false);
-                defaultSprite.SetActive(true);
-                break;
-
-        }
-    }
+   
+    /*
     public void InflictLandMaking(PathType pathType)
     {
         //condition for None type
@@ -66,6 +38,7 @@ public class PathEntity : MonoBehaviour
             SetGraphic(PathType.None);
 
     }
+    */
 }
 
 public enum PathType

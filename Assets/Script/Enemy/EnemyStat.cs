@@ -80,9 +80,9 @@ public class EnemyStat : MonoBehaviour
         if (dotInterval > 0.5f)
         {
             if (burnTime > 0)
-                UpdateHp(-1, "#FF6A00".HexColor());
+                Burn();
             if (CurrentCombinedStatusEffect == CombinedStatusEffect.Crystalized)
-                UpdateHp(-1.5f, "#D85CFF".HexColor());
+                Burn(1.5f);
             dotInterval = 0;
         }
         if (burnTime > 0)
@@ -131,10 +131,6 @@ public class EnemyStat : MonoBehaviour
     public bool IsUntargetable => isUntargetable > 0;
     public Action<PathType> EnteringTile;
 
-    //tile and path
-    public Vector2 CurrentPositionInAbs { get; private set; }
-    private PathType currentStandingPathType = PathType.None;
-
     //ref
     private GameObject hpBarCover;
     private WaveMove moveScript;
@@ -151,19 +147,6 @@ public class EnemyStat : MonoBehaviour
         spineAnimation = transform.Find("spine_animation");
         statusEffectCon = GetComponentInChildren<StatusEffectCon>();
     }
-    /*
-    private string SkinName(int level)
-    {
-        string res = "skin" + level + "-";
-        switch (data.element)
-        {
-            case Element.Fire: res += "fire"; break;
-            case Element.Water: res += "water"; break;
-            case Element.Earth: res += "earth"; break;
-        }
-        return res;
-    }
-    */
 
     public void Init(EnemyData data)
     {
@@ -189,7 +172,6 @@ public class EnemyStat : MonoBehaviour
         moveScript.Init(wps, onexit);
 
         //idk but this should be be4 ability
-        CurrentPositionInAbs = new Vector2(69, 420);
         CurrentCombinedStatusEffect = CombinedStatusEffect.None;
         isUntargetable = 0;
         PreDestruction = null;
@@ -225,8 +207,6 @@ public class EnemyStat : MonoBehaviour
         {
             item.OnUpdate();
         }
-
-        UpdatePathPosition();
     }
 
     #region HP,Pos Update
@@ -259,7 +239,7 @@ public class EnemyStat : MonoBehaviour
         var mul = CounterElement(attackData.element, data.element);
         var color = "#EEEEEE".HexColor();
         if (mul == 1.2f) color = "#FFDD44".HexColor();
-        if (mul == 0.7f) color = "#888888".HexColor();
+        if (mul == 0.7f) color = "#AAAAAA".HexColor();
 
         dmg *= mul;
         dmg = PreMitiDmgFunc(dmg, attackData);
@@ -289,46 +269,9 @@ public class EnemyStat : MonoBehaviour
         return 1f;
     }
 
-    /// <summary>
-    /// have to check every frame, not even skipping checking the same grid because of possible
-    /// changing path
-    /// </summary>
-    /// <param name="gridSize"></param>
-    public void UpdatePathPosition(float gridSize = 1f)
-    {
-        Vector2 pos = transform.position;
-        Vector2 snappedPos = GetNearestTileCenter(pos, gridSize);
-
-        // Continue
-        var pathManager = PathManager.Instance;
-        var pType = pathManager.GetCurrentStandingPath(snappedPos);
-
-        if (currentStandingPathType == pType && CurrentPositionInAbs == snappedPos)
-            return;
-
-        // And continue
-        //pathManager.UndoPathEffect(this.gameObject, currentStandingPathType);
-        pathManager.ApplyPathEffect(gameObject, pType);
-        EnteringTile?.Invoke(pType);
-        currentStandingPathType = pType;
-        CurrentPositionInAbs = snappedPos;
-    }
-
-    // Helper method to get the nearest tile center
-    private Vector2 GetNearestTileCenter(Vector2 position, float tileSize)
-    {
-        float tileX = Mathf.Round(position.x / tileSize) * tileSize;
-        float tileY = Mathf.Round(position.y / tileSize) * tileSize;
-        return new Vector2(tileX, tileY);
-    }
     #endregion
 
     #region Status Effect
-    public void AddEffect(StatusEffect effect)
-    {
-        activeEffects.Add(effect);
-    }
-
     
     private void UpdateMovementEffect()
     {
@@ -398,13 +341,25 @@ public class EnemyStat : MonoBehaviour
         {
             burnTime = 0;
             wetTime = 0;
-            combineEffectTimer = 0.5f;
+            combineEffectTimer = 1f;
             CurrentCombinedStatusEffect = CombinedStatusEffect.Combustion;
+            PoolManager.Instance.ActivateCombustion(transform.position);
         }
     }
 
     #endregion
 
+    public void Burn(float strength = 1)
+    {
+        var dmg = maxHealth * 0.02f * strength;
+        dmg = Mathf.Min(dmg, 50 * strength);
+        UpdateHp(-dmg, "#FF6A00".HexColor());
+    }
+
+    public void PushBack(float distance, float duration)
+    {
+        moveScript.ApplyPushback(distance, duration);
+    }
 }
 
 //move here for easier managing

@@ -39,8 +39,13 @@ public class TowerStat : MonoBehaviour
         {
             Destroy(GetComponent<TowerAttack>());
         }
+        GameManager.Instance.StartCoroutine(InitNextFrame());
+    }
+    private IEnumerator InitNextFrame()
+    {
+        yield return null;
+        gameObject.SetActive(true);
         liveAttackScript = gameObject.AddComponentByString(data.attackScriptName) as TowerAttack;
-        liveAttackScript.Init(this);
 
         //graphic
         spineAnimationController.Init(data);
@@ -57,7 +62,7 @@ public class TowerStat : MonoBehaviour
         statusStack = data.statusEffectStack[level];
         ModifyRange(data.range[level]);
         spineAnimationController.PlayAnimationOnce("Build", "Idle");
-
+        liveAttackScript.Init(this);
         switch (level)
         {
             case 0: 
@@ -71,7 +76,6 @@ public class TowerStat : MonoBehaviour
             case 2:
                 spineAnimationController.SetOutlineColor("#FFD700".HexColor());
                 spineAnimationController.transform.parent.localScale = new Vector3(1.5f, 1.5f);
-                TowerBehaviorLibrary.Instance.GetTowerAbility(data.specialAbility, liveAttackScript);
                 break;
         }
     }
@@ -88,8 +92,6 @@ public class TowerStat : MonoBehaviour
         var rDis = transform.Find("range_display");
         rDis.GetComponent<SpriteRenderer>().color = color;
         rDis.gameObject.SetActive(true);
-
-        print(rDis);
     }
     public void HideRange()
     {
