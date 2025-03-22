@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2a9abd3d3962f34896a22aa3913580f, type: 3}
-  m_Name: TRP_014
+  m_Name: BOSS_001
   m_EditorClassIdentifier: 
-  enemyName: Fiery Walker
-  enemyType: {fileID: 11400000, guid: 0eaab1a030d6dad40be574dabacae4ce, type: 2}
+  enemyName: Water Dino Rider
+  enemyType: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
   skinName: skin1-water
   hpBarPosY: 0
-  tier: 3
-  maxHp: 2
-  baseMoveSpeed: 1.5
-  element: 0
+  wavePower: 0
+  maxHp: 500
+  baseMoveSpeed: 0.5
+  element: 1
   ability: 
