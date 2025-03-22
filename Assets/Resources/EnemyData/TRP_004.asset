@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TRP_004
   m_EditorClassIdentifier: 
   enemyName: Watery Guard 2
-  enemyType: {fileID: 11400000, guid: 964877fd537e3ce4cabd22574b65f9d2, type: 2}
+  enemyType: {fileID: 11400000, guid: 7bc0475ebca2c2b4895985b381cd9306, type: 2}
   skinName: skin2-water
   hpBarPosY: 0
   wavePower: 2
