@@ -18,18 +18,16 @@ MonoBehaviour:
   element: 1
   projSpwPosY: 1
   baseDamage:
-  - 20
-  - 20
+  - 10
+  - 15
   - 20
   baseAtkSpd:
   - 1
-  - 1
-  - 1
+  - 1.2
+  - 3
   range:
-  - 4
+  - 2.5
   - 3
-  - 3
-  statusEffectStack: 020000000100000001000000
+  - 3.5
+  statusEffectStack: 010000000200000003000000
   attackScriptName: TowerWater
-  lvl1Ability: none
-  lvl2Ability: none

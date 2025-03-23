@@ -6,11 +6,15 @@ public class TowerWater : TowerAttack
 {
     protected override void OnAwake()
     {
-        var res = Resources.Load<GameObject>("Prefab/projectile_object");
-        var proj = Instantiate(res);
-        proj.transform.Find("spine_animation").transform.localScale = new Vector3(0.3f, 0.3f);
-        PoolManager.Instance.RegisterProjectilePool(proj, "Water_thrower_bullet", 5, "tower_water_proj");
-
+        if (!isPlaced)
+        {
+            var res = Resources.Load<GameObject>("Prefab/projectile_object");
+            var proj = Instantiate(res);
+            proj.transform.Find("spine_animation").transform.localScale = new Vector3(0.3f, 0.3f);
+            PoolManager.Instance.RegisterProjectilePool(proj, "Water_thrower_bullet", 5, "tower_water_proj");
+            isPlaced = true;
+            return;
+        }
     }
     protected override void Attack(GameObject target)
     {
@@ -26,5 +30,12 @@ public class TowerWater : TowerAttack
             DealDmg(projSc.currentTarget, projSc.transform.position);
             PoolManager.Instance.ReturnProjectileToPool(instance, "tower_water_proj");
         };
+    }
+    protected override GameObject GetTarget()
+    {
+        if (stat.level != 2)
+            return base.GetTarget();
+        var targets = stat.range.FirstTargets();
+        return targets.GetRandom();
     }
 }

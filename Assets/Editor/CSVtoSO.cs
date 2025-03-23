@@ -26,7 +26,7 @@ public class CSVtoSO
             enemy.enemyName = splitData[1];
 
             // Kiểm tra và chuyển đổi Tier
-            if (int.TryParse(splitData[5], out int parsedTier))
+            /*if (int.TryParse(splitData[5], out int parsedTier))
             {
                 enemy.tier = parsedTier;
             }
@@ -34,7 +34,7 @@ public class CSVtoSO
             {
                 Debug.LogWarning($"Không thể parse Tier: {splitData[5]} cho enemy {enemy.enemyName}, đặt mặc định là 0.");
                 enemy.tier = 0; // Đặt mặc định nếu lỗi
-            }
+            }*/
 
             // Kiểm tra và chuyển đổi maxHp
             if (float.TryParse(splitData[2], out float parsedHp))

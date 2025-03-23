@@ -964,10 +964,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471b1fbdf8050104d935003953c95112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesData: []
-  waveList:
-    waves: []
-  textAssetData: {fileID: 4900000, guid: 253a79a3a22cdba4d9b9873bec6315f7, type: 3}
+  availableEnemies:
+  - {fileID: 11400000, guid: e6a6a9625e1b4f74d9b9aaa2e7c7a465, type: 2}
+  - {fileID: 11400000, guid: 8e4b6f88b84cb0e4889c7855e36d2f67, type: 2}
+  - {fileID: 11400000, guid: 6eb498c512b334b4ab1dca910e1112f5, type: 2}
+  - {fileID: 11400000, guid: 8044b07a99b18bd478a9c2c47ef945fe, type: 2}
+  - {fileID: 11400000, guid: 16102d39703dbea4fa6cde8c16186f6a, type: 2}
+  - {fileID: 11400000, guid: 12c35745d11f3434b92d8b69d257cb2b, type: 2}
+  currentWave: 0
+  currentWavePower: 5
 --- !u!4 &1069406979
 Transform:
   m_ObjectHideFlags: 0
@@ -1195,6 +1200,7 @@ MonoBehaviour:
   tiles: []
   listData:
   - {fileID: 11400000, guid: fa3c4fbbe6cdc7d45853236ed76bdcab, type: 2}
+  - {fileID: 11400000, guid: e437adafb872f664a8064438a94c9f52, type: 2}
   - {fileID: 11400000, guid: 46823455e8c185948a093cd1b6c3f672, type: 2}
 --- !u!4 &1409243662
 Transform:

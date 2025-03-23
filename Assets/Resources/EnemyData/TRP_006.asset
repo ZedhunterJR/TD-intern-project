@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: TRP_006
   m_EditorClassIdentifier: 
   enemyName: Terrestrial Solider
-  enemyType: {fileID: 11400000, guid: 964877fd537e3ce4cabd22574b65f9d2, type: 2}
-  skinName: skin1-water
+  enemyType: {fileID: 11400000, guid: 7bc0475ebca2c2b4895985b381cd9306, type: 2}
+  skinName: skin2-earth
   hpBarPosY: 0
-  tier: 0
-  maxHp: 2
-  baseMoveSpeed: 1.3
+  wavePower: 2
+  maxHp: 200
+  baseMoveSpeed: 0.5
   element: 2
   ability: 

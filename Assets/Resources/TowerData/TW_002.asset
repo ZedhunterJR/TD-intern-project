@@ -18,18 +18,16 @@ MonoBehaviour:
   element: 0
   projSpwPosY: 1
   baseDamage:
-  - 20
-  - 20
+  - 10
+  - 12
   - 20
   baseAtkSpd:
+  - 0.8
   - 1
-  - 1
-  - 1
+  - 1.2
   range:
+  - 3
+  - 3.5
   - 4
-  - 3
-  - 3
-  statusEffectStack: 020000000100000001000000
+  statusEffectStack: 010000000200000003000000
   attackScriptName: TowerFire
-  lvl1Ability: none
-  lvl2Ability: none

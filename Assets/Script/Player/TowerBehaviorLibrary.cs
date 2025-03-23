@@ -218,35 +218,17 @@ public class TowerBehaviorLibrary
                 break;
             case "ABL_006": //pond create
                 {
-                    sc.KillEffect += (pos) =>
-                    {
-                        var absolutePos = PathManager.Instance.GetNearestTileCenter(pos);
-                        var path = PathManager.Instance.GetCurrentPathEntity(absolutePos);
-                        if (path != null)
-                            path.InflictLandMaking(PathType.Pond);
-                    };
+                    
                 }
                 break;
             case "ABL_007": //lava create
                 {
-                    sc.KillEffect += (pos) =>
-                    {
-                        var absolutePos = PathManager.Instance.GetNearestTileCenter(pos);
-                        var path = PathManager.Instance.GetCurrentPathEntity(absolutePos);
-                        if (path != null)
-                            path.InflictLandMaking(PathType.Lava);
-                    };
+                    
                 }
                 break;
             case "ABL_009": //dirt create
                 {
-                    sc.KillEffect += (pos) =>
-                    {
-                        var absolutePos = PathManager.Instance.GetNearestTileCenter(pos);
-                        var path = PathManager.Instance.GetCurrentPathEntity(absolutePos);
-                        if (path != null)
-                            path.InflictLandMaking(PathType.DirtyMist);
-                    };
+                    
                 }
                 break;
             case "ABL_011":

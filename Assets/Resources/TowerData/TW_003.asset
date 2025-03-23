@@ -19,17 +19,15 @@ MonoBehaviour:
   projSpwPosY: 1
   baseDamage:
   - 20
-  - 20
-  - 20
+  - 30
+  - 50
   baseAtkSpd:
   - 0.6
-  - 1
-  - 1
+  - 0.65
+  - 0.7
   range:
   - 4
   - 4
   - 4
-  statusEffectStack: 020000000100000001000000
+  statusEffectStack: 010000000200000005000000
   attackScriptName: TowerEarth
-  lvl1Ability: none
-  lvl2Ability: none

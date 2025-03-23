@@ -13,7 +13,7 @@ public class TowerAttack : MonoBehaviour
 {
     //private variables
     private float attackTimer = 1f;
-
+    protected bool isPlaced = false;
     //references
     //public Range range;
     public TowerStat stat;

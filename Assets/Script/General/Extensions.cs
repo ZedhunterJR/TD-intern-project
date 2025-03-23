@@ -140,7 +140,7 @@ public static class Extensions
             }
             else
             {
-                Debug.Log($"{type.Name} already exists on {target.name}");
+                Debug.LogWarning($"{type.Name} already exists on {target.name}");
                 return existingComponent;
             }
         }

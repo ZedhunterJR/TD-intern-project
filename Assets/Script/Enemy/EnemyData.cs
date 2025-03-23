@@ -13,7 +13,7 @@ public class EnemyData : ScriptableObject
     public float hpBarPosY;
 
     [Header("Stats")]
-    public int tier;
+    public int wavePower;
     public float maxHp;
     public float baseMoveSpeed;
     public Element element;
