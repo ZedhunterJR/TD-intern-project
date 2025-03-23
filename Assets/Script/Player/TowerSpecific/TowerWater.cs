@@ -35,7 +35,7 @@ public class TowerWater : TowerAttack
     {
         if (stat.level != 2)
             return base.GetTarget();
-        var targets = stat.range.FirstTargets();
+        var targets = stat.range.EnemiesInRange();
         return targets.GetRandom();
     }
 }

@@ -70,11 +70,15 @@ public class TowerFire : TowerAttack
         {
             position + new Vector2Int(-1,  1), // Top-left
             position + new Vector2Int( 0,  1), // Top
+            position + new Vector2Int( 0,  2), // Top + 1
             position + new Vector2Int( 1,  1), // Top-right
             position + new Vector2Int(-1,  0), // Left
+            position + new Vector2Int(-2,  0), // Left + 1
             position + new Vector2Int( 1,  0), // Right
+            position + new Vector2Int( 2,  0), // Right + 1
             position + new Vector2Int(-1, -1), // Bottom-left
             position + new Vector2Int( 0, -1), // Bottom
+            position + new Vector2Int( 0, -2), // Bottom + 1
             position + new Vector2Int( 1, -1)  // Bottom-right
         };
 

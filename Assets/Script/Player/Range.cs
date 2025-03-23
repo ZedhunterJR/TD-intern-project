@@ -85,7 +85,7 @@ public class Range
         return null;
     }
 
-    List<GameObject> EnemiesInRange()
+    public List<GameObject> EnemiesInRange()
     {
 
         List<GameObject> possibleEnemies = new();

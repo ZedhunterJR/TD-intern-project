@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Fiery Solider
   enemyType: {fileID: 11400000, guid: 7bc0475ebca2c2b4895985b381cd9306, type: 2}
-  skinName: skin2-fire
+  skinName: skin3-fire
   hpBarPosY: 0
   wavePower: 2
   maxHp: 150

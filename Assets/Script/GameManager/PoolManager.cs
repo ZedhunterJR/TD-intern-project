@@ -191,10 +191,3 @@ public class PoolManager : Singleton<PoolManager>
         instance.SetActive(true);
     }
 }
-
-public enum OBJ_TYPE
-{
-    enemyTest,
-    tower_water,
-    tower_earth,
-}

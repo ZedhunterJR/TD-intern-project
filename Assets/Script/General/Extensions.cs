@@ -54,6 +54,12 @@ public static class Extensions
 
     public static T GetRandom<T>(this List<T> list)
     {
+        if (list == null || list.Count == 0)
+        {
+            //Debug.LogWarning("GetRandom was called on a null or empty list.");
+            return default; // Returns null for reference types and default values for value types
+        }
+
         return list[Random.Range(0, list.Count)];
     }
 

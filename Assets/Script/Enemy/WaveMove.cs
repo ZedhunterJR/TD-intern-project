@@ -18,6 +18,7 @@ public class WaveMove : MonoBehaviour
     private Vector2 currentPushBackWaypointPos;
     private float pushBackTimer;
     private float pushBackSpd;
+    private bool isPushingBack = false;
     public float DistanceToGoal()
     {
         float distance = 0;
@@ -97,7 +98,7 @@ public class WaveMove : MonoBehaviour
                     waypointIndex--;
                     if (waypointIndex >= 1) // Ensure it's within bounds
                     {
-                        FlipX = waypoints[waypointIndex].x > waypoints[Mathf.Max(waypointIndex - 1, 0)].x;
+                        //FlipX = waypoints[waypointIndex].x > waypoints[Mathf.Max(waypointIndex - 1, 0)].x;
                         currentWaypointPos = waypoints[waypointIndex]; //Fix: Update current waypoint position
                         currentPushBackWaypointPos = waypoints[waypointIndex - 1];
                     }
@@ -112,7 +113,14 @@ public class WaveMove : MonoBehaviour
     public void MoveUpdate(float moveSpeed)
     {
         if (pushBackTimer <= 0)
+        {
             Move(moveSpeed);
+            if (isPushingBack)
+            {
+                FlipX = waypoints[waypointIndex - 1].x > waypoints[waypointIndex].x;
+                isPushingBack = false;
+            }
+        }
         else
         {
             pushBackTimer -= Time.deltaTime;
@@ -125,5 +133,6 @@ public class WaveMove : MonoBehaviour
     {
         this.pushBackTimer = pushBackTimer;
         pushBackSpd = distance / pushBackTimer;
+        isPushingBack = true;
     }
 }

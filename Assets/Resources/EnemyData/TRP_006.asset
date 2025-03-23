@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Terrestrial Solider
   enemyType: {fileID: 11400000, guid: 7bc0475ebca2c2b4895985b381cd9306, type: 2}
-  skinName: skin2-earth
+  skinName: skin3-earth
   hpBarPosY: 0
   wavePower: 2
   maxHp: 200
