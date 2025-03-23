@@ -7,7 +7,12 @@ using UnityEngine.UI;
 public class MenuManager : Singleton<MenuManager>
 {
     [SerializeField] Button button;
+    [SerializeField] ShopManager shopManager;
 
+    private void Awake()
+    {
+        if (shopManager != null) shopManager.OnAwake();
+    }
     private void Start()
     {
         button.onClick.AddListener(LoadPlayScene);
