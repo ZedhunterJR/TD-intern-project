@@ -9,9 +9,9 @@ public class PopupManager : Singleton<PopupManager>
     [SerializeField] GameObject popupSetting, popupShop;
     [SerializeField] RectTransform settingPopupRect, shopPopupRect;
     [SerializeField] float topPosY, middlePosY;
-    [SerializeField] float tweenDuration; 
-    [SerializeField] CanvasGroup canvasGroup, canvasGroupShop; 
-    
+    [SerializeField] float tweenDuration;
+    [SerializeField] CanvasGroup canvasGroup, canvasGroupShop;
+
 
     public void ActiveSetting()
     {
@@ -19,10 +19,10 @@ public class PopupManager : Singleton<PopupManager>
         PopupSettingIntro();
     }
 
-    public async void DeactiveSetting()
+    public void DeactiveSetting()
     {
-        await PopupSettingOutro();
-        popupSetting.SetActive(false);
+        PopupSettingOutro();
+
     }
 
     public void ActiveShop()
@@ -43,10 +43,13 @@ public class PopupManager : Singleton<PopupManager>
         settingPopupRect.DOAnchorPosY(middlePosY, tweenDuration).SetUpdate(true);
     }
 
-    async Task PopupSettingOutro()
+    void PopupSettingOutro()
     {
+        Sequence outro = DOTween.Sequence();
         canvasGroup.DOFade(0, tweenDuration).SetUpdate(true);
-        await settingPopupRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true).AsyncWaitForCompletion();
+        outro
+             .Append(settingPopupRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true))
+             .AppendCallback(() => popupSetting.SetActive(false));
     }
 
     void PopupShopIntro()

@@ -17,7 +17,7 @@ MonoBehaviour:
   skinName: skin1-earth
   hpBarPosY: 0
   wavePower: 1
-  maxHp: 70
+  maxHp: 700
   baseMoveSpeed: 0.5
   element: 2
   ability: 

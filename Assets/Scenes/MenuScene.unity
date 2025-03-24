@@ -3778,7 +3778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
-    gold: 0
+    gold: 10000
     tileLevel: 1
     maxTileBuilding: 6
     heartLevel: 1

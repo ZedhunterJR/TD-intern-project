@@ -26,7 +26,7 @@ public class MergeManager : Singleton<MergeManager>
         if (!canFireButtonDrag)
         {
             buttonDragUpdateTimer += Time.deltaTime;
-            if (buttonDragUpdateTimer > 1/60f )
+            if (buttonDragUpdateTimer > 1/30f )
             {
                 buttonDragUpdateTimer = 0;
                 canFireButtonDrag = true;

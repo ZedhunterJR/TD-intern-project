@@ -17,7 +17,7 @@ MonoBehaviour:
   skinName: skin1-fire
   hpBarPosY: 0
   wavePower: 1
-  maxHp: 50
+  maxHp: 500
   baseMoveSpeed: 0.7
   element: 0
   ability: 

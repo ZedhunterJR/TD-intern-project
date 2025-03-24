@@ -17,7 +17,7 @@ MonoBehaviour:
   skinName: skin1-water
   hpBarPosY: 0
   wavePower: 1
-  maxHp: 50
+  maxHp: 500
   baseMoveSpeed: 0.7
   element: 1
   ability: 
