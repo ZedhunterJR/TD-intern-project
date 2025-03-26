@@ -22,7 +22,7 @@ public class GameManager : Singleton<GameManager>
     private GAME_STATUS status;
 
     // Data
-    PlayerData playerData;
+    PlayerData playerData = new PlayerData();
     public PlayerData PlayerData => playerData;
     private void Awake()
     {
@@ -50,7 +50,6 @@ public class GameManager : Singleton<GameManager>
     {
         if (status == GAME_STATUS.Playing)
         {
-            
         }
     }
 

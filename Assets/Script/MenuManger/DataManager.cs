@@ -234,15 +234,6 @@ public class DataManager : Singleton<DataManager>
     }
     #endregion
 
-    private void LoadPlayerData()
-    {
-        if (PlayerPrefs.HasKey(PlayerDataKey))
-        {
-            string json = PlayerPrefs.GetString(PlayerDataKey);
-            playerData = JsonUtility.FromJson<PlayerData>(json);
-        }
-    }
-
     [ContextMenu("Base data")]
     public void BaseData() // Reset Data Default, Dont use 
     {
@@ -262,6 +253,26 @@ public class DataManager : Singleton<DataManager>
         string json = JsonUtility.ToJson(playerData);
         PlayerPrefs.SetString(PlayerDataKey, json);
         PlayerPrefs.Save();
+    }
+
+    private void LoadPlayerData()
+    {
+        if (PlayerPrefs.HasKey("IsFirstTime"))
+        {
+            // Đã có dữ liệu trước đó, load data từ PlayerPrefs
+            if (PlayerPrefs.HasKey(PlayerDataKey))
+            {
+                string json = PlayerPrefs.GetString(PlayerDataKey);
+                playerData = JsonUtility.FromJson<PlayerData>(json);
+            }
+        }
+        else
+        {
+            // Lần đầu chạy game -> Khởi tạo dữ liệu mặc định rồi lưu lại
+            BaseData();
+            PlayerPrefs.SetInt("IsFirstTime", 1); // Đánh dấu đã khởi tạo dữ liệu
+            PlayerPrefs.Save();
+        }
     }
 }
 

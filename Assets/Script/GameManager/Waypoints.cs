@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Waypoints : MonoBehaviour
 {
