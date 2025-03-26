@@ -17,6 +17,8 @@ MonoBehaviour:
   towerInitialSkin: fire-sniper
   element: 0
   projSpwPosY: 2
+  description: 
+  towerSprite: {fileID: 21300000, guid: b7c1c05118bbbac418f8a4be84b0b7aa, type: 3}
   baseDamage:
   - 20
   - 20
