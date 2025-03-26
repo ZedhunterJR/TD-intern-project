@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ThrowerEarth : TowerAttack
 {
@@ -20,17 +21,23 @@ public class ThrowerEarth : TowerAttack
     protected override void Attack(GameObject target)
     {
         base.Attack(target);
-        //might need pooling for projectile
-        var instance = PoolManager.Instance.GetProjectileFromPool(projKey);
-        instance.transform.position = transform.position + new Vector3(0, stat.data.projSpwPosY);
-        TowerBehaviorLibrary.Instance.ProjectileLob(instance, target.transform.position, lifeSpan: 0.9f);
-        instance.SetActive(true);
-        var projSc = instance.GetComponent<ProjectileAdvanced>();
-        projSc.PreDestruct = () =>
+        if (stat.level != 2)
         {
-            Explosion(projSc.transform.position);
-            PoolManager.Instance.ReturnProjectileToPool(instance, projKey);
-        };
+            var instance = PoolManager.Instance.GetProjectileFromPool(projKey);
+            instance.transform.position = transform.position + new Vector3(0, stat.data.projSpwPosY);
+            TowerBehaviorLibrary.Instance.ProjectileLob(instance, target.transform.position, lifeSpan: 0.9f);
+            instance.SetActive(true);
+            var projSc = instance.GetComponent<ProjectileAdvanced>();
+            projSc.PreDestruct = () =>
+            {
+                Explosion(projSc.transform.position);
+                PoolManager.Instance.ReturnProjectileToPool(instance, projKey);
+            };
+        }
+        else
+        {
+            StartCoroutine(Lvl3Attack(target));
+        }
     }
     private void Explosion(Vector2 spot)
     {
@@ -44,5 +51,23 @@ public class ThrowerEarth : TowerAttack
         };
         instance.transform.position = spot;
         instance.SetActive(true);
+    }
+
+    private IEnumerator Lvl3Attack(GameObject target)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            var instance = PoolManager.Instance.GetProjectileFromPool(projKey);
+            instance.transform.position = transform.position + new Vector3(0, stat.data.projSpwPosY);
+            TowerBehaviorLibrary.Instance.ProjectileLob(instance, target.transform.position + Random.Range(-1f, 1f).Vec3(), lifeSpan: 1.6f, controlHeight: 50f);
+            instance.SetActive(true);
+            var projSc = instance.GetComponent<ProjectileAdvanced>();
+            projSc.PreDestruct = () =>
+            {
+                Explosion(projSc.transform.position);
+                PoolManager.Instance.ReturnProjectileToPool(instance, projKey);
+            };
+            yield return new WaitForSeconds(0.8f);
+        }
     }
 }

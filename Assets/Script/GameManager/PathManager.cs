@@ -108,5 +108,39 @@ public class PathManager : Singleton<PathManager>
             }
             lavaPathTimer = 0f;
         }
+
+        if (pondPathTimer < 1f)
+            pondPathTimer += Time.deltaTime;
+        else
+        {
+            foreach (var item in PathEntityDictionary)
+            {
+                if (item.Value.currentPathType != PathType.Pond)
+                    continue;
+                var enemies = EnemyManager.Instance.SamePathEnemies(item.Key);
+                foreach (var enemy in enemies)
+                {
+                    enemy.GetComponent<EnemyStat>().StackElement(2, Element.Water);
+                }
+            }
+            pondPathTimer = 0f;
+        }
+        
+        if (dirtPathTimer < 5f)
+            dirtPathTimer += Time.deltaTime;
+        else
+        {
+            foreach (var item in PathEntityDictionary)
+            {
+                if (item.Value.currentPathType != PathType.DirtyMist)
+                    continue;
+                var enemies = EnemyManager.Instance.SamePathEnemies(item.Key);
+                foreach (var enemy in enemies)
+                {
+                    enemy.GetComponent<EnemyStat>().StackElement(5, Element.Earth);
+                }
+            }
+            dirtPathTimer = 0f;
+        }
     }
 }

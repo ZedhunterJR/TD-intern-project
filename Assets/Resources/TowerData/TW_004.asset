@@ -17,13 +17,17 @@ MonoBehaviour:
   towerInitialSkin: Water-thrower
   element: 1
   projSpwPosY: 1.5
-  baseDamage: 2
-  baseAtkSpd: 0.3
-  range: 3
+  baseDamage:
+  - 15
+  - 25
+  - 40
+  baseAtkSpd:
+  - 0.5
+  - 0.6
+  - 0.6
+  range:
+  - 3
+  - 3.5
+  - 4
+  statusEffectStack: 020000000300000004000000
   attackScriptName: ThrowerWater
-  lvl1Abilites:
-  - ABL_001
-  lvl2Abilites:
-  - ABL_014
-  lvl3Abilites:
-  - ABL_013

@@ -124,10 +124,10 @@ public class TowerBehaviorLibrary
             if (rotation)
             {
                 var dir = (Vector3)sc.direction - projectile.transform.position;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 if (dir.sqrMagnitude < 0.001f) // Prevent NaN errors when the projectile reaches the target
                 {
-                    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                    projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                     sc.DestroyObj();
                 }
             }
@@ -159,11 +159,17 @@ public class TowerBehaviorLibrary
         var sc = projectile.GetComponent<ProjectileAdvanced>();
         var startPos = projectile.transform.position;
         sc.lifeSpan = lifeSpan;
+        sc.currentTarget = target;
         sc.UpdateFunc = () =>
         {
-            if (AllEnemies.Contains(target))
+            if (sc.currentTarget != null)
             {
-                sc.direction = target.transform.position;
+                if (AllEnemies.Contains(sc.currentTarget))
+                {
+                    sc.direction = target.transform.position;
+                }
+                else
+                    sc.currentTarget = null;
             }
 
             float count = sc.LifeSpanInInterpolation;

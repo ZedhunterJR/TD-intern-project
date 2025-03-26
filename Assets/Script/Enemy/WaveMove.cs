@@ -93,15 +93,13 @@ public class WaveMove : MonoBehaviour
                     currentPushBackWaypointPos,
                     -moveSpeed * Time.deltaTime); // Reverse direction
 
-                if ((Vector2)transform.position == currentPushBackWaypointPos)
+                if ((Vector2)transform.position == currentPushBackWaypointPos && waypointIndex > 1)
                 {
                     waypointIndex--;
-                    if (waypointIndex >= 1) // Ensure it's within bounds
-                    {
-                        //FlipX = waypoints[waypointIndex].x > waypoints[Mathf.Max(waypointIndex - 1, 0)].x;
-                        currentWaypointPos = waypoints[waypointIndex]; //Fix: Update current waypoint position
-                        currentPushBackWaypointPos = waypoints[waypointIndex - 1];
-                    }
+                    //FlipX = waypoints[waypointIndex].x > waypoints[Mathf.Max(waypointIndex - 1, 0)].x;
+                    currentWaypointPos = waypoints[waypointIndex]; //Fix: Update current waypoint position
+                    currentPushBackWaypointPos = waypoints[waypointIndex - 1];
+                    
                 }
             }
         }

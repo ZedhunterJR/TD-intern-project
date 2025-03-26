@@ -53,8 +53,13 @@ public class TowerAttack : MonoBehaviour
             attackTimer = 1 / stat.atkSpd; // base, if to implement buff, use live attack speed instead
         }
 
+        OnUpdate();
     }
     protected virtual void OnAwake()
+    {
+
+    }
+    protected virtual void OnUpdate()
     {
 
     }

@@ -17,15 +17,17 @@ MonoBehaviour:
   towerInitialSkin: earth-sniper
   element: 2
   projSpwPosY: 2
-  baseDamage: 1
-  baseAtkSpd: 0.5
-  range: 3
+  baseDamage:
+  - 50
+  - 70
+  - 0
+  baseAtkSpd:
+  - 0.2
+  - 0.25
+  - 0.1
+  range:
+  - 4
+  - 5
+  - 7
+  statusEffectStack: 010000000200000000000000
   attackScriptName: SniperEarth
-  lvl1Abilites:
-  - ABL_004
-  - ABL_019
-  lvl2Abilites:
-  - ABL_015
-  lvl3Abilites:
-  - ABL_011
-  - ABL_026

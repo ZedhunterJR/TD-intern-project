@@ -13,7 +13,6 @@ public class TowerWater : TowerAttack
             proj.transform.Find("spine_animation").transform.localScale = new Vector3(0.3f, 0.3f);
             PoolManager.Instance.RegisterProjectilePool(proj, "Water_thrower_bullet", 5, "tower_water_proj");
             isPlaced = true;
-            return;
         }
     }
     protected override void Attack(GameObject target)

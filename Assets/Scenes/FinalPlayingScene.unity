@@ -992,7 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c84fe6c41ff5f4c96d00dc309d63b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgNumPrefab: {fileID: 3551941605912793936, guid: 8be5be313799f204ebd696fcbc0e892a, type: 3}
+  dmgNumPrefab: {fileID: 7011909595294772216, guid: 59eacf7f38bdbb74a872b1625018c35f, type: 3}
   dmgNumPoolTransform: {fileID: 2047589925}
 --- !u!1 &530774653
 GameObject:
@@ -2837,9 +2837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles: []
   listData:
-  - {fileID: 11400000, guid: 46823455e8c185948a093cd1b6c3f672, type: 2}
-  - {fileID: 11400000, guid: e437adafb872f664a8064438a94c9f52, type: 2}
-  - {fileID: 11400000, guid: fa3c4fbbe6cdc7d45853236ed76bdcab, type: 2}
+  - {fileID: 11400000, guid: e62c0025dfff1bf499f2fda45576be8d, type: 2}
 --- !u!4 &1409243662
 Transform:
   m_ObjectHideFlags: 0

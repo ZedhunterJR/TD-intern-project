@@ -62,7 +62,27 @@ public static class Extensions
 
         return list[Random.Range(0, list.Count)];
     }
+    public static List<T> GetRandom<T>(this List<T> list, int count)
+    {
+        if (list == null || list.Count == 0 || count <= 0)
+        {
+            return new List<T>(); // Return an empty list if invalid input
+        }
 
+        count = Mathf.Min(count, list.Count); // Ensure count does not exceed available items
+
+        List<T> availableItems = new List<T>(list); // Create a copy to modify
+        List<T> randomItems = new List<T>();
+
+        for (int i = 0; i < count; i++)
+        {
+            int randomIndex = Random.Range(0, availableItems.Count);
+            randomItems.Add(availableItems[randomIndex]);
+            availableItems.RemoveAt(randomIndex); // Ensure uniqueness
+        }
+
+        return randomItems;
+    }
     public static Color HexColor(this string value)
     {
         ColorUtility.TryParseHtmlString(value, out Color myColor);
@@ -219,6 +239,8 @@ public static class Extensions
     {
         return (Vector3)v;
     }
+    public static Vector3 Vec3(this float value) => new Vector3(value, value, value);
+    public static Vector2 Vec2(this float value) => new Vector2(value, value);
     //yeah why??
     public static List<Vector3> DivideDistance(this Vector3 start, Vector3 end, int segments)
     {
