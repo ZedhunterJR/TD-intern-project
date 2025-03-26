@@ -27,8 +27,11 @@ public class ShopManager : Singleton<ShopManager>
     [SerializeField] private TextMeshProUGUI detailAttackText;
     [SerializeField] private TextMeshProUGUI detailAttackSpeedText;
 
+    [SerializeField] private TextMeshProUGUI currentGoldText;
+
     public void OnAwake()
     {
+        UpdateCurrentGoldText();
         UpdateUpgradeCostTileUI();
         UpdateUpgradeCostHeartUI();
         UpdateUpgradeCostAttackUI();
@@ -43,6 +46,11 @@ public class ShopManager : Singleton<ShopManager>
         attackSpeedUpgradeLevel.onClick.AddListener(DataManager.Instance.UpgradeAttackSpeedLevel);
     }
     #region UI
+    public void UpdateCurrentGoldText()
+    {
+        currentGoldText.text = DataManager.Instance.PlayerData.gold.ToString();
+    }
+
     public void UpdateUpgradeCostTileUI()
     {
         int cost = DataManager.Instance.GetCostTileUpgrade();

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PopupManager : Singleton<PopupManager>
 {
     [SerializeField] GameObject popupSetting, popupShop;
-    [SerializeField] RectTransform settingPopupRect, shopPopupRect;
+    [SerializeField] RectTransform settingPopupRect, shopPopupRect, libPopupRect;
     [SerializeField] float topPosY, middlePosY;
     [SerializeField] float topPosYSetting, middlePosYSetting;
     [SerializeField] float tweenDuration;
@@ -87,6 +87,25 @@ public class PopupManager : Singleton<PopupManager>
         });
 
         shopPopupRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true);
+    }
+
+    public void PopupLibIntro()
+    {
+        canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+        canvasDarkPanel.alpha = 0f;
+
+        canvasDarkPanel.DOFade(1, tweenDuration).SetUpdate(true);
+        libPopupRect.DOAnchorPosY(middlePosY, tweenDuration).SetUpdate(true);
+    }
+
+    public void PopupLibOutro()
+    {
+        canvasDarkPanel.DOFade(0, tweenDuration).SetUpdate(true).OnComplete(() =>
+        {
+            canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3(3000, 3000, 1000);
+        });
+
+        libPopupRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true);
     }
 
     public void QuitGame()

@@ -125,6 +125,7 @@ public class DataManager : Singleton<DataManager>
             Debug.Log($"Tile Level: {playerData.tileLevel}, Max Tiles: {playerData.maxTileBuilding}, Gold left: {playerData.gold}");
 
             ShopManager.Instance.UpdateUpgradeCostTileUI();
+            ShopManager.Instance.UpdateCurrentGoldText();
         }
     }
 
@@ -155,6 +156,7 @@ public class DataManager : Singleton<DataManager>
 
             // cập nhật UI 
             ShopManager.Instance.UpdateUpgradeCostHeartUI();
+            ShopManager.Instance.UpdateCurrentGoldText();
         }
     }
 
@@ -185,6 +187,7 @@ public class DataManager : Singleton<DataManager>
 
             // cập nhật UI 
             ShopManager.Instance.UpdateUpgradeCostAttackUI();
+            ShopManager.Instance.UpdateCurrentGoldText();
         }
     }
 
@@ -215,6 +218,7 @@ public class DataManager : Singleton<DataManager>
 
             // cập nhật UI 
             ShopManager.Instance.UpdateUpgradeCostAttackSpeedUI();
+            ShopManager.Instance.UpdateCurrentGoldText();
         }
     }
     #endregion
