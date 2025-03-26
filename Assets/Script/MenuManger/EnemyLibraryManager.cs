@@ -10,7 +10,7 @@ public class EnemyLibraryManager : Singleton<EnemyLibraryManager>
     private List<EnemyLibraryData> keyLibrary;
     private List<int> unlockValue;
 
-    [SerializeField] Sprite lockSprite;
+    [SerializeField] Sprite lockSprite, fire, water, earth;
 
     [SerializeField] Transform rightPanel;
 
@@ -36,7 +36,7 @@ public class EnemyLibraryManager : Singleton<EnemyLibraryManager>
             int index = i;
             if (unlockValue[i] == 2)
             {
-                allButtons[i].GetComponent<Image>().sprite = lockSprite; 
+                allButtons[i].transform.Find("sprite").GetComponent<Image>().sprite = lockSprite; 
             }
             else
             {
@@ -47,15 +47,23 @@ public class EnemyLibraryManager : Singleton<EnemyLibraryManager>
 
     void AddFuncToButton(Button button, EnemyLibraryData enemy)
     {
-        button.GetComponent<Image>().sprite = enemy.sprite;
+        button.transform.Find("sprite").GetComponent<Image>().sprite = enemy.sprite;
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
         {
             rightPanel.Find("title").GetComponent<TextMeshProUGUI>().text = enemy.enemyName;
             rightPanel.Find("des").GetComponent<TextMeshProUGUI>().text = enemy.description;
-            rightPanel.Find("img").GetComponent<Image>().sprite = enemy.sprite;
+            rightPanel.Find("icon").GetComponent<Image>().sprite = enemy.sprite;
             rightPanel.Find("hp").GetComponent<TextMeshProUGUI>().text = enemy.enemyHealth.ToString();
             rightPanel.Find("ms").GetComponent<TextMeshProUGUI>().text = enemy.enemyMoveSpeed.ToString();
+
+            var elementImg = rightPanel.Find("element").GetComponent<Image>();
+            switch (enemy.element)
+            {
+                case Element.Earth: elementImg.sprite = earth; break;
+                case Element.Water: elementImg.sprite = water; break;
+                case Element.Fire: elementImg.sprite = fire; break;
+            }
         });
     }
 }
