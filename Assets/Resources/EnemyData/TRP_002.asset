@@ -18,7 +18,7 @@ MonoBehaviour:
   hpBarPosY: 1.2
   size: 1
   wavePower: 1
-  maxHp: 500
+  maxHp: 70
   baseMoveSpeed: 0.7
   element: 0
   ability: 

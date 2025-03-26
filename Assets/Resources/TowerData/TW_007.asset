@@ -17,6 +17,8 @@ MonoBehaviour:
   towerInitialSkin: water-sniper
   element: 1
   projSpwPosY: 2
+  description: 
+  towerSprite: {fileID: 21300000, guid: ed2ff705d324a0f4f84d6fc6f2f15e41, type: 3}
   baseDamage:
   - 30
   - 40

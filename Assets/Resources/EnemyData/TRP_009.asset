@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: WIP
   enemyType: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
-  skinName: 
-  hpBarPosY: 0
+  skinName: skin1-earth
+  hpBarPosY: 1.2
   size: 1
-  wavePower: 0
-  maxHp: 0
-  baseMoveSpeed: 0
-  element: 0
+  wavePower: 1
+  maxHp: 70
+  baseMoveSpeed: 0.7
+  element: 2
   ability: 

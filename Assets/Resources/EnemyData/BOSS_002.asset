@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: BOSS_002
   m_EditorClassIdentifier: 
   enemyName: 
-  enemyType: {fileID: 0}
-  skinName: 
-  hpBarPosY: 0
-  size: 1
+  enemyType: {fileID: 11400000, guid: 0eaab1a030d6dad40be574dabacae4ce, type: 2}
+  skinName: skin3-fire
+  hpBarPosY: 2
+  size: 1.5
   wavePower: 0
-  maxHp: 0
-  baseMoveSpeed: 0
+  maxHp: 1200
+  baseMoveSpeed: 0.5
   element: 0
   ability: 

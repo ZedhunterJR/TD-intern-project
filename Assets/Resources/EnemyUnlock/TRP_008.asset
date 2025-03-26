@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9777e42f537e89445b520d5aa0bcb1c7, type: 3}
   m_Name: TRP_008
   m_EditorClassIdentifier: 
-  enemyName: 
+  enemyName: Fire Dasher
   enemyHealth: 0
   enemyMoveSpeed: 0
   element: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 436433151, guid: 644a7d93a0bce684ea0c5fb1a3711684, type: 3}
   description: 

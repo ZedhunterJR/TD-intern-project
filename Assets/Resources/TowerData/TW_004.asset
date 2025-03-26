@@ -17,6 +17,8 @@ MonoBehaviour:
   towerInitialSkin: Water-thrower
   element: 1
   projSpwPosY: 1.5
+  description: 
+  towerSprite: {fileID: 21300000, guid: 3ab3044a15a1cd5439678b5b64114a40, type: 3}
   baseDamage:
   - 15
   - 25

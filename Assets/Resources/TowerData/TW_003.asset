@@ -17,6 +17,8 @@ MonoBehaviour:
   towerInitialSkin: earth-tower
   element: 2
   projSpwPosY: 1
+  description: 
+  towerSprite: {fileID: 21300000, guid: c018660e0c5a452488353360ed4014cc, type: 3}
   baseDamage:
   - 20
   - 30
