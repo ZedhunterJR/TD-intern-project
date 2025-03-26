@@ -1,6 +1,6 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 public class GameManager : Singleton<GameManager>
 {
@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] UIManager uiManager;
     [SerializeField] WaveManager waveManager;
     [SerializeField] PathManager pathManager;
+    [SerializeField] IGEventManager eventManager;
 
     // Win/Lose Condition 
     [Header("Win / Lose Condition")]
@@ -18,19 +19,37 @@ public class GameManager : Singleton<GameManager>
     private int currentHealth;
     [SerializeField] Image healthBar;
 
+    // currency
+    private int currencyGold;
+
     // Game Status
     private GAME_STATUS status;
 
     // Data
     PlayerData playerData = new PlayerData();
     public PlayerData PlayerData => playerData;
+
+    private Button quitGame;
     private void Awake()
     {
+        quitGame = GameObject.FindGameObjectWithTag("ButtonCancel").GetComponent<Button>();
+        quitGame.onClick.RemoveAllListeners();
+        quitGame.onClick.AddListener(() => 
+        {
+            uiManager.PopupSettingOutro();
+            this.Invoke(() =>
+            {
+
+                SceneManager.LoadScene("MenuScene");
+            }, 2f, true);
+        });
         LoadDataFromPlayerprefs();
         //print("??");
         if (status == GAME_STATUS.Init)
         {
             currentHealth = playerData.maxHeart;
+            currencyGold = 100;
+            uiManager.UpdateCurrencyText(currencyGold);
             uiManager.UpdateHeartText(currentHealth);
             status = GAME_STATUS.Init;
             Time.timeScale = 1;
@@ -178,6 +197,22 @@ public class GameManager : Singleton<GameManager>
         }
     }
     #endregion
+
+    #region currency
+    public bool ModifyGold(int value) // -10
+    {
+        if (-value > currencyGold)
+        {
+            return false;
+        }
+
+        currencyGold += value;
+        uiManager.UpdateCurrencyText(currencyGold);
+        return true;
+    }
+
+    #endregion
+
 }
 
 public enum GAME_STATUS

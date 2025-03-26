@@ -15,6 +15,8 @@ public class WaveManager : Singleton<WaveManager>
     private bool isSpawning = false;
     private float spawnInterval = 0;
     private int currentWaveEnemiesIndex = 0;
+
+    float waveInterval = 0f;
     private void SpawnTestWave()
     {
         if (spawnInterval > 0) 
@@ -24,31 +26,39 @@ public class WaveManager : Singleton<WaveManager>
             SpawnEnemy(currentWaveEnemies[currentWaveEnemiesIndex]);
             currentWaveEnemiesIndex++;
             if (currentWaveEnemiesIndex >= currentWaveEnemies.Count)
+            {
                 isSpawning = false;
+                waveInterval = 10f;
+                
+            }
             spawnInterval = 2f;
         }
     }
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            if (!isSpawning)
-            {
-                currentWaveEnemies = new(GenerateWave(currentWavePower, availableEnemies));
-                currentWaveEnemiesIndex = 0;
-                isSpawning = true;
-                currentWave++;
-                UIManager.Instance.UpdateWaveDetailText(currentWave);
-
-                if (currentWave != 0 && currentWave % 5 == 0)
-                {
-                    UIManager.Instance.ActiveEventPanel();
-                }
-            }
-        }
-
         if (isSpawning) 
             SpawnTestWave();
+
+        if (waveInterval > 0)
+        {
+            waveInterval -= Time.deltaTime;
+        }
+        else if(!isSpawning)
+        {
+            Debug.Log($"Wave hiện tại là {currentWave}");
+
+            currentWaveEnemies = new(GenerateWave(currentWavePower, availableEnemies));
+            currentWaveEnemiesIndex = 0;
+            isSpawning = true;
+            currentWave++;
+            UIManager.Instance.UpdateWaveDetailText(currentWave);
+            GameManager.Instance.ModifyGold(50);
+
+            if (currentWave != 0 && currentWave % 2 == 0)
+            {
+                UIManager.Instance.ActiveEventPanel();
+            }
+        }
     }
     void SpawnEnemy(EnemyData data)
     { 

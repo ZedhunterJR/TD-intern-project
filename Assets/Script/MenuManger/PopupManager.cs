@@ -3,19 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 public class PopupManager : Singleton<PopupManager>
 {
     [SerializeField] GameObject popupSetting, popupShop;
     [SerializeField] RectTransform settingPopupRect, shopPopupRect;
     [SerializeField] float topPosY, middlePosY;
+    [SerializeField] float topPosYSetting, middlePosYSetting;
     [SerializeField] float tweenDuration;
-    [SerializeField] CanvasGroup canvasGroup, canvasGroupShop;
+    [SerializeField] CanvasGroup canvasDarkPanel;
 
+
+    private void Awake()
+    {
+        Button clostButton = GameObject.FindGameObjectWithTag("ButtonClose").GetComponent<Button>();
+        clostButton.onClick.RemoveAllListeners();
+        clostButton.onClick.AddListener(DeactiveSetting);
+
+        Button buttonCancel = GameObject.FindGameObjectWithTag("ButtonCancel").GetComponent<Button>();
+        buttonCancel.onClick.RemoveAllListeners();
+        buttonCancel.onClick.AddListener(QuitGame);
+        popupSetting = GameObject.FindGameObjectWithTag("PanelSetting");
+        settingPopupRect = GameObject.FindGameObjectWithTag("PanelSetting").GetComponent<RectTransform>();
+    }
 
     public void ActiveSetting()
     {
-        popupSetting.SetActive(true);
         PopupSettingIntro();
     }
 
@@ -27,41 +41,52 @@ public class PopupManager : Singleton<PopupManager>
 
     public void ActiveShop()
     {
-        popupShop.SetActive(true);
         PopupShopIntro();
     }
 
-    public async void DeactiveShop()
+    public void DeactiveShop()
     {
-        await PopupShopOutro();
-        popupShop.SetActive(false);
+        PopupShopOutro();
     }
 
     void PopupSettingIntro()
     {
-        canvasGroup.DOFade(1, tweenDuration).SetUpdate(true);
-        settingPopupRect.DOAnchorPosY(middlePosY, tweenDuration).SetUpdate(true);
+        canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+        canvasDarkPanel.alpha = 0f;
+
+        canvasDarkPanel.DOFade(1, tweenDuration).SetUpdate(true);
+        settingPopupRect.DOAnchorPosY(middlePosYSetting, tweenDuration).SetUpdate(true);
     }
 
     void PopupSettingOutro()
     {
         Sequence outro = DOTween.Sequence();
-        canvasGroup.DOFade(0, tweenDuration).SetUpdate(true);
-        outro
-             .Append(settingPopupRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true))
-             .AppendCallback(() => popupSetting.SetActive(false));
+        canvasDarkPanel.DOFade(0, tweenDuration).SetUpdate(true).OnComplete(() =>
+        {
+            canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3(3000,3000,1000);
+        });
+
+        settingPopupRect.DOAnchorPosY(topPosYSetting, tweenDuration).SetUpdate(true);
+        
     }
 
     void PopupShopIntro()
     {
-        canvasGroupShop.DOFade(1, tweenDuration).SetUpdate(true);
+        canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+        canvasDarkPanel.alpha = 0f;
+
+        canvasDarkPanel.DOFade(1, tweenDuration).SetUpdate(true);
         shopPopupRect.DOAnchorPosY(middlePosY, tweenDuration).SetUpdate(true);
     }
 
-    async Task PopupShopOutro()
+    void PopupShopOutro()
     {
-        canvasGroupShop.DOFade(0, tweenDuration).SetUpdate(true);
-        await shopPopupRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true).AsyncWaitForCompletion();
+        canvasDarkPanel.DOFade(0, tweenDuration).SetUpdate(true).OnComplete(() =>
+        {
+            canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3(3000, 3000, 1000);
+        });
+
+        shopPopupRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true);
     }
 
     public void QuitGame()

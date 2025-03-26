@@ -17,7 +17,7 @@ public class IGEventManager : Singleton<IGEventManager>
         for (int i = 0; i < 3; i++)
         {
             int index = i;
-            DecoratePanel(cardPanels[3], eventChose[3]);
+            DecoratePanel(cardPanels[index], eventChose[index]);
         }
         hasChosen = false;
     }

@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
-    [Header ("Win / Lose Panel")]
+    [Header("Win / Lose Panel")]
     [SerializeField] GameObject panelResult;
     [SerializeField] RectTransform panelResultRect;
     [SerializeField] Ease easeType = Ease.OutBack;
 
-    [Header ("UI Resource")]
+    [Header("UI Resource")]
     [SerializeField] TextMeshProUGUI heartText;
     [SerializeField] TextMeshProUGUI currencyText;
     [SerializeField] TextMeshProUGUI waveDetailText;
@@ -21,12 +22,51 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] float topPosY, middlePosY;
     [SerializeField] float tweenDuration;
 
+    [SerializeField] RectTransform settingPopupRect;
+    [SerializeField] CanvasGroup canvasDarkPanel;
+    [SerializeField] float topPosYSetting, middlePosYSetting;
+
+
+
+    private void Awake()
+    {
+        settingPopupRect = GameObject.FindGameObjectWithTag("PanelSetting").GetComponent<RectTransform>();
+        Button clostButton = GameObject.FindGameObjectWithTag("ButtonClose").GetComponent<Button>();
+        clostButton.onClick.RemoveAllListeners();
+        clostButton.onClick.AddListener(PopupSettingOutro);
+    }
+
+    #region Setting Button
+    public void PopupSettingIntro()
+    {
+        GameManager.Instance.PauseGame(1);
+        canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+        canvasDarkPanel.alpha = 0f;
+
+        canvasDarkPanel.DOFade(1, tweenDuration).SetUpdate(true);
+        settingPopupRect.DOAnchorPosY(middlePosYSetting, tweenDuration).SetUpdate(true);
+    }
+
+    public void PopupSettingOutro()
+    {
+        Debug.Log("Outro Setting");
+        Sequence outro = DOTween.Sequence();
+        canvasDarkPanel.DOFade(0, tweenDuration).SetUpdate(true).OnComplete(() =>
+        {
+            canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3(3000, 3000, 1000);
+        });
+
+        settingPopupRect.DOAnchorPosY(topPosYSetting, tweenDuration).SetUpdate(true);
+        GameManager.Instance.PauseGame(2);
+    }
+    #endregion
+
     #region UI for Result
     public void ShowResultPanel()
     {
         panelResultRect.localScale = Vector3.zero;
         panelResultRect.position = Vector3.zero;
-        panelResultRect.DOScale(Vector3.one, tweenDuration).SetEase(easeType).SetUpdate(true);
+        panelResultRect.DOScale(Vector3.one, 1).SetEase(easeType).SetUpdate(true);
     }
     #endregion
 
@@ -34,12 +74,21 @@ public class UIManager : Singleton<UIManager>
     public void ActiveEventPanel()
     {
         GameManager.Instance.ChangeStatus(GAME_STATUS.Pause);
+        IGEventManager.Instance.ActivateCardPanel();
         EventPanelIntro();
+        canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+        canvasDarkPanel.alpha = 0f;
+
+        canvasDarkPanel.DOFade(1, tweenDuration).SetUpdate(true);
     }
 
     public void DeactiveEvenPanel()
     {
         EventPanelOutro();
+        canvasDarkPanel.DOFade(0, tweenDuration).SetUpdate(true).OnComplete(() =>
+        {
+            canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3(3000, 3000, 1000);
+        });
         GameManager.Instance.ChangeStatus(GAME_STATUS.Playing);
     }
 
@@ -87,7 +136,7 @@ public class UIManager : Singleton<UIManager>
             case GAME_STATUS.Win:
                 break;
             case GAME_STATUS.Lose:
-                panelResult.SetActive (true);
+                panelResult.SetActive(true);
                 ShowResultPanel();
                 break;
             default:
@@ -115,4 +164,6 @@ public class UIManager : Singleton<UIManager>
         }
     }
     #endregion
+
+
 }

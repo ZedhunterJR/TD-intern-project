@@ -265,6 +265,13 @@ public class DataManager : Singleton<DataManager>
                 string json = PlayerPrefs.GetString(PlayerDataKey);
                 playerData = JsonUtility.FromJson<PlayerData>(json);
             }
+
+            EnemyLibrary.Instance.LoadDictionary();
+            foreach (var e in EnemyLibrary.Instance.allEnemies)
+            {
+
+                Debug.Log($"Key: {e.Key} == Value: {e.Value}");
+            }
         }
         else
         {
@@ -272,7 +279,23 @@ public class DataManager : Singleton<DataManager>
             BaseData();
             PlayerPrefs.SetInt("IsFirstTime", 1); // Đánh dấu đã khởi tạo dữ liệu
             PlayerPrefs.Save();
+
+            var enemyUnlock = EnemyLibrary.Instance;
+            enemyUnlock.allEnemies = new Dictionary<string, int>();
+            for (int i = 1; i <= 12; i++)
+            {
+                string key = $"TRP_{i:D3}"; // Định dạng số thành 3 chữ số (001, 002, ..., 015)
+                enemyUnlock.allEnemies[key] = 0;
+            }
+            for (int i = 1; i <= 3; i++)
+            {
+                string key = $"BOSS_{i:D3}"; // Định dạng số thành 3 chữ số (001, 002, ..., 015)
+                enemyUnlock.allEnemies[key] = 0;
+            }
+
+            enemyUnlock.SaveDictionary();
         }
+        EnemyLibraryManager.Instance.Init();
     }
 }
 

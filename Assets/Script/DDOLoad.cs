@@ -1,0 +1,27 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class DDOLoad : MonoBehaviour
+{
+    private static DDOLoad instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            SceneManager.activeSceneChanged += (s, a) =>
+            {
+                Canvas canvas = GetComponent<Canvas>();
+                canvas.worldCamera = Camera.main;
+            };
+            DontDestroyOnLoad(gameObject); // Giữ object khi chuyển scene
+        }
+        else
+        {
+            Destroy(gameObject); // Nếu đã có instance, hủy object mới
+        }
+    }
+}

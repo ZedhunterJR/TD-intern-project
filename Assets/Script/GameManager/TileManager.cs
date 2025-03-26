@@ -44,7 +44,20 @@ public class TileManager : Singleton<TileManager>
         List<TileEntity> tilesNoneTower = tiles.Where(n => n.currentTower == null).ToList();
         List<TileEntity> tilesHasTower = tiles.Where(n => n.currentTower != null).ToList();
 
-        if (tilesNoneTower.Count > 0 && tilesHasTower.Count < GameManager.Instance.PlayerData.maxTileBuilding)
+        if (tilesHasTower.Count >= GameManager.Instance.PlayerData.maxTileBuilding)
+        {
+            Debug.Log("hết chỗ ");
+            return;
+        }
+
+        if (!GameManager.Instance.ModifyGold(-10)) 
+        {
+            Debug.Log("Không tiền");
+            return;
+        }
+
+
+        if (tilesNoneTower.Count > 0)
         {
             TileEntity tile = tilesNoneTower.GetRandom();
 

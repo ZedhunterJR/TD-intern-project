@@ -12,6 +12,8 @@ public class TowerData : ScriptableObject
     public string towerInitialSkin;
     public Element element;
     public float projSpwPosY;
+    public string description;
+    public Sprite towerSprite;
 
     [Header("Stats")]
     public float[] baseDamage = new float[3];

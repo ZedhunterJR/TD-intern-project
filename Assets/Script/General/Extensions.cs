@@ -113,15 +113,19 @@ public static class Extensions
     }
 
     //try this so that i can feel not being an idiot
-    public static void Invoke(this MonoBehaviour mb, Action f, float delay)
+    public static void Invoke(this MonoBehaviour mb, Action f, float delay, bool useUnscaledTime = false)
     {
-        mb.StartCoroutine(InvokeRoutine(f, delay));
+        mb.StartCoroutine(InvokeRoutine(f, delay, useUnscaledTime));
     }
 
-    private static IEnumerator InvokeRoutine(System.Action f, float delay)
+    private static IEnumerator InvokeRoutine(Action f, float delay, bool useUnscaledTime)
     {
-        yield return new WaitForSeconds(delay);
-        f();
+        if (useUnscaledTime)
+            yield return new WaitForSecondsRealtime(delay); // Ignores time scale
+        else
+            yield return new WaitForSeconds(delay); // Uses scaled time
+
+        f?.Invoke();
     }
     public static float ShortestDistanceTo(this CircleCollider2D circle1, CircleCollider2D circle2)
     {
