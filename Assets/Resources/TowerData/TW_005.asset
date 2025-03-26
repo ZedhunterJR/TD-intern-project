@@ -17,13 +17,17 @@ MonoBehaviour:
   towerInitialSkin: Fire-thrower
   element: 0
   projSpwPosY: 1.5
-  baseDamage: 2
-  baseAtkSpd: 0.3
-  range: 3
+  baseDamage:
+  - 20
+  - 30
+  - 100
+  baseAtkSpd:
+  - 0.4
+  - 0.5
+  - 0.2
+  range:
+  - 3
+  - 3.5
+  - 10
+  statusEffectStack: 020000000300000005000000
   attackScriptName: ThrowerFire
-  lvl1Abilites:
-  - ABL_002
-  lvl2Abilites:
-  - ABL_014
-  lvl3Abilites:
-  - ABL_013

@@ -20,7 +20,7 @@ MonoBehaviour:
   baseDamage:
   - 20
   - 30
-  - 50
+  - 30
   baseAtkSpd:
   - 0.6
   - 0.65

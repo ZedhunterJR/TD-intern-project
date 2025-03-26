@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyStat : MonoBehaviour
 {
     public EnemyData data;
+    public float Center => data.hpBarPosY / 2f;
 
     public float maxHealth;
     public float currentHp;
@@ -21,6 +22,17 @@ public class EnemyStat : MonoBehaviour
     private float wetTime = 0;
     private int dirtedStack = 0;
     private float dirtedTime = 0;
+    public Element CurrentBasicStatusEffect
+    {
+        get
+        {
+            if (burnTime > 0) return Element.Fire;
+            if (wetTime > 0) return Element.Water;
+            if (dirtedTime > 0) return Element.Earth;
+            return Element.None;
+        }
+    }
+
     private float combineEffectTimer = 0;
     public void ResetAllStatusEffect()
     {
@@ -46,7 +58,7 @@ public class EnemyStat : MonoBehaviour
                 dirtedStack += stack;
                 if (dirtedStack >= 5)
                 {
-                    dirtedStack -= 5;
+                    dirtedStack = 0;
                     activeEffects.Remove(dirtedStun);
                     activeEffects.Add(dirtedStun);
                     HandleVisibleStatusEffect(Element.Earth);
@@ -58,7 +70,7 @@ public class EnemyStat : MonoBehaviour
                 {
                     activeEffects.Remove(wetSlow);
                     activeEffects.Add(wetSlow);
-                    wetStack = stack - 5;
+                    wetStack = 0;
                     HandleVisibleStatusEffect(Element.Water);
                 }
                 break;
@@ -66,7 +78,7 @@ public class EnemyStat : MonoBehaviour
                 burnStack += stack;
                 if (burnStack >= 5)
                 {
-                    burnStack = stack - 5;
+                    burnStack = 0;
                     HandleVisibleStatusEffect(Element.Fire);
                 }
                 break;
@@ -156,10 +168,12 @@ public class EnemyStat : MonoBehaviour
         maxSpeed = data.baseMoveSpeed;
         currentSpeed = maxSpeed;
         UpdateHp(0, Color.white); //to reset hp bar
+        transform.Find("health").localPosition = Vector3.zero + new Vector3(0, data.hpBarPosY);
 
         //spine init
         spineAnimation.GetComponent<SpineAnimationController>().Init(data);
         spineAnimation.GetComponent<SpineAnimationController>().SetSkinName(data.skinName);
+        spineAnimation.transform.localScale *= data.size;
         initialScale = spineAnimation.transform.localScale.y;
 
         //init wave move script
@@ -214,6 +228,10 @@ public class EnemyStat : MonoBehaviour
     {
         currentHp += value;
         currentHp = Mathf.Clamp(currentHp, 0, maxHealth);
+        if (value != 0)
+        {
+            DmgNumberManager.Instance.DmgNumber(color, Mathf.Abs(value), transform.position);
+        }
         if (currentHp == 0)
         {
             PreDestruction?.Invoke();
@@ -223,10 +241,7 @@ public class EnemyStat : MonoBehaviour
             //EventManager.Instance.ModiGold(enemyEquivalent * 10f);
             return true;
         }
-        if (value != 0)
-        {
-            DmgNumberManager.Instance.DmgNumber(color, Mathf.Abs(value), transform.position);
-        }
+
 
         Vector2 scale = new Vector2(1 - (currentHp / maxHealth), 1);
         hpBarCover.transform.localScale = scale;

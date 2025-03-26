@@ -11,6 +11,7 @@ public class EnemyData : ScriptableObject
     public SkeletonDataAsset enemyType;
     public string skinName;
     public float hpBarPosY;
+    public float size = 1;
 
     [Header("Stats")]
     public int wavePower;
@@ -26,5 +27,6 @@ public enum Element
 {
     Fire,
     Water,
-    Earth
+    Earth,
+    None,
 }

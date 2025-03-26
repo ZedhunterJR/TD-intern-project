@@ -14,7 +14,6 @@ public class TowerEarth : TowerAttack
             PoolManager.Instance.RegisterProjectilePool(proj, "Earth_thrower_bullet", 5, "tower_earth_proj");
 
             isPlaced = true;
-            return;
         }
         if (stat.level == 2)
         {

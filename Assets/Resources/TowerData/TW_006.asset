@@ -17,13 +17,17 @@ MonoBehaviour:
   towerInitialSkin: Earth-thrower
   element: 2
   projSpwPosY: 1.5
-  baseDamage: 2
-  baseAtkSpd: 0.3
-  range: 3
+  baseDamage:
+  - 30
+  - 50
+  - 50
+  baseAtkSpd:
+  - 0.2
+  - 0.3
+  - 0.2
+  range:
+  - 3
+  - 4
+  - 5
+  statusEffectStack: 020000000300000002000000
   attackScriptName: ThrowerEarth
-  lvl1Abilites:
-  - ABL_004
-  lvl2Abilites:
-  - ABL_014
-  lvl3Abilites:
-  - ABL_013

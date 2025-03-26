@@ -50,8 +50,8 @@ public class Range
                 if (e1 == null) return 1;  // e1 is null, push to back
                 if (e2 == null) return -1; // e2 is null, push to back
 
-                return e1.GetComponent<EnemyStat>().currentHp.CompareTo
-                    (e2.GetComponent<EnemyStat>().currentHp);
+                return e2.GetComponent<EnemyStat>().currentHp.CompareTo
+                    (e1.GetComponent<EnemyStat>().currentHp);
             }
         );
         return result;

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class TowerFire : TowerAttack
 {
@@ -14,7 +13,6 @@ public class TowerFire : TowerAttack
             proj.transform.Find("spine_animation").transform.localScale = new Vector3(0.3f, 0.3f);
             PoolManager.Instance.RegisterProjectilePool(proj, "Fire_thrower_bullet", 5, "tower_fire_proj");
             isPlaced = true;
-            return;
         }
         if (stat.level == 2)
         {

@@ -17,15 +17,17 @@ MonoBehaviour:
   towerInitialSkin: water-sniper
   element: 1
   projSpwPosY: 2
-  baseDamage: 1
-  baseAtkSpd: 0.5
-  range: 3
+  baseDamage:
+  - 30
+  - 40
+  - 60
+  baseAtkSpd:
+  - 0.4
+  - 0.5
+  - 0.6
+  range:
+  - 3
+  - 3.5
+  - 4
+  statusEffectStack: 010000000200000002000000
   attackScriptName: SniperWater
-  lvl1Abilites:
-  - ABL_001
-  - ABL_019
-  lvl2Abilites:
-  - ABL_015
-  lvl3Abilites:
-  - ABL_011
-  - ABL_026
