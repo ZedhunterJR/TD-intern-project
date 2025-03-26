@@ -38,6 +38,12 @@ public class WaveManager : Singleton<WaveManager>
                 currentWaveEnemiesIndex = 0;
                 isSpawning = true;
                 currentWave++;
+                UIManager.Instance.UpdateWaveDetailText(currentWave);
+
+                if (currentWave != 0 && currentWave % 5 == 0)
+                {
+                    UIManager.Instance.ActiveEventPanel();
+                }
             }
         }
 

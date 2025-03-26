@@ -25,8 +25,8 @@ public class TileManager : Singleton<TileManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-            SpawnRandomTile();
+        //if (Input.GetKeyDown(KeyCode.R))
+        //    SpawnRandomTile();
     }
 
     void InitAllTiles()
@@ -42,8 +42,9 @@ public class TileManager : Singleton<TileManager>
     public void SpawnRandomTile()
     {
         List<TileEntity> tilesNoneTower = tiles.Where(n => n.currentTower == null).ToList();
+        List<TileEntity> tilesHasTower = tiles.Where(n => n.currentTower != null).ToList();
 
-        if (tilesNoneTower.Count > 0)
+        if (tilesNoneTower.Count > 0 && tilesHasTower.Count < GameManager.Instance.PlayerData.maxTileBuilding)
         {
             TileEntity tile = tilesNoneTower.GetRandom();
 

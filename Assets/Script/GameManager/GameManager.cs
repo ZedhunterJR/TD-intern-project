@@ -14,18 +14,24 @@ public class GameManager : Singleton<GameManager>
 
     // Win/Lose Condition 
     [Header("Win / Lose Condition")]
-    [SerializeField] float baseHealth = 3;
-    private float currentHealth;
+    [SerializeField] int baseHealth = 3;
+    private int currentHealth;
     [SerializeField] Image healthBar;
 
     // Game Status
     private GAME_STATUS status;
 
+    // Data
+    PlayerData playerData;
+    public PlayerData PlayerData => playerData;
     private void Awake()
     {
+        LoadDataFromPlayerprefs();
+
         if (status == GAME_STATUS.Init)
         {
-            currentHealth = baseHealth;
+            currentHealth = playerData.maxHeart;
+            uiManager.UpdateHeartText(currentHealth);
             status = GAME_STATUS.Init;
             Time.timeScale = 1;
 
@@ -54,7 +60,8 @@ public class GameManager : Singleton<GameManager>
         currentHealth -= 1;
         currentHealth = Mathf.Clamp(currentHealth, 0, baseHealth);
         //UpdateHealthBar();
-        Debug.Log(currentHealth);
+        //Debug.Log(currentHealth);
+        uiManager.UpdateHeartText(currentHealth);
         if (currentHealth == 0)
         {
             ChangeStatus(GAME_STATUS.Lose);
@@ -158,6 +165,17 @@ public class GameManager : Singleton<GameManager>
         PlayerPrefs.SetInt("PlayerGold", rewards);
 
         //PlayerPrefs.Save();
+    }
+    #endregion
+
+    #region Load Data From Player Prefs 
+    void LoadDataFromPlayerprefs()
+    {
+        if (PlayerPrefs.HasKey("PlayerData"))
+        {
+            string json = PlayerPrefs.GetString("PlayerData");
+            playerData = JsonUtility.FromJson<PlayerData>(json);
+        }
     }
     #endregion
 }
