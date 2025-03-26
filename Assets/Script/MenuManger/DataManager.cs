@@ -265,7 +265,6 @@ public class DataManager : Singleton<DataManager>
                 string json = PlayerPrefs.GetString(PlayerDataKey);
                 playerData = JsonUtility.FromJson<PlayerData>(json);
             }
-
             EnemyLibrary.Instance.LoadDictionary();
             foreach (var e in EnemyLibrary.Instance.allEnemies)
             {
