@@ -8,7 +8,7 @@ public class ButtonUI : MonoBehaviour, IPointerClickHandler, IDragHandler, IDrop
 {
     [Header("Debug")]
     public bool interactable = true;
-    public float timerHover = 0;
+    //public float timerHover = 0;
 
     public Action ClickFunc = null;
     public Action MouseRightClickFunc = null;

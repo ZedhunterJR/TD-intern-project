@@ -27,7 +27,7 @@ public class GameManager : Singleton<GameManager>
     private void Awake()
     {
         LoadDataFromPlayerprefs();
-
+        //print("??");
         if (status == GAME_STATUS.Init)
         {
             currentHealth = playerData.maxHeart;
@@ -38,6 +38,7 @@ public class GameManager : Singleton<GameManager>
             //if (pathManager != null)
             //    pathManager.OnAwake();
         }
+
     }
 
     private void Start()
