@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BOSS_003
   m_EditorClassIdentifier: 
   enemyName: Earthshaper
-  enemyHealth: 0
-  enemyMoveSpeed: 0
+  enemyHealth: 3000
+  enemyMoveSpeed: 0.5
   element: 2
   sprite: {fileID: -1368302488, guid: 644a7d93a0bce684ea0c5fb1a3711684, type: 3}
   description: 

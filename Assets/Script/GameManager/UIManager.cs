@@ -11,6 +11,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] GameObject panelResult;
     [SerializeField] RectTransform panelResultRect;
     [SerializeField] Ease easeType = Ease.OutBack;
+    [SerializeField] Button homeButton;
+    [SerializeField] TextMeshProUGUI waveText, goldText;
+    public Button HomeButton => homeButton;
 
     [Header("UI Resource")]
     [SerializeField] TextMeshProUGUI heartText;
@@ -67,6 +70,15 @@ public class UIManager : Singleton<UIManager>
         panelResultRect.localScale = Vector3.zero;
         panelResultRect.position = Vector3.zero;
         panelResultRect.DOScale(Vector3.one, 1).SetEase(easeType).SetUpdate(true);
+
+        UpdateResult();
+    }
+
+    public void UpdateResult()
+    {
+        waveText.text = $"Wave {WaveManager.Instance.currentWave}";
+        goldText.text = $"{WaveManager.Instance.currentWave * 20 + (WaveManager.Instance.currentWave - 1) * 5}";
+        GameManager.Instance.SaveRewards(WaveManager.Instance.currentWave * 20 + (WaveManager.Instance.currentWave - 1) * 5);
     }
     #endregion
 
@@ -136,7 +148,6 @@ public class UIManager : Singleton<UIManager>
             case GAME_STATUS.Win:
                 break;
             case GAME_STATUS.Lose:
-                panelResult.SetActive(true);
                 ShowResultPanel();
                 break;
             default:
@@ -157,7 +168,6 @@ public class UIManager : Singleton<UIManager>
             case GAME_STATUS.Win:
                 break;
             case GAME_STATUS.Lose:
-                panelResult.SetActive(false);
                 break;
             default:
                 break;

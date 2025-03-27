@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TRP_003
   m_EditorClassIdentifier: 
   enemyName: Earth Shape
-  enemyHealth: 0
-  enemyMoveSpeed: 0
+  enemyHealth: 100
+  enemyMoveSpeed: 0.5
   element: 2
   sprite: {fileID: 660600941, guid: 644a7d93a0bce684ea0c5fb1a3711684, type: 3}
   description: 

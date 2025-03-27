@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TRP_004
   m_EditorClassIdentifier: 
   enemyName: Water Elite
-  enemyHealth: 0
-  enemyMoveSpeed: 0
+  enemyHealth: 200
+  enemyMoveSpeed: 0.7
   element: 1
   sprite: {fileID: 91362825, guid: 644a7d93a0bce684ea0c5fb1a3711684, type: 3}
   description: 

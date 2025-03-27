@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TRP_010
   m_EditorClassIdentifier: 
   enemyName: Water Surfer
-  enemyHealth: 0
-  enemyMoveSpeed: 0
+  enemyHealth: 200
+  enemyMoveSpeed: 1
   element: 1
   sprite: {fileID: -78669133, guid: 644a7d93a0bce684ea0c5fb1a3711684, type: 3}
   description: 

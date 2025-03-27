@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TRP_002
   m_EditorClassIdentifier: 
   enemyName: Fire Minion
-  enemyHealth: 0
-  enemyMoveSpeed: 0
+  enemyHealth: 70
+  enemyMoveSpeed: 0.7
   element: 0
   sprite: {fileID: -363859969, guid: 644a7d93a0bce684ea0c5fb1a3711684, type: 3}
   description: 

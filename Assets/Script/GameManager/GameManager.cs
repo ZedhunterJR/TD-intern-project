@@ -43,6 +43,16 @@ public class GameManager : Singleton<GameManager>
                 SceneManager.LoadScene("MenuScene");
             }, 2f, true);
         });
+        uiManager.HomeButton.onClick.RemoveAllListeners();
+        uiManager.HomeButton.onClick.AddListener(() =>
+        {
+            this.Invoke(() =>
+            {
+
+                SceneManager.LoadScene("MenuScene");
+            }, 2f, true);
+        });
+
         LoadDataFromPlayerprefs();
         //print("??");
         if (status == GAME_STATUS.Init)
@@ -181,9 +191,10 @@ public class GameManager : Singleton<GameManager>
     #region Save Rewards After Finishing Game
     public void SaveRewards(int rewards)
     {
-        PlayerPrefs.SetInt("PlayerGold", rewards);
-
-        //PlayerPrefs.Save();
+        playerData.gold += rewards;
+        
+        string json = JsonUtility.ToJson(playerData);
+        PlayerPrefs.SetString("PlayerData", json);
     }
     #endregion
 
