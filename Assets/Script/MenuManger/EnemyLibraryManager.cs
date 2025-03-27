@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,6 +42,24 @@ public class EnemyLibraryManager : Singleton<EnemyLibraryManager>
             else
             {
                 AddFuncToButton(allButtons[index], keyLibrary[index]);
+            }
+        }
+
+        if (enemyLibrary.Values.First() == 1)
+        {
+            var firstValue = keyLibrary.First();
+            rightPanel.Find("title").GetComponent<TextMeshProUGUI>().text = firstValue.enemyName;
+            rightPanel.Find("des").GetComponent<TextMeshProUGUI>().text = firstValue.description;
+            rightPanel.Find("icon").GetComponent<Image>().sprite = firstValue.sprite;
+            rightPanel.Find("hp").GetComponent<TextMeshProUGUI>().text = firstValue.enemyHealth.ToString();
+            rightPanel.Find("ms").GetComponent<TextMeshProUGUI>().text = firstValue.enemyMoveSpeed.ToString();
+
+            var elementImg = rightPanel.Find("element").GetComponent<Image>();
+            switch (firstValue.element)
+            {
+                case Element.Earth: elementImg.sprite = earth; break;
+                case Element.Water: elementImg.sprite = water; break;
+                case Element.Fire: elementImg.sprite = fire; break;
             }
         }
     }

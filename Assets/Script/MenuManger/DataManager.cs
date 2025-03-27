@@ -299,6 +299,7 @@ public class DataManager : Singleton<DataManager>
             enemyUnlock.SaveDictionary();
         }
         EnemyLibraryManager.Instance.Init();
+        TowerLibraryManager.Instance.Init();
     }
 }
 
