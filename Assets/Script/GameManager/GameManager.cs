@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
 
     // Win/Lose Condition 
     [Header("Win / Lose Condition")]
-    [SerializeField] int baseHealth = 3;
+    [SerializeField] int baseHealth;
     private int currentHealth;
     [SerializeField] Image healthBar;
 
@@ -57,6 +57,7 @@ public class GameManager : Singleton<GameManager>
         //print("??");
         if (status == GAME_STATUS.Init)
         {
+            baseHealth = playerData.maxHeart;
             currentHealth = playerData.maxHeart;
             currencyGold = 100;
             uiManager.UpdateCurrencyText(currencyGold);
@@ -87,7 +88,6 @@ public class GameManager : Singleton<GameManager>
     public void TakeDame()
     {
         currentHealth -= 1;
-        currentHealth = Mathf.Clamp(currentHealth, 0, baseHealth);
         //UpdateHealthBar();
         //Debug.Log(currentHealth);
         uiManager.UpdateHeartText(currentHealth);
@@ -96,6 +96,14 @@ public class GameManager : Singleton<GameManager>
             ChangeStatus(GAME_STATUS.Lose);
         }
     }
+
+    #region Event 
+    public void Healing(int value)
+    {
+        currentHealth += value;
+        uiManager.UpdateHeartText(currentHealth);
+    }
+    #endregion
 
     public void ChangeStatus(GAME_STATUS newStatus)
     {

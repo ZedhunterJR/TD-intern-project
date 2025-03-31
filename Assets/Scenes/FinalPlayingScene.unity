@@ -3430,6 +3430,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8044b07a99b18bd478a9c2c47ef945fe, type: 2}
   - {fileID: 11400000, guid: 16102d39703dbea4fa6cde8c16186f6a, type: 2}
   - {fileID: 11400000, guid: 12c35745d11f3434b92d8b69d257cb2b, type: 2}
+  availableBoss:
+  - {fileID: 11400000, guid: ef50833b551513d4ab444eafeab8f995, type: 2}
+  - {fileID: 11400000, guid: fe1423e3af7fa7e48b86ebe70f4ca946, type: 2}
+  - {fileID: 11400000, guid: b9dbe9582c5f2e04e85bae1dc9de7514, type: 2}
   currentWave: 0
   currentWavePower: 5
 --- !u!4 &1069406979

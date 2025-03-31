@@ -48,10 +48,20 @@ public class IGEventManager : Singleton<IGEventManager>
         switch (eventData.name)
         {
             case "EVT_001":
+                Debug.Log("Stun all Enemies");
+                foreach (var enemy in EnemyManager.Instance.AllEnemies)
+                {
+                    EnemyStat enemyStat = enemy.GetComponent<EnemyStat>();
+                    enemyStat.activeEffects.Add(new(5f));
+                }
                 break;
             case "EVT_002":
+                Debug.Log("Healing 1 Hp");
+                GameManager.Instance.Healing(1);
                 break;
             case "EVT_003":
+                Debug.Log("Increase Energy by 50");
+                GameManager.Instance.ModifyGold(50);
                 break;
             case "EVT_004":
                 break;

@@ -15,7 +15,7 @@ public class EnemyStat : MonoBehaviour
 
     #region new status effect bs
     [SerializeField]
-    List<StatusEffect> activeEffects = new List<StatusEffect>();
+    public List<StatusEffect> activeEffects = new List<StatusEffect>();
     private int burnStack = 0;
     private float burnTime = 0;
     private int wetStack = 0;
