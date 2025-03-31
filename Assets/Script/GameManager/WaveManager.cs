@@ -9,8 +9,9 @@ using System.Linq;
 public class WaveManager : Singleton<WaveManager>
 {
     [SerializeField] private List<EnemyData> availableEnemies = new List<EnemyData>();
+    [SerializeField] private List<EnemyData> availableBoss = new List<EnemyData>();
     public int currentWave = 0;
-    [SerializeField ]private int currentWavePower = 5;
+    [SerializeField] private int currentWavePower = 5;
     private List<EnemyData> currentWaveEnemies = new();
     private bool isSpawning = false;
     private float spawnInterval = 0;
@@ -19,7 +20,7 @@ public class WaveManager : Singleton<WaveManager>
     float waveInterval = 0f;
     private void SpawnTestWave()
     {
-        if (spawnInterval > 0) 
+        if (spawnInterval > 0)
             spawnInterval -= Time.deltaTime;
         else
         {
@@ -29,39 +30,45 @@ public class WaveManager : Singleton<WaveManager>
             {
                 isSpawning = false;
                 waveInterval = 10f;
-                
+
             }
             spawnInterval = 2f;
         }
     }
     private void Update()
     {
-        if (isSpawning) 
+        if (isSpawning)
             SpawnTestWave();
 
         if (waveInterval > 0)
         {
             waveInterval -= Time.deltaTime;
         }
-        else if(!isSpawning)
+        else if (!isSpawning)
         {
             Debug.Log($"Wave hiện tại là {currentWave}");
-
-            currentWaveEnemies = new(GenerateWave(currentWavePower, availableEnemies));
             currentWaveEnemiesIndex = 0;
             isSpawning = true;
             currentWave++;
-            UIManager.Instance.UpdateWaveDetailText(currentWave);
-            GameManager.Instance.ModifyGold(50);
+            currentWavePower = Mathf.RoundToInt(5 * Mathf.Pow(1.2f, currentWave));
 
-            if (currentWave != 0 && currentWave % 2 == 0)
+            if (currentWave % 2 == 0) // Boss xuất hiện mỗi 5 wave
             {
+                EnemyData bossData = GetBoss(currentWave);
+                currentWaveEnemies = new List<EnemyData>() { bossData };
                 UIManager.Instance.ActiveEventPanel();
             }
+            else
+            {
+                currentWaveEnemies = new(GenerateWave(currentWavePower, availableEnemies));
+            }
+
+            UIManager.Instance.UpdateWaveDetailText(currentWave);
+            GameManager.Instance.ModifyGold(50);
         }
     }
     void SpawnEnemy(EnemyData data)
-    { 
+    {
         //Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject enemy = PoolManager.Instance.GetEnemyFromPool();
         enemy.GetComponent<EnemyStat>().Init(data); //temporary
@@ -96,6 +103,29 @@ public class WaveManager : Singleton<WaveManager>
         return wave;
     }
 
+    public EnemyData GetBoss(int currentWave)
+    {
+        if (availableBoss == null || availableBoss.Count == 0)
+            return null; // Tránh lỗi nếu không có boss
+
+        // Chọn Boss ngẫu nhiên từ danh sách Boss có sẵn
+        EnemyData originalBoss = availableBoss.GetRandom();
+
+        // Tạo bản sao mới để không ảnh hưởng dữ liệu gốc
+        EnemyData bossData = new EnemyData
+        {
+            maxHp = originalBoss.maxHp * currentWave, // Nhân máu theo wave
+            baseMoveSpeed = originalBoss.baseMoveSpeed,
+            element = originalBoss.element,
+            enemyName = originalBoss.enemyName,
+            enemyType = originalBoss.enemyType,
+            skinName = originalBoss.skinName,
+            hpBarPosY = originalBoss.hpBarPosY,
+            size = originalBoss.size,
+        };
+
+        return bossData;
+    }
 }
 
 [System.Serializable]

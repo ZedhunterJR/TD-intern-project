@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae9a0843e3d3ca489119f1f217cf42c, type: 3}
   m_Name: EVT_001
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  title: 1
-  description: adadadadad
+  icon: {fileID: 21300000, guid: d955c93729d9ede46b0f49cc01714df7, type: 3}
+  title: Stun
+  description: 'Stun all enemies on the map '

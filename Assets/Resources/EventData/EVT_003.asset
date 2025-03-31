@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae9a0843e3d3ca489119f1f217cf42c, type: 3}
   m_Name: EVT_003
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  title: 3
-  description: hhhhhh
+  icon: {fileID: 21300000, guid: 1a92613e5fbd06843aa4e08e6e4ec7ff, type: 3}
+  title: 'Energy Surge  '
+  description: 'Increase energy by 50 '

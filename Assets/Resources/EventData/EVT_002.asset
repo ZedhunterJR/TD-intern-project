@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae9a0843e3d3ca489119f1f217cf42c, type: 3}
   m_Name: EVT_002
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  title: 2
-  description: fgffggfff
+  icon: {fileID: 21300000, guid: e1fbcdbb824752744a94b5abb1e159e0, type: 3}
+  title: Healing
+  description: 'Heal 1 Hp '
