@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BOSS_001
   m_EditorClassIdentifier: 
   enemyName: Water Dino Rider
-  enemyType: {fileID: 11400000, guid: 4654d94b41635a244bb2430354ebdf49, type: 2}
+  enemyType: {fileID: 11400000, guid: 0eaab1a030d6dad40be574dabacae4ce, type: 2}
   skinName: skin1-water
   hpBarPosY: 2
   size: 1.5

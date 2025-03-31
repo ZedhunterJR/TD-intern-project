@@ -31,11 +31,6 @@ public class ShopManager : Singleton<ShopManager>
 
     public void OnAwake()
     {
-        UpdateCurrentGoldText();
-        UpdateUpgradeCostTileUI();
-        UpdateUpgradeCostHeartUI();
-        UpdateUpgradeCostAttackUI();
-        UpdateUpgradeCostAttackSpeedUI();
     }
 
     private void Start()
@@ -46,77 +41,49 @@ public class ShopManager : Singleton<ShopManager>
         attackSpeedUpgradeLevel.onClick.AddListener(DataManager.Instance.UpgradeAttackSpeedLevel);
     }
     #region UI
-    public void UpdateCurrentGoldText()
+    public void UpdateCurrentGoldText(int value)
     {
-        currentGoldText.text = DataManager.Instance.PlayerData.gold.ToString();
+        currentGoldText.text = value.ToString();
     }
 
-    public void UpdateUpgradeCostTileUI()
+    public void UpdateUpgradeCostTileUI(int level, int value)
     {
         int cost = DataManager.Instance.GetCostTileUpgrade();
-
-        if (DataManager.Instance.PlayerData.tileLevel >= 5)
-        {
-            upgradeTileCostText.text = $"Max Lv";
-            levelTileText.text = $"Level {DataManager.Instance.PlayerData.tileLevel}";
-            detailTileText.text = $"Current Max Tile Building: {DataManager.Instance.PlayerData.maxTileBuilding}";
-            return;
-        }
-
-        upgradeTileCostText.text = $"{cost}G";
-        levelTileText.text = $"Level {DataManager.Instance.PlayerData.tileLevel}";
-        detailTileText.text = $"Max Tile Building: {DataManager.Instance.PlayerData.maxTileBuilding}";
+        if (level < 5)
+            upgradeTileCostText.text = $"{cost}G";
+        else upgradeTileCostText.text = "Max Lvl!";
+        levelTileText.text = $"{level}";
+        detailTileText.text = $"Max Tile Building: {value}";
     }
 
-    public void UpdateUpgradeCostHeartUI()
+    public void UpdateUpgradeCostHeartUI(int level, int value)
     {
         int cost = DataManager.Instance.GetCostHeartUpgrade();
-
-        if (DataManager.Instance.PlayerData.heartLevel >= 3)
-        {
-            upgradeHeartCostText.text = $"Max Lv";
-            levelHeartText.text = $"Level {DataManager.Instance.PlayerData.heartLevel}";
-            detailHeartText.text = $"Max Heart: {DataManager.Instance.PlayerData.maxHeart}";
-            return;
-        }
-
-        upgradeHeartCostText.text = $"{cost}G";
-        levelHeartText.text = $"Level {DataManager.Instance.PlayerData.heartLevel}";
-        detailHeartText.text = $"Max Heart: {DataManager.Instance.PlayerData.maxHeart}";
+        if (level < 2)
+            upgradeHeartCostText.text = $"{cost}G";
+        else upgradeHeartCostText.text = "Max Lvl!";
+        levelHeartText.text = $"{level}";
+        detailHeartText.text = $"Max Heart: {value}";
     }
 
-    public void UpdateUpgradeCostAttackUI()
+    public void UpdateUpgradeCostAttackUI(int level, float value)
     {
         int cost = DataManager.Instance.GetCostAttackUpgrade();
-
-        if (DataManager.Instance.PlayerData.bonusAttackLevel >= 5)
-        {
-            upgradeAttackCostText.text = $"Max Lv";
-            levelAttackText.text = $"Level {DataManager.Instance.PlayerData.bonusAttackLevel}";
-            detailAttackText.text = $"Attack Bonus: {DataManager.Instance.PlayerData.bonusAttack}%";
-            return;
-        }
-
-        upgradeAttackCostText.text = $"{cost}G";
-        levelAttackText.text = $"Level {DataManager.Instance.PlayerData.bonusAttackLevel}";
-        detailAttackText.text = $"Attack Bonus: {DataManager.Instance.PlayerData.bonusAttack}%";
+        if (level < 5)
+            upgradeAttackCostText.text = $"{cost}G";
+        else upgradeAttackCostText.text = "Max Lvl!";
+        levelAttackText.text = $"{level}";
+        detailAttackText.text = $"Attack Bonus: {value}%";
     }
 
-    public void UpdateUpgradeCostAttackSpeedUI()
+    public void UpdateUpgradeCostAttackSpeedUI(int level, float value)
     {
         int cost = DataManager.Instance.GetCostAttackSpeedUpgrade();
-
-        if (DataManager.Instance.PlayerData.bonusAttackSpeedLevel >= 5)
-        {
-            upgradeAttackSpeedCostText.text = $"Max Lv";
-            levelAttackSpeedText.text = $"Level {DataManager.Instance.PlayerData.bonusAttackSpeedLevel}";
-            detailAttackSpeedText.text = $"Attack Speed Bonus: {DataManager.Instance.PlayerData.bonusAttackSpeed}%";
-            return;
-        }
-
-        upgradeAttackSpeedCostText.text = $"{cost}G";
-        levelAttackSpeedText.text = $"Level {DataManager.Instance.PlayerData.bonusAttackSpeedLevel}";
-        detailAttackSpeedText.text = $"Attack Speed Bonus: {DataManager.Instance.PlayerData.bonusAttackSpeed}%";
+        if (level < 5)
+            upgradeAttackSpeedCostText.text = $"{cost}G";
+        else upgradeAttackSpeedCostText.text = "Max Lvl!";
+        levelAttackSpeedText.text = $"Level {level}";
+        detailAttackSpeedText.text = $"Attack Speed Bonus: {value}%";
     }
     #endregion
 }

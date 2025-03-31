@@ -8,6 +8,7 @@ public class MenuManager : Singleton<MenuManager>
 {
     [SerializeField] Button button;
     [SerializeField] ShopManager shopManager;
+    private bool isSceneChange = false;
 
     private void Awake()
     {
@@ -20,7 +21,11 @@ public class MenuManager : Singleton<MenuManager>
 
     public void LoadPlayScene()
     {
-        SceneManager.LoadScene("FinalPlayingScene");
+        if (isSceneChange) { return; }
+        isSceneChange = true;
+
+        this.Invoke(() => SceneManager.LoadScene("FinalPlayingScene"), 2f, true);
+        SceneAnim.Instance.Intro();
     }
 
     public void QuitGame()

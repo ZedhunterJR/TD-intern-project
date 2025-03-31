@@ -35,7 +35,7 @@ public class EnemyLibraryManager : Singleton<EnemyLibraryManager>
         for (int i = 0; i < keyLibrary.Count; i++)
         {
             int index = i;
-            if (unlockValue[i] == 2)
+            if (unlockValue[i] == 0)
             {
                 allButtons[i].transform.Find("sprite").GetComponent<Image>().sprite = lockSprite; 
             }

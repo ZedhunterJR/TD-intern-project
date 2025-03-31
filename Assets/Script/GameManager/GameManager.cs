@@ -26,8 +26,7 @@ public class GameManager : Singleton<GameManager>
     private GAME_STATUS status;
 
     // Data
-    PlayerData playerData = new PlayerData();
-    public PlayerData PlayerData => playerData;
+    public PlayerData.Player playerData => PlayerData.Instance.playerData;
 
     private Button quitGame;
     private void Awake()
@@ -37,6 +36,7 @@ public class GameManager : Singleton<GameManager>
         quitGame.onClick.AddListener(() => 
         {
             uiManager.PopupSettingOutro();
+            SceneAnim.Instance.Intro();
             this.Invoke(() =>
             {
 
@@ -46,14 +46,13 @@ public class GameManager : Singleton<GameManager>
         uiManager.HomeButton.onClick.RemoveAllListeners();
         uiManager.HomeButton.onClick.AddListener(() =>
         {
+            SceneAnim.Instance.Intro();
             this.Invoke(() =>
             {
-
                 SceneManager.LoadScene("MenuScene");
             }, 2f, true);
         });
 
-        LoadDataFromPlayerprefs();
         //print("??");
         if (status == GAME_STATUS.Init)
         {
@@ -200,20 +199,6 @@ public class GameManager : Singleton<GameManager>
     public void SaveRewards(int rewards)
     {
         playerData.gold += rewards;
-        
-        string json = JsonUtility.ToJson(playerData);
-        PlayerPrefs.SetString("PlayerData", json);
-    }
-    #endregion
-
-    #region Load Data From Player Prefs 
-    void LoadDataFromPlayerprefs()
-    {
-        if (PlayerPrefs.HasKey("PlayerData"))
-        {
-            string json = PlayerPrefs.GetString("PlayerData");
-            playerData = JsonUtility.FromJson<PlayerData>(json);
-        }
     }
     #endregion
 

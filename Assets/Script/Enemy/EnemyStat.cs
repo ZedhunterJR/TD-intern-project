@@ -160,10 +160,10 @@ public class EnemyStat : MonoBehaviour
         statusEffectCon = GetComponentInChildren<StatusEffectCon>();
     }
 
-    public void Init(EnemyData data)
+    public void Init(EnemyData data, float hpMultiply = 1)
     {
         this.data = data;
-        maxHealth = data.maxHp;
+        maxHealth = data.maxHp * hpMultiply;
         currentHp = maxHealth;
         maxSpeed = data.baseMoveSpeed;
         currentSpeed = maxSpeed;
@@ -173,7 +173,7 @@ public class EnemyStat : MonoBehaviour
         //spine init
         spineAnimation.GetComponent<SpineAnimationController>().Init(data);
         spineAnimation.GetComponent<SpineAnimationController>().SetSkinName(data.skinName);
-        spineAnimation.transform.localScale *= data.size;
+        spineAnimation.transform.localScale = new Vector3(.25f, .25f, .25f) * data.size;
         initialScale = spineAnimation.transform.localScale.y;
 
         //init wave move script

@@ -44,7 +44,7 @@ public class TileManager : Singleton<TileManager>
         List<TileEntity> tilesNoneTower = tiles.Where(n => n.currentTower == null).ToList();
         List<TileEntity> tilesHasTower = tiles.Where(n => n.currentTower != null).ToList();
 
-        if (tilesHasTower.Count >= GameManager.Instance.PlayerData.maxTileBuilding)
+        if (tilesHasTower.Count >= GameManager.Instance.playerData.maxTileBuilding)
         {
             Debug.Log("hết chỗ ");
             return;

@@ -69,13 +69,16 @@ public class WaveManager : Singleton<WaveManager>
     }
     void SpawnEnemy(EnemyData data)
     {
+        float mul = 1 + (float)currentWave / 10f;
         //Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject enemy = PoolManager.Instance.GetEnemyFromPool();
-        enemy.GetComponent<EnemyStat>().Init(data); //temporary
+        enemy.GetComponent<EnemyStat>().Init(data, mul); //temporary
         enemy.SetActive(true);
+        EnemyLibrary.Instance.EnemySpawnListener(data);
 
         //Debug.Log($"Spawned: {enemyName}");
     }
+
     public List<EnemyData> GenerateWave(int totalWavePower, List<EnemyData> enemyTypes)
     {
         List<EnemyData> wave = new List<EnemyData>();
@@ -110,21 +113,7 @@ public class WaveManager : Singleton<WaveManager>
 
         // Chọn Boss ngẫu nhiên từ danh sách Boss có sẵn
         EnemyData originalBoss = availableBoss.GetRandom();
-
-        // Tạo bản sao mới để không ảnh hưởng dữ liệu gốc
-        EnemyData bossData = new EnemyData
-        {
-            maxHp = originalBoss.maxHp * currentWave, // Nhân máu theo wave
-            baseMoveSpeed = originalBoss.baseMoveSpeed,
-            element = originalBoss.element,
-            enemyName = originalBoss.enemyName,
-            enemyType = originalBoss.enemyType,
-            skinName = originalBoss.skinName,
-            hpBarPosY = originalBoss.hpBarPosY,
-            size = originalBoss.size,
-        };
-
-        return bossData;
+        return originalBoss;
     }
 }
 

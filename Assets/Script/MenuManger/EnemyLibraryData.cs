@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +17,8 @@ public class EnemyLibraryData : ScriptableObject
 public class EnemyLibrary
 {
     private static EnemyLibrary instance;
+
+  
 
     public static EnemyLibrary Instance
     {
@@ -74,6 +76,15 @@ public class EnemyLibrary
                 dict[keys[i]] = values[i];
             }
             return dict;
+        }
+    }
+
+    public void EnemySpawnListener(EnemyData enemyData)
+    {
+        // chekc xem đã mở khóa hay chưa
+        if (allEnemies.TryGetValue(enemyData.name, out var enemyValue))
+        {
+            if (enemyValue == 0) allEnemies[enemyData.name] = 1;
         }
     }
 }

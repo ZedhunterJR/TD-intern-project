@@ -52,7 +52,9 @@ public class IGEventManager : Singleton<IGEventManager>
                 foreach (var enemy in EnemyManager.Instance.AllEnemies)
                 {
                     EnemyStat enemyStat = enemy.GetComponent<EnemyStat>();
-                    enemyStat.activeEffects.Add(new(5f));
+                    enemyStat.ResetAllStatusEffect();
+                    enemyStat.StackElement(5, Element.Earth);
+                    enemyStat.StackElement(5, Element.Fire);
                 }
                 break;
             case "EVT_002":
