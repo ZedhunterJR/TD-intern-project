@@ -81,10 +81,43 @@ public class IGEventManager : Singleton<IGEventManager>
                 TileManager.Instance.ReplaceTower(tempTowerData.GetRandom());
                 break;
             case "EVT_005":
+                TowerData towerWater = TileManager.Instance.GetTowerByElement(Element.Water);
+                List<TowerData> waterTemps = new List<TowerData>();
+                foreach (var item in allTower)
+                {
+                    if (item.element == Element.Water)
+                    {
+                        waterTemps.Add(item);
+                    }
+                }
+                waterTemps.Remove(towerWater);
+                TileManager.Instance.ReplaceTower(waterTemps.GetRandom());
                 break;
             case "EVT_006":
+                TowerData towerFire = TileManager.Instance.GetTowerByElement(Element.Fire);
+                List<TowerData> fireTemps = new List<TowerData>();
+                foreach (var item in allTower)
+                {
+                    if (item.element == Element.Fire)
+                    {
+                        fireTemps.Add(item);
+                    }
+                }
+                fireTemps.Remove(towerFire);
+                TileManager.Instance.ReplaceTower(fireTemps.GetRandom());
                 break;
             case "EVT_007":
+                var all = TowerManager.Instance.towers;
+                if (all.Count > 0)
+                {
+                    foreach (var t in new List<GameObject>(all))
+                    {
+                        if (t.GetComponent<TowerStat>().level == 2)
+                            all.Remove(t);
+                    }
+                    var tower = all.GetRandom();
+                    tower.GetComponent<TowerStat>().LevelUp();
+                }
                 break;
             case "EVT_008":
                 break;

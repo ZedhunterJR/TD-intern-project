@@ -175,6 +175,7 @@ public class EnemyStat : MonoBehaviour
         spineAnimation.GetComponent<SpineAnimationController>().SetSkinName(data.skinName);
         spineAnimation.transform.localScale = new Vector3(.25f, .25f, .25f) * data.size;
         initialScale = spineAnimation.transform.localScale.y;
+        flipX = false;
 
         //init wave move script
         List<Vector2> wps = new(FindFirstObjectByType<Waypoints>().waypoints[0].points);

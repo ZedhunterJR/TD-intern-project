@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TowerManager : Singleton<TowerManager>
 {
-    [SerializeField] List<GameObject> towers = new List<GameObject>();  
-    [SerializeField] List<GameObject> projectiles = new List<GameObject>();
+    public List<GameObject> towers = new List<GameObject>();  
+    List<GameObject> projectiles = new List<GameObject>();
 
     public void AddTower(GameObject tower)
     {
