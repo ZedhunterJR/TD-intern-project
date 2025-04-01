@@ -18,7 +18,7 @@ public class EnemyLibrary
 {
     private static EnemyLibrary instance;
 
-  
+
 
     public static EnemyLibrary Instance
     {
@@ -79,12 +79,18 @@ public class EnemyLibrary
         }
     }
 
-    public void EnemySpawnListener(EnemyData enemyData)
+    public bool EnemySpawnListener(EnemyData enemyData)
     {
         // chekc xem đã mở khóa hay chưa
         if (allEnemies.TryGetValue(enemyData.name, out var enemyValue))
         {
-            if (enemyValue == 0) allEnemies[enemyData.name] = 1;
+            if (enemyValue == 0)
+            {
+                allEnemies[enemyData.name] = 1;
+                return true;
+            }
         }
+
+        return false;
     }
 }

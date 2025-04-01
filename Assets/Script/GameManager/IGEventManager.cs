@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -11,6 +11,7 @@ public class IGEventManager : Singleton<IGEventManager>
 
     private bool hasChosen = false;
 
+    [SerializeField] List<TowerData> allTower;
     public void ActivateCardPanel()
     {
         var eventChose = events.GetRandom(3);
@@ -66,6 +67,18 @@ public class IGEventManager : Singleton<IGEventManager>
                 GameManager.Instance.ModifyGold(50);
                 break;
             case "EVT_004":
+                Debug.Log("Đổi tháp hệ đất");
+                TowerData towerEarth = TileManager.Instance.GetTowerByElement(Element.Earth);
+                List<TowerData> tempTowerData = new List<TowerData>();
+                foreach (var item in allTower)
+                {
+                    if(item.element == Element.Earth)
+                    {
+                        tempTowerData.Add(item);
+                    }
+                }
+                tempTowerData.Remove(towerEarth);
+                TileManager.Instance.ReplaceTower(tempTowerData.GetRandom());
                 break;
             case "EVT_005":
                 break;

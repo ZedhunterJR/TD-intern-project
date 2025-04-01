@@ -103,5 +103,34 @@ public class TileManager : Singleton<TileManager>
             return null;
         }
     }
+
+    public void ReplaceTower(TowerData towerData)
+    {
+        Debug.Log(towerData == null);
+        Element elementTower = towerData.element;
+
+        foreach (var item in new List<TowerData>(listData))
+        {
+            if(item.element == elementTower)
+            {
+                listData.Remove(item);
+                listData.Add(towerData);
+                break;
+            }
+        }
+    }
+
+    public TowerData GetTowerByElement(Element element)
+    {
+        foreach (var item in new List<TowerData>(listData))
+        {
+            if (item.element == element)
+            {
+                return item;
+            }
+        }
+
+        return null;
+    }
 }
 

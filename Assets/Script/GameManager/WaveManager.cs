@@ -74,7 +74,12 @@ public class WaveManager : Singleton<WaveManager>
         GameObject enemy = PoolManager.Instance.GetEnemyFromPool();
         enemy.GetComponent<EnemyStat>().Init(data, mul); //temporary
         enemy.SetActive(true);
-        EnemyLibrary.Instance.EnemySpawnListener(data);
+       
+        if (EnemyLibrary.Instance.EnemySpawnListener(data))
+        {
+            var dataLib = Resources.Load<EnemyLibraryData>($"EnemyUnlock/{data.name}");
+            EnemyMessageManager.Instance.ShowStatusMessage(dataLib);
+        }
 
         //Debug.Log($"Spawned: {enemyName}");
     }
