@@ -14,11 +14,18 @@ public class TileManager : Singleton<TileManager>
     [SerializeField]
     List<TowerData> listData = new List<TowerData>();
 
+    public List<TowerData> ListData => listData;
+
+    private int currentSpawnCost = 10;
+
+    public int CurrentSpawnCost => currentSpawnCost;
+
     //[SerializeField] Button spawnTower;
 
     private void Start()
     {
         InitAllTiles();
+        UIManager.Instance.UpdateSpawnCostText(currentSpawnCost);
         /* Already linked this from CanvasAction/Content1/GameObject/Button
         spawnTower.onClick.AddListener(SpawnRandomTile);*/
     }
@@ -50,7 +57,7 @@ public class TileManager : Singleton<TileManager>
             return;
         }
 
-        if (!GameManager.Instance.ModifyGold(-10)) 
+        if (!GameManager.Instance.ModifyGold(-currentSpawnCost)) 
         {
             Debug.Log("Không tiền");
             return;
@@ -69,6 +76,9 @@ public class TileManager : Singleton<TileManager>
             tile.currentTower = tower.GetComponent<TowerStat>();
             tilesDic.Add(tile.transform.position, tile);
             MergeManager.Instance.SetButtonPos(tile.transform.position);
+
+            currentSpawnCost += 5;
+            UIManager.Instance.UpdateSpawnCostText(currentSpawnCost);
         }
         else
         {

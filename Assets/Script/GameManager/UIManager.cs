@@ -19,6 +19,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] TextMeshProUGUI heartText;
     [SerializeField] TextMeshProUGUI currencyText;
     [SerializeField] TextMeshProUGUI waveDetailText;
+    [SerializeField] TextMeshProUGUI spawnCostText;
 
     [Header("Event")]
     [SerializeField] RectTransform eventPanelRect;
@@ -29,7 +30,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] CanvasGroup canvasDarkPanel;
     [SerializeField] float topPosYSetting, middlePosYSetting;
 
-
+    [Header("Tower Pool")]
+    [SerializeField] List<Image> towerImages; 
 
     private void Awake()
     {
@@ -132,6 +134,11 @@ public class UIManager : Singleton<UIManager>
     {
         waveDetailText.text = $"Wave {currentWave}";
     }
+
+    public void UpdateSpawnCostText(int cost)
+    {
+        spawnCostText.text = $"- {cost}";
+    }
     #endregion
 
     #region Win / Lose Panel
@@ -175,5 +182,13 @@ public class UIManager : Singleton<UIManager>
     }
     #endregion
 
-
+    #region Tower Pool
+    public void UpdateTowerPoolUI(List<TowerData> towerData)
+    {
+        for (int i = 0; i < towerData.Count; i++)
+        {
+            towerImages[i].sprite = towerData[i].towerSprite;
+        } 
+    }
+    #endregion
 }

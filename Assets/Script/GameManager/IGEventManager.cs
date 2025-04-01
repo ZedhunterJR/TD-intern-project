@@ -79,6 +79,7 @@ public class IGEventManager : Singleton<IGEventManager>
                 }
                 tempTowerData.Remove(towerEarth);
                 TileManager.Instance.ReplaceTower(tempTowerData.GetRandom());
+                UIManager.Instance.UpdateTowerPoolUI(TileManager.Instance.ListData);
                 break;
             case "EVT_005":
                 TowerData towerWater = TileManager.Instance.GetTowerByElement(Element.Water);
@@ -92,6 +93,7 @@ public class IGEventManager : Singleton<IGEventManager>
                 }
                 waterTemps.Remove(towerWater);
                 TileManager.Instance.ReplaceTower(waterTemps.GetRandom());
+                UIManager.Instance.UpdateTowerPoolUI(TileManager.Instance.ListData);
                 break;
             case "EVT_006":
                 TowerData towerFire = TileManager.Instance.GetTowerByElement(Element.Fire);
@@ -105,6 +107,7 @@ public class IGEventManager : Singleton<IGEventManager>
                 }
                 fireTemps.Remove(towerFire);
                 TileManager.Instance.ReplaceTower(fireTemps.GetRandom());
+                UIManager.Instance.UpdateTowerPoolUI(TileManager.Instance.ListData);
                 break;
             case "EVT_007":
                 var all = TowerManager.Instance.towers;
