@@ -84,25 +84,26 @@ public class GameManager : Singleton<GameManager>
     }
 
     #region Condition Win Lose and Change Game Status
-    public void TakeDame()
+    public void TakeDame(int value)
     {
-        currentHealth -= 1;
+        currentHealth -= value;
         //UpdateHealthBar();
         //Debug.Log(currentHealth);
         uiManager.UpdateHeartText(currentHealth);
+        uiManager.HpUpdateEffect(-value);
         if (currentHealth == 0)
         {
             ChangeStatus(GAME_STATUS.Lose);
         }
     }
 
-    #region Event 
     public void Healing(int value)
     {
         currentHealth += value;
         uiManager.UpdateHeartText(currentHealth);
+        uiManager.HpUpdateEffect(value);
     }
-    #endregion
+
 
     public void ChangeStatus(GAME_STATUS newStatus)
     {
@@ -211,6 +212,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         currencyGold += value;
+        uiManager.UpdateCurrencyEffect(value);
         uiManager.UpdateCurrencyText(currencyGold);
         return true;
     }

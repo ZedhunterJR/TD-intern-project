@@ -17,9 +17,12 @@ public class UIManager : Singleton<UIManager>
 
     [Header("UI Resource")]
     [SerializeField] TextMeshProUGUI heartText;
+    [SerializeField] RectTransform heartEffect;
     [SerializeField] TextMeshProUGUI currencyText;
+    [SerializeField] RectTransform currencyEffect;
     [SerializeField] TextMeshProUGUI waveDetailText;
     [SerializeField] TextMeshProUGUI spawnCostText;
+    [SerializeField] Image waveCircleTimer;
 
     [Header("Event")]
     [SerializeField] RectTransform eventPanelRect;
@@ -126,11 +129,55 @@ public class UIManager : Singleton<UIManager>
         heartText.text = $"{currentHeath}";
     }
 
+    public void HpUpdateEffect(int value)
+    {
+        if (value < 0)
+        {
+            var img = heartEffect.GetComponent<TextMeshProUGUI>();
+            img.text = "-" + value;
+            heartEffect.anchoredPosition = new Vector3(10f, 0f);
+            img.color = new Color32(255, 0, 0, 255);
+
+            heartEffect.DOAnchorPosY(-15f, 2f).SetEase(Ease.OutExpo).SetUpdate(true);
+            img.DOFade(0f, 2f).SetEase(Ease.OutExpo).SetUpdate(true);
+        }
+        if (value > 0)
+        {
+            var img = heartEffect.GetComponent<TextMeshProUGUI>();
+            heartEffect.anchoredPosition = new Vector3(10f, -15f);
+            img.color = new Color32(0, 255, 0, 255);
+
+            heartEffect.DOAnchorPosY(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true);
+            img.DOFade(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true);
+        }
+    }
+
     public void UpdateCurrencyText(int currency)
     {
         currencyText.text = $"{currency}";
     }
+    public void UpdateCurrencyEffect(int value)
+    {
+        if (value < 0)
+        {
+            var img = currencyEffect.GetComponent<TextMeshProUGUI>();
+            img.text = "-" + value;
+            currencyEffect.anchoredPosition = new Vector3(27f, 0f);
+            img.color = new Color32(255, 0, 0, 255);
 
+            currencyEffect.DOAnchorPosY(-15f, 2f).SetEase(Ease.OutExpo).SetUpdate(true);
+            img.DOFade(0f, 2f).SetEase(Ease.OutExpo).SetUpdate(true);
+        }
+        if (value > 0)
+        {
+            var img = currencyEffect.GetComponent<TextMeshProUGUI>();
+            currencyEffect.anchoredPosition = new Vector3(27f, -15f);
+            img.color = new Color32(0, 255, 0, 255);
+
+            currencyEffect.DOAnchorPosY(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true);
+            img.DOFade(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true);
+        }
+    }
     public void UpdateWaveDetailText(int currentWave)
     {
         waveDetailText.text = $"Wave {currentWave}";
@@ -139,6 +186,18 @@ public class UIManager : Singleton<UIManager>
     public void UpdateSpawnCostText(int cost)
     {
         spawnCostText.text = $"- {cost}";
+    }
+
+    private float updateTimerInterval = 0f;
+    public void UpdateWaveCircle(float fillAmount)
+    {
+        if (updateTimerInterval > 1 / 30f)
+        {
+            waveCircleTimer.fillAmount = fillAmount;
+            updateTimerInterval = 0f;
+        }
+        else
+            updateTimerInterval += Time.deltaTime;
     }
     #endregion
 

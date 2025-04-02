@@ -15,9 +15,9 @@ public class AudioManager : Singleton<AudioManager>
     public AudioSource musicSource;
 
     [Header("Audio Settings")]
-    [Range(0.0001f, 1f)] public float musicVolume = 1f; // This remains unchanged
-    [Range(0.0001f, 1f)] public float masterVolume = 1f;
-    [Range(0.0001f, 1f)] public float sfxVolume = 1f;
+    [Range(0.001f, 1f)] public float musicVolume = 1f; // This remains unchanged
+    [Range(0.001f, 1f)] public float masterVolume = 1f;
+    [Range(0.001f, 1f)] public float sfxVolume = 1f;
     public float fadeDuration = 1.2f; // Duration of fade in/out
     private float startingMusicVolume;
 

@@ -21,4 +21,5 @@ MonoBehaviour:
   maxHp: 2000
   baseMoveSpeed: 0.2
   element: 2
+  hpLoss: 2
   ability: 

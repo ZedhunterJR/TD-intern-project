@@ -18,6 +18,7 @@ public class EnemyData : ScriptableObject
     public float maxHp;
     public float baseMoveSpeed;
     public Element element;
+    public int hpLoss = 1;
 
     [Header("Behavior")]
     public string ability;

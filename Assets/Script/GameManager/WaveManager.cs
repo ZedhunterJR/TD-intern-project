@@ -17,6 +17,9 @@ public class WaveManager : Singleton<WaveManager>
     private float spawnInterval = 0;
     private int currentWaveEnemiesIndex = 0;
 
+    //for update ui timer circle
+    private float spawnMaxTimer;
+
     float waveInterval = 0f;
     private void SpawnTestWave()
     {
@@ -29,10 +32,10 @@ public class WaveManager : Singleton<WaveManager>
             if (currentWaveEnemiesIndex >= currentWaveEnemies.Count)
             {
                 isSpawning = false;
-                waveInterval = 10f;
-
+                waveInterval = 10f + (float)currentWave / 2f;
+                spawnMaxTimer = waveInterval;
             }
-            spawnInterval = 2f;
+            spawnInterval = 2.5f + (float)currentWave / 10f;
         }
     }
     private void Update()
@@ -43,6 +46,7 @@ public class WaveManager : Singleton<WaveManager>
         if (waveInterval > 0)
         {
             waveInterval -= Time.deltaTime;
+            UIManager.Instance.UpdateWaveCircle(waveInterval / spawnMaxTimer);
         }
         else if (!isSpawning)
         {

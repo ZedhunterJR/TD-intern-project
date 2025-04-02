@@ -181,7 +181,7 @@ public class EnemyStat : MonoBehaviour
         List<Vector2> wps = new(FindFirstObjectByType<Waypoints>().waypoints[0].points);
         Action onexit = () =>
         {
-            GameManager.Instance.TakeDame();
+            GameManager.Instance.TakeDame(data.hpLoss);
             PoolManager.Instance.ReturnEnemy(gameObject);
         };
         moveScript.Init(wps, onexit);
