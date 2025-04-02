@@ -17,9 +17,7 @@ public class UIManager : Singleton<UIManager>
 
     [Header("UI Resource")]
     [SerializeField] TextMeshProUGUI heartText;
-    [SerializeField] RectTransform heartEffect;
     [SerializeField] TextMeshProUGUI currencyText;
-    [SerializeField] RectTransform currencyEffect;
     [SerializeField] TextMeshProUGUI waveDetailText;
     [SerializeField] TextMeshProUGUI spawnCostText;
     [SerializeField] Image waveCircleTimer;
@@ -37,12 +35,22 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] List<Image> towerImages;
     [SerializeField] Image coverPanel;
 
+    [Header("DUmb effect")]
+    [SerializeField] private GameObject effectText;
+    private Queue<GameObject> effectQueue = new();
+
     private void Awake()
     {
         settingPopupRect = GameObject.FindGameObjectWithTag("PanelSetting").GetComponent<RectTransform>();
         Button clostButton = GameObject.FindGameObjectWithTag("ButtonClose").GetComponent<Button>();
         clostButton.onClick.RemoveAllListeners();
         clostButton.onClick.AddListener(PopupSettingOutro);
+
+        for (int i = 0; i < 4; i++)
+        {
+            var instance = Instantiate(effectText, heartText.transform.parent);
+            effectQueue.Enqueue(instance);
+        }
     }
 
     #region Setting Button
@@ -128,27 +136,32 @@ public class UIManager : Singleton<UIManager>
     {
         heartText.text = $"{currentHeath}";
     }
-
     public void HpUpdateEffect(int value)
     {
+        var effect = GetEffectTextFromPool();
+        var txt = effect.GetComponent<TextMeshProUGUI>();
+        var rt = effect.GetComponent<RectTransform>();
+        effect.SetActive(true);
+        effect.transform.SetParent(heartText.transform.parent);
         if (value < 0)
         {
-            var img = heartEffect.GetComponent<TextMeshProUGUI>();
-            img.text = "-" + value;
-            heartEffect.anchoredPosition = new Vector3(10f, 0f);
-            img.color = new Color32(255, 0, 0, 255);
+            txt.text = "" + value;
+            rt.anchoredPosition = new Vector3(10f, 0f);
+            txt.color = new Color32(255, 0, 0, 255);
 
-            heartEffect.DOAnchorPosY(-15f, 2f).SetEase(Ease.OutExpo).SetUpdate(true);
-            img.DOFade(0f, 2f).SetEase(Ease.OutExpo).SetUpdate(true);
+            rt.DOAnchorPosY(-15f, 2f).SetEase(Ease.OutExpo).SetUpdate(true);
+            txt.DOFade(0f, 2f).SetEase(Ease.OutExpo).SetUpdate(true).
+                OnComplete(() => ReturnEffectTextToPool(effect));
         }
         if (value > 0)
         {
-            var img = heartEffect.GetComponent<TextMeshProUGUI>();
-            heartEffect.anchoredPosition = new Vector3(10f, -15f);
-            img.color = new Color32(0, 255, 0, 255);
+            txt.text = "+" + value;
+            rt.anchoredPosition = new Vector3(10f, -15f);
+            txt.color = new Color32(0, 255, 0, 255);
 
-            heartEffect.DOAnchorPosY(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true);
-            img.DOFade(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true);
+            rt.DOAnchorPosY(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true);
+            txt.DOFade(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true).
+                OnComplete(() => ReturnEffectTextToPool(effect));
         }
     }
 
@@ -158,25 +171,46 @@ public class UIManager : Singleton<UIManager>
     }
     public void UpdateCurrencyEffect(int value)
     {
+        var effect = GetEffectTextFromPool();
+        var txt = effect.GetComponent<TextMeshProUGUI>();
+        var rt = effect.GetComponent<RectTransform>();
+        effect.SetActive(true);
+        effect.transform.SetParent(currencyText.transform.parent);
         if (value < 0)
         {
-            var img = currencyEffect.GetComponent<TextMeshProUGUI>();
-            img.text = "-" + value;
-            currencyEffect.anchoredPosition = new Vector3(27f, 0f);
-            img.color = new Color32(255, 0, 0, 255);
+            txt.text = "" + value;
+            rt.anchoredPosition = new Vector3(27f, 0f);
+            txt.color = new Color32(255, 0, 0, 255);
 
-            currencyEffect.DOAnchorPosY(-15f, 2f).SetEase(Ease.OutExpo).SetUpdate(true);
-            img.DOFade(0f, 2f).SetEase(Ease.OutExpo).SetUpdate(true);
+            rt.DOAnchorPosY(-15f, 2f).SetEase(Ease.OutExpo).SetUpdate(true);
+            txt.DOFade(0f, 2f).SetEase(Ease.OutExpo).SetUpdate(true).
+                OnComplete(() => ReturnEffectTextToPool(effect));
         }
         if (value > 0)
         {
-            var img = currencyEffect.GetComponent<TextMeshProUGUI>();
-            currencyEffect.anchoredPosition = new Vector3(27f, -15f);
-            img.color = new Color32(0, 255, 0, 255);
+            txt.text = "+" + value;
+            rt.anchoredPosition = new Vector3(27f, -15f);
+            txt.color = new Color32(0, 255, 0, 255);
 
-            currencyEffect.DOAnchorPosY(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true);
-            img.DOFade(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true);
+            rt.DOAnchorPosY(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true);
+            txt.DOFade(0f, 2f).SetEase(Ease.InExpo).SetUpdate(true).
+                OnComplete(() => ReturnEffectTextToPool(effect));
         }
+    }
+    private GameObject GetEffectTextFromPool()
+    {
+        if (effectQueue.Count <= 0)
+        {
+            var instance = Instantiate(effectText, heartText.transform.parent);
+            effectQueue.Enqueue(instance);
+            return GetEffectTextFromPool();
+        }
+        return effectQueue.Dequeue();
+    }
+    private void ReturnEffectTextToPool(GameObject effect)
+    {
+        effect.SetActive(false);
+        effectQueue.Enqueue(effect);
     }
     public void UpdateWaveDetailText(int currentWave)
     {
