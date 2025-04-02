@@ -31,7 +31,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] float topPosYSetting, middlePosYSetting;
 
     [Header("Tower Pool")]
-    [SerializeField] List<Image> towerImages; 
+    [SerializeField] List<Image> towerImages;
+    [SerializeField] Image coverPanel;
 
     private void Awake()
     {
@@ -185,10 +186,22 @@ public class UIManager : Singleton<UIManager>
     #region Tower Pool
     public void UpdateTowerPoolUI(List<TowerData> towerData)
     {
-        for (int i = 0; i < towerData.Count; i++)
-        {
-            towerImages[i].sprite = towerData[i].towerSprite;
-        } 
+        Sequence seq = DOTween.Sequence();
+        coverPanel.color = coverPanel.color.SetAlpha(0f);
+        seq.Append(coverPanel.DOFade(1f, 1f)).SetUpdate(true)
+            .Append(coverPanel.DOFade(0f, 1f)).SetUpdate(true)
+            .InsertCallback(1f, () =>
+            {
+                foreach (var item in towerData)
+                {
+                    if (item.element == Element.Water)
+                        towerImages[0].sprite = item.towerSprite;
+                    if (item.element == Element.Fire)
+                        towerImages[1].sprite = item.towerSprite;
+                    if (item.element == Element.Earth)
+                        towerImages[2].sprite = item.towerSprite;
+                }
+            }).SetUpdate(true);
     }
     #endregion
 }
