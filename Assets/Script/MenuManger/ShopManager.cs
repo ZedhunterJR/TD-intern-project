@@ -52,7 +52,7 @@ public class ShopManager : Singleton<ShopManager>
         if (level < 5)
             upgradeTileCostText.text = $"{cost}G";
         else upgradeTileCostText.text = "Max Lvl!";
-        levelTileText.text = $"{level}";
+        levelTileText.text = $"Level {level}";
         detailTileText.text = $"Max Tile Building: {value}";
     }
 
@@ -62,7 +62,7 @@ public class ShopManager : Singleton<ShopManager>
         if (level < 2)
             upgradeHeartCostText.text = $"{cost}G";
         else upgradeHeartCostText.text = "Max Lvl!";
-        levelHeartText.text = $"{level}";
+        levelHeartText.text = $"Level {level}";
         detailHeartText.text = $"Max Heart: {value}";
     }
 
@@ -72,7 +72,7 @@ public class ShopManager : Singleton<ShopManager>
         if (level < 5)
             upgradeAttackCostText.text = $"{cost}G";
         else upgradeAttackCostText.text = "Max Lvl!";
-        levelAttackText.text = $"{level}";
+        levelAttackText.text = $"Level {level}";
         detailAttackText.text = $"Attack Bonus: {value}%";
     }
 

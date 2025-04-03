@@ -21,6 +21,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] TextMeshProUGUI waveDetailText;
     [SerializeField] TextMeshProUGUI spawnCostText;
     [SerializeField] Image waveCircleTimer;
+    [SerializeField] TextMeshProUGUI currentBuildingText;
 
     [Header("Event")]
     [SerializeField] RectTransform eventPanelRect;
@@ -51,6 +52,8 @@ public class UIManager : Singleton<UIManager>
             var instance = Instantiate(effectText, heartText.transform.parent);
             effectQueue.Enqueue(instance);
         }
+
+        this.UpdateCurrentBuildingText();
     }
 
     #region Setting Button
@@ -212,6 +215,19 @@ public class UIManager : Singleton<UIManager>
         effect.SetActive(false);
         effectQueue.Enqueue(effect);
     }
+
+    public void NoCurrencyEffect()
+    {
+        Vector3 originalPos = currencyText.rectTransform.localPosition;
+
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Append(currencyText.DOColor(Color.red, 0.2f))
+            .Append(currencyText.DOColor(new Color(129f / 255f, 117f / 255f, 89f / 255f), 1f))
+            .Join(currencyText.rectTransform.DOShakePosition(1f, 5f, 10, 90, false, true));
+
+        sequence.Play();
+    }
     public void UpdateWaveDetailText(int currentWave)
     {
         waveDetailText.text = $"Wave {currentWave}";
@@ -232,6 +248,24 @@ public class UIManager : Singleton<UIManager>
         }
         else
             updateTimerInterval += Time.deltaTime;
+    }
+
+    public void UpdateCurrentBuildingText()
+    {
+        currentBuildingText.text = $"Built Towers {TowerManager.Instance.towers.Count}/{GameManager.Instance.playerData.maxTileBuilding}";
+    }
+
+    public void NoBuildingEffect()
+    {
+        Vector3 originalPos = currentBuildingText.rectTransform.localPosition;
+
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Append(currentBuildingText.DOColor(Color.red, 0.2f))
+            .Append(currentBuildingText.DOColor(Color.white, 1f))
+            .Join(currentBuildingText.rectTransform.DOShakePosition(1f, 5f, 10, 90, false, true));
+
+        sequence.Play();
     }
     #endregion
 

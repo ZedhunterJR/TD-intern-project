@@ -54,15 +54,16 @@ public class TileManager : Singleton<TileManager>
         if (tilesHasTower.Count >= GameManager.Instance.playerData.maxTileBuilding)
         {
             Debug.Log("hết chỗ ");
+            UIManager.Instance.NoBuildingEffect();
             return;
         }
 
-        if (!GameManager.Instance.ModifyGold(-currentSpawnCost)) 
+        if (!GameManager.Instance.ModifyGold(-currentSpawnCost))
         {
             Debug.Log("Không tiền");
+            UIManager.Instance.NoCurrencyEffect();
             return;
         }
-
 
         if (tilesNoneTower.Count > 0)
         {
@@ -84,6 +85,8 @@ public class TileManager : Singleton<TileManager>
         {
             Debug.Log("Không còn chỗ trống để spawn");
         }
+
+        UIManager.Instance.UpdateCurrentBuildingText();
     }
 
     public void RemoveTileInDic(Vector2 pos)
