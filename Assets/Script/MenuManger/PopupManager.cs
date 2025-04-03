@@ -14,6 +14,9 @@ public class PopupManager : Singleton<PopupManager>
     [SerializeField] float tweenDuration;
     [SerializeField] CanvasGroup canvasDarkPanel;
 
+    RectTransform tutorialPopupRect;
+
+    public CanvasGroup CanvasDarkPanel => canvasDarkPanel;
 
     private void Awake()
     {
@@ -26,6 +29,15 @@ public class PopupManager : Singleton<PopupManager>
         buttonCancel.onClick.AddListener(QuitGame);
         popupSetting = GameObject.FindGameObjectWithTag("PanelSetting");
         settingPopupRect = GameObject.FindGameObjectWithTag("PanelSetting").GetComponent<RectTransform>();
+
+        tutorialPopupRect = GameObject.FindGameObjectWithTag("PanelTutorial").GetComponent<RectTransform>();
+        Button clostTutorial = GameObject.FindGameObjectWithTag("ButtonTutorialClose").GetComponent<Button>();
+        clostTutorial.onClick.RemoveAllListeners();
+        clostTutorial.onClick.AddListener(PanelTutorialOutro);
+
+        Button guideTutorial = GameObject.FindGameObjectWithTag("ButtonGuide").GetComponent<Button>();
+        guideTutorial.onClick.RemoveAllListeners();
+        guideTutorial.onClick.AddListener(PanelTutorialIntro);
     }
 
     public void ActiveSetting()
@@ -106,6 +118,17 @@ public class PopupManager : Singleton<PopupManager>
         });
 
         libPopupRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true);
+    }
+
+    public void PanelTutorialIntro()
+    {
+        TutorialManager.Instance.ShowPanelTutorial(TutorialManager.Instance.ResetIndex());
+        tutorialPopupRect.DOAnchorPosY(0, 0.7f).SetUpdate(true);
+    }
+
+    public void PanelTutorialOutro()
+    {
+        tutorialPopupRect.DOAnchorPosY(2000, 0.7f).SetUpdate(true);
     }
 
     public void QuitGame()

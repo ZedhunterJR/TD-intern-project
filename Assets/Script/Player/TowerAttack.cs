@@ -27,7 +27,7 @@ public class TowerAttack : MonoBehaviour
         this.stat = stat;
         AttackDmg = (d) =>
         {
-            return d;
+            return d * (1 + GameManager.Instance.playerData.bonusAttack / 100f);
         };
         KillEffect = null;
         HitEffect = (enemy) =>
@@ -41,7 +41,7 @@ public class TowerAttack : MonoBehaviour
     private void Update()
     {
 
-        if (attackTimer >= 0) 
+        if (attackTimer >= 0)
             attackTimer -= Time.deltaTime;
         else
         {
@@ -50,7 +50,9 @@ public class TowerAttack : MonoBehaviour
             {
                 Attack(target);
             }
-            attackTimer = 1 / stat.atkSpd; // base, if to implement buff, use live attack speed instead
+            // base, if to implement buff, use live attack speed instead
+            float currentAtkSpd = stat.atkSpd * (1 + GameManager.Instance.playerData.bonusAttackSpeed / 100f);
+            attackTimer = 1 / currentAtkSpd;
         }
 
         OnUpdate();

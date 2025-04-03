@@ -72,8 +72,12 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        ChangeStatus(GAME_STATUS.Playing);
         LoadRandomMap();
+        // tutorial
+        if (PlayerPrefs.GetInt("IsFirstTime") == 1)
+        {
+            UIManager.Instance.PopupGuideIntro();
+        }
     }
 
     private void Update()

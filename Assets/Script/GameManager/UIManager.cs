@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -31,6 +31,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] RectTransform settingPopupRect;
     [SerializeField] CanvasGroup canvasDarkPanel;
     [SerializeField] float topPosYSetting, middlePosYSetting;
+    [SerializeField] RectTransform tutorialPopupRect;
 
     [Header("Tower Pool")]
     [SerializeField] List<Image> towerImages;
@@ -44,8 +45,18 @@ public class UIManager : Singleton<UIManager>
     {
         settingPopupRect = GameObject.FindGameObjectWithTag("PanelSetting").GetComponent<RectTransform>();
         Button clostButton = GameObject.FindGameObjectWithTag("ButtonClose").GetComponent<Button>();
+        
+        tutorialPopupRect = GameObject.FindGameObjectWithTag("PanelTutorial").GetComponent<RectTransform>();
+        Button guideButton = GameObject.FindGameObjectWithTag("ButtonGuide").GetComponent<Button>();
+        Button guideButtonClose = GameObject.FindGameObjectWithTag("ButtonTutorialClose").GetComponent<Button>();
         clostButton.onClick.RemoveAllListeners();
         clostButton.onClick.AddListener(PopupSettingOutro);
+
+        guideButton.onClick.RemoveAllListeners();
+        guideButton.onClick.AddListener(PopupGuideIntro);
+
+        guideButtonClose.onClick.RemoveAllListeners();
+        guideButtonClose.onClick.AddListener(PopupGuideOutro);
 
         for (int i = 0; i < 4; i++)
         {
@@ -78,6 +89,49 @@ public class UIManager : Singleton<UIManager>
 
         settingPopupRect.DOAnchorPosY(topPosYSetting, tweenDuration).SetUpdate(true);
         GameManager.Instance.PauseGame(2);
+    }
+
+    public void PopupGuideIntro()
+    {
+        if (PlayerPrefs.GetInt("IsFirstTime") == 1)
+        {
+            GameManager.Instance.PauseGame(1);
+            TutorialManager.Instance.ShowPanelTutorial(TutorialManager.Instance.ResetIndex());
+            // chưa xem tutorial
+            canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+            canvasDarkPanel.alpha = 0f;
+            canvasDarkPanel.DOFade(1, tweenDuration).SetUpdate(true);
+
+            tutorialPopupRect.DOAnchorPosY(middlePosYSetting, tweenDuration).SetUpdate(true);
+
+        }
+        else
+        {
+            TutorialManager.Instance.ShowPanelTutorial(TutorialManager.Instance.ResetIndex());
+            tutorialPopupRect.DOAnchorPosY(middlePosYSetting, tweenDuration).SetUpdate(true);
+        }
+    }
+
+    public void PopupGuideOutro()
+    {
+        if (PlayerPrefs.GetInt("IsFirstTime") == 1)
+        {
+            Sequence outro = DOTween.Sequence();
+            canvasDarkPanel.DOFade(0, tweenDuration).SetUpdate(true).OnComplete(() =>
+            {
+                canvasDarkPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3(3000, 3000, 1000);
+            });
+
+            tutorialPopupRect.DOAnchorPosY(topPosYSetting, tweenDuration).SetUpdate(true);
+            GameManager.Instance.PauseGame(2);
+
+
+            PlayerPrefs.SetInt("IsFirstTime", 2);
+        }
+        else
+        {
+            tutorialPopupRect.DOAnchorPosY(topPosYSetting, tweenDuration).SetUpdate(true);
+        }
     }
     #endregion
 
