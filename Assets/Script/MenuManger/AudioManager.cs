@@ -28,11 +28,20 @@ public class AudioManager : Singleton<AudioManager>
 
     private Coroutine fadeCoroutine = null;
 
+    [Header("Music Dictionary")]
+    [SerializeField] private List<AudioClip> sfxClipList;
+    private Dictionary<string,  AudioClip> sfxDictionary = new();
+
     private void Awake()
     {
         InitializeSFXPool();
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+
+        foreach (AudioClip clip in sfxClipList)
+        {
+            sfxDictionary[clip.name] = clip;
+        }
     }
 
     private void Start()
@@ -134,6 +143,13 @@ public class AudioManager : Singleton<AudioManager>
         {
             Debug.LogWarning("No available AudioSource in pool!");
         }
+    }
+    public void PlaySFX(string clipName, float pitch = -1, float volume = -1)
+    {
+        var canGet = sfxDictionary.TryGetValue(clipName, out var audio);
+        if (!canGet) return;
+
+        PlaySFX(audio, pitch, volume);
     }
 
     private AudioSource GetAvailableAudioSource()
