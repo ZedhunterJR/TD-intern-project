@@ -95,6 +95,7 @@ public class TileManager : Singleton<TileManager>
         {
             TileEntity tileEntity = tilesDic[pos];
             PoolManager.Instance.ReturnTower(tileEntity.currentTower.gameObject);
+            UIManager.Instance.UpdateCurrentBuildingText();
             tileEntity.currentTower = null;
             tilesDic.Remove(pos);
         }

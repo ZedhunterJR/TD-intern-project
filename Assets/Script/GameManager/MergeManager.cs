@@ -10,6 +10,7 @@ public class MergeManager : Singleton<MergeManager>
     [SerializeField] private GameObject mergeButtonPrefabs;
     [SerializeField] private Transform worldCanvas;
     [SerializeField] private LineRenderer arrowRenderer;
+    [SerializeField] private SpriteRenderer[] arrows;
 
     //all of this serve dragging function
     ButtonUI currentDragingButton = null;
@@ -88,7 +89,7 @@ public class MergeManager : Singleton<MergeManager>
         buttonUI.MouseDragEnd = () =>
         {
             currentDragingButton = null;
-            arrowRenderer.positionCount = 0;
+            ResetArrow();
             var tower = TileManager.Instance.GetTowerStatInTile(buttonUI.transform.position);
             tower.HideRange();
         };
@@ -118,7 +119,7 @@ public class MergeManager : Singleton<MergeManager>
 
             towerEnd.HideRange();
             currentDragingButton = null;
-            arrowRenderer.positionCount = 0;
+            ResetArrow();
         };
         buttonUI.MouseDrag = () =>
         {
@@ -196,15 +197,31 @@ public class MergeManager : Singleton<MergeManager>
 
     private void DrawArrow(Vector2 start, Vector2 end)
     {
+        var sortToTime = start.x - end.x >= 0 ? 1 : -1;
         float distance = Vector2.Distance(start, end);
-        var cHeight = Mathf.Clamp(distance, 4f, 8f);
-        var control = (start + end) / 2 + new Vector2(0, cHeight); // Scale curve height with distance
+        float cHeight = Mathf.Clamp(distance, 4f, 8f);
+        Vector2 control = (start + end) / 2 + new Vector2(0, cHeight); // Scale curve height with distance
 
-        var points = GetQuadraticBezierPoints(start, control, end);
-        arrowRenderer.positionCount = points.Count;
-        for (int i = 0; i < points.Count; i++)
+        var points = GetQuadraticBezierPoints(start, control, end, arrows.Length);
+
+        // Position and rotate arrow sprites along the curve
+        for (int i = 0; i < arrows.Length; i++)
         {
-            arrowRenderer.SetPosition(i, points[i]);
+            arrows[i].transform.position = points[i];
+            Vector2 direction = (points[i + 1] - points[i]).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            arrows[i].transform.rotation = Quaternion.Euler(0, 0, angle);
+            arrows[i].sortingOrder = i * sortToTime;
+        }
+        arrows[^1].transform.position = points[^1];
+        arrows[^1].sortingOrder = 50;
+    }
+
+    private void ResetArrow()
+    {
+        foreach (var t in arrows)
+        {
+            t.transform.position = new Vector2(-30, 0);
         }
     }
 
