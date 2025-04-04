@@ -8210,6 +8210,13 @@ MonoBehaviour:
   fadeDuration: 1.2
   audioSourcePrefab: {fileID: 2977037480769235792, guid: 35b847861430ddb40893ef6f3023af86, type: 3}
   poolSize: 10
+  sfxClipList:
+  - {fileID: 8300000, guid: 3078c3911a690fd43b018419b9a07242, type: 3}
+  - {fileID: 8300000, guid: 382d4edb248eaae46ba139efac08a0e9, type: 3}
+  - {fileID: 8300000, guid: af4ef56c54971b34bbc5affd6c04d5ab, type: 3}
+  - {fileID: 8300000, guid: 268cf05bcc9e6a642895aa3c137d160c, type: 3}
+  - {fileID: 8300000, guid: 1ec56f61c647c6f4d90441599e69ba33, type: 3}
+  - {fileID: 8300000, guid: 2c4b6c80b3d4e1547b6c4dd7a768ade4, type: 3}
 --- !u!4 &787393502
 Transform:
   m_ObjectHideFlags: 0
